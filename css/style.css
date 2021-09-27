@@ -1,0 +1,230 @@
+@font-face {
+    font-family: 'icomoon';
+    src:  url('../fonts/icomoon.eot?2wkt35');
+    src:  url('../fonts/icomoon.eot?2wkt35#iefix') format('embedded-opentype'),
+      url('../fonts/icomoon.ttf?2wkt35') format('truetype'),
+      url('../fonts/icomoon.woff?2wkt35') format('woff'),
+      url('../fonts/icomoon.svg?2wkt35#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+  }
+body{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+footer{
+    background: #dd4f24;
+    padding: 20px 0px 2px 0px;
+    text-align: center;
+}
+
+footer p{
+    color: rgba(red, green, blue, 0.5);
+    display: grid;
+}
+
+footer p span:before{
+    content: " - ";
+}
+
+footer p span:after{
+    content: " - ";
+}
+
+header{
+    background: #444;
+    color: white;
+    display: grid;
+}
+
+header .logo img, header .avatar img{
+    width: 80px;
+}
+
+header .encabezado h2{
+    color: white;
+    font-size: 20px;
+}
+
+
+header .encabezado .logo-bienvenida .tamano {
+    color: #dd4f24;
+}
+
+header .encabezado .logo-bienvenida p{
+    color: #22bce0;
+}
+
+header nav{
+    background: #22bce0;
+}
+
+header nav ul{
+    list-style: none;
+    display: flex;
+    padding: 8px 0px 8px 0px;
+    margin: 0px;
+}
+
+header nav ul li{
+    margin-left: 30px;
+}
+
+header nav ul li a{
+    color: white;
+    text-decoration: none;
+    padding: 8px 2px 8px 2px;
+}
+
+header nav ul li a:hover{
+    background: rgba(0, 0, 0, 0.1);
+}
+
+header .encabezado .publicar .avatar{
+    display: flex;
+}
+
+
+header .encabezado .logo-bienvenida, header .encabezado .publicar, 
+header .encabezada .publicar .avatar{
+    display: flex;
+}
+
+header .encabezado{
+    overflow: hidden;
+    -webkit-box-shadow: 0px 3px 0px 0px rgba(0,0,0,0.28);
+    -moz-box-shadow: 0px 3px 0px 0px rgba(0,0,0,0.28);
+    box-shadow: 0px 3px 0px 0px rgba(0,0,0,0.28);
+    z-index: 2;
+}
+header .encabezado .logo-bienvenida{
+    float: left;
+}
+
+header .encabezado .publicar{
+    float: right;
+}
+
+header .encabezado .logo-bienvenida h2, header .encabezado .logo-bienvenida p {
+    margin: 0px 0px 5px 0px;
+    padding: 0px;
+}
+
+header .encabezado .publicar p{
+    background: #dd4f24;
+    padding: 5px 5px 5px 5px;
+}
+
+header .encabezado .logo-bienvenida div{
+    margin: 5px 0px 5px 20px;
+}
+
+header .encabezado .logo-bienvenida .logo {
+    border-right: 1px solid #22bce0;
+    padding-right: 15px;
+}
+
+header .encabezado .publicar p{
+    background: #dd4f24;
+    padding: 5px 5px 5px 5px;
+}
+
+header .encabezado .publicar .avatar p {
+    -webkit-transform: rotate(90deg); 
+    -moz-transform: rotate(90deg); 
+}
+
+header .encabezado .publicar .pluma::before{
+    font-family: "icomoon";
+    content: "\e908";
+}
+
+header .encabezado .publicar .avatar p::before{
+    font-family: "icomoon";
+    content: "\ea1c";
+}
+
+section {
+    background: #e8e8e8;
+}
+
+section article {
+    background: white;
+    border: 1px solid black;
+    width: 48%;
+    
+    -webkit-box-shadow: 0px 3px 0px 0px rgba(0,0,0,0.28);
+    -moz-box-shadow: 0px 3px 0px 0px rgba(0,0,0,0.28);
+    box-shadow: 0px 3px 0px 0px rgba(0,0,0,0.28);
+    z-index: 2;
+}
+
+section article .post {
+    border-bottom: 2px solid #22bce0;
+}
+
+section article .post img {
+    width: 150px;
+}
+
+
+section article .estadisticas{
+    overflow:  hidden;
+}
+
+section article .estadisticas .contador{
+    float: left;
+}
+
+section article .estadisticas .iconitos{
+    float: right;
+    margin-right: 20px;
+}
+
+section article .estadisticas .iconitos .estrella {
+    font-family: "icomoon";
+    content: "\ea1c"; 
+    margin: 10px;
+}
+
+section article .estadisticas .contador .farriba p:before{
+    font-family: "icomoon";
+    content: "\ea1c";  
+}
+
+section article .estadisticas .contador .farriba:before, section article .estadisticas .contador .fabajo:before {
+    font-family: 'icomoon';
+    content: "\ea1c";  
+}
+
+section article .estadisticas .estrella::before{
+    font-family: 'icomoon';
+    content: "\e9d7"
+}
+section article .estadisticas .contador{
+    display: flex;
+}
+section article .estadisticas .contador .farriba{
+    color: green;
+    -webkit-transform: rotate(-90deg); 
+    -moz-transform: rotate(-90deg); 
+}
+section article .estadisticas .contador .fabajo{
+    color: red;
+    -webkit-transform: rotate(90deg); 
+    -moz-transform: rotate(90deg); 
+}
+
+section article .post{
+    display: flex;
+    padding-right: 15px;
+}
+section article .post .imagen-tarjeta{
+    
+    padding-right: 15px;
+}
+section article .post .imagen-tarjeta div{
+    margin: 15px 15px 15px 15px;
+    
+}
