@@ -26,8 +26,9 @@
     display:grid;
 }
 .sidebar .region-user, .sidebar .region-funciones, .sidebar .region-cuenta{
-    margin-left: 20px;
-    margin-right: 20px;
+    /* margin-left: 20px;
+    margin-right: 20px; */
+    margin: 20px;
     display:inline-block;
     
 }
@@ -87,8 +88,6 @@
         /* padding: 10px 10px 10px 10px; */
 }
 
-
-
 .abrir-cerrar {
     text-decoration: none;
     color: black;
@@ -100,7 +99,6 @@
     content: "\e9bd";
     
 }
-
 
 #cerrar {   
     display:none;
@@ -188,14 +186,19 @@ h2{
 }
 
 .sidebar .region-user{
-    display: flex;
+    /* display: flex; */
     height: fit-content;
+    display: inline-flex;
+    padding-bottom: 20px;
 }
 .sidebar .region-user .logo-user::after{
     font-family: "icomoon";
     content: "\e971";
     font-size: 30px;
 
+}
+.sidebar .region-user .nombre-user{
+    padding: 10px;
 }
 
 .sidebar .region-funciones .home::before{

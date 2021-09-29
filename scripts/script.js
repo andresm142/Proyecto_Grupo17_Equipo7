@@ -12,4 +12,5 @@ function ocultar() {
     document.getElementById("contenido").style.marginLeft = "0px";
     document.getElementById("abrir").style.display = "inline";
     document.getElementById("cerrar").style.display = "none";
+
 }
