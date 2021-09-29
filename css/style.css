@@ -1,0 +1,197 @@
+@font-face {
+    font-family: 'icomoon';
+    src:  url('../fonts/icomoon.eot?2wkt35');
+    src:  url('../fonts/icomoon.eot?2wkt35#iefix') format('embedded-opentype'),
+      url('../fonts/icomoon.ttf?2wkt35') format('truetype'),
+      url('../fonts/icomoon.woff?2wkt35') format('woff'),
+      url('../fonts/icomoon.svg?2wkt35#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+  }
+
+.sidebar {
+    position: fixed;
+    height: 100%;
+    width: 300;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    background-color: #f0f0f0;
+    overflow-x: hidden;
+    transition: 0.4s;
+    padding: 1rem 0;
+    box-sizing:border-box;
+    border-right: 1px solid #4b4e4e;
+    display:grid;
+}
+.sidebar .region-user, .sidebar .region-funciones, .sidebar .region-cuenta{
+    margin-left: 20px;
+    margin-right: 20px;
+    display:inline-block;
+    
+}
+.sidebar .region-user, .sidebar .region-funciones{
+    border-bottom: 1px solid #4b4e4e;
+}
+
+.sidebar .region-funciones .home, .sidebar .region-funciones .productos,.sidebar .region-funciones .listas,
+.sidebar .region-funciones .usuarios, .sidebar .region-funciones .proveedores,.sidebar .region-cuenta .config, .sidebar .region-cuenta .logout{
+    margin: 10px;
+}
+/* .sidebar .boton-cerrar {
+    position: absolute;
+    top: 0.5rem;
+    right: 1rem;
+    font-size: 2rem;
+    display: block;
+    padding: 0;
+    line-height: 1.5rem;
+    margin: 0;
+    height: 32px;
+    width: 32px;
+    text-align: center;
+    vertical-align: top;
+} */
+
+.sidebar ul, .sidebar li{
+    margin:0;
+    padding:0;
+    list-style:none inside;
+}
+
+.sidebar ul {
+    margin: 4rem auto;
+    display: block;
+    width: 80%;
+    min-width:200px;
+}
+
+.sidebar a {
+    display: block;
+    font-size: 120%;
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    
+}
+
+.sidebar a:hover{
+    color:#fff;
+    background-color: #f90;
+
+}
+
+#abrir-menu,#contenido {
+    transition: margin-left .4s;
+    padding-left: 10px;
+        /* padding: 10px 10px 10px 10px; */
+}
+
+
+
+.abrir-cerrar {
+    text-decoration: none;
+    color: black;
+    font-size: 30px;  
+}
+
+.abrir-cerrar::before{
+    font-family: "icomoon";
+    content: "\e9bd";
+    
+}
+
+
+#cerrar {   
+    display:none;
+}
+
+
+.buscar .icon-search .search{
+    position: relative;
+    position: absolute;
+    right: 0px;
+}
+
+
+header{
+    border-bottom: 1px solid #4b4e4e;
+    padding: 5px;
+}
+
+header .encabezado{
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+    padding: 0px;
+   height: fit-content;
+
+}
+
+header .encabezado .buscar{
+    
+    padding: 10px 0px 0px 0px;
+    /* margin-bottom:10px;
+    margin-top: 10px;*/
+}
+header .encabezado .buscar input{
+    width: 400px;
+    border-radius: 10px;
+    outline: none;
+}
+
+header .encabezado .logo{
+    padding: 0px 10px 10px 0px; 
+    
+    /* margin-bottom:10px;
+    margin-top: 10px;*/
+}
+h2{
+    margin: 5px;
+}
+
+.sidebar .region-user{
+    display: flex;
+    height: fit-content;
+}
+.sidebar .region-user .logo-user::after{
+    font-family: "icomoon";
+    content: "\e971";
+    font-size: 30px;
+
+}
+
+.sidebar .region-funciones .home::before{
+    font-family: "icomoon";
+    content: "\e900";
+    
+}
+.sidebar .region-funciones .productos::before{
+    font-family: "icomoon";
+    content: "\e93a";
+    
+}
+.sidebar .region-funciones .listas::before{
+    font-family: "icomoon";
+    content: "\e9ba";
+    
+}
+.sidebar .region-funciones .usuarios::before{
+    font-family: "icomoon";
+    content: "\e972"; 
+}
+.sidebar .region-funciones .proveedores::before{
+    font-family: "icomoon";
+    content: "\e976";
+    
+}
+.sidebar .region-cuenta .config::before{
+    font-family: "icomoon";
+    content: "\e994";
+    
+}
+.sidebar .region-cuenta .logout::before{
+    font-family: "icomoon";
+    content: "\e9b6";
+    
+}

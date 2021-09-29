@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/normalize.css">
+    <script src="scripts/script.js"></script>
+
+</head>
+
+<body>
+    <header>
+        <div class="encabezado">
+         
+            <div id="abrir-menu">
+                <!-- <p><a href="#" target="_blank"></a></p> -->
+                <!-- <h1>Un menú lateral</h1> -->
+                <a id="abrir" class="abrir-cerrar" href="javascript:void(0)" onclick="mostrar()"
+                style="display: inline;"></a>
+                <a id="cerrar" class="abrir-cerrar" href="#" onclick="ocultar()" style="display: none;"></a>
+            </div>
+
+            <div class="buscar">
+                <i class="icon-search"></i>
+                <input type="search" name="txtSearch" id="search" placeholder="Buscar">
+            </div>
+
+            <div class="logo">
+                <h2>SAI Motor</h2>
+            </div>
+
+
+        </div>
+    </header>
+    <section class="contenido" id="contenido">
+        <h1>Bienvenido</h1>
+    
+
+    </section>
+
+
+    <div id="sidebar" class="sidebar" style="width: 0px;">
+        <div class="region-user">
+            <div class="logo-user">
+
+            </div>
+            <div class="nombre-user">
+                Usuario
+            </div>
+        </div>
+        <div class="region-funciones">
+            <a href="#"><div class="home">
+                Home
+            </div></a>
+            <a href="#"><div class="productos">
+                Productos
+            </div></a>
+            <a href="#"><div class="listas">
+                Listas
+            </div></a>
+            <a href="#"><div class="usuarios">
+                Usuarios
+            </div></a>
+            <a href="#"><div class="proveedores">
+                Provedores
+            </div></a>
+        </div>
+        <div class="region-cuenta">
+            Cuenta
+            <a href="#"><div class="config">
+                Configuración
+            </div></a>
+            <a href="#"><div class="logout">
+                Cerrar sesión
+            </div></a>
+        </div>
+        <!-- <a href="#" class="boton-cerrar" onclick="ocultar()">×</a> -->
+        <!-- <ul class="menu">
+            <li><a href="#">Opción 1</a></li>
+            <li><a href="#">Opción 2</a></li>
+            <li><a href="#">Opción 3</a></li>
+            <li><a href="#">Opción 4</a></li>
+            <li><a href="#">Opción 5</a></li>
+        </ul> -->
+        
+    </div>
+  
+
+
+</body>
+
+</html>
