@@ -107,10 +107,52 @@
 }
 
 
-.buscar .icon-search .search{
-    position: relative;
-    position: absolute;
-    right: 0px;
+header .encabezado .buscar #search{
+    background-color: #f2f2f2;
+    border: 1px solid #ccc;
+    border-left: 0;
+    border-radius: 0 25px 25px 0;
+    color: #444;
+    padding: .6rem .5rem;
+    font-size: 15px;
+    font-weight: lighter;
+    -webkit-transition: border-color .2s ease;
+    transition: border-color .2s ease;
+    width: 100%;
+}
+
+header .encabezado .buscar{
+    display: inline-flex;
+    -webkit-flex-flow: row-reverse nowrap;
+    -ms-flex-flow: row-reverse nowrap;
+      flex-flow: row-reverse nowrap;
+    padding: 5px 0px 5px 0px;
+    /* margin-bottom:10px;
+    margin-top: 10px;*/
+    width: 350px;
+}
+header .encabezado .buscar #search+ i {
+    background-color: #f2f2f2;
+    border: 1px solid #ccc;
+    border-radius: 25px 0 0 25px;
+    border-right: 0;
+    color: #777;
+    padding: .67rem .65rem;
+    -webkit-transition: border-color .2s ease;
+    transition: border-color .2s ease;
+}
+header .encabezado .buscar #search:focus {
+    border-color: #999;
+    outline: none;
+}
+
+header .encabezado .buscar #search:focus + i {
+    border-color: #999;
+}
+
+header .encabezado .buscar .lupa::before {
+    font-family: "icomoon";
+    content: "\e986";
 }
 
 
@@ -128,17 +170,12 @@ header .encabezado{
 
 }
 
-header .encabezado .buscar{
-    
-    padding: 10px 0px 0px 0px;
-    /* margin-bottom:10px;
-    margin-top: 10px;*/
-}
-header .encabezado .buscar input{
+
+/* header .encabezado .buscar input{
     width: 400px;
     border-radius: 10px;
     outline: none;
-}
+} */
 
 header .encabezado .logo{
     padding: 0px 10px 10px 0px; 
