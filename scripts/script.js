@@ -14,3 +14,9 @@ function ocultar() {
     document.getElementById("cerrar").style.display = "none";
 
 }
+function cargar(event){
+    $("#contenido").load(event);    
+}
+function home(){
+    location.reload();
+}
