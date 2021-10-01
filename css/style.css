@@ -1,14 +1,122 @@
 @font-face {
     font-family: 'icomoon';
-    src:  url('../fonts/icomoon.eot?2wkt35');
-    src:  url('../fonts/icomoon.eot?2wkt35#iefix') format('embedded-opentype'),
-      url('../fonts/icomoon.ttf?2wkt35') format('truetype'),
-      url('../fonts/icomoon.woff?2wkt35') format('woff'),
-      url('../fonts/icomoon.svg?2wkt35#icomoon') format('svg');
+    src: url('../fonts/icomoon.eot?2wkt35');
+    src: url('../fonts/icomoon.eot?2wkt35#iefix') format('embedded-opentype'), url('../fonts/icomoon.ttf?2wkt35') format('truetype'), url('../fonts/icomoon.woff?2wkt35') format('woff'), url('../fonts/icomoon.svg?2wkt35#icomoon') format('svg');
     font-weight: normal;
     font-style: normal;
     font-display: block;
-  }
+}
+
+input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+/* CONFIGURACION DEL HEADER */
+
+#abrir-menu, #contenido {
+    transition: margin-left .4s;
+    padding-left: 30px;
+    padding-right: 30px;
+    /* padding: 10px 10px 10px 10px; */
+}
+
+.abrir-cerrar {
+    text-decoration: none;
+    color: black;
+    font-size: 30px;
+}
+
+.abrir-cerrar::before {
+    font-family: "icomoon";
+    content: "\e9bd";
+}
+
+#cerrar {
+    display: none;
+}
+
+header .encabezado .buscar #search {
+    background-color: #f2f2f2;
+    border: 1px solid #ccc;
+    border-left: 0;
+    border-radius: 0 25px 25px 0;
+    color: #444;
+    padding: .6rem .5rem;
+    font-size: 15px;
+    font-weight: lighter;
+    -webkit-transition: border-color .2s ease;
+    transition: border-color .2s ease;
+    width: 100%;
+}
+
+header .encabezado .buscar {
+    display: inline-flex;
+    -webkit-flex-flow: row-reverse nowrap;
+    -ms-flex-flow: row-reverse nowrap;
+    flex-flow: row-reverse nowrap;
+    padding: 5px 0px 5px 0px;
+    /* margin-bottom:10px;
+    margin-top: 10px;*/
+    width: 450px;
+    height: 39.5px;
+}
+
+header .encabezado .buscar #search+i {
+    background-color: #f2f2f2;
+    border: 1px solid #ccc;
+    border-radius: 25px 0 0 25px;
+    border-right: 0;
+    color: #777;
+    padding: .67rem .65rem;
+    -webkit-transition: border-color .2s ease;
+    transition: border-color .2s ease;
+}
+
+header .encabezado .buscar #search:focus {
+    border-color: #999;
+    outline: none;
+}
+
+header .encabezado .buscar #search:focus+i {
+    border-color: #999;
+}
+
+header .encabezado .buscar .lupa::before {
+    font-family: "icomoon";
+    content: "\e986";
+}
+
+header {
+    border-bottom: 1px solid #4b4e4e;
+    padding: 5px;
+}
+
+header .encabezado {
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+    padding: 0px;
+    height: fit-content;
+}
+
+header .encabezado .logo {
+    padding: 0px 10px 10px 0px;
+    /* margin-bottom:10px;
+    margin-top: 10px;*/
+}
+
+/* FIN CONFIGURACION DEL HEADER */
+
+h2 {
+    margin: 5px;
+}
+
+/* CONFIGURACION DEL SIDEBAR */
 
 .sidebar {
     position: fixed;
@@ -21,25 +129,26 @@
     overflow-x: hidden;
     transition: 0.4s;
     padding: 1rem 0;
-    box-sizing:border-box;
+    box-sizing: border-box;
     border-right: 1px solid #4b4e4e;
-    display:grid;
+    display: grid;
 }
-.sidebar .region-user, .sidebar .region-funciones, .sidebar .region-cuenta{
+
+.sidebar .region-user, .sidebar .region-funciones, .sidebar .region-cuenta {
     /* margin-left: 20px;
     margin-right: 20px; */
     margin: 20px;
-    display:inline-block;
-    
+    display: inline-block;
 }
-.sidebar .region-user, .sidebar .region-funciones{
+
+.sidebar .region-user, .sidebar .region-funciones {
     border-bottom: 1px solid #4b4e4e;
 }
 
-.sidebar .region-funciones .home, .sidebar .region-funciones .productos,.sidebar .region-funciones .listas,
-.sidebar .region-funciones .usuarios, .sidebar .region-funciones .proveedores,.sidebar .region-cuenta .config, .sidebar .region-cuenta .logout{
+.sidebar .region-funciones .home, .sidebar .region-funciones .productos, .sidebar .region-funciones .listas, .sidebar .region-funciones .usuarios, .sidebar .region-funciones .proveedores, .sidebar .region-cuenta .config, .sidebar .region-cuenta .logout {
     margin: 10px;
 }
+
 /* .sidebar .boton-cerrar {
     position: absolute;
     top: 0.5rem;
@@ -55,188 +164,74 @@
     vertical-align: top;
 } */
 
-.sidebar ul, .sidebar li{
-    margin:0;
-    padding:0;
-    list-style:none inside;
-}
-
-.sidebar ul {
-    margin: 4rem auto;
-    display: block;
-    width: 80%;
-    min-width:200px;
-}
-
 .sidebar a {
     display: block;
     font-size: 120%;
     color: rgb(0, 0, 0);
     text-decoration: none;
-    
 }
 
-.sidebar a:hover{
-    color:#fff;
+.sidebar a:hover {
+    color: #fff;
     background-color: #f90;
-
 }
 
-#abrir-menu,#contenido {
-    transition: margin-left .4s;
-    padding-left: 10px;
-        /* padding: 10px 10px 10px 10px; */
-}
-
-.abrir-cerrar {
-    text-decoration: none;
-    color: black;
-    font-size: 30px;  
-}
-
-.abrir-cerrar::before{
-    font-family: "icomoon";
-    content: "\e9bd";
-    
-}
-
-#cerrar {   
-    display:none;
-}
-
-
-header .encabezado .buscar #search{
-    background-color: #f2f2f2;
-    border: 1px solid #ccc;
-    border-left: 0;
-    border-radius: 0 25px 25px 0;
-    color: #444;
-    padding: .6rem .5rem;
-    font-size: 15px;
-    font-weight: lighter;
-    -webkit-transition: border-color .2s ease;
-    transition: border-color .2s ease;
-    width: 100%;
-}
-
-header .encabezado .buscar{
-    display: inline-flex;
-    -webkit-flex-flow: row-reverse nowrap;
-    -ms-flex-flow: row-reverse nowrap;
-      flex-flow: row-reverse nowrap;
-    padding: 5px 0px 5px 0px;
-    /* margin-bottom:10px;
-    margin-top: 10px;*/
-    width: 350px;
-}
-header .encabezado .buscar #search+ i {
-    background-color: #f2f2f2;
-    border: 1px solid #ccc;
-    border-radius: 25px 0 0 25px;
-    border-right: 0;
-    color: #777;
-    padding: .67rem .65rem;
-    -webkit-transition: border-color .2s ease;
-    transition: border-color .2s ease;
-}
-header .encabezado .buscar #search:focus {
-    border-color: #999;
-    outline: none;
-}
-
-header .encabezado .buscar #search:focus + i {
-    border-color: #999;
-}
-
-header .encabezado .buscar .lupa::before {
-    font-family: "icomoon";
-    content: "\e986";
-}
-
-
-header{
-    border-bottom: 1px solid #4b4e4e;
-    padding: 5px;
-}
-
-header .encabezado{
-    overflow: hidden;
-    display: flex;
-    justify-content: space-between;
-    padding: 0px;
-   height: fit-content;
-
-}
-
-
-/* header .encabezado .buscar input{
-    width: 400px;
-    border-radius: 10px;
-    outline: none;
-} */
-
-header .encabezado .logo{
-    padding: 0px 10px 10px 0px; 
-    
-    /* margin-bottom:10px;
-    margin-top: 10px;*/
-}
-h2{
-    margin: 5px;
-}
-
-.sidebar .region-user{
+.sidebar .region-user {
     /* display: flex; */
     height: fit-content;
     display: inline-flex;
     padding-bottom: 20px;
 }
-.sidebar .region-user .logo-user::after{
+
+.sidebar .region-user .logo-user::after {
     font-family: "icomoon";
     content: "\e971";
     font-size: 30px;
-
 }
-.sidebar .region-user .nombre-user{
+
+.sidebar .region-user .nombre-user {
     padding: 10px;
 }
 
-.sidebar .region-funciones .home::before{
+.sidebar .region-funciones .home::before {
     font-family: "icomoon";
     content: "\e900";
-    
-}
-.sidebar .region-funciones .productos::before{
-    font-family: "icomoon";
-    content: "\e93a";
-    
-}
-.sidebar .region-funciones .listas::before{
-    font-family: "icomoon";
-    content: "\e9ba";
-    
-}
-.sidebar .region-funciones .usuarios::before{
-    font-family: "icomoon";
-    content: "\e972"; 
-}
-.sidebar .region-funciones .proveedores::before{
-    font-family: "icomoon";
-    content: "\e976";
-    
-}
-.sidebar .region-cuenta .config::before{
-    font-family: "icomoon";
-    content: "\e994";
-    
-}
-.sidebar .region-cuenta .logout::before{
-    font-family: "icomoon";
-    content: "\e9b6";
-    
 }
 
+.sidebar .region-funciones .productos::before {
+    font-family: "icomoon";
+    content: "\e93a";
+}
+
+.sidebar .region-funciones .listas::before {
+    font-family: "icomoon";
+    content: "\e9ba";
+}
+
+.sidebar .region-funciones .usuarios::before {
+    font-family: "icomoon";
+    content: "\e972";
+}
+
+.sidebar .region-funciones .proveedores::before {
+    font-family: "icomoon";
+    content: "\e976";
+}
+
+.sidebar .region-cuenta .config::before {
+    font-family: "icomoon";
+    content: "\e994";
+}
+
+.sidebar .region-cuenta .logout::before {
+    font-family: "icomoon";
+    content: "\e9b6";
+}
+
+/* FIN CONFIGURACION DEL SIDEBAR */
+
 /* CONIGURACION DEL LOGIN */
+
 .box {
     position: absolute;
     top: 50%;
@@ -248,34 +243,33 @@ h2{
     border: 1px solid #dadce0;
     -webkit-border-radius: 8px;
     border-radius: 8px;
+}
 
-  }
-  
-  .box h2 {
+.box h2 {
     margin: 0px 0 -0.125rem;
     padding: 0;
     color: #fff;
     text-align: center;
     color: #202124;
-    font-family: arial,sans-serif;
+    font-family: arial, sans-serif;
     font-size: 24px;
     font-weight: 400;
-  }
+}
 
-  .box p {
+.box p {
     font-size: 16px;
     font-weight: 400;
     letter-spacing: .1px;
     line-height: 1.5;
     margin-bottom: 25px;
     text-align: center;
-  }
-  
-  .box .inputBox {
+}
+
+.box .inputBox {
     position: relative;
-  }
-  
-  .box .inputBox input {
+}
+
+.box .inputBox input {
     width: 93%;
     padding: 0.625rem 10px;
     font-size: 1rem;
@@ -284,10 +278,9 @@ h2{
     border: 1px solid #ccc;
     background: transparent;
     border-radius: 4px;
-    
-  }
-  
-  .box .inputBox label {
+}
+
+.box .inputBox label {
     position: absolute;
     top: 0;
     left: 10px;
@@ -296,11 +289,9 @@ h2{
     color: grey;
     pointer-events: none;
     transition: 0.5s;
-  }
-  
-  .box .inputBox input:focus ~ label,
-  .box .inputBox input:valid ~ label,
-  .box .inputBox input:not([value=""]) ~ label {
+}
+
+.box .inputBox input:focus~label, .box .inputBox input:valid~label, .box .inputBox input:not([value=""])~label {
     top: -1.125rem;
     left: 10px;
     color: #1a73e8;
@@ -309,12 +300,14 @@ h2{
     height: 10px;
     padding-left: 5px;
     padding-right: 5px;
-  }
-  .box .inputBox input:focus {
+}
+
+.box .inputBox input:focus {
     outline: none;
     border: 2px solid #1a73e8;
-  }
-  .box input[type="submit"] {
+}
+
+.box input[type="submit"] {
     border: none;
     outline: none;
     color: #fff;
@@ -324,12 +317,33 @@ h2{
     border-radius: 0.312rem;
     font-size: 1rem;
     float: right;
-  }
-  
-  .box input[type="submit"]:hover {
+}
+
+.box input[type="submit"]:hover {
     background-color: #287ae6;
-    box-shadow: 0 1px 1px 0 rgba(66,133,244,0.45), 0 1px 3px 1px rgba(66,133,244,0.3);
-  }
+    box-shadow: 0 1px 1px 0 rgba(66, 133, 244, 0.45), 0 1px 3px 1px rgba(66, 133, 244, 0.3);
+}
 
-  /* FIN CONFIGURACION DEL LOGIN */
+/* FIN CONFIGURACION DEL LOGIN */
 
+/* INICIO STYLE USER */
+
+.info-user .avatar img {
+    width: 100px;
+}
+
+.info-user {
+    display: flex;
+    /* position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); */
+    border-bottom: 1px solid #4b4e4e;
+    ;
+}
+
+.info-cuenta {
+    display: inline;
+}
+
+/* FIN STYLE USER */

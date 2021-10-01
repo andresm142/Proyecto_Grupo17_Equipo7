@@ -18,12 +18,12 @@
 <body>
     <header>
         <div class="encabezado">
-         
+
             <div id="abrir-menu">
                 <!-- <p><a href="#" target="_blank"></a></p> -->
                 <!-- <h1>Un menú lateral</h1> -->
                 <a id="abrir" class="abrir-cerrar" href="javascript:void(0)" onclick="mostrar()"
-                style="display: inline;"></a>
+                    style="display: inline;"></a>
                 <a id="cerrar" class="abrir-cerrar" href="#" onclick="ocultar()" style="display: none;"></a>
             </div>
 
@@ -59,30 +59,44 @@
             </div>
         </div>
         <div class="region-funciones">
-            <a href="#" onclick="home()"><div class="home">
-                Home
-            </div></a>
-            <a href="#" onclick="cargar('Productos.html')"><div class="productos">
-                Productos
-            </div></a>
-            <a href="#" onclick="cargar('Listas.html')"><div class="listas">
-                Listas
-            </div></a>
-            <a href="#" onclick="cargar('Usuarios.html')"><div class="usuarios">
-                Usuarios
-            </div></a>
-            <a href="#" onclick="cargar('Proveedores.html')"><div class="proveedores">
-                Provedores
-            </div></a>
+            <a href="#" onclick="home()">
+                <div class="home">
+                    Home
+                </div>
+            </a>
+            <a href="#" onclick="cargar('Productos.html')">
+                <div class="productos">
+                    Productos
+                </div>
+            </a>
+            <a href="#" onclick="cargar('Listas.html')">
+                <div class="listas">
+                    Listas
+                </div>
+            </a>
+            <a href="#" onclick="cargar('Usuarios.html')">
+                <div class="usuarios">
+                    Usuarios
+                </div>
+            </a>
+            <a href="#" onclick="cargar('Proveedores.html')">
+                <div class="proveedores">
+                    Provedores
+                </div>
+            </a>
         </div>
         <div class="region-cuenta">
             Cuenta
-            <a href="#"  onclick="cargar('User.html')"><div class="config">
-                Configuración
-            </div></a>
-            <a href="#"><div class="logout">
-                Cerrar sesión
-            </div></a>
+            <a href="#" onclick="cargar('User.html')">
+                <div class="config">
+                    Configuración
+                </div>
+            </a>
+            <a href="#">
+                <div class="logout">
+                    Cerrar sesión
+                </div>
+            </a>
         </div>
         <!-- <a href="#" class="boton-cerrar" onclick="ocultar()">×</a> -->
         <!-- <ul class="menu">
@@ -92,9 +106,9 @@
             <li><a href="#">Opción 4</a></li>
             <li><a href="#">Opción 5</a></li>
         </ul> -->
-        
+
     </div>
-  
+
 
 
 </body>
