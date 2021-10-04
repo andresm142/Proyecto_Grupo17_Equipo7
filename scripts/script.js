@@ -1,7 +1,24 @@
+// DESPLIEGE DE LA OPCION DE PROVEEDOR O PRODUCTO EN EL BUSCADOR
+const selected = document.querySelector(".selected");
+const optionsContainer = document.querySelector(".options-container");
+const optionsList = document.querySelectorAll(".option");
+
+selected.addEventListener("click", () => {
+  optionsContainer.classList.toggle("active");
+});
+
+optionsList.forEach(o => {
+    o.addEventListener("click", () => {
+      selected.innerHTML = o.querySelector("label").innerHTML;
+      optionsContainer.classList.remove("active");
+    });
+});
+
+// MOSTRAR / OCULTAR MENU DE NAVEGACIÓN
 function mostrar() {
-    document.getElementById("sidebar").style.width = "200px";
-    document.getElementById("abrir-menu").style.marginLeft = "200px";
-    document.getElementById("contenido").style.marginLeft = "200px";
+    document.getElementById("sidebar").style.width = "250px";
+    document.getElementById("abrir-menu").style.marginLeft = "250px";
+    document.getElementById("contenido").style.marginLeft = "250px";
     document.getElementById("abrir").style.display = "none";
     document.getElementById("cerrar").style.display = "inline";
 }
@@ -20,3 +37,4 @@ function cargar(event){
 function home(){
     location.reload();
 }
+

@@ -1,0 +1,43 @@
+@font-face {
+    font-family: 'Roboto';
+    src: url('../fonts/Roboto-Regular.ttf'); 
+    font-weight:normal;
+}
+@font-face {
+    font-family: 'Roboto';
+    src: url('../fonts/Roboto-Bold.ttf'); 
+    font-weight: bold;
+}
+@font-face {
+    font-family: 'Roboto';
+    src: url('../fonts/Roboto-Light.ttf'); 
+    font-weight: lighter;
+} 
+:root{
+    --color-usuario:#F45A54;
+    --color-admin:#02A6FF;
+    --color-superadmin:#FF9102;
+    --color-negro:#333747;
+    --color-blanco:#F9F9F9;
+    --color-fondo:#F6F7FF;
+    --color-gris:#707070;
+
+    --radio-boton: 13px;
+    --radio-contenedor-grande: 30px;
+    --radio-contenedor: 30px;
+
+    --border-boton-cancelar-usuario: 1px solid #F45A54;
+    --border-boton-cancelar-admin: 1px solid #02A6FF;
+    --border-boton-cancelar-superadmin: 1px solid #FF9102;
+    --boder-inputs:1px solid rgba(112, 112, 112, 0.4);
+
+    --fuente-super-titulo:normal bold 50px 'Roboto', sans-serif;
+    --fuente-titulo:bold 30px 'Roboto', sans-serif;
+    --fuente-sub-titulo:bold 22px 'Roboto', sans-serif;
+    --fuente-texto:normal 18px 'Roboto', sans-serif;
+
+    --sombra-contenedores:0px 3px 20px rgba(0, 0, 0, 0.171);
+    --sombra-contenedor-titulo:0px 3px 3px rgba(0, 0, 0, 0.171);
+
+    --separacion-icono-texto:15px;
+}

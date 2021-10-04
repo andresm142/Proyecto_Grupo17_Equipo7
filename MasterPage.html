@@ -5,112 +5,87 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SAIC Motor</title>
+    <title></title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/font-awesome.min.css">
-    <script src="scripts/script.js"></script>
-    <script src="scripts/jquery-3.3.1.js"></script>
-    <!-- <script src="https://code.jquery.com/jquery-3.3.1.js"></script> -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet"/>
+    
 
 </head>
 
 <body>
     <header>
         <div class="encabezado">
-
             <div id="abrir-menu">
-                <!-- <p><a href="#" target="_blank"></a></p> -->
-                <!-- <h1>Un menú lateral</h1> -->
                 <a id="abrir" class="abrir-cerrar" href="javascript:void(0)" onclick="mostrar()"
-                    style="display: inline;"></a>
+                style="display: inline;"></a>
                 <a id="cerrar" class="abrir-cerrar" href="#" onclick="ocultar()" style="display: none;"></a>
             </div>
-
             <div class="buscar">
-                <!-- <i class="icon-search"></i> -->
-                <input type="search" id="search" placeholder="Buscar">
-                <i class="fa fa-search"></i>
+                <div class="container">
+                    <div class="select-box">
+                      <div class="options-container">
+                        <div class="option">
+                          <input type="radio" class="radio" id="automobiles" name="category" value="auto"/>
+                          <label for="automobiles">Proveedores</label>
+                        </div>
+                        <div class="option">
+                          <input type="radio" class="radio" id="film" name="category" />
+                          <label for="film">Productos</label>
+                        </div>
+                      </div>
+                      <div class="selected">
+                        Proveedores
+                      </div>
+                    </div>
+                </div>                
+                <input class="search" type="search" id="search" placeholder="Buscar">
+                <i class="fa fa-search" id="lupa"></i>
             </div>
-
             <div class="logo">
                 <h2>SAIC Motor</h2>
             </div>
-
-
         </div>
     </header>
-
     <section class="contenido" id="contenido">
-
-        <h1>Bienvenido</h1>
-
-
+        <!-- <h1>Bienvenido</h1> -->
     </section>
-
-
     <div id="sidebar" class="sidebar" style="width: 0px;">
         <div class="region-user">
             <div class="logo-user">
-
+                <img src="assets/avatar.png" alt="">
             </div>
-            <div class="nombre-user">
-                Usuario
-            </div>
+            <h2 class="nombre-user">Usuario</h2> 
         </div>
         <div class="region-funciones">
-            <a href="#" onclick="home()">
-                <div class="home">
-                    Home
-                </div>
-            </a>
-            <a href="#" onclick="cargar('Productos.html')">
-                <div class="productos">
-                    Productos
-                </div>
-            </a>
-            <a href="#" onclick="cargar('Listas.html')">
-                <div class="listas">
-                    Listas
-                </div>
-            </a>
-            <a href="#" onclick="cargar('Usuarios.html')">
-                <div class="usuarios">
-                    Usuarios
-                </div>
-            </a>
-            <a href="#" onclick="cargar('Proveedores.html')">
-                <div class="proveedores">
-                    Provedores
-                </div>
-            </a>
+            <a href="#"><div class="home">
+                Home
+            </div></a>
+            <a href="#"><div class="productos">
+                Productos
+            </div></a>
+            <a href="#"><div class="listas">
+                Listas
+            </div></a>
+            <a href="#"><div class="usuarios">
+                Usuarios
+            </div></a>
+            <a href="#"><div class="proveedores">
+                Provedores
+            </div></a>
         </div>
         <div class="region-cuenta">
-            Cuenta
-            <a href="#" onclick="cargar('User.html')">
-                <div class="config">
-                    Configuración
-                </div>
-            </a>
-            <a href="#">
-                <div class="logout">
-                    Cerrar sesión
-                </div>
-            </a>
+            <a href="#"><div class="config">
+                Configuración
+            </div></a>
+            <a href="#"><div class="logout">
+                Cerrar sesión
+            </div></a>
         </div>
-        <!-- <a href="#" class="boton-cerrar" onclick="ocultar()">×</a> -->
-        <!-- <ul class="menu">
-            <li><a href="#">Opción 1</a></li>
-            <li><a href="#">Opción 2</a></li>
-            <li><a href="#">Opción 3</a></li>
-            <li><a href="#">Opción 4</a></li>
-            <li><a href="#">Opción 5</a></li>
-        </ul> -->
-
+        
     </div>
-
-
-
+    <script src="scripts/script.js"></script>
+    <script src="scripts/jquery-3.3.1.js"></script>
 </body>
 
 </html>
