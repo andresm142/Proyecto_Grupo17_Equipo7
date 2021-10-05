@@ -20,7 +20,12 @@ body{
 }
 
 .logo{
-    background: url(../assets/Logo-login.png);
+    /* background: url(../assets/Logo-login.png); */
+}
+
+.logo img{
+    width: 100%;
+    transform: translate(10%, 130%);
 }
 
 .login{
