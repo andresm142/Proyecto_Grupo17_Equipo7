@@ -8,8 +8,8 @@
     <title></title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/normalize.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet"/>
-    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" />
+
 
 </head>
 
@@ -17,33 +17,32 @@
     <header>
         <div class="encabezado">
             <div id="abrir-menu">
-                <a id="abrir" class="abrir-cerrar" href="javascript:void(0)" onclick="mostrar()"
-                style="display: inline;"></a>
+                <a id="abrir" class="abrir-cerrar" href="javascript:void(0)" onclick="mostrar()" style="display: inline;"></a>
                 <a id="cerrar" class="abrir-cerrar" href="#" onclick="ocultar()" style="display: none;"></a>
             </div>
             <div class="buscar">
                 <div class="container">
                     <div class="select-box">
-                      <div class="options-container">
-                        <div class="option">
-                          <input type="radio" class="radio" id="automobiles" name="category" value="auto"/>
-                          <label for="automobiles">Proveedores</label>
+                        <div class="options-container">
+                            <div class="option">
+                                <input type="radio" class="radio" id="automobiles" name="category" value="auto" />
+                                <label for="automobiles">Proveedores</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" class="radio" id="film" name="category" />
+                                <label for="film">Productos</label>
+                            </div>
                         </div>
-                        <div class="option">
-                          <input type="radio" class="radio" id="film" name="category" />
-                          <label for="film">Productos</label>
+                        <div class="selected">
+                            Proveedores
                         </div>
-                      </div>
-                      <div class="selected">
-                        Proveedores
-                      </div>
                     </div>
-                </div>                
+                </div>
                 <input class="search" type="search" id="search" placeholder="Buscar">
                 <i class="fa fa-search" id="lupa"></i>
             </div>
             <div class="logo">
-                <h2>SAIC Motor</h2>
+                <img src="assets/logoSM.png" alt="">
             </div>
         </div>
     </header>
@@ -55,34 +54,48 @@
             <div class="logo-user">
                 <img src="assets/avatar.png" alt="">
             </div>
-            <h2 class="nombre-user">Usuario</h2> 
+            <h2 class="nombre-user">Usuario</h2>
         </div>
         <div class="region-funciones">
-            <a href="#"><div class="home">
-                Home
-            </div></a>
-            <a href="#"><div class="productos">
-                Productos
-            </div></a>
-            <a href="#"><div class="listas">
-                Listas
-            </div></a>
-            <a href="#"><div class="usuarios">
-                Usuarios
-            </div></a>
-            <a href="#"><div class="proveedores">
-                Provedores
-            </div></a>
+            <a href="#">
+                <div class="home">
+                    Home
+                </div>
+            </a>
+            <a href="#">
+                <div class="productos">
+                    Productos
+                </div>
+            </a>
+            <a href="#">
+                <div class="listas">
+                    Listas
+                </div>
+            </a>
+            <a href="#">
+                <div class="usuarios">
+                    Usuarios
+                </div>
+            </a>
+            <a href="#">
+                <div class="proveedores">
+                    Provedores
+                </div>
+            </a>
         </div>
         <div class="region-cuenta">
-            <a href="#"><div class="config">
-                Configuración
-            </div></a>
-            <a href="#"><div class="logout">
-                Cerrar sesión
-            </div></a>
+            <a href="#">
+                <div class="config">
+                    Configuración
+                </div>
+            </a>
+            <a href="#">
+                <div class="logout">
+                    Cerrar sesión
+                </div>
+            </a>
         </div>
-        
+
     </div>
     <script src="scripts/script.js"></script>
     <script src="scripts/jquery-3.3.1.js"></script>
