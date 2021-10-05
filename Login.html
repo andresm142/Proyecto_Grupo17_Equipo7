@@ -1,28 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SAIC Motor</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/loginstyle.css">
     <link rel="stylesheet" href="css/normalize.css">
 </head>
-<body>
-    <div class="box">
-        <h2>Bienvenido</h2>
-        <p>Por favor ingrese sus credenciales para ingresar a su cuenta</p>
-        <form>
-            <div class="inputBox">
-                <input type="email" name="email" value="" required onkeyup="this.setAttribute('value', this.value);">
-                <label>Usuario</label>
+
+<body background="assets/fondologin.jpg">
+
+    <section>
+        <article>
+            <div class="logo">
+                <img src="assets/logoSM.png" alt="">
             </div>
-            <div class="inputBox">
-                    <input type="password" name="text" value="" required onkeyup="this.setAttribute('value', this.value);">
-                    <label>Contraseña</label>
-                </div>
-            <input type="submit" name="sign-in" value="Ingresar">
-        </form>
-    </div>
+        </article>
+        <article class="box">
+            <div>
+                <h1>Bienvenido</h1>
+                <p>Por favor ingrese a su cuenta</p>
+                <form href="MasterPage.html" method="post">
+                    <div class="inputBox">
+                        <input type="email" name="email" value="" required onkeyup="this.setAttribute('value', this.value);">
+                        <label>Usuario</label>
+                    </div>
+                    <div class="inputBox">
+                        <input type="password" name="text" value="" required onkeyup="this.setAttribute('value', this.value);">
+                        <label>Contraseña</label>
+                    </div>
+                    <input type="submit" name="sign-in" value="Ingresar">
+                </form>
+            </div>
+
+        </article>
+
+
+    </section>
+
+
 </body>
+
 </html>
