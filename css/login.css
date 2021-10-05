@@ -18,10 +18,10 @@ body{
     border-radius: var(--radio-contenedor-grande);
     background: var(--color-blanco-fondo);
 }
-
+/* 
 .logo{
-    /* background: url(../assets/Logo-login.png); */
-}
+    background: url(../assets/Logo-login.png);
+} */
 
 .logo img{
     width: 100%;
