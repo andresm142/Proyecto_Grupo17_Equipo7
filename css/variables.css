@@ -19,6 +19,7 @@
     --color-superadmin:#FF9102;
     --color-negro:#333747;
     --color-blanco:#F9F9F9;
+    --color-blanco-fondo:#F9F9F9;
     --color-fondo:#F6F7FF;
     --color-gris:#707070;
 
@@ -40,4 +41,8 @@
     --sombra-contenedor-titulo:0px 3px 3px rgba(0, 0, 0, 0.171);
 
     --separacion-icono-texto:15px;
+}
+
+body.dark{
+    --color-fondo:#333747;
 }

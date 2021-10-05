@@ -1,51 +1,60 @@
 @import url(variables.css);
 /* CONIGURACION DEL LOGIN */
+body{
+    background-image: url(../assets/Fondo-login.png);
+}
+
 .box {
     position: absolute;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 25rem;
-    padding: 2.5rem;
+    width: 70%;
+    height: 775px;
     box-sizing: border-box;
     border: 1px solid #dadce0;
-    -webkit-border-radius: 8px;
-    border-radius: 8px;
+    border-radius: var(--radio-contenedor-grande);
+    background: var(--color-blanco-fondo);
+}
+
+.logo{
+    background: url(../assets/Logo-login.png);
+}
+
+.login{
+    margin: 20%;
 }
 
 .box h2 {
     margin: 0px 0 -0.125rem;
     padding: 0;
-    color: #fff;
-    text-align: center;
-    color: #202124;
-    font-family: arial, sans-serif;
-    font-size: 24px;
-    font-weight: 400;
+    color: var(--color-superadmin);
+    font: var(--fuente-super-titulo);
+    font-variant: small-caps;
 }
 
 .box p {
-    font-size: 16px;
-    font-weight: 400;
-    letter-spacing: .1px;
-    line-height: 1.5;
-    margin-bottom: 25px;
-    text-align: center;
+    margin-bottom: 85px;
+    font: var(--fuente-texto);
+    color: var(--color-gris);
 }
 
 .box .inputBox {
     position: relative;
+    font: var(--fuente-texto);
 }
 
 .box .inputBox input {
     width: 93%;
-    padding: 0.625rem 10px;
+    padding: 15px 10px;
     font-size: 1rem;
     letter-spacing: 0.062rem;
-    margin-bottom: 1.875rem;
-    border: 1px solid #ccc;
+    margin-bottom: 1.875rem; 
+    border: none;
+    border-bottom: 3px solid var(--color-superadmin);
     background: transparent;
-    border-radius: 4px;
 }
 
 .box .inputBox label {
@@ -54,7 +63,7 @@
     left: 10px;
     padding: 0.625rem 0;
     font-size: 1rem;
-    color: grey;
+    color: var(--color-gris);
     pointer-events: none;
     transition: 0.5s;
 }
@@ -62,9 +71,8 @@
 .box .inputBox input:focus~label, .box .inputBox input:valid~label, .box .inputBox input:not([value=""])~label {
     top: -1.125rem;
     left: 10px;
-    color: #1a73e8;
+    color: var(--color-superadmin);
     font-size: 0.75rem;
-    background-color: white;
     height: 10px;
     padding-left: 5px;
     padding-right: 5px;
@@ -72,18 +80,17 @@
 
 .box .inputBox input:focus {
     outline: none;
-    border: 2px solid #1a73e8;
 }
 
 .box input[type="submit"] {
     border: none;
     outline: none;
-    color: #fff;
-    background-color: #1a73e8;
+    color: var(--color-blanco);
+    background-color: var(--color-superadmin);
     padding: 0.625rem 1.25rem;
     cursor: pointer;
     border-radius: 0.312rem;
-    font-size: 1rem;
+    font: var(--fuente-texto);
     float: right;
 }
 

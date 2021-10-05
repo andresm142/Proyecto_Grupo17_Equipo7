@@ -179,7 +179,7 @@ header .encabezado{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    background: var(--color-blanco);
+    background: var(--color-fondo);
     overflow: hidden;
     align-items: top;
     padding: 20px 0;
@@ -216,7 +216,7 @@ header .encabezado{
 .buscar .search{
     height: 45px;
     color: var(--color-gris);
-    background: var(--color-blanco);
+    background: var(--color-fondo);
     border: var(--boder-inputs);
     border-left: none;
     padding-left: 10px;
