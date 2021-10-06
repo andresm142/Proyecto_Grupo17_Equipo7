@@ -1,7 +1,8 @@
 @import url(variables.css);
 /* CONIGURACION DEL LOGIN */
 body{
-    background-image: url(../assets/Fondo-login.png);
+    background-image: url(../images/Fondo-login.png);
+    
 }
 
 .box {
@@ -19,7 +20,7 @@ body{
 }
 
 .logo{
-    background: url(../assets/Logo-login.png);
+    background: url(../images/Logo-login.png);
     border-radius: 30px 0 0 30px;
 }
 
