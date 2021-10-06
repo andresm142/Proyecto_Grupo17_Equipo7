@@ -34,7 +34,7 @@ body{
 
 @media screen and (min-width: 1000px) and (max-width:1500px) {
     .login{
-        margin: 20% 10%;
+        margin: 5vh;
     }
 }
 @media screen and (min-width: 1501px){
@@ -53,7 +53,7 @@ body{
 }
 
 .box p {
-    margin-bottom: 85px;
+    margin-bottom: 5vh;
     font: var(--fuente-texto);
     color: var(--color-gris);
 }
@@ -62,6 +62,7 @@ body{
     position: relative;
     font: var(--fuente-texto);
 }
+
 
 .box .inputBox input {
     width: 93%;
