@@ -262,7 +262,7 @@ header .encabezado .buscar #search:focus {
   
 .selected::after {
     content: "";
-    background: url("../assets/arrow-down.svg");
+    background: url("../images/arrow-down.svg");
     background-size: contain;
     background-repeat: no-repeat;
 
