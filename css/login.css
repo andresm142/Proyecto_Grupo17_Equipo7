@@ -2,6 +2,7 @@
 /* CONIGURACION DEL LOGIN */
 body{
     background-image: url(../assets/Fondo-login.png);
+    background-size: 100%;
 }
 
 .box {
@@ -12,7 +13,7 @@ body{
     left: 50%;
     transform: translate(-50%, -50%);
     width: 70%;
-    height: 75vh;
+    height: 79vh;
     box-sizing: border-box;
     border-radius: var(--radio-contenedor-grande);
     background: var(--color-blanco-fondo);
@@ -34,12 +35,19 @@ body{
 
 @media screen and (min-width: 1000px) and (max-width:1500px) {
     .login{
-        margin: 5vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin: 0 4vh;
     }
 }
 @media screen and (min-width: 1501px){
     .login{
-        margin: 20% 20%;
+        /* margin: 20% 20%; */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin: 0 20%;
     }
 }
 
@@ -65,8 +73,8 @@ body{
 
 
 .box .inputBox input {
-    width: 93%;
-    margin: 15px 10px;
+    width: 95%;
+    margin: 15px 0px;
     padding: 4px 0px;
     font-size: 1rem;
     letter-spacing: 0.062rem;
