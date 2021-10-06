@@ -16,17 +16,17 @@
         <div class="login">
             <h2>Bienvenido</h2>
             <p>Por favor ingrese sus credenciales para ingresar a su cuenta</p>
-            <form acction="" method="POST">
+            <form id="login-form" action="{{url_for('MasterPage')}}" method="POST">
                 <div class="inputBox">
                     <input type="email" name="email" value="" required onkeyup="this.setAttribute('value', this.value);">
                     <label>Usuario</label>
                 </div>
                 <br>
                 <div class="inputBox">
-                        <input type="password" name="text" value="" required onkeyup="this.setAttribute('value', this.value);">
+                        <input type="password" name="clave" value="" required onkeyup="this.setAttribute('value', this.value);">
                         <label>Contraseña</label>
                     </div>
-                <input type="submit" name="sign-in" value="Ingresar" >
+                <input type="submit" name="sign-in" value="Ingresar">
             </form>
         </div>        
     </div>

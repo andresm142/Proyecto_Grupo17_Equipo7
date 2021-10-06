@@ -7,13 +7,39 @@ app=Flask(__name__)
 def login():
     return render_template('Login.html')
 
-@app.route('/master', methods=['POST'])
-def master():
-    print(request.form)
-    usuario= request.form['email']
-    clave=request.form['clave']
-    print(usuario+' '+clave)
-    return redirect(url_for('MasterPage.html'))
-    # return render_template('MasterPage.html')
+@app.route('/MasterPage', methods=['POST'])
+def MasterPage():
+    
+    return render_template('MasterPage.html')
 
-app.run(debug = True)
+@app.route('/Productos')
+def Productos():
+    
+    return render_template('Productos.html')
+
+@app.route('/Listas')
+def Listas():
+    
+    return render_template('Listas.html')
+
+@app.route('/Configuracion')
+def Configuracion():
+    
+    return render_template('Config.html')
+
+@app.route('/Proveedores')
+def Proveedores():
+    
+    return render_template('Proveedores.html')
+
+@app.route('/Usuarios')
+def Usuarios():
+    
+    return render_template('Usuarios.html')
+
+@app.route('/Logout')
+def Logout():
+    
+    return render_template('Login.html')
+
+# app.run(debug = True)

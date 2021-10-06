@@ -1,51 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'MasterPage.html' %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Configuración de usuario</title>
-
-</head>
-
-<body>
-    <div class="titulo">
-        <h1>Configuración de usuario</h1>
-    </div>
-    <div class="info-user">
-        <div class="avatar">
-            <img src="assets/avatar.png" alt="">
-        </div>
-        <div class="info">
-            <div>
-                <label for="name">Nombre</label>
-                <input type="text" name="nombre" id="name">
-            </div>
-            <div>
-                <label for="lastname">Apellido</label>
-                <input type="text" name="apellido" id="lastname">
-            </div>
-            <div>
-                <label for="rol">Tipo de usuario</label>
-                <input type="text" name="tipo-user" id="rol">
-            </div>
-        </div>
-    </div>
-    <div class="info-cuenta">
-        <div class="correo">
-            <label for="email">Email</label>
-            <input type="email" name="email" id="email">
-            <label for="phone">Telefono</label>
-            <input type="number" name="telefono" id="phone">
-        </div>
-        <div class="contraseña">
-            <label for="email">Contraseña</label>
-            <input type="password" name="Contrasena" id="pass">
-            <label for="phone">Confirmar contraseña</label>
-            <input type="password" name="contrasena" id="cpass">
-        </div>
-    </div>
-</body>
-
-</html>
+{% block content %}
+    <h1>{% block title %} User {% endblock %}</h1>
+{% endblock %}
