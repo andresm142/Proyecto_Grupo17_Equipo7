@@ -1,0 +1,36 @@
+@import url(variables.css);
+
+body{
+    background: var(--color-fondo);
+}
+
+.encabezado-productos{
+    display: flex;
+    justify-content: space-between;
+    font: var(--fuente-texto);
+}
+
+.encabezado-productos .boton-anadir{
+    margin-top: 20px;
+}
+
+.anadir{
+    background: var(--color-usuario);
+    color: var(--color-blanco);
+    border: none;
+    padding: 0 15px;
+    height: 58px;
+    border-radius: var(--radio-boton);
+    font: var(--fuente-sub-titulo);
+}
+
+.anadir:hover{
+    background: var(--color-gris);
+    color: var(--color-usuario);
+    border: var(--border-boton-cancelar-superadmin);
+    cursor: pointer;
+}
+
+.logo-producto img{
+    width: 30%;
+}

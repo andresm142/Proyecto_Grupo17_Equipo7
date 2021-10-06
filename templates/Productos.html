@@ -1,5 +1,60 @@
 {% extends 'MasterPage.html' %}
-
+    
 {% block content %}
-    <h1>{% block title %} Productos {% endblock %}</h1>
+    <link rel="stylesheet" href={{ url_for('static', filename='css/productos.css') }}>
+    <header>
+        <div class="encabezado-productos">
+            <div class="titulo">
+                <h1>{% block title %} Productos {% endblock %}</h1>
+            </div>
+        
+       
+            <div class="boton-anadir">
+                <button class="anadir"> Añadir + </button>
+            </div>
+            
+        </div>
+
+    </header>
+    <section>
+        <div class="box-producto">
+            <div class="logo-producto">
+                <img src={{ url_for('static', filename='images/Producto.jpg') }} alt="">
+            </div>
+
+            <div class="titulo-producto">
+                Nombre del producto
+            </div>
+
+            <div class="name-proveedor">
+                Proveedor
+            </div>
+
+            <div class="disponibe">
+                Disponibe: 20
+            </div>
+
+            <div class="puntuacion">
+                <div class="estrellas">
+                    estrellas
+                </div>
+                <div class="valor">
+                    4.5
+                </div>
+            </div>
+            <div class="descripcion">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
+            </div>
+            <div class="boton-editar-eliminar">
+                <div class="boton-eliminar">
+
+                </div>
+                <div class="boton-editar">
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+
 {% endblock %}
