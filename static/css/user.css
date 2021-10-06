@@ -1,0 +1,210 @@
+@import url(variables.css);
+
+body{
+    background: var(--color-fondo);
+}
+
+.contenedor-usuario{
+    font: var(--fuente-texto);
+    background: var(--color-blanco-fondo);
+    box-shadow: var(--sombra-contenedores);
+    border-radius: var(--radio-contenedor-grande);
+    width: 80%;
+    min-height: 806px;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    margin: 60px auto;
+    align-content: center;
+}
+
+/* CONFIGURACION DEL LADO DE LA IMAGEN */
+.info-user{
+    justify-self: center;
+    border-right: 3px solid var(--color-superadmin);
+    height: 640px;
+    width: 100%;
+}
+
+.info-user .avatar{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+
+}
+
+.info-user .avatar .imagen-usuario{
+    width: 215px;
+    height: 215px;
+} 
+
+.info-user .avatar .imagen-usuario img{
+    width: 100%;
+    align-content: center;
+    border-radius: 100px;
+}
+/* FIN CONFIGURACION DEL LADO DE LA IMAGEN */
+
+/* CONFIGURACION DE DATOS */
+.info-cuenta{
+    margin: 0 70px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.info-cuenta label:not(#primer-tipo-usuario):not(#segundo-tipo-usuario):not(#tercer-tipo-usuario){
+    font: var(--fuente-sub-titulo);
+    color: var(--color-gris);
+}
+
+#name, #lastname, #email, #phone, #pass, #cpass{ 
+    width: 469px;
+    height: 41px;
+    border-radius: var(--radio-input);
+    border: var(--boder-inputs);
+    background: var(--color-fondo);
+    padding: 0 20px;
+}
+
+.info-cuenta input:focus{
+    background: var(--color-blanco-fondo);
+    /* border: 0.75px solid var(--color-superadmin); */
+    outline: 1.5px solid var(--color-superadmin);
+}
+
+.nombre, .apellido, .tipo-de-usuario, .correo, .telefono, .contrasena, .confirmar-contrasena{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+/* FIN CONFIGURACION DE DATOS */
+
+/* CONFIGURACION DEL SELECTOR TIPO DE USUARIO */
+.select-box {
+    display: flex;
+    width: 510px;
+    flex-direction: column;
+  }
+  
+.select-box .options-container {
+    background: var(--color-superadmin);
+    color: var(--color-blanco) !important;
+    max-height: 0;
+    width: 100%;
+    opacity: 0;
+    transition: all 0.4s;
+    border-radius: 8px;
+    overflow: hidden;
+
+    order: 1;
+}
+
+.selected {
+    background: var(--color-superadmin);
+    border-radius: var(--radio-input);
+    margin-bottom: 8px;
+    color: var(--color-blanco);
+    position: relative;
+    order: 0;
+}
+  
+.selected::after {
+    content: "";
+    background: url("../assets/arrow-down.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+
+    position: absolute;
+    height: 100%;
+    width: 32px;
+    right: 5px;
+    top: 8px;
+
+    transition: all 0.4s;
+}
+
+.select-box .options-container.active {
+    max-height: 240px;
+    opacity: 1;
+    overflow-y: scroll;
+}
+
+.select-box .options-container.active + .selected::after {
+    transform: rotateX(180deg);
+    top: -6px;
+}
+
+.select-box .options-container::-webkit-scrollbar {
+    display: none;
+}
+
+.select-box .options-container::-webkit-scrollbar-thumb {
+    background: var(--color-gris);
+    border-radius: 0 8px 8px 0;
+}
+
+.select-box .option, .selected {
+    padding: 12px 24px;
+    cursor: pointer;
+}
+
+.select-box .option:hover {
+    background: var(--color-blanco);
+    color: var(--color-superadmin);
+}
+
+.select-box label {
+    cursor: pointer;
+}
+
+.select-box .option .radio {
+    display: none;
+}
+/* FIN CONFIGURACION DEL SELECTOR TIPO DE USUARIO */
+
+/* CONFIGURACION DE LOS BOTONES CAMBIAR CANCELAR Y GUARDAR */
+.guardar-cancelar{
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    gap: 20px;
+}
+
+.cambiar-imagen, .cancelar, .guardar{
+    padding: 0 15px;
+    height: 58px;
+    border-radius: var(--radio-boton);
+    font: var(--fuente-sub-titulo);
+}
+.cambiar-imagen, .guardar{
+    background: var(--color-superadmin);
+    color: var(--color-blanco);
+    border: none;
+}
+
+.cambiar-imagen:hover, .guardar:hover{
+    background: var(--color-gris);
+    color: var(--color-superadmin);
+    border: var(--border-boton-cancelar-superadmin);
+    cursor: pointer;
+}
+
+.cancelar{
+    background: var(--color-blanco-fondo);
+    color: var(--color-superadmin);
+    border: var(--border-boton-cancelar-superadmin);
+}
+.cancelar:hover{
+    background: var(--color-gris);
+    color: var(--color-blanco);
+    border: none;
+    cursor: pointer;
+}
+
+.guardar, .cancelar{
+    width: 156px;
+}
+/* FIN CONFIGURACION DE LOS BOTONES CAMBIAR CANCELAR Y GUARDAR */

@@ -1,5 +1,91 @@
 {% extends 'MasterPage.html' %}
+<!-- <!DOCTYPE html>
+<html lang="en">
 
-{% block content %}
-    <h1>{% block title %} User {% endblock %}</h1>
-{% endblock %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configuración de usuario</title>
+    <link rel="stylesheet" href="css/user.css">
+    <link rel="stylesheet" href={{ url_for('static', filename='css/user.css') }}>
+
+</head> -->
+
+<body>
+    <!-- <div class="titulo">
+        <h1>Configuración de usuario</h1>
+    </div> -->
+    <div class="contenedor-usuario">
+        <div class="info-user">
+            <div class="avatar">
+                <div class="imagen-usuario">
+                    <img src=src={{ url_for('static', filename='images/avatar.png') }} alt="">
+                </div>
+                <button class="cambiar-imagen">Cambiar imagen</button>
+            </div>
+        </div>
+        <div class="info-cuenta">
+            <div class="nombre">
+                <label for="name">Nombre</label>
+                <input type="text" name="nombre" id="name">
+            </div>
+            <div class="apellido">
+                <label for="lastname">Apellido</label>
+                <input type="text" name="apellido" id="lastname">
+            </div>
+            <div class="tipo-de-usuario">
+                <label for="rol">Tipo de usuario</label>
+                <div class="container">
+                    <div class="select-box">
+                    <div class="options-container">
+                        <div class="option">
+                        <input type="radio" class="radio" id="usuario" name="category" value="auto"/>
+                        <label for="usuario" id="primer-tipo-usuario">Usuario</label>
+                        </div>
+                        <div class="option">
+                        <input type="radio" class="radio" id="administrador" name="category" />
+                        <label for="administrador" id="segundo-tipo-usuario">Administrador</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" class="radio" id="superadmin" name="category" />
+                            <label for="superadmin" id="tercer-tipo-usuario">Super administrador</label>
+                        </div>
+                    </div>
+                    <div class="selected">
+                        Proveedores
+                    </div>
+                    </div>
+                </div>  
+            </div>
+            <div class="correo">
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email">
+            </div>
+            <div class="telefono">
+                <label for="phone">Telefono</label>
+                <input type="number" name="telefono" id="phone">
+            </div>
+            <div class="contrasena">
+                <label for="password">Contraseña</label>
+                <input type="password" name="Contrasena" id="pass">
+            </div>
+            <div class="confirmar-contrasena">
+                <label for="password">Confirmar contraseña</label>
+                <input type="password" name="contrasena" id="cpass">
+            </div>
+            <div class="guardar-cancelar">
+                <button class="cancelar">
+                    Cancelar
+                </button>
+                <button class="guardar">
+                    Guardar
+                </button>
+            </div>
+        </div>    
+    </div>
+    
+
+    <!-- <script src="scripts/script.js"></script> -->
+</body>
+</html>

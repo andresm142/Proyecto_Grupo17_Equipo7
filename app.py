@@ -25,7 +25,7 @@ def Listas():
 @app.route('/Configuracion')
 def Configuracion():
     
-    return render_template('Config.html')
+    return render_template('User.html')
 
 @app.route('/Proveedores')
 def Proveedores():
