@@ -7,8 +7,8 @@ app=Flask(__name__)
 def login():
     return render_template('Login.html')
 
-@app.route('/MasterPage', methods=['POST'])
-def MasterPage():
+@app.route('/Index', methods=['POST'])
+def Index():
     
     return render_template('Index.html')
 

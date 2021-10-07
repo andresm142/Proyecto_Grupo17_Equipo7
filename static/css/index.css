@@ -1,0 +1,9 @@
+@import url(variables.css);
+
+body{
+    background: var(--color-fondo);
+}
+.encabezado-inicio .titulo{
+    display: flex;
+    align-items: center;
+}

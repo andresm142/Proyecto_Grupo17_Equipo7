@@ -3,15 +3,7 @@
 body{
     background: var(--color-fondo);
 }
-.header-productos{
-    box-shadow: var(--sombra-contenedor-titulo);
-    position:initial;
-    width: 100%;
-    
-    /* background: var(--color-blanco-fondo); */
-    z-index: 1;
-    
-}
+
 .encabezado-productos{
     display: flex;
     justify-content: space-between;

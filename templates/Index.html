@@ -1,7 +1,15 @@
 {% extends 'MasterPage.html' %}
+{% block title %} Inicio {% endblock %}
 
 {% block content %}
-    <h1>{% block title %} Listas {% endblock %}</h1>
+<link rel="stylesheet" href={{ url_for('static', filename='css/index.css') }}>
+    <header class="header-paginas">
+        <div class="encabezado-inicio">
+            <div class="titulo">
+                <h1>Bienvenido </h1><span>USUARIO </span><h1>a SAIC Motor</h1>
+            </div>
+      
+            
+        </div>
 
-    
 {% endblock %}
