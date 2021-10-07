@@ -1,0 +1,162 @@
+@import url(variables.css);
+@font-face {
+    font-family: 'icomoon';
+    src:  url('../fonts/icomoon.eot?2wkt35');
+    src:  url('../fonts/icomoon.eot?2wkt35#iefix') format('embedded-opentype'),
+      url('../fonts/icomoon.ttf?2wkt35') format('truetype'),
+      url('../fonts/icomoon.woff?2wkt35') format('woff'),
+      url('../fonts/icomoon.svg?2wkt35#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+body{
+    background: var(--color-fondo);
+}
+
+.encabezado-productos{
+    display: flex;
+    justify-content: space-between;
+    font: var(--fuente-texto);
+}
+
+.encabezado-productos .boton-anadir{
+    margin-top: 20px;
+}
+
+.anadir{
+    background: var(--color-usuario);
+    color: var(--color-blanco);
+    border: none;
+    padding: 0 15px;
+    height: 58px;
+    border-radius: var(--radio-boton);
+    font: var(--fuente-sub-titulo);
+}
+
+.anadir:hover{
+    background: var(--color-gris);
+    color: var(--color-usuario);
+    border: var(--border-boton-cancelar-superadmin);
+    cursor: pointer;
+}
+
+.logo-producto img{
+    width:200px;
+    display: inherit;
+    margin-left: 15%;
+    border-radius: 20px;;
+}
+.estrellas-outer{
+    display: inline-block;
+    position: relative;
+    font-family: "icomoon";
+}
+
+.estrellas-outer::before{
+   
+    content: "\e9d7 \e9d7 \e9d7 \e9d7 \e9d7";
+
+}
+.estrellas-inner::before{
+    content: "\e9d9 \e9d9 \e9d9 \e9d9 \e9d9";
+    color: var(--color-usuario);
+
+}
+.estrellas-inner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 70%;                        /*Para cambiar el relleno de las estrellas */
+}
+
+.box-fondo{
+    /* position:absolute; */
+    margin: 100px 0px 10px 10px;
+    /* margin-top: 100px; */
+    background: var(--color-blanco-fondo);
+    box-shadow: var(--sombra-contenedores);
+    border-radius: var(--radio-contenedor-grande);
+    width: 220px;
+    display:inline-block;
+    padding: 60px 20px 20px 20px;
+  
+}
+.image{
+    margin: 1%;
+}
+.logo-producto{
+    position: absolute;
+    display: flex;
+    margin: 10px;
+    
+    
+}
+.box-producto{
+    position: relative;
+    margin-top: 10px;
+    background: none;
+    /* box-shadow: var(--sombra-contenedores);
+    border-radius: var(--radio-contenedor-grande); */
+    width: 30%;
+   
+}
+
+.titulo-producto{
+    font: var(--fuente-sub-titulo);
+    font-size: 18px;
+}
+.name-proveedor{
+    font: var(--fuente-texto);
+}
+.disponibe{
+    font: var(--fuente-texto);
+    text-align: end;
+}
+.puntuacion{
+    display: flex;
+    
+}
+.valor{
+    margin-left: 10px;
+    color: var(--color-usuario);
+    font: var(--fuente-texto);
+    font-weight: bold;
+}
+.descripcion{
+    font: var(--fuente-texto);
+}
+.boton-editar-eliminar{
+    display: flex;
+    font-family: "icomoon";
+    top: 120px;
+    left: 160px;
+    position: absolute;
+
+    
+}
+.boton-editar::after{
+    content:"\e905";
+    color:white;
+    
+}
+.boton-eliminar::after{
+    content:"\e9ac";
+    color: var(--color-usuario)
+}
+.boton-editar{
+    background: var(--color-usuario);
+    border-radius: 100%;
+    padding: 8px;
+    margin-left: 10px;
+    border: solid 1px var(--color-usuario);
+}
+.boton-eliminar{
+    background: white;
+    border-radius: 100%;
+    padding: 8px;
+    border: solid 1px var(--color-usuario);
+    
+}
