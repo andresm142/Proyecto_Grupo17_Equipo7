@@ -9,7 +9,7 @@ body{
     background: var(--color-blanco-fondo);
     box-shadow: var(--sombra-contenedores);
     border-radius: var(--radio-contenedor-grande);
-    width: 80%;
+    width: 85%;
     min-height: 806px;
     display: grid;
     grid-template-columns: 1fr 2fr;
@@ -69,6 +69,12 @@ body{
     padding: 0 20px;
 }
 
+@media screen and (min-width:1024px) {
+    #name, #lastname, #email, #phone, #pass, #cpass{ 
+        width: 50%;
+    }
+}
+
 .info-cuenta input:focus{
     background: var(--color-blanco-fondo);
     /* border: 0.75px solid var(--color-superadmin); */
@@ -83,6 +89,16 @@ body{
 /* FIN CONFIGURACION DE DATOS */
 
 /* CONFIGURACION DEL SELECTOR TIPO DE USUARIO */
+.container{
+    width: 27vw;
+}
+
+@media screen and (min-width:1336px) {
+    .container{
+        width: 27.6vw;
+    }
+}
+
 .select-box {
     display: flex;
     width: 510px;
