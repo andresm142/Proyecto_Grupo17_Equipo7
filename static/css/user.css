@@ -9,8 +9,8 @@ body{
     background: var(--color-blanco-fondo);
     box-shadow: var(--sombra-contenedores);
     border-radius: var(--radio-contenedor-grande);
-    width: 85%;
-    min-height: 85vh;
+    width: 80%;
+    min-height: 806px;
     display: grid;
     grid-template-columns: 1fr 2fr;
     margin: 60px auto;
@@ -21,7 +21,7 @@ body{
 .info-user{
     justify-self: center;
     border-right: 3px solid var(--color-superadmin);
-    /* height: 640px; */
+    height: 640px;
     width: 100%;
 }
 
@@ -49,11 +49,10 @@ body{
 
 /* CONFIGURACION DE DATOS */
 .info-cuenta{
-    margin: 25px 50px;
+    margin: 0 70px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    gap: 3vh;
 }
 
 .info-cuenta label:not(#primer-tipo-usuario):not(#segundo-tipo-usuario):not(#tercer-tipo-usuario){
@@ -62,18 +61,12 @@ body{
 }
 
 #name, #lastname, #email, #phone, #pass, #cpass{ 
-    width: 40%;
+    width: 469px;
     height: 41px;
     border-radius: var(--radio-input);
     border: var(--boder-inputs);
     background: var(--color-fondo);
     padding: 0 20px;
-}
-
-@media screen and (min-width:1024px) {
-    #name, #lastname, #email, #phone, #pass, #cpass{ 
-        width: 50%;
-    }
 }
 
 .info-cuenta input:focus{
@@ -90,18 +83,9 @@ body{
 /* FIN CONFIGURACION DE DATOS */
 
 /* CONFIGURACION DEL SELECTOR TIPO DE USUARIO */
-.container{
-    width: 27vw;
-}
-
-@media screen and (min-width:1336px) {
-    .container{
-        width: 27.6vw;
-    }
-}
-
 .select-box {
     display: flex;
+    width: 510px;
     flex-direction: column;
   }
   

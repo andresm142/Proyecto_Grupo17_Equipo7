@@ -1,22 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SAIC Motor</title>
-    <link rel="stylesheet" href="css/login.css">
-    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href={{ url_for('static', filename='css/login.css') }}>
+    <link rel="stylesheet" href={{ url_for('static', filename='css/normalize.css') }}>
 </head>
 <body>
     <div class="box">
         <div class="logo">
-            <img src="assets/LogoSM.png">
+            <img src={{ url_for('static', filename='images/LogoSM.png') }}>
         </div>
         <div class="login">
             <h2>Bienvenido</h2>
             <p>Por favor ingrese sus credenciales para ingresar a su cuenta</p>
-            <form>
+            <form action="{{ url_for('MasterPage') }}" method="POST">
                 <div class="inputBox">
                     <input type="email" name="email" value="" required onkeyup="this.setAttribute('value', this.value);">
                     <label>Usuario</label>

@@ -262,7 +262,7 @@ header .encabezado .buscar #search:focus {
   
 .selected::after {
     content: "";
-    background: url("../assets/arrow-down.svg");
+    background: url("../images/arrow-down.svg");
     background-size: contain;
     background-repeat: no-repeat;
 
@@ -322,23 +322,23 @@ header .encabezado .logo h2{
 }
 
 /* INICIO STYLE USER */
-
-.info-user .avatar img {
+/* 
+ .info-user .avatar img {
     width: 100px;
 }
 
 .info-user {
     display: flex;
-    /* position: absolute;
+    position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%); */
+    transform: translate(-50%, -50%);
     border-bottom: 1px solid #4b4e4e;
     ;
-}
+} 
 
 .info-cuenta {
     display: inline;
-}
+}  */
 
 /* FIN STYLE USER */

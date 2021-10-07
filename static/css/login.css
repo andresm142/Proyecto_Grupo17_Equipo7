@@ -1,8 +1,7 @@
 @import url(variables.css);
 /* CONIGURACION DEL LOGIN */
 body{
-    background-image: url(../assets/Fondo-login.png);
-    background-size: 100%;
+    background-image: url(../images/Fondo-login.png);
 }
 
 .box {
@@ -13,7 +12,7 @@ body{
     left: 50%;
     transform: translate(-50%, -50%);
     width: 70%;
-    height: 79vh;
+    height: 75vh;
     box-sizing: border-box;
     border-radius: var(--radio-contenedor-grande);
     background: var(--color-blanco-fondo);
@@ -35,19 +34,12 @@ body{
 
 @media screen and (min-width: 1000px) and (max-width:1500px) {
     .login{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        margin: 0 4vh;
+        margin: 20% 10%;
     }
 }
 @media screen and (min-width: 1501px){
     .login{
-        /* margin: 20% 20%; */
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        margin: 0 20%;
+        margin: 20% 20%;
     }
 }
 
@@ -61,7 +53,7 @@ body{
 }
 
 .box p {
-    margin-bottom: 5vh;
+    margin-bottom: 85px;
     font: var(--fuente-texto);
     color: var(--color-gris);
 }
@@ -71,10 +63,9 @@ body{
     font: var(--fuente-texto);
 }
 
-
 .box .inputBox input {
-    width: 95%;
-    margin: 15px 0px;
+    width: 93%;
+    margin: 15px 10px;
     padding: 4px 0px;
     font-size: 1rem;
     letter-spacing: 0.062rem;
