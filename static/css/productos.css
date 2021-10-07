@@ -150,3 +150,7 @@ body{
     border: solid 1px var(--color-usuario);
     
 }
+.section-productos{
+    display: flex;
+    flex-wrap: wrap;
+}
