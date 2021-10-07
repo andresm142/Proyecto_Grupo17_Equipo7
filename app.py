@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request
 from werkzeug.wrappers import response
 
+
 app=Flask(__name__)
 
 @app.route('/')
@@ -42,4 +43,3 @@ def Logout():
     
     return render_template('Login.html')
 
-app.run(debug = True)
