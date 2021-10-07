@@ -14,7 +14,7 @@
 </head>
 
 <body>
-    <header>
+    <header class="principal">
         <div class="encabezado">
             <div id="abrir-menu">
                 <a id="abrir" class="abrir-cerrar" href="javascript:void(0)" onclick="mostrar()"
@@ -47,10 +47,12 @@
             </div>
         </div>
     </header>
+
     <section class="contenido" id="contenido">
         {% block content %} {% endblock %}
-        <!-- <h1>Bienvenido</h1> -->
+        
     </section>
+
     <div id="sidebar" class="sidebar" style="width: 0px;">
         <div class="region-user">
             <div class="logo-user">

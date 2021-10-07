@@ -3,7 +3,15 @@
 body{
     background: var(--color-fondo);
 }
-
+.header-productos{
+    box-shadow: var(--sombra-contenedor-titulo);
+    position:initial;
+    width: 100%;
+    
+    /* background: var(--color-blanco-fondo); */
+    z-index: 1;
+    
+}
 .encabezado-productos{
     display: flex;
     justify-content: space-between;
@@ -69,7 +77,7 @@ body{
     background: var(--color-blanco-fondo);
     box-shadow: var(--sombra-contenedores);
     border-radius: var(--radio-contenedor-grande);
-    width: 220px;
+    width: 250px;
     display:inline-block;
     padding: 60px 20px 20px 20px;
   
@@ -90,7 +98,7 @@ body{
     background: none;
     /* box-shadow: var(--sombra-contenedores);
     border-radius: var(--radio-contenedor-grande); */
-    width: 30%;
+    width: 27%;
    
 }
 
@@ -153,4 +161,7 @@ body{
 .section-productos{
     display: flex;
     flex-wrap: wrap;
+    justify-content:space-evenly;
+    padding-top: 9%;
+    z-index: 0;
 }

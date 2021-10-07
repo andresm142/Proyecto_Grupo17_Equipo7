@@ -2,7 +2,7 @@
     
 {% block content %}
     <link rel="stylesheet" href={{ url_for('static', filename='css/productos.css') }}>
-    <header>
+    <header class="header-productos">
         <div class="encabezado-productos">
             <div class="titulo">
                 <h1>{% block title %} Productos {% endblock %}</h1>
@@ -50,12 +50,12 @@
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
                 </div>
                 <div class="boton-editar-eliminar">
-                    <div class="boton-eliminar">
+                    <a href="#"><div class="boton-eliminar">
 
-                    </div>
-                    <div class="boton-editar">
+                    </div></a>
+                    <a href="{{url_for('Editarproducto')}}"><div class="boton-editar">
 
-                    </div>
+                    </div></a>
                 </div>
             </div>
         </div>

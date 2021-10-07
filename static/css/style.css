@@ -27,7 +27,9 @@ input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer
 input[type=number] {
     -moz-appearance: textfield;
 }
-
+a{
+    text-decoration: none;
+}
 body{
     background: var(--color-fondo);
 }
@@ -171,18 +173,23 @@ body{
 
 
 /* CONFIGURACION DEL HEADER */
-header{
+.principal{
     box-shadow: var(--sombra-contenedor-titulo);
+    position:sticky;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
 
 }
-header .encabezado{
+ .encabezado{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     background: var(--color-fondo);
     overflow: hidden;
     align-items: top;
-    padding: 20px 0;
+    padding: 0;
     font: var(--fuente-texto);
 }
 
@@ -190,7 +197,7 @@ header .encabezado{
     text-decoration: none;
     color: var(--color-usuario);
     font-size: 30px;  
-    margin-left: 20px;
+    margin-left: 2px;
 }
 
 .abrir-cerrar::before{
@@ -222,11 +229,11 @@ header .encabezado{
     padding-left: 10px;
 }
 
-header .encabezado .buscar #search:focus ~ i {
+ .encabezado .buscar #search:focus ~ i {
     border-color: var(--color-gris);
 }
 
-header .encabezado .buscar #search:focus {
+ .encabezado .buscar #search:focus {
     border-color: var(--color-gris);
     outline: none;
 }

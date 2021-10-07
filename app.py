@@ -10,7 +10,7 @@ def login():
 @app.route('/MasterPage', methods=['POST'])
 def MasterPage():
     
-    return render_template('MasterPage.html')
+    return render_template('Index.html')
 
 @app.route('/Productos')
 def Productos():
@@ -42,3 +42,7 @@ def Logout():
     
     return render_template('Login.html')
 
+@app.route('/Editarproducto')
+def Editarproducto():
+    
+    return render_template('EditarProducto.html')
