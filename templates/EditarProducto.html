@@ -28,7 +28,7 @@
             </div>
             <div class="descripcion-producto">
                 <label for="descripcion">Descripción del producto</label>
-                <input type="text" name="descripcion" id="descripcion">
+                <textarea name="descripcion" id="descripcion"></textarea>
             </div>
 
             <div class="cantidad-calificacion">
@@ -72,12 +72,12 @@
             </div>
           
             <div class="guardar-cancelar">
-                <button class="cancelar">
+                <a href="{{url_for('Productos')}}"><button class="cancelar">
                     Cancelar
-                </button>
-                <button class="guardar">
+                </button></a>
+                <a href="{{url_for('Productos')}}"><button class="guardar">
                     Guardar
-                </button>
+                </button></a>
             </div>
         </div>    
     </div>

@@ -12,6 +12,11 @@ def Index():
     
     return render_template('Index.html')
 
+@app.route('/Home')
+def Home():
+    
+    return render_template('Index.html')
+
 @app.route('/Productos')
 def Productos():
     
