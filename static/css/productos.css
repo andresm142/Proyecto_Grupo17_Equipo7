@@ -7,28 +7,67 @@ body{
 .encabezado-productos{
     display: flex;
     justify-content: space-between;
-    font: var(--fuente-texto);
+    font: var(--fuente-sub-titulo);
+    color: var(--color-usuario);
+    height: 100px;
+    padding: 0 50px;
 }
-
 .encabezado-productos .boton-anadir{
     margin-top: 20px;
 }
 
-.anadir{
+.anadir, .bt-disponible{
     background: var(--color-usuario);
     color: var(--color-blanco);
     border: none;
     padding: 0 15px;
     height: 58px;
+    min-width: 156px;
     border-radius: var(--radio-boton);
     font: var(--fuente-sub-titulo);
 }
 
-.anadir:hover{
+.anadir:hover, .bt-disponible:hover{
     background: var(--color-gris);
     color: var(--color-usuario);
-    border: var(--border-boton-cancelar-superadmin);
+    border: var(--border-boton-cancelar-usuario);
     cursor: pointer;
+}
+
+.bt-nodisponible{
+    background: var(--color-blanco-fondo);
+    color: var(--color-usuario);
+    border: var(--border-boton-cancelar-usuario);
+    padding: 0 15px;
+    height: 58px;
+    min-width: 156px;
+    border-radius: var(--radio-boton);
+    font: var(--fuente-sub-titulo);
+}
+
+.bt-nodisponible:hover{
+    background: var(--color-usuario);
+    color: var(--color-blanco);
+    border: var(--border-boton-cancelar-usuario);
+    cursor: pointer;
+}
+
+.encabezado-productos .superadmin{
+    display: none !important;
+}
+
+.encabezado-productos .user{
+    display: none !important;
+}
+
+.encabezado-productos .botones-disponibilidad{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.encabezado-productos .botones-disponibilidad .boton-disponible, .boton-nodisponible{
+    min-width: 158px;
 }
 
 .logo-producto img{
@@ -117,6 +156,7 @@ body{
 }
 .descripcion{
     font: var(--fuente-texto);
+    margin: 10px 0px;
 }
 .boton-editar-eliminar{
     display: flex;

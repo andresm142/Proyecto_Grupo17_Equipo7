@@ -6,4 +6,18 @@ body{
 .encabezado-inicio .titulo{
     display: flex;
     align-items: center;
+    height: 100px;
+    padding: 0 50px;
+}
+
+.encabezado-inicio .titulo h1{
+    font: var(--fuente-titulo);
+    margin: 0;
+    white-space: pre;
+}
+.encabezado-inicio .titulo span{
+    font: var(--fuente-titulo);
+    margin: 0;
+    white-space: pre;
+    color: var(--color-usuario);
 }
