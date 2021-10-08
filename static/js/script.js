@@ -15,7 +15,7 @@ optionsList.forEach(o => {
 });
 
 
-// DESPLIEGE DE LA OPCION DE TIPO DE USUARIO
+// DESPLIEGE DE LA OPCION DE TIPO DE USUARIO O PROVEEDOR
 const selectedUser = document.querySelector(".selected-user");
 const optionsContainerUser = document.querySelector(".options-container-user");
 const optionsListUser = document.querySelectorAll(".option-user");

@@ -3,7 +3,7 @@ body {
     background: var(--color-fondo);
 }
 
-.contenedor-usuario {
+.contenedor-producto {
     font: var(--fuente-texto);
     background: var(--color-blanco-fondo);
     box-shadow: var(--sombra-contenedores);
@@ -18,14 +18,14 @@ body {
 
 /* CONFIGURACION DEL LADO DE LA IMAGEN */
 
-.info-user {
+.info-imagen-producto {
     justify-self: center;
     border-right: 3px solid var(--color-usuario);
     /* height: 640px; */
     width: 100%;
 }
 
-.info-user .avatar {
+.producto {
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -34,15 +34,15 @@ body {
     gap: 20px;
 }
 
-.info-user .avatar .imagen-usuario {
+.imagen-producto {
     width: 215px;
     height: 215px;
 }
 
-.info-user .avatar .imagen-usuario img {
+.imagen-producto img {
     width: 100%;
     align-content: center;
-    border-radius: 100px;
+    border-radius: 30px;
 }
 
 /* FIN CONFIGURACION DEL LADO DE LA IMAGEN */
