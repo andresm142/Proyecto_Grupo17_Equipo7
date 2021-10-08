@@ -1,9 +1,8 @@
 {% extends 'MasterPage.html' %}
-{% block title %} Configuración de usuario{% endblock %}
+{% block title %} Editar Producto {% endblock %}
+
 {% block content %}
-
     <link rel="stylesheet" href={{ url_for('static', filename='css/user.css') }}>
-
 
     <div class="contenedor-usuario">
         <div class="info-user">
@@ -25,26 +24,25 @@
             </div>
             <div class="tipo-de-usuario">
                 <label for="rol">Tipo de usuario</label>
-                <div class="container-user">
-                    <div class="select-box-user">
-                        <div class="options-container-user">
-                            <div class="option-user">
-                            <input type="radio" class="radio" id="usuario" name="category" value="auto"/>
-                            <label for="usuario" id="primer-tipo-usuario">Usuario</label>
-                            </div>
-                            <div class="option-user">
-                            <input type="radio" class="radio" id="administrador" name="category" />
-                            <label for="administrador" id="segundo-tipo-usuario">Administrador</label>
-                            </div>
-                            <div class="option-user">
-                                <input type="radio" class="radio" id="superadmin" name="category" />
-                                <label for="superadmin" id="tercer-tipo-usuario">Super administrador</label>
-                            </div>
+                <div class="contenedor-tipo-de-usuario">
+                    <div class="select-box-usuario">
+                    <div class="options-container-usuario">
+                        <div class="option-user">
+                        <input type="radio" class="radio" id="usuario" name="category"/>
+                        <label for="usuario" id="primer-tipo-usuario">Usuario</label>
                         </div>
-
-                        <div class="selected-user">
-                            Usuario
+                        <div class="option-user">
+                        <input type="radio" class="radio" id="administrador" name="category" />
+                        <label for="administrador" id="segundo-tipo-usuario">Administrador</label>
                         </div>
+                        <div class="option-user">
+                            <input type="radio" class="radio" id="superadmin" name="category" />
+                            <label for="superadmin" id="tercer-tipo-usuario">Super administrador</label>
+                        </div>
+                    </div>
+                    <div class="selected-usuario">
+                        Usuario
+                    </div>
                     </div>
                 </div>  
             </div>
@@ -74,9 +72,5 @@
             </div>
         </div>    
     </div>
-    
-
-    <!-- <script src="scripts/script.js"></script> -->
-<!-- </body> -->
-
 {% endblock %}
+<script src={{ url_for('static', filename='js/script.js') }}></script>

@@ -238,13 +238,13 @@ body{
     outline: none;
 }
 
-.select-box {
+.container-tipo-de-busqueda .select-box {
     display: flex;
     width: 175px;
     flex-direction: column;
   }
   
-.select-box .options-container {
+.container-tipo-de-busqueda .select-box .options-container {
     background: var(--color-usuario);
     color: #f5f6fa;
     max-height: 0;
@@ -257,7 +257,7 @@ body{
     order: 1;
 }
 
-.selected {
+.container-tipo-de-busqueda .selected {
     background: var(--color-usuario);
     border-radius: 0px 8px 8px 0px;
     margin-bottom: 8px;
@@ -267,7 +267,7 @@ body{
     order: 0;
 }
   
-.selected::after {
+.container-tipo-de-busqueda .selected::after {
     content: "";
     background: url("../images/arrow-down.svg");
     background-size: contain;
@@ -282,41 +282,41 @@ body{
     transition: all 0.4s;
 }
 
-.select-box .options-container.active {
+.container-tipo-de-busqueda .select-box .options-container.active {
     max-height: 240px;
     opacity: 1;
     overflow-y: scroll;
 }
 
-.select-box .options-container.active + .selected::after {
+.container-tipo-de-busqueda .select-box .options-container.active + .selected::after {
     transform: rotateX(180deg);
     top: -6px;
 }
 
-.select-box .options-container::-webkit-scrollbar {
+.container-tipo-de-busqueda .select-box .options-container::-webkit-scrollbar {
     display: none;
 }
 
-.select-box .options-container::-webkit-scrollbar-thumb {
+.container-tipo-de-busqueda .select-box .options-container::-webkit-scrollbar-thumb {
     background: var(--color-gris);
     border-radius: 0 8px 8px 0;
 }
 
-.select-box .option, .selected {
+.container-tipo-de-busqueda .select-box .option, .selected {
     padding: 12px 24px;
     cursor: pointer;
 }
 
-.select-box .option:hover {
+.container-tipo-de-busqueda .select-box .option:hover {
     background: var(--color-blanco);
     color: var(--color-usuario);
 }
 
-.select-box label {
+.container-tipo-de-busqueda .select-box label {
     cursor: pointer;
 }
 
-.select-box .option .radio {
+.container-tipo-de-busqueda .select-box .option .radio {
     display: none;
 }
 

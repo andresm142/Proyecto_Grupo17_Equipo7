@@ -1,9 +1,10 @@
 @import url(variables.css);
-body {
+
+body{
     background: var(--color-fondo);
 }
 
-.contenedor-usuario {
+.contenedor-usuario{
     font: var(--fuente-texto);
     background: var(--color-blanco-fondo);
     box-shadow: var(--sombra-contenedores);
@@ -17,39 +18,36 @@ body {
 }
 
 /* CONFIGURACION DEL LADO DE LA IMAGEN */
-
-.info-user {
+.info-user{
     justify-self: center;
-    border-right: 3px solid var(--color-usuario);
+    border-right: 3px solid var(--color-superadmin);
     /* height: 640px; */
     width: 100%;
 }
 
-.info-user .avatar {
+.info-user .avatar{
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 20px;
+
 }
 
-.info-user .avatar .imagen-usuario {
+.info-user .avatar .imagen-usuario{
     width: 215px;
     height: 215px;
-}
+} 
 
-.info-user .avatar .imagen-usuario img {
+.info-user .avatar .imagen-usuario img{
     width: 100%;
     align-content: center;
     border-radius: 100px;
 }
-
 /* FIN CONFIGURACION DEL LADO DE LA IMAGEN */
-
 /* CONFIGURACION DE DATOS */
-
-.info-cuenta {
+.info-cuenta{
     margin: 25px 50px;
     display: flex;
     flex-wrap: wrap;
@@ -57,12 +55,12 @@ body {
     gap: 3vh;
 }
 
-.info-cuenta label:not(#primer-tipo-usuario):not(#segundo-tipo-usuario):not(#tercer-tipo-usuario) {
+.info-cuenta label:not(#primer-tipo-usuario):not(#segundo-tipo-usuario):not(#tercer-tipo-usuario){
     font: var(--fuente-sub-titulo);
     color: var(--color-gris);
 }
 
-#name, #lastname, #email, #phone, #pass, #cpass {
+#name, #lastname, #email, #phone, #pass, #cpass{ 
     width: 40%;
     height: 41px;
     border-radius: var(--radio-input);
@@ -72,160 +70,155 @@ body {
 }
 
 @media screen and (min-width:1024px) {
-    #name, #lastname, #email, #phone, #pass, #cpass {
+    #name, #lastname, #email, #phone, #pass, #cpass{ 
         width: 50%;
     }
 }
 
-.info-cuenta input:focus {
+.info-cuenta input:focus{
     background: var(--color-blanco-fondo);
     /* border: 0.75px solid var(--color-superadmin); */
-    outline: 1.5px solid var(--color-usuario);
+    outline: 1.5px solid var(--color-superadmin);
 }
 
-.nombre, .apellido, .tipo-de-usuario, .correo, .telefono, .contrasena, .confirmar-contrasena {
+.nombre, .apellido, .tipo-de-usuario, .correo, .telefono, .contrasena, .confirmar-contrasena{
     width: 100%;
     display: flex;
     justify-content: space-between;
 }
-
 /* FIN CONFIGURACION DE DATOS */
 
 /* CONFIGURACION DEL SELECTOR TIPO DE USUARIO */
-
-.container-user {
+.tipo-de-usuario .contenedor-tipo-de-usuario{
     width: 27vw;
 }
 
 @media screen and (min-width:1336px) {
-    .container-user {
+    .tipo-de-usuario .contenedor-tipo-de-usuario{
         width: 27.6vw;
     }
 }
 
-.select-box-user {
+.tipo-de-usuario .contenedor-tipo-de-usuario .select-box-usuario {
     display: flex;
     flex-direction: column;
-}
-
-.select-box-user .options-container-user {
-    background: var(--color-usuario);
+  }
+  
+.tipo-de-usuario .contenedor-tipo-de-usuario .select-box-usuario .options-container-usuario {
+    background: var(--color-superadmin);
     color: var(--color-blanco) !important;
     max-height: 0;
     width: 100%;
     opacity: 0;
     transition: all 0.4s;
     border-radius: 8px;
-    overflow: hidden;
+    /* overflow: hidden; */
     order: 1;
 }
 
-.selected-user {
-    background: var(--color-usuario);
+.tipo-de-usuario .contenedor-tipo-de-usuario .selected-usuario {
+    background: var(--color-superadmin);
     border-radius: var(--radio-input);
     margin-bottom: 8px;
     color: var(--color-blanco);
     position: relative;
     order: 0;
 }
-
-.selected-user::after {
+  
+.tipo-de-usuario .contenedor-tipo-de-usuario .selected-usuario::after {
     content: "";
     background: url("../images/arrow-down.svg");
     background-size: contain;
     background-repeat: no-repeat;
+
     position: absolute;
     height: 100%;
     width: 32px;
     right: 5px;
     top: 8px;
+
     transition: all 0.4s;
 }
 
-.select-box-user .options-container-user.active {
+.tipo-de-usuario .contenedor-tipo-de-usuario .select-box-usuario .options-container-usuario.active {
     max-height: 240px;
     opacity: 1;
     overflow-y: scroll;
 }
 
-.select-box-user .options-container-user.active+.selected-user::after {
+.tipo-de-usuario .contenedor-tipo-de-usuario .select-box-usuario .options-container-usuario.active + .selected-usuario::after {
     transform: rotateX(180deg);
     top: -6px;
 }
 
-.select-box-user .options-container-user::-webkit-scrollbar {
+.tipo-de-usuario .contenedor-tipo-de-usuario .select-box-usuario .options-container-usuario::-webkit-scrollbar {
     display: none;
 }
 
-.select-box-user .options-container-user::-webkit-scrollbar-thumb {
+.tipo-de-usuario .contenedor-tipo-de-usuario .select-box-usuario .options-container-usuario::-webkit-scrollbar-thumb {
     background: var(--color-gris);
     border-radius: 0 8px 8px 0;
 }
 
-.select-box-user .option-user, .selected-user {
+.tipo-de-usuario .contenedor-tipo-de-usuario .select-box-usuario .option-user, .selected-usuario {
     padding: 12px 24px;
     cursor: pointer;
 }
 
-.select-box-user .option-user:hover {
+.tipo-de-usuario .contenedor-tipo-de-usuario .select-box-usuario .option-user:hover {
     background: var(--color-blanco);
-    color: var(--color-usuario);
+    color: var(--color-superadmin);
 }
 
-.select-box-user label {
+.tipo-de-usuario .contenedor-tipo-de-usuario .select-box-usuario label {
     cursor: pointer;
 }
 
-.select-box-user .option-user .radio {
+.tipo-de-usuario .contenedor-tipo-de-usuario .select-box-usuario .option-user .radio {
     display: none;
 }
-
 /* FIN CONFIGURACION DEL SELECTOR TIPO DE USUARIO */
 
 /* CONFIGURACION DE LOS BOTONES CAMBIAR CANCELAR Y GUARDAR */
-
-.guardar-cancelar {
+.guardar-cancelar{
     width: 100%;
     display: flex;
     justify-content: end;
     gap: 20px;
 }
 
-.cambiar-imagen, .cancelar, .guardar {
+.cambiar-imagen, .cancelar, .guardar{
     padding: 0 15px;
     height: 58px;
     border-radius: var(--radio-boton);
     font: var(--fuente-sub-titulo);
 }
-
-.cambiar-imagen, .guardar {
-    background: var(--color-usuario);
+.cambiar-imagen, .guardar{
+    background: var(--color-superadmin);
     color: var(--color-blanco);
     border: none;
 }
 
-.cambiar-imagen:hover, .guardar:hover {
+.cambiar-imagen:hover, .guardar:hover{
     background: var(--color-gris);
-    color: var(--color-usuario);
+    color: var(--color-superadmin);
     border: var(--border-boton-cancelar-superadmin);
     cursor: pointer;
 }
 
-.cancelar {
+.cancelar{
     background: var(--color-blanco-fondo);
-    color: var(--color-usuario);
+    color: var(--color-superadmin);
     border: var(--border-boton-cancelar-superadmin);
 }
-
-.cancelar:hover {
+.cancelar:hover{
     background: var(--color-gris);
-    color: var(--color-blanco);
-    border: none;
+    color: var(--color-superadmin);
+    border: var(--border-boton-cancelar-superadmin);
     cursor: pointer;
 }
 
-.guardar, .cancelar {
+.guardar, .cancelar{
     width: 156px;
 }
-
 /* FIN CONFIGURACION DE LOS BOTONES CAMBIAR CANCELAR Y GUARDAR */
