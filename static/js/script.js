@@ -14,6 +14,24 @@ optionsList.forEach(o => {
     });
 });
 
+
+// DESPLIEGE DE LA OPCION DE TIPO DE USUARIO
+const selectedUser = document.querySelector(".selected-user");
+const optionsContainerUser = document.querySelector(".options-container-user");
+const optionsListUser = document.querySelectorAll(".option-user");
+
+selectedUser.addEventListener("click", () => {
+  optionsContainerUser.classList.toggle("active");
+});
+
+optionsListUser.forEach(o => {
+    o.addEventListener("click", () => {
+      selectedUser.innerHTML = o.querySelector("label").innerHTML;
+      optionsContainerUser.classList.remove("active");
+    });
+});
+
+
 // MOSTRAR / OCULTAR MENU DE NAVEGACIÓN
 function mostrar() {
     document.getElementById("sidebar").style.width = "250px";
