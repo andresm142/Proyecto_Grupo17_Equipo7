@@ -70,12 +70,10 @@ body{
     min-width: 158px;
 }
 
-.logo-producto img{
-    width:200px;
-    display: inherit;
-    margin-left: 15%;
-    border-radius: 20px;;
-}
+/* FIN ENCABEZADO */
+
+/* INICIO ESTRELLAS */
+
 .estrellas-outer{
     display: inline-block;
     position: relative;
@@ -101,36 +99,44 @@ body{
     width: 90%;                        /*Para cambiar el relleno de las estrellas */
 }
 
-.box-fondo{
-    /* position:absolute; */
-    margin: 100px 0px 10px 10px;
-    /* margin-top: 100px; */
+/* FIN ESTRELLAS */
+
+/* INICIO BOX PRODUCTO */
+
+.section-productos{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:space-between;
+    margin: 30px 30px;
+    gap: 50px 20px;
+}
+
+.box-producto{
+    width: 300px;
+    display: inline-block;
+    text-align: center;
+}
+
+.box-producto .logo-producto .imagen img{
+    width:250px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: var(--radio-contenedor);
+}
+
+.box-producto .box-fondo{
+    display: flex;
+    flex-direction: column;
+    text-align: justify;
+    padding: 110px 30px 20px 30px;
+    margin: -100px 0px 0px 0px;
     background: var(--color-blanco-fondo);
     box-shadow: var(--sombra-contenedores);
-    border-radius: var(--radio-contenedor-grande);
-    width: 250px;
-    display:inline-block;
-    padding: 60px 20px 20px 20px;
-  
+    border-radius: var(--radio-contenedor);
 }
+
 .image{
     margin: 1%;
-}
-.logo-producto{
-    position: absolute;
-    display: flex;
-    margin: 10px;
-    
-    
-}
-.box-producto{
-    position: relative;
-    margin-top: 10px;
-    background: none;
-    /* box-shadow: var(--sombra-contenedores);
-    border-radius: var(--radio-contenedor-grande); */
-    width: 27%;
-   
 }
 
 .titulo-producto{
@@ -145,8 +151,7 @@ body{
     text-align: end;
 }
 .puntuacion{
-    display: flex;
-    
+    display: flex;   
 }
 .valor{
     margin-left: 10px;
@@ -158,42 +163,49 @@ body{
     font: var(--fuente-texto);
     margin: 10px 0px;
 }
+
+/* INICIO BOTON EDITAR Y ELIMINAR */
 .boton-editar-eliminar{
     display: flex;
     font-family: "icomoon";
-    top: 120px;
-    left: 160px;
-    position: absolute;
+    justify-content: end;
+    margin: -27px 27px 0 0;
 
-    
 }
+
 .boton-editar::after{
     content:"\e905";
     color:white;
-    
 }
+
 .boton-eliminar::after{
     content:"\e9ac";
     color: var(--color-usuario)
 }
+
 .boton-editar{
     background: var(--color-usuario);
-    border-radius: 100%;
-    padding: 8px;
+    border-radius: var(--radio-input);
+    padding: 10px;
     margin-left: 10px;
-    border: solid 1px var(--color-usuario);
+    border: var(--border-boton-cancelar-usuario);
 }
+
+.boton-editar:hover{
+    background: var(--color-gris);
+}
+
 .boton-eliminar{
-    background: white;
-    border-radius: 100%;
-    padding: 8px;
-    border: solid 1px var(--color-usuario);
+    background: var(--color-blanco);
+    border-radius: var(--radio-input);
+    padding: 10px;
+    border: var(--border-boton-cancelar-usuario);
     
 }
-.section-productos{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content:space-evenly;
-    padding-top: 9%;
-    z-index: 0;
+
+.boton-eliminar:hover{
+    background: var(--color-gris);
 }
+
+/* FIN BOTON EDITAR Y ELIMINAR */
+
