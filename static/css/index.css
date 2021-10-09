@@ -21,3 +21,64 @@ body{
     white-space: pre;
     color: var(--color-usuario);
 }
+
+/* CONFIGURACION ULTIMOS PRODUCTOS AGREGADOS */
+.section-index h2{
+    font: var(--fuente-sub-titulo);
+    color:var(--color-usuario);
+}
+
+.ultimos-productos-titulo, .ultimos-proveedores-titulo{
+    background: var(--color-blanco-fondo);
+    box-shadow: var(--sombra-contenedores);
+    border-radius: var(--radio-input);
+    width: 85%;
+    display: grid;
+    
+    padding-left: 20px;
+}
+.ultimos-productos-titulo{
+    margin: 60px auto 20px;
+}
+
+.ultimos-proveedores-titulo{
+    margin: 20px auto 20px;
+}
+
+.ultimos-productos{
+    background: var(--color-blanco-fondo);
+    box-shadow: var(--sombra-contenedores);
+    border-radius: var(--radio-contenedor-grande);
+    width: 300px;
+    height: 100px;
+    display: grid;
+    margin: 60px auto 0px;
+    padding: 20px;
+    font: var(--fuente-texto);
+    
+}
+#name{
+    font-weight: bold;
+}
+.imagen img{
+    width: 150px;
+    border-radius: 20px;
+}
+
+.contenedor-ult-productos{
+    display: flex;
+}
+.informacion{
+    margin-left: 10px;
+}
+.disponible{
+    display: flex;
+    align-items: center;
+    
+}
+.disponible p{
+    margin: 0px;
+}
+
+
+/* FIN CONFIGURACION ULTIMOS PRODUCTOS AGREGADOS */
