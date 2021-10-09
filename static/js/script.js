@@ -55,4 +55,9 @@ function home(){
     location.reload();
 }
 
-
+function guardar(){                     //Temporal, solo para navegabilidad
+    alert("Guardado")
+}
+function eliminar(){
+    alert("Eliminado")
+}

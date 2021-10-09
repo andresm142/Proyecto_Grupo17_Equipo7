@@ -63,10 +63,10 @@
                 <input type="password" name="contrasena" id="cpass">
             </div>
             <div class="guardar-cancelar">
-                <button class="cancelar">
+                <a href="{{url_for('Home')}}"><button class="cancelar">
                     Cancelar
-                </button>
-                <button class="guardar">
+                </button></a>
+                <button class="guardar" onclick="guardar()">
                     Guardar
                 </button>
             </div>
