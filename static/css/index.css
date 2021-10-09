@@ -33,8 +33,9 @@ body{
     box-shadow: var(--sombra-contenedores);
     border-radius: var(--radio-input);
     width: 85%;
+    height: 50px;
     display: grid;
-    
+    align-content: center;
     padding-left: 20px;
 }
 .ultimos-productos-titulo{
@@ -44,32 +45,38 @@ body{
 .ultimos-proveedores-titulo{
     margin: 20px auto 20px;
 }
-
-.ultimos-productos{
+.contenedor{
+    display: flex;
+    flex-wrap: wrap;
+}
+.contenedor-ultimos{
     background: var(--color-blanco-fondo);
     box-shadow: var(--sombra-contenedores);
     border-radius: var(--radio-contenedor-grande);
     width: 300px;
     height: 100px;
     display: grid;
-    margin: 60px auto 0px;
+    margin: 20px auto 0px;
     padding: 20px;
     font: var(--fuente-texto);
-    
+    display: flex;
 }
+
 #name{
     font-weight: bold;
 }
+
+
 .imagen img{
     width: 150px;
     border-radius: 20px;
 }
 
-.contenedor-ult-productos{
-    display: flex;
-}
+
 .informacion{
     margin-left: 10px;
+    display: grid;
+    align-content: center;
 }
 .disponible{
     display: flex;
