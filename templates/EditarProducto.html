@@ -22,9 +22,24 @@
                 <label for="name">Nombre producto</label>
                 <input type="text" name="nombre" id="name">
             </div>
-            <div class="proveedor">
+            <div class="container-proveedor">
                 <label for="proveedor">Proveedor</label>
-                <input type="text" name="proveedor" id="proveedor">
+                <div class="select-box-proveedor">
+                    <div class="options-container-proveedor">
+                        <div class="option-proveedor">
+                            <input type="radio" class="radio" id="num1" name="category" value="auto"/>
+                            <label for="prov1" id="lblnum1">1</label>
+                        </div>
+                        <div class="option-proveedor">
+                            <input type="radio" class="radio" id="num2" name="category" value="auto"/>
+                            <label for="prov2" id="lblnum2">2</label>
+                        </div>                        
+                    </div>
+
+                    <div class="selected-proveedor">
+                        proveedor
+                    </div>
+                </div>
             </div>
             <div class="descripcion-producto">
                 <label for="descripcion">Descripción del producto</label>

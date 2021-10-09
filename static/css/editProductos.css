@@ -36,11 +36,13 @@ body {
 
 .imagen-producto {
     width: 255px;
-    height: 215px;
+    height: 215px;   
 }
 
 .imagen-producto img {
-    width: 100%;
+    width: 255px;
+    height: 215px;   
+    object-fit: cover;
     align-content: center;
     border-radius: 30px;
 }
@@ -50,11 +52,11 @@ body {
 /* CONFIGURACION DE DATOS */
 
 .info-producto {
-    margin: 25px 50px;
+    margin: 10vh 5vw;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    gap: 3vh;
+    gap: 4vh;
 }
 
 .info-producto label:not(#lblnum1):not(#lblnum2):not(#lblnum3):not(#lblnum4):not(#lblnum5) {
@@ -76,7 +78,7 @@ body {
     border-radius: var(--radio-input);
     border: var(--boder-inputs);
     background: var(--color-fondo);
-    padding: 0 20px;
+    padding: 10px 20px;
 }
 
 textarea{
@@ -101,32 +103,110 @@ textarea:focus{
     outline: 1.5px solid var(--color-usuario);
 }
 
-.nombre, .proveedor, .descripcion-producto {
+.nombre, .container-proveedor, .descripcion-producto {
     width: 100%;
     display:inline-grid;
-    /* justify-content: space-between; */
+    gap: 2vh;
 }
 .cantidad-calificacion{
     width: 100%;
     display:flex;
-    /* justify-content: space-between; */
+    justify-content: space-between;
 }
+
 .cantidad{
     display: grid;
 }
 /* FIN CONFIGURACION DE DATOS */
 
-/* CONFIGURACION DEL SELECTOR TIPO DE USUARIO */
+/* CONFIGURACION DE LA CALIFICACION */
 
-.container-calificacion {
-    width: 10vw;
-    margin-left: 50px;
+.container-proveedor {
+    width: 100%;
 }
 
-@media screen and (min-width:1336px) {
-    .container-calificacion {
-        width: 10.6vw;
-    }
+.select-box-proveedor {
+    display: flex;
+    flex-direction: column;
+}
+
+.select-box-proveedor .options-container-proveedor {
+    background: var(--color-usuario);
+    color: var(--color-blanco) !important;
+    max-height: 0;
+    width: 100%;
+    opacity: 0;
+    transition: all 0.4s;
+    border-radius: 8px;
+    overflow: hidden;
+    order: 1;
+}
+
+.selected-proveedor {
+    background: var(--color-usuario);
+    border-radius: var(--radio-input);
+    margin-bottom: 8px;
+    color: var(--color-blanco);
+    position: relative;
+    order: 0;
+}
+
+.selected-proveedor::after {
+    content: "";
+    background: url("../images/arrow-down.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    height: 100%;
+    width: 32px;
+    right: 5px;
+    top: 8px;
+    transition: all 0.4s;
+}
+
+.select-box-proveedor .options-container-proveedor.active {
+    max-height: 240px;
+    opacity: 1;
+    overflow-y: scroll;
+}
+
+.select-box-proveedor .options-container-proveedor.active+.selected-proveedor::after {
+    transform: rotateX(180deg);
+    top: -6px;
+}
+
+.select-box-proveedor .options-container-proveedor::-webkit-scrollbar {
+    display: none;
+}
+
+.select-box-proveedor .options-container-proveedor::-webkit-scrollbar-thumb {
+    background: var(--color-gris);
+    border-radius: 0 8px 8px 0;
+}
+
+.select-box-proveedor .option-proveedor, .selected-proveedor {
+    padding: 12px 24px;
+    cursor: pointer;
+}
+
+.select-box-proveedor .option-proveedor:hover {
+    background: var(--color-blanco);
+    color: var(--color-usuario);
+}
+
+.select-box-proveedor label {
+    cursor: pointer;
+}
+
+.select-box-proveedor .option-proveedor .radio {
+    display: none;
+}
+
+/* FIN CONFIGURACION DEL TIPO DE PROVEDOR */
+
+/* CONFIGURACION DE LA CALIFICACION */
+.container-calificacion label{
+    justify-self: end;
 }
 
 .select-box-user {
@@ -206,14 +286,14 @@ textarea:focus{
     display: none;
 }
 
-/* FIN CONFIGURACION DEL SELECTOR TIPO DE USUARIO */
+/* FIN CONFIGURACION DE LA CALIFICACION */
 
 /* CONFIGURACION DE LOS BOTONES CAMBIAR CANCELAR Y GUARDAR */
 
 .guardar-cancelar {
     width: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: end;
     gap: 20px;
 }
 
