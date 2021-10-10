@@ -1,0 +1,74 @@
+{% extends 'MasterPage.html' %}
+
+{% block content %}
+<link rel="stylesheet" href={{ url_for('static', filename='css/usuarios.css') }}>
+<header class="header-paginas">
+    <div class="encabezado-usuarios">
+        <div class="titulo">
+            <h1>{% block title %} Administrador de Usuarios {% endblock %}</h1>
+        </div>
+    
+        <div class="boton-anadir">
+            <a href="#"><button class="anadir"> Añadir usuario + </button></a>
+        </div>
+  
+    </div>
+
+</header>
+<section class="usuarios">
+    <div class="titulos">
+        <div class="col-nombre">
+            <h2>Nombre de usuario</h2>
+        </div>
+        <div class="col-tipo">
+            <h2>Tipo de usuario</h2>
+        </div>
+        <div class="col-correo">
+            <h2>Correo</h2>
+        </div>
+        <div class="col-opciones">
+            <h2></h2>
+        </div>
+    </div>
+    <div class="contenedor-usuarios">
+        <div class="contenedor">
+            <div class="nombre">
+                <img src={{ url_for('static', filename='images/avatar.png') }} alt="">
+                <p>Lorem ipsum</p>
+            </div>
+            <div class="tipo">
+               <p>Usuario final</p> 
+            </div>
+            <div class="correo">
+                <p>correo@loremipsum.com</p>
+            </div>
+            <div class="opciones">
+                <a href="#"><div class="boton-eliminar" onclick="eliminar()" onclick="eliminar()"></div></a>
+                
+                <a href="{{url_for('AdminUser')}}"><div class="boton-editar"></div></a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="contenedor-usuarios">
+        <div class="contenedor">
+            <div class="nombre">
+                <img src={{ url_for('static', filename='images/avatar.png') }} alt="">
+                <p>Lorem ipsum</p>
+            </div>
+            <div class="tipo">
+               <p>Usuario final</p> 
+            </div>
+            <div class="correo">
+                <p>correo@loremipsum.com</p>
+            </div>
+            <div class="opciones">
+                <a href="#"><div class="boton-eliminar" onclick="eliminar()" onclick="eliminar()"></div></a>
+                
+                <a href="{{url_for('AdminUser')}}"><div class="boton-editar"></div></a>
+                
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

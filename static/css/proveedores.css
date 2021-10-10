@@ -1,9 +1,10 @@
+@import url(variables.css);
 body{
     font-family: 'Roboto';
     font-weight: lighter;
 }
 header{
-    background: white;
+    background:var(--color-blanco-fondo);
     font-family: 'Roboto';
     font-weight: lighter;
     margin-bottom:1.5px;
@@ -54,8 +55,8 @@ section article{
     background-color:white;
     border: 1px ;
     border-radius: 15px;
-    width: 35%;
-    height:135px;
+    width: 30%;
+    height:130px;
     padding: 30px; 
     margin-left: 10%;
     margin-Top: 20px;

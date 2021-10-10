@@ -1,0 +1,121 @@
+{% extends 'MasterPage.html' %}
+{% block title %} Inicio {% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href={{ url_for('static', filename='css/index.css' ) }}>
+<header class="header-paginas">
+    <div class="encabezado-inicio">
+        <div class="titulo">
+            <h1>Bienvenido </h1><span>USUARIO </span>
+            <h1>a SAIC Motor</h1>
+        </div>
+    </div>
+</header>
+<section class="section-index">
+
+    <div class="ultimos-productos-titulo">
+        <h2>Ultimos productos agregados</h2>
+    </div>
+    <div class="ultimos-productos">
+        <div class="contenedor">
+            <div class="contenedor-ultimos">
+                <div class="imagen">
+                    <img src={{ url_for('static', filename='images/Producto.jpg' ) }} alt="">
+                </div>
+                <div class="informacion">
+                    <div class="nombre-producto" id="name">
+                        Nombre del producto
+                    </div>
+                    <div class="nombre-proveedor">
+                        Proveedor
+                    </div>
+                    <div class="disponible">
+                        <p>Disponible</p><span>: 20</span>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="contenedor-ultimos">
+                <div class="imagen">
+                    <img src={{ url_for('static', filename='images/Producto.jpg' ) }} alt="">
+                </div>
+                <div class="informacion">
+                    <div class="nombre-producto" id="name">
+                        Nombre del producto
+                    </div>
+                    <div class="nombre-proveedor">
+                        Proveedor
+                    </div>
+                    <div class="disponible">
+                        <p>Disponible</p><span>: 20</span>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="contenedor-ultimos">
+                <div class="imagen">
+                    <img src={{ url_for('static', filename='images/Producto.jpg' ) }} alt="">
+                </div>
+                <div class="informacion">
+                    <div class="nombre-producto" id="name">
+                        Nombre del producto
+                    </div>
+                    <div class="nombre-proveedor">
+                        Proveedor
+                    </div>
+                    <div class="disponible">
+                        <p>Disponible</p><span>: 20</span>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="ultimos-proveedores-titulo">
+        <h2>Ultimos proveedores agregados</h2>
+    </div>
+    <div class="ultimos-proveedores">
+
+        <div class="contenedor">
+            <div class="contenedor-ultimos">
+                <div class="imagen">
+                    <img src={{ url_for('static', filename='images/Proveedores.png' ) }} alt="">
+                </div>
+                <div class="informacion">
+                    <div class="nombre-proveedor" id="name">
+                        Nombre del proveedor
+                    </div>
+                </div>
+            </div>
+
+            <div class="contenedor-ultimos">
+                <div class="imagen">
+                    <img src={{ url_for('static', filename='images/Proveedores.png' ) }} alt="">
+                </div>
+                <div class="informacion">
+                    <div class="nombre-proveedor" id="name">
+                        Nombre del proveedor
+                    </div>
+                </div>
+            </div>
+
+            <div class="contenedor-ultimos">
+                <div class="imagen">
+                    <img src={{ url_for('static', filename='images/Proveedores.png' ) }} alt="">
+                </div>
+                <div class="informacion">
+                    <div class="nombre-proveedor" id="name">
+                        Nombre del proveedor
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+{% endblock %}

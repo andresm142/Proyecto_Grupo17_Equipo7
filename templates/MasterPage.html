@@ -5,16 +5,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/normalize.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet"/>
+    <title>{% block title %} {% endblock %}</title>
+    <link rel="stylesheet" href={{ url_for('static', filename='css/normalize.css') }}>
+    <link rel="stylesheet" href={{ url_for('static', filename='css/style.css') }}>
+    <link rel="stylesheet" href={{ url_for('static', filename='css/font-awesome.min.css') }}>
+    <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet"/> -->
     
 
 </head>
 
 <body>
-    <header>
+    <header class="principal">
         <div class="encabezado">
             <div id="abrir-menu">
                 <a id="abrir" class="abrir-cerrar" href="javascript:void(0)" onclick="mostrar()"
@@ -22,16 +23,16 @@
                 <a id="cerrar" class="abrir-cerrar" href="#" onclick="ocultar()" style="display: none;"></a>
             </div>
             <div class="buscar">
-                <div class="container">
+                <div class="container-tipo-de-busqueda">
                     <div class="select-box">
                       <div class="options-container">
                         <div class="option">
-                          <input type="radio" class="radio" id="proveedores" name="category" value="proveedor"/>
-                          <label for="proveedores">Proveedores</label>
+                          <input type="radio" class="radio" id="automobiles" name="category" value="auto"/>
+                          <label for="automobiles">Proveedores</label>
                         </div>
                         <div class="option">
-                          <input type="radio" class="radio" id="productos" name="category" />
-                          <label for="productos">Productos</label>
+                          <input type="radio" class="radio" id="film" name="category" />
+                          <label for="film">Productos</label>
                         </div>
                       </div>
                       <div class="selected">
@@ -47,45 +48,49 @@
             </div>
         </div>
     </header>
+
     <section class="contenido" id="contenido">
-        <!-- <h1>Bienvenido</h1> -->
+        {% block content %} {% endblock %}
+        
     </section>
+
     <div id="sidebar" class="sidebar" style="width: 0px;">
         <div class="region-user">
             <div class="logo-user">
-                <img src="assets/avatar.png" alt="">
+                <img src={{ url_for('static', filename='images/avatar.png') }} alt="">
             </div>
             <h2 class="nombre-user">Usuario</h2> 
         </div>
         <div class="region-funciones">
-            <a href="#"><div class="home">
+            <a href="{{url_for('Home')}}"><div class="home">
                 Home
             </div></a>
-            <a href="#"><div class="productos">
+            <a href="{{url_for('Productos')}}"><div class="productos">
                 Productos
             </div></a>
-            <a href="#"><div class="listas">
+            <a href="{{url_for('Listas')}}"><div class="listas">
                 Listas
             </div></a>
-            <a href="#"><div class="usuarios">
+            <a href="{{url_for('Usuarios')}}"><div class="usuarios">
                 Usuarios
             </div></a>
-            <a href="#"><div class="proveedores">
+            <a href="{{url_for('Proveedores')}}"><div class="proveedores">
                 Provedores
             </div></a>
         </div>
         <div class="region-cuenta">
-            <a href="#"><div class="config">
+            <a href="{{url_for('Configuracion')}}"><div class="config">
                 Configuración
             </div></a>
-            <a href="#"><div class="logout">
+            <a href="{{url_for('Logout')}}"><div class="logout">
                 Cerrar sesión
             </div></a>
         </div>
         
     </div>
-    <script src="scripts/script.js"></script>
-    <script src="scripts/jquery-3.3.1.js"></script>
+    <script src={{ url_for('static', filename='js/script.js') }}></script>
+    <script src={{ url_for('static', filename='js/jquery-3.3.1.js') }}></script>
+
 </body>
 
 </html>

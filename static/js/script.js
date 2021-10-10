@@ -14,6 +14,8 @@ optionsList.forEach(o => {
     });
 });
 
+
+
 // MOSTRAR / OCULTAR MENU DE NAVEGACIÓN
 function mostrar() {
     document.getElementById("sidebar").style.width = "250px";
@@ -38,3 +40,9 @@ function home(){
     location.reload();
 }
 
+function guardar(){                     //Temporal, solo para navegabilidad
+    alert("Guardado")
+}
+function eliminar(){
+    alert("Eliminado")
+}

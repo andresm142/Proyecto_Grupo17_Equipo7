@@ -1,0 +1,97 @@
+@import url(variables.css);
+
+body{
+    background: var(--color-fondo);
+}
+/* ENCABEZADOS */
+.encabezado-inicio .titulo{
+    display: flex;
+    align-items: center;
+    height: 100px;
+    padding: 0 50px;
+}
+
+.encabezado-inicio .titulo h1{
+    font: var(--fuente-titulo);
+    margin: 0;
+    white-space: pre;
+}
+.encabezado-inicio .titulo span{
+    font: var(--fuente-titulo);
+    margin: 0;
+    white-space: pre;
+    color: var(--color-usuario);
+}
+
+.section-index h2{
+    font: var(--fuente-sub-titulo);
+    color:var(--color-usuario);
+}
+
+.ultimos-productos-titulo, .ultimos-proveedores-titulo{
+    background: var(--color-blanco-fondo);
+    box-shadow: var(--sombra-contenedores);
+    border-radius: var(--radio-input);
+    height: 50px;
+    display: grid;
+    align-content: center;
+    padding-left: 20px;
+}
+.ultimos-productos-titulo{
+    margin: 30px 60px;
+}
+
+.ultimos-proveedores-titulo{
+    margin: 30px 60px;
+}
+
+/* FIN ENCABEZADOS */
+
+/* CONFIGURACION ULTIMOS PRODUCTOS Y PROVEEDORES AGREGADOS */
+
+.contenedor{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1vw;
+    /* justify-content: space-around; */
+    margin: 0 60px;
+}
+.contenedor-ultimos{
+    background: var(--color-blanco-fondo);
+    box-shadow: var(--sombra-contenedores);
+    border-radius: var(--radio-contenedor);
+    width: 350px;
+    padding: 15px 20px;
+    font: var(--fuente-texto);
+    display: flex;
+}
+
+#name{
+    font-weight: bold;
+}
+
+
+.imagen img{
+    width: 150px;
+    height: 100px;
+    border-radius: 20px;
+    object-fit: cover;
+}
+
+.informacion{
+    margin-left: 10px;
+    display: grid;
+    align-content: center;
+    row-gap: 5px;
+}
+.disponible{
+    display: flex;
+    align-items: center;
+    
+}
+.disponible p{
+    margin: 0px;
+}
+
+
+/* FIN CONFIGURACION ULTIMOS PRODUCTOS Y PROVEEDORES AGREGADOS */

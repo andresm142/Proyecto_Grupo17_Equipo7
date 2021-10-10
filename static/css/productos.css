@@ -1,0 +1,211 @@
+@import url(variables.css);
+
+body{
+    background: var(--color-fondo);
+}
+
+.encabezado-productos{
+    display: flex;
+    justify-content: space-between;
+    font: var(--fuente-sub-titulo);
+    color: var(--color-usuario);
+    height: 100px;
+    padding: 0 50px;
+}
+.encabezado-productos .boton-anadir{
+    margin-top: 20px;
+}
+
+.anadir, .bt-disponible{
+    background: var(--color-usuario);
+    color: var(--color-blanco);
+    border: none;
+    padding: 0 15px;
+    height: 58px;
+    min-width: 156px;
+    border-radius: var(--radio-boton);
+    font: var(--fuente-sub-titulo);
+}
+
+.anadir:hover, .bt-disponible:hover{
+    background: var(--color-gris);
+    color: var(--color-usuario);
+    border: var(--border-boton-cancelar-usuario);
+    cursor: pointer;
+}
+
+.bt-nodisponible{
+    background: var(--color-blanco-fondo);
+    color: var(--color-usuario);
+    border: var(--border-boton-cancelar-usuario);
+    padding: 0 15px;
+    height: 58px;
+    min-width: 156px;
+    border-radius: var(--radio-boton);
+    font: var(--fuente-sub-titulo);
+}
+
+.bt-nodisponible:hover{
+    background: var(--color-usuario);
+    color: var(--color-blanco);
+    border: var(--border-boton-cancelar-usuario);
+    cursor: pointer;
+}
+
+.encabezado-productos .superadmin{
+    display: none !important;
+}
+
+.encabezado-productos .user{
+    display: none !important;
+}
+
+.encabezado-productos .botones-disponibilidad{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.encabezado-productos .botones-disponibilidad .boton-disponible, .boton-nodisponible{
+    min-width: 158px;
+}
+
+/* FIN ENCABEZADO */
+
+/* INICIO ESTRELLAS */
+
+.estrellas-outer{
+    display: inline-block;
+    position: relative;
+    font-family: "icomoon";
+}
+
+.estrellas-outer::before{
+   
+    content: "\e9d7 \e9d7 \e9d7 \e9d7 \e9d7";
+
+}
+.estrellas-inner::before{
+    content: "\e9d9 \e9d9 \e9d9 \e9d9 \e9d9";
+    color: var(--color-usuario);
+
+}
+.estrellas-inner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 90%;                        /*Para cambiar el relleno de las estrellas */
+}
+
+/* FIN ESTRELLAS */
+
+/* INICIO BOX PRODUCTO */
+
+.section-productos{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:space-between;
+    margin: 30px 30px;
+    gap: 50px 20px;
+}
+
+.box-producto{
+    width: 300px;
+    display: inline-block;
+    text-align: center;
+}
+
+.box-producto .logo-producto .imagen img{
+    width:250px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: var(--radio-contenedor);
+}
+
+.box-producto .box-fondo{
+    display: flex;
+    flex-direction: column;
+    text-align: justify;
+    padding: 110px 30px 20px 30px;
+    margin: -100px 0px 0px 0px;
+    background: var(--color-blanco-fondo);
+    box-shadow: var(--sombra-contenedores);
+    border-radius: var(--radio-contenedor);
+}
+
+.image{
+    margin: 1%;
+}
+
+.titulo-producto{
+    font: var(--fuente-sub-titulo);
+    font-size: 18px;
+}
+.name-proveedor{
+    font: var(--fuente-texto);
+}
+.disponibe{
+    font: var(--fuente-texto);
+    text-align: end;
+}
+.puntuacion{
+    display: flex;   
+}
+.valor{
+    margin-left: 10px;
+    color: var(--color-usuario);
+    font: var(--fuente-texto);
+    font-weight: bold;
+}
+.descripcion{
+    font: var(--fuente-texto);
+    margin: 10px 0px;
+}
+
+/* INICIO BOTON EDITAR Y ELIMINAR */
+.boton-editar-eliminar{
+    display: flex;
+    font-family: "icomoon";
+    justify-content: end;
+    margin: -27px 27px 0 0;
+
+}
+
+.boton-editar::after{
+    content:"\e905";
+    color:white;
+}
+
+.boton-eliminar::after{
+    content:"\e9ac";
+    color: var(--color-usuario)
+}
+
+.boton-editar{
+    background: var(--color-usuario);
+    border-radius: var(--radio-input);
+    padding: 10px;
+    margin-left: 10px;
+    border: var(--border-boton-cancelar-usuario);
+}
+
+.boton-editar:hover{
+    background: var(--color-gris);
+}
+
+.boton-eliminar{
+    background: var(--color-blanco);
+    border-radius: var(--radio-input);
+    padding: 10px;
+    border: var(--border-boton-cancelar-usuario);
+    
+}
+
+.boton-eliminar:hover{
+    background: var(--color-gris);
+}
+
+/* FIN BOTON EDITAR Y ELIMINAR */
+

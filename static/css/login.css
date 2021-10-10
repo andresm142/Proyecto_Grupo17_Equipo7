@@ -1,7 +1,7 @@
 @import url(variables.css);
 /* CONIGURACION DEL LOGIN */
 body{
-    background-image: url(../assets/Fondo-login.png);
+    background-image: url(../images/Fondo-login.png);
     background-size: 100%;
 }
 
@@ -43,7 +43,6 @@ body{
 }
 @media screen and (min-width: 1501px){
     .login{
-        /* margin: 20% 20%; */
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -61,7 +60,7 @@ body{
 }
 
 .box p {
-    margin-bottom: 5vh;
+    margin-bottom: 5px;
     font: var(--fuente-texto);
     color: var(--color-gris);
 }
@@ -70,7 +69,6 @@ body{
     position: relative;
     font: var(--fuente-texto);
 }
-
 
 .box .inputBox input {
     width: 95%;
