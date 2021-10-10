@@ -28,16 +28,16 @@
                     <div class="options-container-proveedor">
                         <div class="option-proveedor">
                             <input type="radio" class="radio" id="num1" name="category" value="auto"/>
-                            <label for="prov1" id="lblnum1">1</label>
+                            <label for="prov1" id="lblnum1">Proveedor 1</label>
                         </div>
                         <div class="option-proveedor">
                             <input type="radio" class="radio" id="num2" name="category" value="auto"/>
-                            <label for="prov2" id="lblnum2">2</label>
+                            <label for="prov2" id="lblnum2">Proveedor 2</label>
                         </div>                        
                     </div>
 
                     <div class="selected-proveedor">
-                        proveedor
+                        Proveedor
                     </div>
                 </div>
             </div>
@@ -96,5 +96,6 @@
             </div>
         </div>    
     </div>
-    
+    <script src={{ url_for('static', filename='js/scriptSelectProveedor.js') }}></script>
+    <script src={{ url_for('static', filename='js/scriptSelectUser.js') }}></script>
 {% endblock %}

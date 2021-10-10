@@ -50,3 +50,9 @@ def Logout():
 def Editarproducto():
     
     return render_template('EditarProducto.html')
+
+@app.route('/AdminUser')
+def AdminUser():
+    
+    return render_template('AdminUser.html')
+

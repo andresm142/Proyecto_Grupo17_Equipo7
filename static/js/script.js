@@ -14,38 +14,7 @@ optionsList.forEach(o => {
     });
 });
 
-// DESPLIEGE DE LA OPCION DEL TIPO DE USUARIO
-const selectedUsuario = document.querySelector(".selected-usuario");
-const optionsContainerUsuario = document.querySelector(".options-container-usuario");
-const optionsListUsuario = document.querySelectorAll(".option-user");
 
-selectedUsuario.addEventListener("click", () => {
-    optionsContainerUsuario.classList.toggle("active");
-    console.log("funciona");
-});
-
-optionsListUsuario.forEach(o => {
-    o.addEventListener("click", () => {
-        selectedUsuario.innerHTML = o.querySelector("label").innerHTML;
-        optionsContainerUsuario.classList.remove("active");
-    });
-});
-
-// DESPLIEGE DE LA OPCION DEL PROVEDOR
-const selectedProveedor = document.querySelector(".selected-proveedor");
-const optionsContainerProveedor = document.querySelector(".options-container-proveedor");
-const optionsListProveedor = document.querySelectorAll(".option-proveedor");
-
-selectedProveedor.addEventListener("click", () => {
-    optionsContainerProveedor.classList.toggle("active");
-});
-
-optionsListProveedor.forEach(o => {
-    o.addEventListener("click", () => {
-        selectedProveedor.innerHTML = o.querySelector("label").innerHTML;
-        optionsContainerProveedor.classList.remove("active");
-    });
-});
 
 // MOSTRAR / OCULTAR MENU DE NAVEGACIÓN
 function mostrar() {

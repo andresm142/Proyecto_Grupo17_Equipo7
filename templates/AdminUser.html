@@ -1,8 +1,8 @@
 {% extends 'MasterPage.html' %}
-{% block title %} Configuración {% endblock %}
+{% block title %} Administrar Usuarios {% endblock %}
 
 {% block content %}
-    <link rel="stylesheet" href={{ url_for('static', filename='css/user.css') }}>
+    <link rel="stylesheet" href={{ url_for('static', filename='css/AdminUser.css') }}>
 
     <div class="contenedor-usuario">
         <div class="info-user">
@@ -24,7 +24,7 @@
             </div>
             <div class="tipo-de-usuario">
                 <label for="rol">Tipo de usuario</label>
-                <div class="contenedor-tipo-de-usuario">
+                <div class="contenedor-tipo-de-usuario" >
                     <div class="select-box-usuario">
                     <div class="options-container-usuario">
                         <div class="option-user">
@@ -63,7 +63,7 @@
                 <input type="password" name="contrasena" id="cpass">
             </div>
             <div class="guardar-cancelar">
-                <a href="{{url_for('Home')}}"><button class="cancelar">
+                <a href="{{url_for('Usuarios')}}"><button class="cancelar">
                     Cancelar
                 </button></a>
                 <button class="guardar" onclick="guardar()">
