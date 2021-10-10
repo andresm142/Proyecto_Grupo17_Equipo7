@@ -1,0 +1,126 @@
+@import url(variables.css);
+
+body{
+    background: var(--color-fondo);
+}
+
+/* CONFIGURACION ENCABEZADO USUARIOS */
+.encabezado-usuarios{
+    display: flex;
+    justify-content: space-between;
+    font: var(--fuente-sub-titulo);
+    color: var(--color-admin);
+    height: 100px;
+    padding: 0 50px;
+}
+
+
+.boton-anadir{
+    margin-top: 20px;
+}
+
+.anadir{
+    background: var(--color-admin);
+    color: var(--color-blanco);
+    border: none;
+    padding: 0 15px;
+    height: 58px;
+    min-width: 156px;
+    border-radius: var(--radio-boton);
+    font: var(--fuente-sub-titulo);
+}
+
+.anadir:hover{
+    background: var(--color-gris);
+    color: var(--color-admin);
+    border: var(--border-boton-cancelar-admin);
+    cursor: pointer;
+}
+
+/* FIN ENCABEZADO */
+
+/* COLORES PARA ADMIN Y SUPERADMIN */
+.sidebar, .container-tipo-de-busqueda .select-box .options-container, .container-tipo-de-busqueda .selected {
+    background-color: var(--color-admin);       /* TEMPORAL, SOLO ADMIN */
+}
+
+.abrir-cerrar, .container-tipo-de-busqueda .select-box .option:hover{    
+    color: var(--color-admin);
+}
+
+/* FIN COLORES ADMIN Y SUPERADMIN */
+
+/* SEGUNDO ENCABEZADO, PARA TITULO DESCRIPTIVOS */
+
+.titulos, .contenedor{
+    display: flex;
+    justify-content: space-between;
+    background: var(--color-blanco-fondo);
+    box-shadow: var(--sombra-contenedores);
+    border-radius: var(--radio-input);
+    width: 95%;
+    height: 50px;
+    margin: 25px;
+    padding: 5px 10px 5px 10px;
+    align-items: center;
+}
+
+.titulos h2{
+    font: var(--fuente-sub-titulo);
+    color:var(--color-admin);
+}
+
+/*  */
+.nombre{
+    display: flex;
+    align-items: center;
+}
+.nombre img{
+    width: 20px;
+    margin-right: 10px;
+}
+/* FIN CONFIGURACION TITULO */
+
+/* CONFIGURACION BOTON EDITAR Y ELIMINAR */
+.opciones{
+    display: flex;
+    font-family: "icomoon";
+    justify-content: end;
+    
+}
+
+.boton-editar::after{
+    content:"\e905";
+    color:white;
+}
+
+.boton-eliminar::after{
+    content:"\e9ac";
+    color: var(--color-admin)
+}
+
+.boton-editar{
+    background: var(--color-admin);
+    border-radius: var(--radio-input);
+    padding: 10px;
+    margin-left: 10px;
+    border: var(--border-boton-cancelar-admin);
+}
+
+.boton-editar:hover{
+    background: var(--color-gris);
+}
+
+.boton-eliminar{
+    background: var(--color-blanco);
+    border-radius: var(--radio-input);
+    padding: 10px;
+    border: var(--border-boton-cancelar-admin);
+    
+}
+
+.boton-eliminar:hover{
+    background: var(--color-gris);
+}
+
+/* FIN BOTON EDITAR Y ELIMINAR */
