@@ -75,8 +75,32 @@ body {
     color: var(--color-usuario);
 }
 
+.titulos .col-cant h2 {
+    font: var(--fuente-sub-titulo);
+    color: var(--color-negro);
+}
+
 .contenedor>* {
     font: var(--fuente-texto);
+}
+
+.subtitulos,
+.contenedor {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr;
+    background: var(--color-blanco-fondo);
+    margin: 30px 50px;
+    padding: 5px 15px;
+    align-items: center;
+    justify-items: stretch;
+    box-shadow: 0px 3px 0px 0px rgba(0, 0, 0, 0.54);
+    -webkit-box-shadow: 0px 3px 0px 0px rgba(0, 0, 0, 0.54);
+    -moz-box-shadow: 0px 3px 0px 0px rgba(0, 0, 0, 0.54);
+}
+
+.subtitulos h2 {
+    font: var(--fuente-sub-titulo);
+    color: var(--color-negro);
 }
 
 
@@ -110,6 +134,10 @@ body {
 .boton-editar::after {
     content: "\e905";
     color: white;
+}
+
+.icon-radio-checked2:before {
+    content: "\ea55";
 }
 
 .boton-eliminar::after {
