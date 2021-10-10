@@ -1,5 +1,52 @@
-{% extends 'MasterPage.html' %}
+{% extends 'MasterPage.html' %} {% block content %}
+<link rel="stylesheet" href={{ url_for( 'static', filename='css/listas.css' ) }}>
+<header class="header-paginas">
+    <div class="encabezado-listas">
+        <div class="titulo">
+            <h1>{% block title %} Listas {% endblock %}</h1>
+        </div>
 
-{% block content %}
-    <h1>{% block title %} Listas {% endblock %}</h1>
+        <div class="boton-anadir">
+            <a href="#"><button class="anadir"> Añadir Lista + </button></a>
+        </div>
+
+    </div>
+
+</header>
+<section class="listas">
+    <div class="titulos">
+        <div class="col-nombre">
+            <h2>Nombre de Lista</h2>
+        </div>
+        <div class="col-cant">
+            <h2>Cantidad de Productos : 25</h2>
+        </div>
+        <div class="opciones">
+            <a href="#">
+                <div class="boton-eliminar" onclick="eliminar()" onclick="eliminar()"></div>
+            </a>
+
+            <a href="{{url_for('AdminUser')}}">
+                <div class="boton-editar"></div>
+            </a>
+
+        </div>
+
+    </div>
+    <div class="contenedor-Titulo">
+        <div class="titulo">
+            <div class="name-product">
+                <p>NOMBRE DEL PRODUCTO</p>
+            </div>
+            <div class="cantiodad">
+                <p>CANTIDAD</p>
+            </div>
+            <div class="name-proveed">
+                <p>NOMBRE PROVEEDOR</p>
+            </div>
+
+        </div>
+    </div>
+
+</section>
 {% endblock %}
