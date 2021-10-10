@@ -70,7 +70,7 @@ section article .supplier_img img{
     border-radius: 15px;
 }
 section article .supplier_img{
-    max-width: 40%;
+    max-width: 35%;
 }
 section article .supplier_img, section article .description{
     display: inline-block;
@@ -110,7 +110,7 @@ section article .description .text p{
     
 }
 
-.row article{
+.block article{
     display: inline-block;
     margin-top: 50px;
 }
