@@ -8,16 +8,12 @@ body{
 .encabezado-usuarios{
     display: flex;
     justify-content: space-between;
+    align-items: center;
     font: var(--fuente-sub-titulo);
     color: var(--color-admin);
-    height: 100px;
     padding: 0 50px;
 }
 
-
-.boton-anadir{
-    margin-top: 20px;
-}
 
 .anadir{
     background: var(--color-admin);
@@ -53,21 +49,24 @@ body{
 /* SEGUNDO ENCABEZADO, PARA TITULO DESCRIPTIVOS */
 
 .titulos, .contenedor{
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
     background: var(--color-blanco-fondo);
     box-shadow: var(--sombra-contenedores);
     border-radius: var(--radio-input);
-    width: 95%;
-    height: 50px;
-    margin: 25px;
-    padding: 5px 10px 5px 10px;
+    margin: 30px 50px;
+    padding: 5px 20px;
     align-items: center;
+    justify-items: stretch;
 }
 
 .titulos h2{
     font: var(--fuente-sub-titulo);
     color:var(--color-admin);
+}
+
+.contenedor>*{
+    font: var(--fuente-texto);
 }
 
 /*  */
@@ -76,8 +75,11 @@ body{
     align-items: center;
 }
 .nombre img{
-    width: 20px;
+    width: 35px;
+    height: 35px;
     margin-right: 10px;
+    object-fit: cover;
+    border-radius: var(--radio-contenedor);
 }
 /* FIN CONFIGURACION TITULO */
 

@@ -32,18 +32,17 @@ body{
     background: var(--color-blanco-fondo);
     box-shadow: var(--sombra-contenedores);
     border-radius: var(--radio-input);
-    width: 85%;
     height: 50px;
     display: grid;
     align-content: center;
     padding-left: 20px;
 }
 .ultimos-productos-titulo{
-    margin: 60px auto 20px;
+    margin: 30px 60px;
 }
 
 .ultimos-proveedores-titulo{
-    margin: 20px auto 20px;
+    margin: 30px 60px;
 }
 
 /* FIN ENCABEZADOS */
@@ -53,16 +52,16 @@ body{
 .contenedor{
     display: flex;
     flex-wrap: wrap;
+    gap: 1vw;
+    /* justify-content: space-around; */
+    margin: 0 60px;
 }
 .contenedor-ultimos{
     background: var(--color-blanco-fondo);
     box-shadow: var(--sombra-contenedores);
-    border-radius: var(--radio-contenedor-grande);
-    width: 300px;
-    height: 100px;
-    display: grid;
-    margin: 20px auto 0px;
-    padding: 20px;
+    border-radius: var(--radio-contenedor);
+    width: 350px;
+    padding: 15px 20px;
     font: var(--fuente-texto);
     display: flex;
 }
@@ -74,13 +73,16 @@ body{
 
 .imagen img{
     width: 150px;
+    height: 100px;
     border-radius: 20px;
+    object-fit: cover;
 }
 
 .informacion{
     margin-left: 10px;
     display: grid;
     align-content: center;
+    row-gap: 5px;
 }
 .disponible{
     display: flex;
