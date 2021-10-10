@@ -1,0 +1,144 @@
+@import url(variables.css);
+body {
+    background: var(--color-fondo);
+}
+
+
+/* CONFIGURACION ENCABEZADO USUARIOS */
+
+.encabezado-listas {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font: var(--fuente-sub-titulo);
+    color: var(--color-usuario);
+    padding: 0 50px;
+}
+
+.anadir {
+    background: var(--color-usuario);
+    color: var(--color-blanco);
+    border: none;
+    padding: 0 15px;
+    height: 58px;
+    min-width: 156px;
+    border-radius: var(--radio-boton);
+    font: var(--fuente-sub-titulo);
+}
+
+.anadir:hover {
+    background: var(--color-gris);
+    color: var(--color-usuario);
+    border: var(--border-boton-cancelar-usuario);
+    cursor: pointer;
+}
+
+
+/* FIN ENCABEZADO */
+
+
+/* COLORES PARA ADMIN Y SUPERADMIN */
+
+.sidebar,
+.container-tipo-de-busqueda .select-box .options-container,
+.container-tipo-de-busqueda .selected {
+    background-color: var(--color-usuario);
+    /* TEMPORAL, SOLO ADMIN */
+}
+
+.abrir-cerrar,
+.container-tipo-de-busqueda .select-box .option:hover {
+    color: var(--color-usuario);
+}
+
+
+/* FIN COLORES ADMIN Y SUPERADMIN */
+
+
+/* SEGUNDO ENCABEZADO, PARA TITULO DESCRIPTIVOS */
+
+.titulos,
+.contenedor {
+    display: grid;
+    grid-template-columns: 1fr 1fr 0.5fr;
+    background: var(--color-blanco-fondo);
+    box-shadow: var(--sombra-contenedores);
+    border-radius: var(--radio-input);
+    margin: 30px 50px;
+    padding: 5px 15px;
+    align-items: center;
+    justify-items: stretch;
+}
+
+.titulos h2 {
+    font: var(--fuente-sub-titulo);
+    color: var(--color-usuario);
+}
+
+.contenedor>* {
+    font: var(--fuente-texto);
+}
+
+
+/*  */
+
+.nombre {
+    display: flex;
+    align-items: center;
+}
+
+.nombre img {
+    width: 35px;
+    height: 35px;
+    margin-right: 10px;
+    object-fit: cover;
+    border-radius: var(--radio-contenedor);
+}
+
+
+/* FIN CONFIGURACION TITULO */
+
+
+/* CONFIGURACION BOTON EDITAR Y ELIMINAR */
+
+.opciones {
+    display: flex;
+    font-family: "icomoon";
+    justify-content: end;
+}
+
+.boton-editar::after {
+    content: "\e905";
+    color: white;
+}
+
+.boton-eliminar::after {
+    content: "\e9ac";
+    color: var(--color-usuario)
+}
+
+.boton-editar {
+    background: var(--color-usuario);
+    border-radius: var(--radio-input);
+    padding: 10px;
+    margin-left: 10px;
+    border: var(--border-boton-cancelar-usuario);
+}
+
+.boton-editar:hover {
+    background: var(--color-gris);
+}
+
+.boton-eliminar {
+    background: var(--color-blanco);
+    border-radius: var(--radio-input);
+    padding: 10px;
+    border: var(--border-boton-cancelar-usuario);
+}
+
+.boton-eliminar:hover {
+    background: var(--color-gris);
+}
+
+
+/* FIN BOTON EDITAR Y ELIMINAR */
