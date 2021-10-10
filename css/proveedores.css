@@ -1,0 +1,146 @@
+body{
+    font-family: 'Roboto';
+    font-weight: lighter;
+}
+header{
+    background: white;
+    font-family: 'Roboto';
+    font-weight: lighter;
+    margin-bottom:1.5px;
+    -webkit-box-shadow: 0px 10px 5px -5px rgba(126, 126, 126, 0.623);
+    -moz-box-shadow: 0px 10px 5px -5px rgba(126, 126, 126, 0.623);
+    box-shadow: 0px 10px 5px -5px rgba(126, 126, 126, 0.623);
+}
+header .encabezado .title, header .encabezado .btn {
+    display: flex;
+}
+header .encabezado{
+    overflow: hidden;
+}
+
+header .encabezado .title{
+    float: left;
+    margin-left: 90px;
+    margin-top: 10px;
+    color: var(--color-admin);
+    font-family: 'Roboto';
+    font-weight: lighter;
+}
+
+header .encabezado .btn{
+    float: right;
+    margin-top: 30px;
+    margin-right: 90px;
+    margin-bottom: 30px;   
+}
+header .encabezado .btn button{
+    background-color: var(--color-admin);
+    border-radius: 10px;
+    color: var(--color-blanco-fondo);
+    height: 40px;
+    border: 1px;
+    font-family: 'Roboto';
+    font-weight: bold;
+    padding:1em;
+}
+section{
+    background-color: var(--color-fondo);
+    flex-wrap: nowrap;
+}
+.container{
+    display: flex;
+}
+section article{
+    background-color:white;
+    border: 1px ;
+    border-radius: 15px;
+    width: 35%;
+    height:135px;
+    padding: 30px; 
+    margin-left: 10%;
+    margin-Top: 20px;
+    -webkit-box-shadow: 1px 2px 12px 0px rgba(0,0,0,0.24);
+    -moz-box-shadow: 1px 2px 12px 0px rgba(0,0,0,0.24);
+    box-shadow: 1px 2px 12px 0px rgba(0,0,0,0.24);
+}
+section article .supplier_img img{
+    width:190px;
+    height:140px;
+    border-radius: 15px;
+}
+section article .supplier_img{
+    max-width: 40%;
+}
+section article .supplier_img, section article .description{
+    display: inline-block;
+    vertical-align: top;
+    position: relative;
+}
+section article .description h3{
+    margin-top: 0px;
+    margin-bottom: 15px;
+    margin-left: 20px;
+    color: var(--color-gris);
+    font-size: 0.9em;
+}   
+section article .description{
+    margin-left: 10px;
+    max-width: 55%;
+
+}
+section article .description .text p{
+    margin-top: 0px;
+    justify-content: left;
+    text-align: left;
+    flex-wrap: wrap;
+    color:var(--color-gris);
+    margin-left: 20px;
+    font-size: 0.8em;
+}
+.buttons a{
+    font-size: 20px;
+    margin-left: 10px;
+}
+
+.buttons{
+    display: flex;
+    justify-content: end;
+    margin-bottom: 10px;
+    
+}
+
+.row article{
+    display: inline-block;
+    margin-top: 50px;
+}
+.description .edit {
+    background-color: var(--color-admin);
+    margin-left: 10px;
+    border: 1px solid var(--color-admin);
+    border-radius: 10px;
+    padding:3px;
+    height:25px;
+}
+.description .remove {
+    background-color: white;
+    border: 1px solid var(--color-admin);
+    border-radius: 10px;
+    padding:3px;
+}
+.description .remove a{
+    color: var(--color-admin);
+    padding:5px 10px 5px 10px;
+    margin:0px;
+}
+.description .edit a{
+    color: white;
+    padding:5px 8px 5px 10px;
+    margin:0px;
+}
+
+.description .remove a{
+    color: var(--color-admin);
+}
+.buttons, .supplier_img .img img{
+    vertical-align: bottom;
+}
