@@ -119,4 +119,13 @@
 
     </div>
 </section>
+    <script>
+        sessionStorage.setItem('userType', "{{ userType }}")
+
+        const user = "{{ userType }}"
+        globalUserType = {
+            response: user
+        };
+    </script>
+
 {% endblock %}
