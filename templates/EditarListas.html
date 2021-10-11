@@ -1,14 +1,125 @@
-{% extends 'MasterPage.html' %}
-{% block title %} Editar Listas {% endblock %}
+{% extends 'MasterPage.html' %} {% block content %}
+<link rel="stylesheet" href={{ url_for( 'static', filename='css/EditarListas.css' ) }}>
+<header class="header-paginas">
+    <div class="encabezado-editar-listas">
+        <div class="titulo-editar-listas">
+            <h1>{% block title %} Nombre Listas {% endblock %}</h1>
+        </div>
+    </div>
 
-{% block content %}
-<link rel="stylesheet" href={{ url_for('static', filename='css/EditarListas.css') }}>
 
+</header>
+<section class="agregar-productos">
+    <div class="agrega-productos">
+        <div class="titulo-agrega-productos">
+            <h2>Productos</h2>
+        </div>
 
+        <div class="boton-anadir">
+            <a href="{{url_for('Productos')}}"><button class="anadir"> Añadir Productos + </button></a>
+        </div>
+    </div>
 
-EDITAR LISTA
+    <div class="contenedor-agrega-pruductos">
+        <div class="subtitulos">
+            <div class="product">
+                <h2>NOMBRE DEL PRODUCTO</h2>
+            </div>
+            <div class="cantidad">
+                <h2>CANTIDAD</h2>
+            </div>
+            <div class="proveed">
+                <h2>NOMBRE PROVEEDOR</h2>
+            </div>
 
+        </div>
+    </div>
 
+    <div class="contenedor-detallado">
+        <div class="detallado">
+            <span class="point"></span>
+            <div class="producto">
+                <p>Nombre del producto</p>
+            </div>
+            <div class="cant">
+                <p> <span>-</span> 5 <span>+</span> </p>
+            </div>
+            <div class="proveedor">
+                <select>
+                    <option >Nombre Proveedor 1</option> 
+                    <option >Nombre Proveedor 2</option> 
+                    <option >Nombre Proveedor n</option>
+               </select>
+            </div>
+            <div class="opciones">
+                <a href="#">
+                    <div class="boton-eliminar" onclick="eliminar()"></div>
+                </a>
+            </div>
+
+            <span class="point"></span>
+            <div class="producto">
+                <p>Nombre del producto</p>
+            </div>
+            <div class="cant">
+                <p> <span>-</span> 5 <span>+</span> </p>
+            </div>
+            <div class="proveedor">
+                <select>
+                    <option >Nombre Proveedor 1</option> 
+                    <option >Nombre Proveedor 2</option> 
+                    <option >Nombre Proveedor n</option>
+               </select>
+            </div>
+            <div class="opciones">
+                <a href="#">
+                    <div class="boton-eliminar" onclick="eliminar()"></div>
+                </a>
+            </div>
+
+            <span class="point"></span>
+            <div class="producto">
+                <p>Nombre del producto</p>
+            </div>
+            <div class="cant">
+                <p> <span>-</span> 5 <span>+</span> </p>
+            </div>
+            <div class="proveedor">
+                <select>
+                        <option >Nombre Proveedor 1</option> 
+                        <option >Nombre Proveedor 2</option> 
+                        <option >Nombre Proveedor n</option>
+                   </select>
+            </div>
+            <div class="opciones">
+                <a href="#">
+                    <div class="boton-eliminar" onclick="eliminar()"></div>
+                </a>
+            </div>
+
+            <span class="point"></span>
+            <div class="producto">
+                <p>Nombre del producto</p>
+            </div>
+            <div class="cant">
+                <p> <span>-</span> 5 <span>+</span> </p>
+            </div>
+            <div class="proveedor">
+                <select>
+                        <option >Nombre Proveedor 1</option> 
+                        <option >Nombre Proveedor 2</option> 
+                        <option >Nombre Proveedor n</option>
+                   </select>
+            </div>
+            <div class="opciones">
+                <a href="#">
+                    <div class="boton-eliminar" onclick="eliminar()"></div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+</section>
 
 
 {% endblock %}

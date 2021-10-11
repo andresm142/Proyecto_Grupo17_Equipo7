@@ -103,7 +103,7 @@ body {
     align-items: center;
 }
 
-.point{
+.point {
     height: 20px;
     width: 20px;
     background-color: var(--color-usuario);
@@ -111,11 +111,11 @@ body {
     justify-self: center;
 }
 
-.producto{
+.producto {
     margin-left: 10px;
 }
 
-.cant{
+.cant {
     margin-left: 25px;
 }
 
@@ -124,9 +124,10 @@ body {
     color: var(--color-negro);
 }
 
-.contenedor-detallado{
+.contenedor-detallado {
     font: var(--fuente-texto);
 }
+
 
 /*  */
 
@@ -155,18 +156,9 @@ body {
     justify-content: end;
 }
 
-.icon-radio-checked2:before {
-    content: "\ea55";
-}
-
 .boton-editar::after {
     content: "\e905";
     color: white;
-}
-
-.item::before {
-    content: "\ea55";
-    color: var(--color-usuario)
 }
 
 .boton-eliminar::after {
