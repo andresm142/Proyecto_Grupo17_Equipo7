@@ -57,14 +57,13 @@ body {
 
 /* SEGUNDO ENCABEZADO, PARA TITULO DESCRIPTIVOS */
 
-.titulos,
-.contenedor {
+.titulos {
     display: grid;
     grid-template-columns: 1fr 1fr 0.5fr;
     background: var(--color-blanco-fondo);
     box-shadow: var(--sombra-contenedores);
     border-radius: var(--radio-input);
-    margin: 30px 50px;
+    margin: 30px 50px 10px 50px;
     padding: 5px 15px;
     align-items: center;
     justify-items: stretch;
@@ -77,43 +76,47 @@ body {
 
 .titulos .col-cant h2 {
     font: var(--fuente-sub-titulo);
-    color: var(--color-negro);
+    color: var(--color-gris);
 }
 
-.contenedor>* {
-    font: var(--fuente-texto);
-}
-
-.subtitulos,
-.contenedor {
+.subtitulos {
     display: grid;
     grid-template-columns: 1.5fr 1fr 1fr;
-    background: var(--color-blanco-fondo);
-    margin: 30px 50px;
+    margin: 0px 50px;
     padding: 5px 15px;
     align-items: center;
     justify-items: stretch;
-    box-shadow: 0px 3px 0px 0px rgba(0, 0, 0, 0.54);
-    -webkit-box-shadow: 0px 3px 0px 0px rgba(0, 0, 0, 0.54);
-    -moz-box-shadow: 0px 3px 0px 0px rgba(0, 0, 0, 0.54);
+    border-bottom: 1px solid var(--color-gris);
 }
 
 .subtitulos h2 {
     font: var(--fuente-sub-titulo);
-    color: var(--color-negro);
+    color: var(--color-gris);
 }
 
-.detallado,
-.contenedor {
+.detallado {
     display: grid;
-    grid-template-columns: 0.025fr 1.5fr 1fr 1fr;
-    background: var(--color-blanco-fondo);
-    box-shadow: var(--sombra-contenedores);
+    grid-template-columns: 22px 1.5fr 1fr 1fr;
     border-radius: var(--radio-input);
-    margin: 30px 50px;
+    margin: 0px 50px;
     padding: 5px 15px;
     align-items: center;
-    justify-items: stretch;
+}
+
+.point{
+    height: 20px;
+    width: 20px;
+    background-color: var(--color-usuario);
+    border-radius: 50%;
+    justify-self: center;
+}
+
+.producto{
+    margin-left: 10px;
+}
+
+.cant{
+    margin-left: 25px;
 }
 
 .sdetallado h2 {
@@ -121,6 +124,9 @@ body {
     color: var(--color-negro);
 }
 
+.contenedor-detallado{
+    font: var(--fuente-texto);
+}
 
 /*  */
 
