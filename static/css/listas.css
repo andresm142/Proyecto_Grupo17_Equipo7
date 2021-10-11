@@ -103,6 +103,24 @@ body {
     color: var(--color-negro);
 }
 
+.detallado,
+.contenedor {
+    display: grid;
+    grid-template-columns: 0.025fr 1.5fr 1fr 1fr;
+    background: var(--color-blanco-fondo);
+    box-shadow: var(--sombra-contenedores);
+    border-radius: var(--radio-input);
+    margin: 30px 50px;
+    padding: 5px 15px;
+    align-items: center;
+    justify-items: stretch;
+}
+
+.sdetallado h2 {
+    font: var(--fuente-sub-titulo);
+    color: var(--color-negro);
+}
+
 
 /*  */
 
@@ -131,13 +149,18 @@ body {
     justify-content: end;
 }
 
+.icon-radio-checked2:before {
+    content: "\ea55";
+}
+
 .boton-editar::after {
     content: "\e905";
     color: white;
 }
 
-.icon-radio-checked2:before {
+.item::before {
     content: "\ea55";
+    color: var(--color-usuario)
 }
 
 .boton-eliminar::after {
