@@ -1,3 +1,3 @@
-var body = document.body;
-
+const body = document.body;
 body.classList.add("usuario");
+

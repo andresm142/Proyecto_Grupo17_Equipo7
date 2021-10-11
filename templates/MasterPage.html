@@ -81,16 +81,19 @@
         <div class="region-cuenta">
             <a href="{{url_for('Configuracion')}}"><div class="config">
                 Configuración
-            </div></a>
-            <a href="{{url_for('Logout')}}"><div class="logout">
-                Cerrar sesión
-            </div></a>
+            </div>
+            </a>
+            <a href="{{ url_for('Logout') }}">
+                <div class="logout">
+                    Cerrar sesión
+                </div>
+            </a>
         </div>
-        
+
     </div>
     <script src={{ url_for('static', filename='js/script.js') }}></script>
     <script src={{ url_for('static', filename='js/jquery-3.3.1.js') }}></script>
-    <script src={{ url_for('static', filename='js/loginColor.js') }}></script>
+    <!-- <script src={{ url_for('static', filename='js/loginColor.js') }}></script> -->
 
 </body>
 
