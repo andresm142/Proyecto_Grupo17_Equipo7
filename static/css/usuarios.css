@@ -106,7 +106,7 @@ body{
     border-radius: var(--radio-input);
     padding: 10px;
     margin-left: 10px;
-    border: var(--border-boton-cancelar-admin);
+    border: var(--border-boton-cancelar-usuario);
 }
 
 .boton-editar:hover{
@@ -117,7 +117,7 @@ body{
     background: var(--color-blanco);
     border-radius: var(--radio-input);
     padding: 10px;
-    border: var(--border-boton-cancelar-admin);
+    border: var(--border-boton-cancelar-usuario);
     
 }
 
