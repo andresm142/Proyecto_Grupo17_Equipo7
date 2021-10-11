@@ -47,3 +47,11 @@
 body.dark{
     --color-fondo:#333747;
 }
+
+body.admin{
+    --color-usuario: var(--color-admin);
+}
+
+body.superAdmin{
+    --color-usuario: var(--color-superadmin);
+}

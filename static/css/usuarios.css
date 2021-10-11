@@ -10,13 +10,13 @@ body{
     justify-content: space-between;
     align-items: center;
     font: var(--fuente-sub-titulo);
-    color: var(--color-admin);
+    color: var(--color-usuario);
     padding: 0 50px;
 }
 
 
 .anadir{
-    background: var(--color-admin);
+    background: var(--color-usuario);
     color: var(--color-blanco);
     border: none;
     padding: 0 15px;
@@ -28,7 +28,7 @@ body{
 
 .anadir:hover{
     background: var(--color-gris);
-    color: var(--color-admin);
+    color: var(--color-usuario);
     border: var(--border-boton-cancelar-admin);
     cursor: pointer;
 }
@@ -37,11 +37,11 @@ body{
 
 /* COLORES PARA ADMIN Y SUPERADMIN */
 .sidebar, .container-tipo-de-busqueda .select-box .options-container, .container-tipo-de-busqueda .selected {
-    background-color: var(--color-admin);       /* TEMPORAL, SOLO ADMIN */
+    background-color: var(--color-usuario);       /* TEMPORAL, SOLO ADMIN */
 }
 
 .abrir-cerrar, .container-tipo-de-busqueda .select-box .option:hover{    
-    color: var(--color-admin);
+    color: var(--color-usuario);
 }
 
 /* FIN COLORES ADMIN Y SUPERADMIN */
@@ -62,7 +62,7 @@ body{
 
 .titulos h2{
     font: var(--fuente-sub-titulo);
-    color:var(--color-admin);
+    color:var(--color-usuario);
 }
 
 .contenedor>*{
@@ -98,11 +98,11 @@ body{
 
 .boton-eliminar::after{
     content:"\e9ac";
-    color: var(--color-admin)
+    color: var(--color-usuario)
 }
 
 .boton-editar{
-    background: var(--color-admin);
+    background: var(--color-usuario);
     border-radius: var(--radio-input);
     padding: 10px;
     margin-left: 10px;

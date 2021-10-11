@@ -20,7 +20,7 @@ body{
 /* CONFIGURACION DEL LADO DE LA IMAGEN */
 .info-user{
     justify-self: center;
-    border-right: 3px solid var(--color-superadmin);
+    border-right: 3px solid var(--color-usuario);
     /* height: 640px; */
     width: 100%;
 }
@@ -78,7 +78,7 @@ body{
 .info-cuenta input:focus{
     background: var(--color-blanco-fondo);
     /* border: 0.75px solid var(--color-superadmin); */
-    outline: 1.5px solid var(--color-superadmin);
+    outline: 1.5px solid var(--color-usuario);
 }
 
 .nombre, .apellido, .tipo-de-usuario, .correo, .telefono, .contrasena, .confirmar-contrasena{
@@ -105,7 +105,7 @@ body{
   }
   
 .tipo-de-usuario .contenedor-tipo-de-usuario .select-box-usuario .options-container-usuario {
-    background: var(--color-superadmin);
+    background: var(--color-usuario);
     color: var(--color-blanco) !important;
     max-height: 0;
     width: 100%;
@@ -117,7 +117,7 @@ body{
 }
 
 .tipo-de-usuario .contenedor-tipo-de-usuario .selected-usuario {
-    background: var(--color-superadmin);
+    background: var(--color-usuario);
     border-radius: var(--radio-input);
     margin-bottom: 8px;
     color: var(--color-blanco);
@@ -167,7 +167,7 @@ body{
 
 .tipo-de-usuario .contenedor-tipo-de-usuario .select-box-usuario .option-user:hover {
     background: var(--color-blanco);
-    color: var(--color-superadmin);
+    color: var(--color-usuario);
 }
 
 .tipo-de-usuario .contenedor-tipo-de-usuario .select-box-usuario label {
@@ -194,26 +194,26 @@ body{
     font: var(--fuente-sub-titulo);
 }
 .cambiar-imagen, .guardar{
-    background: var(--color-superadmin);
+    background: var(--color-usuario);
     color: var(--color-blanco);
     border: none;
 }
 
 .cambiar-imagen:hover, .guardar:hover{
     background: var(--color-gris);
-    color: var(--color-superadmin);
+    color: var(--color-usuario);
     border: var(--border-boton-cancelar-superadmin);
     cursor: pointer;
 }
 
 .cancelar{
     background: var(--color-blanco-fondo);
-    color: var(--color-superadmin);
+    color: var(--color-usuario);
     border: var(--border-boton-cancelar-superadmin);
 }
 .cancelar:hover{
     background: var(--color-gris);
-    color: var(--color-superadmin);
+    color: var(--color-usuario);
     border: var(--border-boton-cancelar-superadmin);
     cursor: pointer;
 }

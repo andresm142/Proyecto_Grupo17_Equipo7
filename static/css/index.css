@@ -1,8 +1,8 @@
 @import url(variables.css);
 
-body{
+/* body{
     background: var(--color-fondo);
-}
+} */
 /* ENCABEZADOS */
 .encabezado-inicio .titulo{
     display: flex;
