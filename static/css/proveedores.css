@@ -1,39 +1,42 @@
 @import url(variables.css);
 body{
-    font-family: 'Roboto';
-    font-weight: lighter;
+    background: var(--color-fondo);
 }
-header{
-    background:var(--color-blanco-fondo);
-    font-family: 'Roboto';
-    font-weight: lighter;
-    margin-bottom:1.5px;
-    -webkit-box-shadow: 0px 10px 5px -5px rgba(126, 126, 126, 0.623);
-    -moz-box-shadow: 0px 10px 5px -5px rgba(126, 126, 126, 0.623);
-    box-shadow: 0px 10px 5px -5px rgba(126, 126, 126, 0.623);
-}
-header .encabezado{
+
+/* CONFIGURACION ENCABEZADO PROVEEDORES */
+
+.encabezado-proveedores{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    font: var(--fuente-sub-titulo);
+    color: var(--color-usuario);
+    padding: 0 50px;
 }
 
-header .encabezado .title{
-    float: left;
-    margin-top: 10px;
-    margin-left: 90px;
-    color: var(--color-admin);
-    font-family: 'Roboto';
-    font-weight: lighter;
+
+.anadir{
+    background: var(--color-usuario);
+    color: var(--color-blanco);
+    border: none;
+    padding: 0 15px;
+    height: 58px;
+    min-width: 156px;
+    border-radius: var(--radio-boton);
+    font: var(--fuente-sub-titulo); 
 }
 
-header .encabezado .btn{
-    float: right;
-    margin-top: 30px;
-    margin-right: 90px;
-    margin-bottom: 30px;   
+.anadir:hover{
+    background: var(--color-gris);
+    color: var(--color-usuario);
+    border: var(--border-boton-cancelar-usuario);
+    cursor: pointer;
 }
-header .encabezado .btn button{
+
+/* FIN ENCABEZADO */
+
+/* 
+.encabezado-proveedores .btn button{
     background-color: var(--color-admin);
     border-radius: 10px;
     color: var(--color-blanco-fondo);
@@ -41,11 +44,16 @@ header .encabezado .btn button{
     border: 1px;
     font-family: 'Roboto';
     font-weight: bold;
+} */
+
+section .proveedores{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:space-between;
+    margin: 30px 30px;
+    gap: 50px 20px;
 }
-section{
-    background-color: var(--color-fondo);
-    flex-wrap: nowrap;
-}
+
 .container{
     display: flex;
 }
@@ -58,13 +66,14 @@ section article{
     background-color:white;
     border: 1px ;
     border-radius: 15px;
-    width: 40%;
+    width: 45%;
     display: inline-flex;
     margin-top: 50px;
     padding: 30px; 
-    -webkit-box-shadow: 1px 2px 12px 0px rgba(0,0,0,0.24);
+    box-shadow: var(--sombra-contenedores);
+    /* -webkit-box-shadow: 1px 2px 12px 0px rgba(0,0,0,0.24);
     -moz-box-shadow: 1px 2px 12px 0px rgba(0,0,0,0.24);
-    box-shadow: 1px 2px 12px 0px rgba(0,0,0,0.24);
+    box-shadow: 1px 2px 12px 0px rgba(0,0,0,0.24); */
 }
 section article .supplier_img img{
     width:190px;
@@ -72,7 +81,8 @@ section article .supplier_img img{
     border-radius: 15px;
 }
 section article .supplier_img, section article .description{
-    display: inline-block;
+    display: grid;
+    align-content: center;
     vertical-align: top;
     position: relative;
 }
@@ -93,17 +103,54 @@ section article .description .text p{
     margin-left: 20px;
     font-size: 0.8em;
 }
-.buttons a{
+/* .buttons a{
     font-size: 20px;
     margin-left: 10px;
-}
+} */
 
 .buttons{
     display: flex;
+    font-family: "icomoon";
     justify-content: end;
-    margin-bottom: 10px;
+}
+
+
+.edit::after{
+    content:"\e905";
+    color:white;
+}
+
+.remove::after{
+    content:"\e9ac";
+    color: var(--color-usuario)
+}
+
+.edit{
+    background: var(--color-usuario);
+    border-radius: var(--radio-input);
+    padding: 10px;
+    margin-left: 10px;
+    border: var(--border-boton-cancelar-usuario);
+}
+
+.edit:hover{
+    background: var(--color-gris);
+}
+
+.remove{
+    background: var(--color-blanco);
+    border-radius: var(--radio-input);
+    padding: 10px;
+    border: var(--border-boton-cancelar-usuario);
     
 }
+
+.remove:hover{
+    background: var(--color-gris);
+}
+
+/* 
+
 
 .description .edit {
     background-color: var(--color-admin);
@@ -135,4 +182,4 @@ section article .description .text p{
 }
 .buttons, .supplier_img .img img{
     vertical-align: bottom;
-}
+} */

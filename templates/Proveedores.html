@@ -4,17 +4,18 @@
 
 <link rel="stylesheet" href={{ url_for('static', filename="css/proveedores.css" ) }}>
 
-<header>
-    <div class="encabezado">
+<header class="header-paginas">
+    <div class="encabezado-proveedores">
         <div class="title">
             <h1>{% block title %}Proveedores{% endblock %}</h1>
         </div>
-        <div class="btn">
-            <button type="button">Añadir proveedor +</button>
+        <div class="boton-anadir">
+            <a href="{{url_for('EditarProveedores')}}"><button class="anadir">Añadir proveedor +</button></a>
         </div>
     </div>
 </header>
-<section>
+
+<section class="proveedores">
     <div class="block">
         <article>
             <div class="container">
@@ -30,172 +31,23 @@
                         </p>
                     </div>
                     <div class="buttons">
-                        <div class="remove">
-                            <a href="#" onclick="eliminar()">
-                                <i class="fas fa-trash-alt"></i>
-                            </a>
-                        </div>
-                        <div class="edit">
-                            <a href="{{url_for('EditarProveedores')}}">
-                                <i class="fas fa-edit"></i>
-                            </a>
-                        </div>
+                        <a href="#">
+                            <div class="remove" onclick="eliminar()">
+                        </a>
+
                     </div>
+                    <a href="{{url_for('AdminUser')}}">
+                        <div class="edit"></div>
+                    </a>
+
                 </div>
             </div>
         </article>
 
-        <article>
-            <div class="container">
-                <div class="supplier_img">
-                    <img src={{ url_for('static', filename="images/proveedores.jpg" ) }} alt="">
-                </div>
-                <div class="description">
-                    <div class="text">
-                        <h3>Nombre de proveedor</h3>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque consequat iaculis
-                            fermentum. Nulia dapibus at arcu ac iaculis.
-                        </p>
-                    </div>
-                    <div class="buttons">
-                        <div class="remove">
-                            <a href="#" onclick="eliminar()">
-                                <i class="fas fa-trash-alt"></i>
-                            </a>
-                        </div>
-                        <div class="edit">
-                            <a href="{{url_for('EditarProveedores')}}">
-                                <i class="fas fa-edit"></i>
-                            </a>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </article>
+        
     </div>
-    <div class="block">
-        <article>
-            <div class="container">
-                <div class="supplier_img">
-                    <img src={{ url_for('static', filename="images/proveedores.jpg" ) }} alt="">
-                </div>
-                <div class="description">
-                    <div class="text">
-                        <h3>Nombre de proveedor</h3>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque consequat iaculis
-                            fermentum. Nulia dapibus at arcu ac iaculis.
-                        </p>
-                    </div>
-                    <div class="buttons">
-                        <div class="remove" >
-                            <a href="#" onclick="eliminar()" >
-                                <i class="fas fa-trash-alt" ></i>
-                            </a>
-                        </div>
-                        <div class="edit">
-                            <a href="{{url_for('EditarProveedores')}}">
-                                <i class="fas fa-edit"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </article>
 
-        <article>
-            <div class="container">
-                <div class="supplier_img">
-                    <img src={{ url_for('static', filename="images/proveedores.jpg" ) }} alt="">
-                </div>
-                <div class="description">
-                    <div class="text">
-                        <h3>Nombre de proveedor</h3>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque consequat iaculis
-                            fermentum. Nulia dapibus at arcu ac iaculis.
-                        </p>
-                    </div>
-                    <div class="buttons">
-                        <div class="remove">
-                            <a href="#" onclick="eliminar()">
-                                <i class="fas fa-trash-alt"></i>
-                            </a>
-                        </div>
-                        <div class="edit">
-                            <a href="{{url_for('EditarProveedores')}}">
-                                <i class="fas fa-edit"></i>
-                            </a>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </article>
-    </div>
-    <div class="block">
-        <article>
-            <div class="container">
-                <div class="supplier_img">
-                    <img src={{ url_for('static', filename="images/proveedores.jpg" ) }} alt="">
-                </div>
-                <div class="description">
-                    <div class="text">
-                        <h3>Nombre de proveedor</h3>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque consequat iaculis
-                            fermentum. Nulia dapibus at arcu ac iaculis.
-                        </p>
-                    </div>
-                    <div class="buttons">
-                        <div class="remove">
-                            <a href="#" onclick="eliminar()">
-                                <i class="fas fa-trash-alt"></i>
-                            </a>
-                        </div>
-                        <div class="edit">
-                            <a href="{{url_for('EditarProveedores')}}">
-                                <i class="fas fa-edit"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </article>
-
-        <article>
-            <div class="container">
-                <div class="supplier_img">
-                    <img src={{ url_for('static', filename="images/proveedores.jpg" ) }} alt="">
-                </div>
-                <div class="description">
-                    <div class="text">
-                        <h3>Nombre de proveedor</h3>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque consequat iaculis
-                            fermentum. Nulia dapibus at arcu ac iaculis.
-                        </p>
-                    </div>
-                    <div class="buttons">
-                        <div class="remove">
-                            <a href="#" onclick="eliminar()">
-                                <i class="fas fa-trash-alt"></i>
-                            </a>
-                        </div>
-                        <div class="edit">
-                            <a href="{{url_for('EditarProveedores')}}">
-                                <i class="fas fa-edit"></i>
-                            </a>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </article>
-    </div>
 </section>
-<script src="https://kit.fontawesome.com/1c83c64050.js" crossorigin="anonymous"></script>
+
 
 {% endblock %}
