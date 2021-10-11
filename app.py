@@ -56,3 +56,12 @@ def AdminUser():
     
     return render_template('AdminUser.html')
 
+@app.route('/EditarLista')
+def EditarLista():
+    
+    return render_template('EditarListas.html')
+
+@app.route('/EditarProveedores')
+def EditarProveedores():
+    
+    return render_template('EditarProveedor.html')

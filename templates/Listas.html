@@ -7,7 +7,7 @@
         </div>
 
         <div class="boton-anadir">
-            <a href="#"><button class="anadir"> Añadir Lista + </button></a>
+            <a href="{{url_for('EditarLista')}}"><button class="anadir"> Añadir Lista + </button></a>
         </div>
 
     </div>
@@ -23,10 +23,10 @@
         </div>
         <div class="opciones">
             <a href="#">
-                <div class="boton-eliminar" onclick="eliminar()" onclick="eliminar()"></div>
+                <div class="boton-eliminar" onclick="eliminar()"></div>
             </a>
 
-            <a href="{{url_for('AdminUser')}}">
+            <a href="{{url_for('EditarLista')}}">
                 <div class="boton-editar"></div>
             </a>
 
@@ -113,10 +113,10 @@
             </div>
             <div class="opciones">
                 <a href="#">
-                    <div class="boton-eliminar" onclick="eliminar()" onclick="eliminar()"></div>
+                    <div class="boton-eliminar" onclick="eliminar()"></div>
                 </a>
 
-                <a href="{{url_for('AdminUser')}}">
+                <a href="{{url_for('EditarLista')}}">
                     <div class="boton-editar"></div>
                 </a>
 
