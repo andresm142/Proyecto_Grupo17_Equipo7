@@ -324,8 +324,9 @@ body{
 header .encabezado .logo{
     margin-top: 25px;
 }
-header .encabezado .logo h2{
-    margin: auto;
+
+header .encabezado .logo img{
+    width: 110px;
 }
 
 /* INICIO STYLE USER */
