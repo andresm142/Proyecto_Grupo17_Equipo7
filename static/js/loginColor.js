@@ -1,3 +1,3 @@
 var body = document.body;
 
-body.classList.add("usuario");
+body.classList.add("admin");
