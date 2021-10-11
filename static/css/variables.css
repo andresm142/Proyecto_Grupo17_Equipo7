@@ -50,8 +50,10 @@ body.dark{
 
 body.admin{
     --color-usuario: var(--color-admin);
+    --border-boton-cancelar-usuario: var(--border-boton-cancelar-admin);
 }
 
 body.superAdmin{
     --color-usuario: var(--color-superadmin);
+    --border-boton-cancelar-usuario: var(--border-boton-cancelar-superadmin);
 }

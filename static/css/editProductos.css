@@ -313,14 +313,14 @@ textarea:focus{
 .cambiar-imagen:hover, .guardar:hover {
     background: var(--color-gris);
     color: var(--color-usuario);
-    border: var(--border-boton-cancelar-superadmin);
+    border: var(--border-boton-cancelar-usuario);
     cursor: pointer;
 }
 
 .cancelar {
     background: var(--color-blanco-fondo);
     color: var(--color-usuario);
-    border: var(--border-boton-cancelar-superadmin);
+    border: var(--border-boton-cancelar-usuario);
 }
 
 .cancelar:hover {
