@@ -10,6 +10,7 @@ def login():
 
 @app.route('/Index', methods=['POST'])
 def Index():
+    global userType
     if request.form["email"] == "alope@uninorte.edu.co":
         userType = "usuario"
     elif request.form["email"] == "jfonsecad@uninorte.edu.co":
@@ -28,7 +29,7 @@ def Index():
 
 @app.route('/Home')
 def Home():
-    return render_template('Index.html')
+    return render_template('Index.html', userType=userType)
 
 
 @app.route('/Productos')
