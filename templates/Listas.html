@@ -7,7 +7,7 @@
         </div>
 
         <div class="boton-anadir">
-            <a href="#"><button class="anadir"> Añadir Lista + </button></a>
+            <a href="{{url_for('EditarLista')}}"><button class="anadir"> Añadir Lista + </button></a>
         </div>
     </div>
 </header>
@@ -22,10 +22,10 @@
         </div>
         <div class="opciones">
             <a href="#">
-                <div class="boton-eliminar" onclick="eliminar()" onclick="eliminar()"></div>
+                <div class="boton-eliminar" onclick="eliminar()"></div>
             </a>
 
-            <a href="{{url_for('AdminUser')}}">
+            <a href="{{url_for('EditarLista')}}">
                 <div class="boton-editar"></div>
             </a>
 
@@ -94,6 +94,103 @@
                 <p>Nombre del proveedor</p>
             </div>
         </div>
+<<<<<<< HEAD
     </div>
 </section>
 {% endblock %}
+=======
+
+        <div class="titulos">
+            <div class="col-nombre">
+                <h2>Nombre de Lista</h2>
+            </div>
+            <div class="col-cant">
+                <h2>Cantidad de Productos : 25</h2>
+            </div>
+            <div class="opciones">
+                <a href="#">
+                    <div class="boton-eliminar" onclick="eliminar()"></div>
+                </a>
+
+                <a href="{{url_for('EditarLista')}}">
+                    <div class="boton-editar"></div>
+                </a>
+
+            </div>
+
+        </div>
+
+        <div class="contenedor-subtitulos">
+            <div class="subtitulos">
+                <div class="product">
+                    <h2>NOMBRE DEL PRODUCTO</h2>
+                </div>
+                <div class="cantidad">
+                    <h2>CANTIDAD</h2>
+                </div>
+                <div class="proveed">
+                    <h2>NOMBRE PROVEEDOR</h2>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="contenedor-detallado">
+            <div class="detallado">
+                <a href="#">
+                    <div class="item"></div>
+                </a>
+                <div class="producto">
+                    <h2>Nombre del producto</h2>
+                </div>
+                <div class="cant">
+                    <h2>5</h2>
+                </div>
+                <div class="proveedor">
+                    <h2>Nombre del proveedor</h2>
+                </div>
+
+                <a href="#">
+                    <div class="item"></div>
+                </a>
+                <div class="producto">
+                    <h2>Nombre del producto</h2>
+                </div>
+                <div class="cant">
+                    <h2>5</h2>
+                </div>
+                <div class="proveedor">
+                    <h2>Nombre del proveedor</h2>
+                </div>
+
+                <a href="#">
+                    <div class="item"></div>
+                </a>
+                <div class="producto">
+                    <h2>Nombre del producto</h2>
+                </div>
+                <div class="cant">
+                    <h2>5</h2>
+                </div>
+                <div class="proveedor">
+                    <h2>Nombre del proveedor</h2>
+                </div>
+
+                <a href="#">
+                    <div class="item"></div>
+                </a>
+                <div class="producto">
+                    <h2>Nombre del producto</h2>
+                </div>
+                <div class="cant">
+                    <h2>5</h2>
+                </div>
+                <div class="proveedor">
+                    <h2>Nombre del proveedor</h2>
+                </div>
+            </div>
+
+
+            < </section>
+                {% endblock %}
+>>>>>>> 9561bdd0637d788ab44045e10889a2d0d7709b76
