@@ -21,6 +21,7 @@
     margin: 0;
     white-space: pre;
     color: var(--color-usuario);
+    text-transform: uppercase
 }
 
 .section-index h2{
