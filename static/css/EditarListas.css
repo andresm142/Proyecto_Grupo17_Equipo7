@@ -112,6 +112,61 @@ body {
 }
 
 
+/* CONFIGURACION DE LOS BOTONES CAMBIAR CANCELAR Y GUARDAR */
+
+.guardar-cancelar {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    gap: 20px;
+}
+
+.cambiar-imagen,
+.cancelar,
+.guardar {
+    padding: 0 15px;
+    height: 58px;
+    border-radius: var(--radio-boton);
+    font: var(--fuente-sub-titulo);
+}
+
+.cambiar-imagen,
+.guardar {
+    background: var(--color-usuario);
+    color: var(--color-blanco);
+    border: none;
+}
+
+.cambiar-imagen:hover,
+.guardar:hover {
+    background: var(--color-gris);
+    color: var(--color-usuario);
+    border: var(--border-boton-cancelar-usuario);
+    cursor: pointer;
+}
+
+.cancelar {
+    background: var(--color-blanco-fondo);
+    color: var(--color-usuario);
+    border: var(--border-boton-cancelar-usuario);
+}
+
+.cancelar:hover {
+    background: var(--color-gris);
+    color: var(--color-blanco);
+    border: none;
+    cursor: pointer;
+}
+
+.guardar,
+.cancelar {
+    width: 156px;
+}
+
+
+/* FIN CONFI
+
+
 /* COLORES PARA ADMIN Y SUPERADMIN */
 
 .sidebar,
