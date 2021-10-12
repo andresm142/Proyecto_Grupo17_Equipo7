@@ -35,16 +35,16 @@ body{
 
 /* FIN ENCABEZADO */
 
-/* 
+
 .encabezado-proveedores .btn button{
-    background-color: var(--color-admin);
+    background-color: var(--color-usuario);
     border-radius: 10px;
     color: var(--color-blanco-fondo);
     height: 40px;
     border: 1px;
     font-family: 'Roboto';
     font-weight: bold;
-} */
+} 
 
 section .proveedores{
     display: flex;
@@ -102,10 +102,10 @@ section article .description .text p{
     margin-left: 20px;
     font-size: 0.8em;
 }
-/* .buttons a{
+.buttons a{
     font-size: 20px;
     margin-left: 10px;
-} */
+}
 
 .buttons{
     display: flex;
@@ -148,25 +148,23 @@ section article .description .text p{
     background: var(--color-gris);
 }
 
-/* 
-
 
 .description .edit {
-    background-color: var(--color-admin);
+    background-color: var(--color-usuario);
     margin-left: 10px;
-    border: 1px solid var(--color-admin);
+    border: 1px solid var(--color-usuario);
     border-radius: 10px;
     padding:3px;
     height:25px;
 }
 .description .remove {
     background-color: white;
-    border: 1px solid var(--color-admin);
+    border: 1px solid var(--color-usuario);
     border-radius: 10px;
     padding:3px;
 }
 .description .remove a{
-    color: var(--color-admin);
+    color: var(--color-usuario);
     padding:5px 10px 5px 10px;
     margin:0px;
 }
@@ -177,8 +175,8 @@ section article .description .text p{
 }
 
 .description .remove a{
-    color: var(--color-admin);
+    color: var(--color-usuario);
 }
 .buttons, .supplier_img .img img{
     vertical-align: bottom;
-} */
+} 

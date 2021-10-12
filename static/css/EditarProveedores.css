@@ -3,3 +3,96 @@
 body{
     background: var(--color-fondo);
 }
+.main_box{
+    font: var(--fuente-texto);
+    background: var(--color-blanco-fondo);
+    box-shadow: var(--sombra-contenedores);
+    border-radius: var(--radio-contenedor-grande);
+    width: 85%;
+    min-height: 85vh;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    margin: 60px auto;
+    align-content: center;
+}
+
+.image_side{
+    justify-self: center;
+    border-right: 3px solid var(--color-usuario);
+    padding-right:40px;
+    justify-content: center;
+    padding-top: 1em;
+    margin-left:2em;
+}
+.img img{
+    border-radius:30px;
+}
+.add_button{
+    display: flex;
+    justify-content: center;
+    margin-top: 2em;
+}
+.add_button button{
+    padding: 0 15px;
+    height: 58px;
+    border-radius: var(--radio-boton);
+    font: var(--fuente-sub-titulo);
+    color: white;
+    background-color: var(--color-usuario);
+}
+.inputs_side{
+    margin-left: 1em;
+}
+.inputs_side .formulario input, .inputs_side .formulario textarea{
+    border-radius: var(--radio-input);
+    border: var(--boder-inputs);
+    background: var(--color-fondo);
+    padding: 0 20px;
+    width: 70%;
+    min-height:2em;
+    margin-bottom: 2em;
+}
+.inputs_side .formulario label{
+    font: var(--fuente-sub-titulo);
+    color: var(--color-gris);
+    width: 100%;
+    position: relative;
+    display:block;
+    margin:5px 0px;
+}
+.inputs_side .buttons{
+    display: flex;
+    justify-content: end;
+    max-width: 80%;
+    align-items: flex-end;
+    height:50px;
+    gap: 20px;
+    margin-top: 1em;
+}
+.inputs_side .buttons a button{
+    border: var(--border-boton-cancelar-usuario);
+    font: var(--fuente-sub-titulo);
+    border-radius: 20px;
+    padding: 0.5em;
+    
+}
+.inputs_side .buttons .cancelar{
+    background-color: white;
+    color: var(--color-usuario);
+}
+.inputs_side .buttons .guardar{
+    background-color:var(--color-usuario);
+    color: white;
+}
+.inputs_side .buttons .guardar:hover {
+    background: var(--color-gris);
+    color: var(--color-usuario);
+}
+.inputs_side .buttons .cancelar:hover {
+    background: var(--color-gris);
+    color: var(--color-usuario);
+}
+.image_side .add_button .add:hover{
+    background: var(--color-gris);
+    color: var(--color-usuario);
+}
