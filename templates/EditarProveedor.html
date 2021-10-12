@@ -5,9 +5,35 @@
 <link rel="stylesheet" href={{ url_for('static', filename='css/EditarProveedores.css') }}>
 
 
-
-EDITAR PROVEEDOR
-
+<div class="main_box">
+    <div class="image_side">
+        <div class="img">
+            <img src={{ url_for('static', filename="images/proveedores.jpg" ) }} alt="">
+        </div>
+        <div class="add_button" id="add">
+            <a href="#"><button class="add">Agregar imagen</button></a>
+        </div>
+    </div>
+    <div class="inputs_side">
+        <div class="formulario">
+            <label for="name">Nombre del proveedor</label>
+            <input type="text" name="nombre" id="name">   
+        </div>
+        <div class="formulario">
+            <label for="description">Descripción del proveedor</label>
+            <textarea type="textarea" name="description" id="description" rows="4" cols="50"></textarea>
+        </div>
+        <div class="buttons">
+            <a href="{{url_for('Proveedores')}}"><button class="cancelar">
+                Cancelar
+            </button></a>
+            <a href="{{url_for('Proveedores')}}"><button class="guardar" onclick="guardar()">
+                Guardar
+            </button></a>
+        </div>
+    </div>
+</div>
+<script src={{ url_for('static', filename='js/script.js') }}></script>
 
 
 
