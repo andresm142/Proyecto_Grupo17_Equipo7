@@ -54,26 +54,25 @@ section .proveedores{
     gap: 50px 20px;
 }
 
-.container{
+.container-proveedor{
     display: flex;
 }
 .block{
+    width: 100%;
     display: flex;
-    gap:60px;
-    padding:0px 50px;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap:30px;
 }
 section article{
-    background-color:white;
-    border: 1px ;
+    background-color: var(--color-blanco);
     border-radius: 15px;
-    width: 45%;
+    max-width: 400px;
     display: inline-flex;
     margin-top: 50px;
     padding: 30px; 
     box-shadow: var(--sombra-contenedores);
-    /* -webkit-box-shadow: 1px 2px 12px 0px rgba(0,0,0,0.24);
-    -moz-box-shadow: 1px 2px 12px 0px rgba(0,0,0,0.24);
-    box-shadow: 1px 2px 12px 0px rgba(0,0,0,0.24); */
+    font: var(--fuente-texto);
 }
 section article .supplier_img img{
     width:190px;

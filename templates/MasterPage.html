@@ -68,7 +68,7 @@
             <a href="{{url_for('Productos')}}"><div class="productos">
                 Productos
             </div></a>
-            <a href="{{url_for('Listas')}}"><div class="listas">
+            <a href="{{url_for('Listas')}}"><div class="listas" id="listas">
                 Listas
             </div></a>
             <a href="{{url_for('Usuarios')}}"><div class="usuarios" id="usuarios">
@@ -106,6 +106,9 @@
             document.getElementById("usuarios").style.display="";
             
             
+        }
+        if(sessionStorage.getItem('userType')=="admin"){
+            document.getElementById("listas").style.display="none";
         }
 
     </script>
