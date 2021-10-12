@@ -22,6 +22,7 @@ body{
     padding-right:40px;
     justify-content: center;
     padding-top: 1em;
+    margin-left:2em;
 }
 .img img{
     border-radius:30px;
@@ -29,7 +30,7 @@ body{
 .add_button{
     display: flex;
     justify-content: center;
-    margin-top: 1em;
+    margin-top: 2em;
 }
 .add_button button{
     padding: 0 15px;
@@ -38,6 +39,9 @@ body{
     font: var(--fuente-sub-titulo);
     color: white;
     background-color: var(--color-usuario);
+}
+.inputs_side{
+    margin-left: 1em;
 }
 .inputs_side .formulario input, .inputs_side .formulario textarea{
     border-radius: var(--radio-input);
