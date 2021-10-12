@@ -209,12 +209,12 @@ textarea:focus{
     justify-self: end;
 }
 
-.select-box-user {
+.select-box-calificacion {
     display: flex;
     flex-direction: column;
 }
 
-.select-box-user .options-container-usuario {
+.select-box-calificacion .options-container-calificacion {
     background: var(--color-usuario);
     color: var(--color-blanco) !important;
     max-height: 0;
@@ -226,7 +226,7 @@ textarea:focus{
     order: 1;
 }
 
-.selected-usuario {
+.selected-calificacion {
     background: var(--color-usuario);
     border-radius: var(--radio-input);
     margin-bottom: 8px;
@@ -235,7 +235,7 @@ textarea:focus{
     order: 0;
 }
 
-.selected-usuario::after {
+.selected-calificacion::after {
     content: "";
     background: url("../images/arrow-down.svg");
     background-size: contain;
@@ -248,41 +248,41 @@ textarea:focus{
     transition: all 0.4s;
 }
 
-.select-box-user .options-container-usuario.active {
+.select-box-calificacion .options-container-calificacion.active {
     max-height: 240px;
     opacity: 1;
     overflow-y: scroll;
 }
 
-.select-box-user .options-container-usuario.active+.selected-usuario::after {
+.select-box-calificacion .options-container-calificacion.active+.selected-calificacion::after {
     transform: rotateX(180deg);
     top: -6px;
 }
 
-.select-box-user .options-container-usuario::-webkit-scrollbar {
+.select-box-calificacion .options-container-calificacion::-webkit-scrollbar {
     display: none;
 }
 
-.select-box-user .options-container-usuario::-webkit-scrollbar-thumb {
+.select-box-calificacion .options-container-calificacion::-webkit-scrollbar-thumb {
     background: var(--color-gris);
     border-radius: 0 8px 8px 0;
 }
 
-.select-box-user .option-user, .selected-usuario {
+.select-box-calificacion .option-calificacion, .selected-calificacion {
     padding: 12px 24px;
     cursor: pointer;
 }
 
-.select-box-user .option-user:hover {
+.select-box-calificacionr .option-calificacion:hover {
     background: var(--color-blanco);
     color: var(--color-usuario);
 }
 
-.select-box-user label {
+.select-box-calificacion label {
     cursor: pointer;
 }
 
-.select-box-user .option-user .radio {
+.select-box-calificacion .option-calificacion .radio {
     display: none;
 }
 

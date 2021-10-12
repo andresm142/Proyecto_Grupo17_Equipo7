@@ -4,13 +4,13 @@ const optionsContainer = document.querySelector(".options-container");
 const optionsList = document.querySelectorAll(".option");
 
 selected.addEventListener("click", () => {
-  optionsContainer.classList.toggle("active");
+    optionsContainer.classList.toggle("active");
 });
 
 optionsList.forEach(o => {
     o.addEventListener("click", () => {
-      selected.innerHTML = o.querySelector("label").innerHTML;
-      optionsContainer.classList.remove("active");
+        selected.innerHTML = o.querySelector("label").innerHTML;
+        optionsContainer.classList.remove("active");
     });
 });
 
@@ -33,16 +33,16 @@ function ocultar() {
     document.getElementById("cerrar").style.display = "none";
 
 }
-function cargar(event){
-    $("#contenido").load(event);    
+function cargar(event) {
+    $("#contenido").load(event);
 }
-function home(){
+function home() {
     location.reload();
 }
 
-function guardar(){                     //Temporal, solo para navegabilidad
+function guardar() {                     //Temporal, solo para navegabilidad
     alert("Guardado")
 }
-function eliminar(){
+function eliminar() {
     alert("Eliminado")
 }

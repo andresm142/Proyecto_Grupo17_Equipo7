@@ -3,9 +3,13 @@ const selectedUsuario = document.querySelector(".selected-usuario");
 const optionsContainerUsuario = document.querySelector(".options-container-usuario");
 const optionsListUsuario = document.querySelectorAll(".option-user");
 
+
+
 selectedUsuario.addEventListener("click", () => {
-    optionsContainerUsuario.classList.toggle("active");
-    console.log("funciona");
+    if(sessionStorage.getItem('userType')=="superAdmin"){
+        optionsContainerUsuario.classList.toggle("active");
+    }
+
 });
 
 optionsListUsuario.forEach(o => {
