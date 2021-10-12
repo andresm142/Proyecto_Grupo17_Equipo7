@@ -1,63 +1,39 @@
 {% extends 'MasterPage.html' %} {% block content %}
 <link rel="stylesheet" href={{ url_for( 'static', filename='css/EditarListas.css' ) }}>
-<header class="header-paginas">
-    <div class="encabezado-editar-listas">
-        <div class="titulo-editar-listas">
-            <h1>{% block title %} Nombre Listas {% endblock %}</h1>
-        </div>
+
+<div class="contenedor-editar-listas">
+
+    <div class="titulo-editar-listas">
+        <h2> Nombre Listas </h2>
+        <input class="search" type="search" id="search">
     </div>
-
-
-</header>
-<section class="agregar-productos">
     <div class="agrega-productos">
         <div class="titulo-agrega-productos">
             <h2>Productos</h2>
         </div>
 
         <div class="boton-anadir">
-            <a href="{{url_for('Productos')}}"><button class="anadir"> Añadir Productos + </button></a>
+            <a href="#"><button class="anadir"> Añadir Productos + </button></a>
         </div>
     </div>
 
-    <div class="contenedor-agrega-pruductos">
-        <div class="subtitulos">
-            <div class="product">
-                <h2>NOMBRE DEL PRODUCTO</h2>
-            </div>
-            <div class="cantidad">
-                <h2>CANTIDAD</h2>
-            </div>
-            <div class="proveed">
-                <h2>NOMBRE PROVEEDOR</h2>
-            </div>
-
+    <div class="subtitulos">
+        <div class="product">
+            <h4>NOMBRE DEL PRODUCTO</h4>
         </div>
+        <div class="cantidad">
+            <h4>CANTIDAD</h4>
+        </div>
+        <div class="proveed">
+            <h4>NOMBRE PROVEEDOR</h4>
+        </div>
+
     </div>
 
     <div class="contenedor-detallado">
         <div class="detallado">
             <span class="point"></span>
-            <div class="producto">
-                <p>Nombre del producto</p>
-            </div>
-            <div class="cant">
-                <p> <span>-</span> 5 <span>+</span> </p>
-            </div>
-            <div class="proveedor">
-                <select>
-                    <option >Nombre Proveedor 1</option> 
-                    <option >Nombre Proveedor 2</option> 
-                    <option >Nombre Proveedor n</option>
-               </select>
-            </div>
-            <div class="opciones">
-                <a href="#">
-                    <div class="boton-eliminar" onclick="eliminar()"></div>
-                </a>
-            </div>
 
-            <span class="point"></span>
             <div class="producto">
                 <p>Nombre del producto</p>
             </div>
@@ -66,50 +42,11 @@
             </div>
             <div class="proveedor">
                 <select>
-                    <option >Nombre Proveedor 1</option> 
-                    <option >Nombre Proveedor 2</option> 
-                    <option >Nombre Proveedor n</option>
-               </select>
-            </div>
-            <div class="opciones">
-                <a href="#">
-                    <div class="boton-eliminar" onclick="eliminar()"></div>
-                </a>
-            </div>
-
-            <span class="point"></span>
-            <div class="producto">
-                <p>Nombre del producto</p>
-            </div>
-            <div class="cant">
-                <p> <span>-</span> 5 <span>+</span> </p>
-            </div>
-            <div class="proveedor">
-                <select>
-                        <option >Nombre Proveedor 1</option> 
-                        <option >Nombre Proveedor 2</option> 
-                        <option >Nombre Proveedor n</option>
-                   </select>
-            </div>
-            <div class="opciones">
-                <a href="#">
-                    <div class="boton-eliminar" onclick="eliminar()"></div>
-                </a>
-            </div>
-
-            <span class="point"></span>
-            <div class="producto">
-                <p>Nombre del producto</p>
-            </div>
-            <div class="cant">
-                <p> <span>-</span> 5 <span>+</span> </p>
-            </div>
-            <div class="proveedor">
-                <select>
-                        <option >Nombre Proveedor 1</option> 
-                        <option >Nombre Proveedor 2</option> 
-                        <option >Nombre Proveedor n</option>
-                   </select>
+                        <option ><p>Nombre Proveedor 1</p></option> 
+                        <option ><p>Nombre Proveedor 2</p></option> 
+                        <option ><p>Nombre Proveedor 3</p></option>
+                        <option ><p>Nombre Proveedor n</p></option>
+                </select>
             </div>
             <div class="opciones">
                 <a href="#">
@@ -117,9 +54,84 @@
                 </a>
             </div>
         </div>
+
+        <div class="detallado">
+            <span class="point"></span>
+
+            <div class="producto">
+                <p>Nombre del producto</p>
+            </div>
+            <div class="cant">
+                <p> <span>-</span> 5 <span>+</span> </p>
+            </div>
+            <div class="proveedor">
+                <select>
+                        <option ><p>Nombre Proveedor 1</p></option> 
+                        <option ><p>Nombre Proveedor 2</p></option> 
+                        <option ><p>Nombre Proveedor 3</p></option>
+                        <option ><p>Nombre Proveedor n</p></option>
+                </select>
+            </div>
+            <div class="opciones">
+                <a href="#">
+                    <div class="boton-eliminar" onclick="eliminar()"></div>
+                </a>
+            </div>
+        </div>
+
+        <div class="detallado">
+            <span class="point"></span>
+
+            <div class="producto">
+                <p>Nombre del producto</p>
+            </div>
+            <div class="cant">
+                <p> <span>-</span> 5 <span>+</span> </p>
+            </div>
+            <div class="proveedor">
+                <select>
+                        <option ><p>Nombre Proveedor 1</p></option> 
+                        <option ><p>Nombre Proveedor 2</p></option> 
+                        <option ><p>Nombre Proveedor 3</p></option>
+                        <option ><p>Nombre Proveedor n</p></option>
+                </select>
+            </div>
+            <div class="opciones">
+                <a href="#">
+                    <div class="boton-eliminar" onclick="eliminar()"></div>
+                </a>
+            </div>
+        </div>
+
+        <div class="detallado">
+            <span class="point"></span>
+
+            <div class="producto">
+                <p>Nombre del producto</p>
+            </div>
+            <div class="cant">
+                <p> <span>-</span> 5 <span>+</span> </p>
+            </div>
+            <div class="proveedor">
+                <select>
+                        <option ><p>Nombre Proveedor 1</p></option> 
+                        <option ><p>Nombre Proveedor 2</p></option> 
+                        <option ><p>Nombre Proveedor 3</p></option>
+                        <option ><p>Nombre Proveedor n</p></option>
+                </select>
+            </div>
+            <div class="opciones">
+                <a href="#">
+                    <div class="boton-eliminar" onclick="eliminar()"></div>
+                </a>
+            </div>
+        </div>
+
+
     </div>
 
-</section>
+</div>
+
 
 
 {% endblock %}
