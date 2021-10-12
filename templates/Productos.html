@@ -8,10 +8,10 @@
                 <h1>{% block title %} Productos {% endblock %}</h1>
             </div>
         
-            <div class="boton-anadir">
+            <div class="boton-anadir" id="anadir">
                 <a href="{{url_for('Editarproducto')}}"><button class="anadir"> Añadir + </button></a>
             </div>
-            <div class="botones-disponibilidad superadmin">
+            <div class="botones-disponibilidad superadmin" id="botones-superadmin">
                 <div class="boton-disponible">
                     <button class="bt-disponible"> disponible</button>
                 </div>
@@ -253,6 +253,23 @@
         </div>
 
     </section>
+    <script>
 
+        if(sessionStorage.getItem('userType')=="usuario"){
+             document.getElementById("anadir").style.display="none";
+             
+        }
+        else{
+            document.getElementById("anadir").style.display="";
+        }
+        if(sessionStorage.getItem('userType')=="superAdmin"){
+             document.getElementById("botones-superadmin").style.display="";
+             
+        }
+        else{
+            document.getElementById("botones-superadmin").style.display="none";
+        }
+
+    </script>
 
 {% endblock %}

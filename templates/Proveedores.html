@@ -9,7 +9,7 @@
         <div class="title">
             <h1>{% block title %}Proveedores{% endblock %}</h1>
         </div>
-        <div class="boton-anadir">
+        <div class="boton-anadir" id="anadir">
             <a href="{{url_for('EditarProveedores')}}"><button class="anadir">Añadir proveedor +</button></a>
         </div>
     </div>
@@ -48,6 +48,16 @@
     </div>
 
 </section>
+<script>
 
+    if(sessionStorage.getItem('userType')=="usuario"){
+         document.getElementById("anadir").style.display="none";
+         
+    }
+    else{
+        document.getElementById("anadir").style.display="";
+    }
+
+</script>
 
 {% endblock %}

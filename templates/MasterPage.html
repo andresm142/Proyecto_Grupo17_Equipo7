@@ -71,7 +71,7 @@
             <a href="{{url_for('Listas')}}"><div class="listas">
                 Listas
             </div></a>
-            <a href="{{url_for('Usuarios')}}"><div class="usuarios">
+            <a href="{{url_for('Usuarios')}}"><div class="usuarios" id="usuarios">
                 Usuarios
             </div></a>
             <a href="{{url_for('Proveedores')}}"><div class="proveedores">
@@ -97,6 +97,17 @@
     <script>
         const body = document.body;
         body.classList.add(sessionStorage.getItem('userType'));
+
+        if(sessionStorage.getItem('userType')=="usuario"){
+            document.getElementById("usuarios").style.display="none";
+        
+        }
+        else{
+            document.getElementById("usuarios").style.display="";
+            
+            
+        }
+
     </script>
 </body>
 

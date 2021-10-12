@@ -52,13 +52,13 @@ body{
     cursor: pointer;
 }
 
-.encabezado-productos .superadmin{
+/* .encabezado-productos .superadmin{
     display: none !important;
 }
 
 .encabezado-productos .user{
     display: none !important;
-}
+} */
 
 .encabezado-productos .botones-disponibilidad{
     display: flex;
