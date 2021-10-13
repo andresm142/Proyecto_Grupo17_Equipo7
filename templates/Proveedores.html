@@ -32,16 +32,16 @@
                     </div>
                     <div class="buttons">
                         <a href="#">
-                            <div class="remove" onclick="eliminar()">
+                            <div class="remove" onclick="eliminar()"></div>
                         </a>
 
-                        </div>
-                    <a href="{{url_for('EditarProveedores')}}">
-                        <div class="edit"></div>
-                    </a>
 
+                        <a href="{{url_for('EditarProveedores')}}">
+                            <div class="edit"></div>
+                        </a>
+
+                    </div>
                 </div>
-            </div>
         </article>
         <article>
             <div class="container-proveedor">
@@ -58,17 +58,18 @@
                     </div>
                     <div class="buttons">
                         <a href="#">
-                            <div class="remove" onclick="eliminar()">
+                            <div class="remove" onclick="eliminar()"></div>
+                        </a>
+
+
+                        <a href="{{url_for('EditarProveedores')}}">
+                            <div class="edit"></div>
                         </a>
 
                     </div>
-                    <a href="{{url_for('EditarProveedores')}}">
-                        <div class="edit"></div>
-                    </a>
-
                 </div>
-            </div>
         </article>
+
         <article>
             <div class="container-proveedor">
                 <div class="supplier_img">
@@ -84,28 +85,55 @@
                     </div>
                     <div class="buttons">
                         <a href="#">
-                            <div class="remove" onclick="eliminar()">
+                            <div class="remove" onclick="eliminar()"></div>
+                        </a>
+
+
+                        <a href="{{url_for('EditarProveedores')}}">
+                            <div class="edit"></div>
                         </a>
 
                     </div>
-                    <a href="{{url_for('EditarProveedores')}}">
-                        <div class="edit"></div>
-                    </a>
-
                 </div>
-            </div>
+        </article>
+
+        <article>
+            <div class="container-proveedor">
+                <div class="supplier_img">
+                    <img src={{ url_for('static', filename="images/proveedores.jpg" ) }} alt="">
+                </div>
+                <div class="description">
+                    <div class="text">
+                        <h3>Nombre de proveedor</h3>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque consequat iaculis
+                            fermentum. Nulia dapibus at arcu ac iaculis.
+                        </p>
+                    </div>
+                    <div class="buttons">
+                        <a href="#">
+                            <div class="remove" onclick="eliminar()"></div>
+                        </a>
+
+
+                        <a href="{{url_for('EditarProveedores')}}">
+                            <div class="edit"></div>
+                        </a>
+
+                    </div>
+                </div>
         </article>
     </div>
 
 </section>
 <script>
 
-    if(sessionStorage.getItem('userType')=="usuario"){
-         document.getElementById("anadir").style.display="none";
-         
+    if (sessionStorage.getItem('userType') == "usuario") {
+        document.getElementById("anadir").style.display = "none";
+
     }
-    else{
-        document.getElementById("anadir").style.display="";
+    else {
+        document.getElementById("anadir").style.display = "";
     }
 
 </script>

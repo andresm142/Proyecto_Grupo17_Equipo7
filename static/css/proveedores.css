@@ -66,7 +66,7 @@ section .proveedores{
 }
 section article{
     background-color: var(--color-blanco);
-    border-radius: 15px;
+    border-radius: var(--radio-contenedor);
     max-width: 400px;
     display: inline-flex;
     margin-top: 50px;
@@ -102,10 +102,10 @@ section article .description .text p{
     margin-left: 20px;
     font-size: 0.8em;
 }
-.buttons a{
+/* .buttons a{
     font-size: 20px;
     margin-left: 10px;
-}
+} */
 
 .buttons{
     display: flex;
@@ -124,7 +124,7 @@ section article .description .text p{
     color: var(--color-usuario)
 }
 
-.edit{
+.description .edit{
     background: var(--color-usuario);
     border-radius: var(--radio-input);
     padding: 10px;
@@ -132,11 +132,11 @@ section article .description .text p{
     border: var(--border-boton-cancelar-usuario);
 }
 
-.edit:hover{
+.description .edit:hover{
     background: var(--color-gris);
 }
 
-.remove{
+.description .remove{
     background: var(--color-blanco);
     border-radius: var(--radio-input);
     padding: 10px;
@@ -144,24 +144,23 @@ section article .description .text p{
     
 }
 
-.remove:hover{
+.description .remove:hover{
     background: var(--color-gris);
 }
 
 
 .description .edit {
-    background-color: var(--color-usuario);
+    background: var(--color-usuario);
+    border-radius: var(--radio-input);
+    padding: 10px;
     margin-left: 10px;
-    border: 1px solid var(--color-usuario);
-    border-radius: 10px;
-    padding:3px;
-    height:25px;
+    border: var(--border-boton-cancelar-usuario);
 }
 .description .remove {
-    background-color: white;
-    border: 1px solid var(--color-usuario);
-    border-radius: 10px;
-    padding:3px;
+    background: var(--color-blanco);
+    border-radius: var(--radio-input);
+    padding: 10px;
+    border: var(--border-boton-cancelar-usuario);
 }
 .description .remove a{
     color: var(--color-usuario);
