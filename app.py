@@ -32,51 +32,51 @@ def Home():
     return render_template('Index.html', userType=userType)
 
 
-@app.route('/Productos')
+@app.route('/Productos', methods=['POST','GET'])
 def Productos():
     return render_template('Productos.html')
 
 
-@app.route('/Listas')
+@app.route('/Listas', methods=['POST','GET'])
 def Listas():
     return render_template('Listas.html')
 
 
-@app.route('/Configuracion')
+@app.route('/Configuracion', methods=['POST','GET'])
 def Configuracion():
     return render_template('User.html')
 
 
-@app.route('/Proveedores')
+@app.route('/Proveedores', methods=['POST','GET'])
 def Proveedores():
     return render_template('Proveedores.html')
 
 
-@app.route('/Usuarios')
+@app.route('/Usuarios', methods=['POST','GET'])
 def Usuarios():
     return render_template('Usuarios.html')
 
 
-@app.route('/Logout')
+@app.route('/Logout', methods=['POST','GET'])
 def Logout():
     return render_template('Login.html')
 
 
-@app.route('/Editarproducto')
+@app.route('/Editarproducto', methods=['POST','GET'])
 def Editarproducto():
     return render_template('EditarProducto.html')
 
 
-@app.route('/AdminUser')
+@app.route('/AdminUser', methods=['POST','GET'])
 def AdminUser():
     return render_template('AdminUser.html')
 
 
-@app.route('/EditarLista')
+@app.route('/EditarLista', methods=['POST','GET'])
 def EditarLista():
     return render_template('EditarListas.html')
 
 
-@app.route('/EditarProveedores')
+@app.route('/EditarProveedores', methods=['POST','GET'])
 def EditarProveedores():
     return render_template('EditarProveedor.html')
