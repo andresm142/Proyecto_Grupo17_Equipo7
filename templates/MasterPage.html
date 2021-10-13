@@ -35,39 +35,43 @@
                           <label for="film">Productos</label>
                         </div>
                       </div>
-                      <div class="selected">
-                        Proveedores
-                      </div>
+                        <div class="selected">
+                            Proveedores
+                        </div>
                     </div>
-                </div>                
+                </div>
                 <input class="search" type="search" id="search" placeholder="Buscar">
                 <i class="fa fa-search" id="lupa"></i>
             </div>
             <div class="logo">
-                <img src={{ url_for('static', filename='images/LogoSM.png') }} alt="">
+                <img alt="" src={{ url_for('static', filename='images/LogoSM.png') }}>
             </div>
         </div>
     </header>
 
     <section class="contenido" id="contenido">
         {% block content %} {% endblock %}
-        
+
     </section>
 
-    <div id="sidebar" class="sidebar" style="width: 0px;">
+    <div id="sidebar" class="sidebar" style="width: 0;">
         <div class="region-user">
             <div class="logo-user">
-                <img src={{ url_for('static', filename='images/avatar.png') }} alt="">
+                <img alt="" src={{ url_for('static', filename='images/avatar.png') }}>
             </div>
-            <h2 class="nombre-user">Usuario</h2> 
+            <h2 class="nombre-user">Usuario</h2>
         </div>
         <div class="region-funciones">
-            <a href="{{url_for('Home')}}"><div class="home">
-                Home
-            </div></a>
-            <a href="{{url_for('Productos')}}"><div class="productos">
-                Productos
-            </div></a>
+            <a href="{{ url_for('Home') }}">
+                <div class="home">
+                    Home
+                </div>
+            </a>
+            <a href="{{ url_for('Productos') }}">
+                <div class="productos">
+                    Productos
+                </div>
+            </a>
             <a href="{{url_for('Listas')}}"><div class="listas" id="listas">
                 Listas
             </div></a>
