@@ -98,17 +98,13 @@
         const body = document.body;
         body.classList.add(sessionStorage.getItem('userType'));
 
-        if(sessionStorage.getItem('userType')=="usuario"){
-            document.getElementById("usuarios").style.display="none";
-        
+        if (sessionStorage.getItem('userType') === "usuario") {
+            document.getElementById("usuarios").style.display = "none";
+        } else {
+            document.getElementById("usuarios").style.display = "";
         }
-        else{
-            document.getElementById("usuarios").style.display="";
-            
-            
-        }
-        if(sessionStorage.getItem('userType')=="admin"){
-            document.getElementById("listas").style.display="none";
+        if (sessionStorage.getItem('userType') === "admin") {
+            document.getElementById("listas").style.display = "none";
         }
 
     </script>
