@@ -9,7 +9,6 @@ body {
     box-shadow: var(--sombra-contenedores);
     border-radius: var(--radio-contenedor-grande);
     width: 80%;
-    min-height: 80vh;
     display: grid;
     grid-template-columns: 1fr;
     margin: 55px auto;
@@ -17,12 +16,13 @@ body {
 }
 
 .titulo-editar-listas {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1.5fr 5fr;
+    gap: 20px;
     align-items: center;
     font: var(--fuente-sub-titulo);
     color: var(--color-usuario);
-    padding: 0 50px;
+    padding: 30px 70px;
     border-bottom: 1px solid var(--color-usuario);
 }
 
@@ -32,34 +32,43 @@ body {
     align-items: center;
     font: var(--fuente-sub-titulo);
     color: var(--color-usuario);
-    padding: 0 50px;
+    background: var(--color-fondo);
+    padding: 0 70px;
     border-bottom: 1px solid var(--color-usuario);
 }
 
-.subtitulos {
+.subtitulos-listas {
     display: grid;
-    grid-template-columns: 1fr 0.56fr 1fr;
-    margin: 0px 50px;
-    padding: 5px 15px;
+    grid-template-columns: 1.5fr 0.7fr 1fr 0.5fr;
+    margin: 0px 70px;
+    padding: 5px 0px;
     align-items: center;
     justify-items: stretch;
     border-bottom: 1px solid var(--color-gris);
 }
 
-.subtitulos h4 {
+.subtitulos-listas h4 {
     font: var(--fuente-sub-titulo);
     color: var(--color-gris);
 }
 
-.anadir {
+.subtitulos-listas .product{
+    margin-left: 15px;
+}
+
+.contenedor-detallado{
+    margin: 0px 25px;
+}
+
+.boton-anadir .anadir {
     background: var(--color-usuario);
     color: var(--color-blanco);
     border: none;
     padding: 0 15px;
-    height: 40px;
+    height: 58px;
     min-width: 140px;
     border-radius: var(--radio-boton);
-    font: var(--fuente-texto);
+    font: var(--fuente-sub-titulo);
 }
 
 .anadir:hover {
@@ -69,34 +78,72 @@ body {
     cursor: pointer;
 }
 
-.search {
-    height: 45px;
+.nombre-lista {
+    height: 40px;
     color: var(--color-gris);
     background: var(--color-fondo);
     border: var(--boder-inputs);
-    border-left: none;
+    border-radius: var(--radio-input);
     padding-left: 10px;
 }
 
 .detallado {
     display: grid;
-    grid-template-columns: 22px 1.5fr 0.7fr 1fr 0.5fr;
+    grid-template-columns: 1.5fr 0.7fr 1fr 0.5fr;
     border-radius: var(--radio-input);
     margin: 0px 50px;
-    padding: 5px 15px;
+    padding: 5px 0px;
     align-items: center;
 }
 
 .detallado p {
-    font: var(--fuente-sub-titulo);
+    font: var(--fuente-texto);
     color: var(--color-gris);
 }
 
-.point {
+.detallado .producto{
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    font: var(--fuente-texto);
+    margin-left: 10px;
+}
+
+.detallado .producto .point {
     height: 20px;
     width: 20px;
     background-color: var(--color-usuario);
     border-radius: 50%;
+    margin: 0;
+}
+
+.detallado .producto p{
+    margin-left: 10px;
+}
+
+.detallado .cant{
+    /* margin-left: 20px; */
+    font: var(--fuente-sub-titulo);
+    /* display: flex; */
+    display: grid;
+    grid-template-columns: 0.4fr 1fr 1fr;
+    align-items: center;
+    justify-content: stretch;
+    gap: 20px;
+}
+
+.detallado .cant .menos{
+    justify-self: end;
+    font: var(--fuente-titulo);
+    color: var(--color-usuario);
+}
+.detallado .cant .mas{
+    justify-self: start;
+    font: var(--fuente-sub-titulo);
+    color: var(--color-usuario);
+}
+
+.detallado .cant p{
     justify-self: center;
 }
 
@@ -106,19 +153,29 @@ body {
     justify-content: end;
 }
 
+.boton-eliminar{
+    background: var(--color-blanco);
+    border-radius: var(--radio-input);
+    padding: 10px;
+    border: var(--border-boton-cancelar-usuario);
+}
+
 .boton-eliminar::after {
     content: "\e9ac";
     color: var(--color-usuario)
 }
 
+.boton-eliminar:hover{
+    background: var(--color-gris);
+}
 
 /* CONFIGURACION DE LOS BOTONES CAMBIAR CANCELAR Y GUARDAR */
 
 .guardar-cancelar {
-    width: 100%;
     display: flex;
     justify-content: end;
     gap: 20px;
+    margin: 25px 50px;
 }
 
 .cambiar-imagen,
