@@ -142,3 +142,5 @@ VALUES ('Motor Toyota', 'Motor para camionetas 2.0', 20, 4.0, 'urlToImage',datet
        ('Puertas Chevroleth', 'Puerta original para Chevroleth Tracker', 10, 3.5, 'urlToImage',datetime('now', 'localtime'),1),
        ('Rines de lujo', 'Rin 15', 80, 3.2, 'urlToImage',datetime('now', 'localtime'),1),
        ('Motor Audi', 'Motor para camionetas Audi 3.0', 5, 5.0, 'urlToImage',datetime('now', 'localtime'),1);
+
+SELECT usr.contrasena FROM Persona per, Usuario usr WHERE usr.id_persona = per.id_persona AND per.email = 'menesesac@uninorte.edu.co'
