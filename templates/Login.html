@@ -47,8 +47,9 @@
                 <h2>Recuperar contraseña</h2>
                 <p>Ingrese su correo para restablecer su contraseña</p>
                 <form action="" class="form-modal">
-                    <input type="email" placeholder="Email" class="r-email">
-                    <input type="submit" class="enviar">
+                    <input type="email" placeholder="Email" class="r-email" required
+                    onkeyup="this.setAttribute('value', this.value);">
+                    <a href="{{url_for('RecuperarPass')}}"><input type="submit" class="enviar"></a>
 
                 </form>
             </div>

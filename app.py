@@ -113,3 +113,7 @@ def EditarProveedores():
         return redirect("/")
     else:
         return render_template('EditarProveedor.html')
+
+@app.route('/RecuperarPass', methods=['POST', 'GET'])
+def RecuperarPass():
+    pass
