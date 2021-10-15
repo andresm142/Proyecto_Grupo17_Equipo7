@@ -16,15 +16,14 @@ def login():
 
 @app.route('/Index', methods=['GET', 'POST'])
 def Index():
-    # Variables para almacenar el tipo de usuario (usuario, admin, superadmin)
-    global userType
     # Instanciar y crear la conexión hacia la base de datos.
-    conn = dbConnect.crearConexion()
+    conn = dbConnect
+    conn.crearConexion()
 
-    if validarUsuario(conn, request.form["email"], request.form["text"]):
-        userType = "usuario"
+    if conn.validarUsuario(request.form["email"], request.form["text"]):
         session["username"] = request.form["email"]
-        return render_template('Index.html', userType=userType)
+        session["userType"] = conn.validarTipoUsuario(request.form["email"])
+        return render_template('Index.html', userType=session["userType"])
     else:
         session["username"] = None
         return render_template('Login.html')
@@ -35,7 +34,7 @@ def Home():
     if not session.get("username"):
         return redirect("/")
     else:
-        return render_template('Index.html', userType=userType)
+        return render_template('Index.html', userType=session["userType"])
 
 
 @app.route('/Productos', methods=['POST', 'GET'])
@@ -114,21 +113,3 @@ def EditarProveedores():
         return redirect("/")
     else:
         return render_template('EditarProveedor.html')
-
-
-def validarUsuario(conn, usuario, password):
-    cursor = conn.cursor()
-
-    queryUser = cursor.execute("SELECT email FROM Persona WHERE email = '%s'" % usuario).fetchone()
-    queryPass = cursor.execute("SELECT usr.contrasena FROM Persona per, Usuario usr WHERE usr.id_persona = per.id_persona AND per.email = '%s'" % usuario).fetchone()
-
-    if queryUser is not None and queryPass is not None:
-        queryUser = queryUser[0]
-        queryPass = queryPass[0]
-
-    if queryUser == usuario and queryPass == password:
-        conn.close()
-        return True
-    else:
-        conn.close()
-        return False
