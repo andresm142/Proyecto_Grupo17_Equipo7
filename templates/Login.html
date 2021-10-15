@@ -1,35 +1,63 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SAIC Motor</title>
-    <link rel="stylesheet" href={{ url_for('static', filename='css/login.css') }}>
-    <link rel="stylesheet" href={{ url_for('static', filename='css/normalize.css') }}>
+    <link rel="stylesheet" href={{ url_for('static', filename='css/login.css' ) }}>
+    <link rel="stylesheet" href={{ url_for('static', filename='css/normalize.css' ) }}>
 </head>
+
 <body>
-<div class="box">
-    <div class="logo">
-        <img src={{ url_for('static', filename='images/LogoSM.png') }}>
-    </div>
-    <div class="login">
-        <h2>Bienvenido</h2>
-        <p>Por favor ingrese sus credenciales para ingresar a su cuenta</p>
-        <form action="{{ url_for('Index') }}" method="POST" id="login-form">
-            <div class="inputBox">
-                <input type="email" name="email" value="" required onkeyup="this.setAttribute('value', this.value);">
-                <label>Usuario</label>
+    <div class="box">
+        <div class="logo">
+            <img src={{ url_for('static', filename='images/LogoSM.png' ) }}>
+        </div>
+        <div class="login">
+            <h2>Bienvenido</h2>
+            <p>Por favor ingrese sus credenciales para ingresar a su cuenta</p>
+            <form action="{{ url_for('Index') }}" method="POST" id="login-form">
+                <div class="inputBox">
+                    <input type="email" name="email" value="" required
+                        onkeyup="this.setAttribute('value', this.value);">
+                    <label>Usuario</label>
+                </div>
+                <br>
+                <div class="inputBox">
+                    <input type="password" name="text" value="" required
+                        onkeyup="this.setAttribute('value', this.value);">
+                    <label>Contraseña</label>
+                </div>
+                <div class="recordar-pass">
+                    <button type="button" class="show-modal">
+                        ¿Olvido la contraseña?
+                    </button>
+
+                </div>
+                <input type="submit" name="sign-in" value="Ingresar">
+            </form>
+
+            <!-- MODAL -->
+            <div class="modal hidden">
+                <!-- botón para cerrar el modal -->
+                <button class="close-modal">&times;</button>
+
+                <h2>Recuperar contraseña</h2>
+                <p>Ingrese su correo para restablecer su contraseña</p>
+                <form action="" class="form-modal">
+                    <input type="email" placeholder="Email" class="r-email">
+                    <input type="submit" class="enviar">
+
+                </form>
             </div>
-            <br>
-            <div class="inputBox">
-                <input type="password" name="text" value="" required onkeyup="this.setAttribute('value', this.value);">
-                <label>Contraseña</label>
-            </div>
-            <input type="submit" name="sign-in" value="Ingresar">
-        </form>
+            <div class="overlay hidden"></div>
+
+        </div>
     </div>
-</div>
 </body>
+<script src={{ url_for('static', filename='js/scriptModal.js' ) }}></script>
 <!-- <script src={{ url_for('static', filename='js/loginValidator.js') }}></script> -->
+
 </html>

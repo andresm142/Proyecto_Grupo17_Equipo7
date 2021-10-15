@@ -70,7 +70,7 @@ body{
     font: var(--fuente-texto);
 }
 
-.box .inputBox input {
+.box .inputBox input,.form-modal input {
     width: 95%;
     margin: 15px 0px;
     padding: 4px 0px;
@@ -103,11 +103,11 @@ body{
     padding-right: 5px;
 }
 
-.box .inputBox input:focus {
+.box .inputBox input:focus, .form-modal input {
     outline: none;
 }
 
-.box input[type="submit"] {
+.box input[type="submit"], .enviar {
     border: none;
     outline: none;
     color: var(--color-blanco);
@@ -119,9 +119,63 @@ body{
     float: right;
 }
 
-.box input[type="submit"]:hover {
+.box input[type="submit"]:hover, .enviar:hover {
     background-color: #287ae6;
     box-shadow: 0 1px 1px 0 rgba(66, 133, 244, 0.45), 0 1px 3px 1px rgba(66, 133, 244, 0.3);
 }
+
+.show-modal{
+    cursor: pointer;
+    border: none;
+    background: none;
+    color: var(--color-superadmin);
+}
+
+/* CONIGURACION MODAL */
+
+
+.modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    max-width: 500px;
+    background-color: white;
+    padding: 4rem;
+    border-radius: 5px;
+    box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.3);
+    z-index: 10;
+    text-align: center;
+  }
+  
+
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(3px);
+    z-index: 5;
+  }
+  
+  .close-modal {
+    position: absolute;
+    top: 0.8rem;
+    right: 1.3rem;
+    font-size: 2.5rem;
+    color: #333;
+    cursor: pointer;
+    border: none;
+    background: none;
+  }
+  
+  /* CLASS TO HIDE MODAL */
+  .hidden {
+    display: none;
+  }
+  
 
 /* FIN CONFIGURACION DEL LOGIN */

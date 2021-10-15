@@ -4,4 +4,6 @@ __pycache__/app.cpython-39.pyc
 __pycache__/app.cpython-39.pyc
 entorno
 __pycache__/app.cpython-310.pyc
+flask_session
+__pycache__/dbConnect.cpython-39.pyc
 
