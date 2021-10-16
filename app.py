@@ -42,7 +42,7 @@ def Productos():
     if not session.get("username"):
         return redirect("/")
     else:
-        return render_template('CambiarContrasena.html')
+        return render_template('Productos.html')
 
 
 @app.route('/Listas', methods=['POST', 'GET'])
