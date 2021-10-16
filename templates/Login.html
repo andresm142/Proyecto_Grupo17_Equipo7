@@ -32,7 +32,7 @@
                 </div>
                 <div class="recordar-pass">
                     <button type="button" class="show-modal">
-                        ¿Olvido la contraseña?
+                        ¿Olvidó su contraseña?
                     </button>
 
                 </div>
@@ -46,11 +46,14 @@
 
                 <h2>Recuperar contraseña</h2>
                 <p>Ingrese su correo para restablecer su contraseña</p>
-                <form action="" class="form-modal">
-                    <input type="email" placeholder="Email" class="r-email" required
-                    onkeyup="this.setAttribute('value', this.value);">
-                    <a href="{{url_for('RecuperarPass')}}"><input type="submit" class="enviar"></a>
-
+                <form action="{{url_for('RecuperarPass')}}" method="POST" class="form-modal" onsubmit="enviado()">
+                    <div class="inputBox">
+                        <input type="email" value="" required
+                        onkeyup="this.setAttribute('value', this.value);">
+                        <label class="lblrecuperar">Correo</label>
+                    </div>
+                    <input type="submit" class="enviar" value="Recuperar">
+                    
                 </form>
             </div>
             <div class="overlay hidden"></div>
@@ -59,6 +62,11 @@
     </div>
 </body>
 <script src={{ url_for('static', filename='js/scriptModal.js' ) }}></script>
+<script>
+    function enviado(){
+        alert("Correo enviado")
+    }
+</script>
 <!-- <script src={{ url_for('static', filename='js/loginValidator.js') }}></script> -->
 
 </html>

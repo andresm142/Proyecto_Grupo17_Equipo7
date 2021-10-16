@@ -42,7 +42,7 @@ def Productos():
     if not session.get("username"):
         return redirect("/")
     else:
-        return render_template('Productos.html')
+        return render_template('CambiarContrasena.html')
 
 
 @app.route('/Listas', methods=['POST', 'GET'])
@@ -117,3 +117,12 @@ def EditarProveedores():
 @app.route('/RecuperarPass', methods=['POST', 'GET'])
 def RecuperarPass():
     pass
+
+@app.route('/NewPass')                      
+def NewPass():
+    
+    return render_template('CambiarContraseña.html')        
+
+@app.route('/ConfirmacionNewPass')
+def ConfirmacionNewPass():
+    return render_template('Login.html')

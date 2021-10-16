@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cambiar contraseña</title>
+    <link rel="stylesheet" href={{ url_for('static', filename='css/normalize.css' ) }}>
+    <link rel="stylesheet" href={{ url_for('static', filename='css/newPass.css' ) }}>
+</head>
+
+<body>
+    <div class="box">
+        <div class="login">
+            <h2>Cambiar contraseña</h2>
+            <p>Cambio Requerido. Por favor ingrese su contraseña actual y la nueva contraseña</p>
+            <form action="{{ url_for('ConfirmacionNewPass') }}" method="POST" id="login-form">
+
+                <div class="inputBox">
+                    <input type="password" name="text" value="" required
+                        onkeyup="this.setAttribute('value', this.value);">
+                    <label>Contraseña actual</label>
+                </div>
+
+                <div class="inputBox">
+                    <input type="password" name="text" value="" required
+                        onkeyup="this.setAttribute('value', this.value);">
+                    <label>Nueva contraseña</label>
+                </div>
+                <div class="inputBox">
+                    <input type="password" name="text" value="" required
+                        onkeyup="this.setAttribute('value', this.value);">
+                    <label>Repetir nueva contraseña</label>
+                </div>
+                <input type="submit" name="sign-in" value="Guardar">
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
