@@ -1,4 +1,7 @@
 {% extends 'MasterPage.html' %} {% block content %}
+<script>
+    document.body.classList.add(sessionStorage.getItem('userType'));
+</script>
 <link rel="stylesheet" href={{ url_for( 'static', filename='css/listas.css' ) }}>
 <header class="header-paginas">
     <div class="encabezado-listas">

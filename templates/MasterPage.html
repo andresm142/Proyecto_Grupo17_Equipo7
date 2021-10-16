@@ -15,11 +15,6 @@
 </head>
 
 <body>
-    <script>                /* Al principio para evitar el cambio de color al navegar por las paginas*/
-        const body = document.body;
-        body.classList.add(sessionStorage.getItem('userType'));
-
-    </script>
 
     <header class="principal">
         <div class="encabezado">
@@ -100,20 +95,7 @@
     <script src={{ url_for('static', filename='js/script.js') }}></script>
     <script src={{ url_for('static', filename='js/jquery-3.3.1.js') }}></script>
     <!-- <script src={{ url_for('static', filename='js/loginColor.js') }}></script> -->
-    <script>
-        // const body = document.body;
-        // body.classList.add(sessionStorage.getItem('userType'));
 
-        if (sessionStorage.getItem('userType') === "usuario") {
-            document.getElementById("usuarios").style.display = "none";
-        } else {
-            document.getElementById("usuarios").style.display = "";
-        }
-        if (sessionStorage.getItem('userType') === "admin") {
-            document.getElementById("listas").style.display = "none";
-        }
-
-    </script>
 </body>
 
 </html>

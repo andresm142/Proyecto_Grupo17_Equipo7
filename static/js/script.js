@@ -14,7 +14,21 @@ optionsList.forEach(o => {
     });
 });
 
+// CAMBIA EL COLOR SEGUN TIPO DE USUARIO
 
+// const body = document.body;
+document.body.classList.add(sessionStorage.getItem('userType'));
+
+// MOSTRAR / OCULTAR OPCIONES SEGUN TIPO DE USUARIO
+
+if (sessionStorage.getItem('userType') === "usuario") {
+    document.getElementById("usuarios").style.display = "none";
+} else {
+    document.getElementById("usuarios").style.display = "";
+}
+if (sessionStorage.getItem('userType') === "admin") {
+    document.getElementById("listas").style.display = "none";
+}
 
 // MOSTRAR / OCULTAR MENU DE NAVEGACIÓN
 function mostrar() {
