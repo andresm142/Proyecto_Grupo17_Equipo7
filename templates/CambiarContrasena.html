@@ -24,19 +24,41 @@
                 </div>
 
                 <div class="inputBox">
-                    <input type="password" name="text" value="" required
-                        onkeyup="this.setAttribute('value', this.value);">
+                    <input type="password" name="text" value="" id="newpw" required
+                        onkeyup="this.setAttribute('value', this.value);" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                        title="Debe contener al menos un número y una letra mayúscula y minúscula, y al menos 8 caracteres o más">
                     <label>Nueva contraseña</label>
                 </div>
                 <div class="inputBox">
-                    <input type="password" name="text" value="" required
-                        onkeyup="this.setAttribute('value', this.value);">
+                    <input type="password" name="text" value="" id="confirmpw" required
+                        onkeyup="this.setAttribute('value', this.value);" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                        title="Debe contener al menos un número y una letra mayúscula y minúscula, y al menos 8 caracteres o más">
                     <label>Repetir nueva contraseña</label>
                 </div>
+                <label id="coinciden" style="display: none;">Las contraseñas no coinciden</label>
+                <br>
                 <input type="submit" name="sign-in" value="Guardar">
             </form>
         </div>
     </div>
 </body>
+<script>
+    var password = document.getElementById("newpw");
+    var confirm_password = document.getElementById("confirmpw");
+
+    function validatePassword() {
+        if (password.value != confirm_password.value) {
+            
+            document.getElementById("coinciden").style.display="inline";
+            // confirm_password.setCustomValidity("Las contraseñas no coinciden");
+        } else {
+            confirm_password.setCustomValidity('');
+            document.getElementById("coinciden").style.display="none";
+        }
+    }
+
+    password.onchange = validatePassword;
+    confirm_password.onkeyup = validatePassword;
+</script>
 
 </html>

@@ -10,11 +10,17 @@
     <link rel="stylesheet" href={{ url_for('static', filename='css/style.css') }}>
     <link rel="stylesheet" href={{ url_for('static', filename='css/font-awesome.min.css') }}>
     <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet"/> -->
-    
+
 
 </head>
 
 <body>
+    <script>                /* Al principio para evitar el cambio de color al navegar por las paginas*/
+        const body = document.body;
+        body.classList.add(sessionStorage.getItem('userType'));
+
+    </script>
+
     <header class="principal">
         <div class="encabezado">
             <div id="abrir-menu">
@@ -95,8 +101,8 @@
     <script src={{ url_for('static', filename='js/jquery-3.3.1.js') }}></script>
     <!-- <script src={{ url_for('static', filename='js/loginColor.js') }}></script> -->
     <script>
-        const body = document.body;
-        body.classList.add(sessionStorage.getItem('userType'));
+        // const body = document.body;
+        // body.classList.add(sessionStorage.getItem('userType'));
 
         if (sessionStorage.getItem('userType') === "usuario") {
             document.getElementById("usuarios").style.display = "none";

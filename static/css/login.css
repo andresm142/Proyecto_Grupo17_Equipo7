@@ -148,7 +148,10 @@ body{
     z-index: 10;
     text-align: center;
   }
-  
+
+  .modal h2{
+      font-size: 32px;
+  }
 
   .overlay {
     position: absolute;

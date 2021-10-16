@@ -11,7 +11,7 @@ body{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 70%;
+    width: 50%;
     height: 79vh;
     box-sizing: border-box;
     border-radius: var(--radio-contenedor-grande);
@@ -45,6 +45,7 @@ body{
     color: var(--color-superadmin);
     font: var(--fuente-super-titulo);
     font-variant: small-caps;
+    font-size: 32px;
 }
 
 .box p {
@@ -70,7 +71,7 @@ body{
     background: transparent;
 }
 
-.box .inputBox label, .form-modal .inputBox label {
+.box .inputBox label {
     position: absolute;
     top: 0;
     left: 10px;
@@ -91,11 +92,11 @@ body{
     padding-right: 5px;
 }
 
-.box .inputBox input:focus, .form-modal .inputBox input {
+.box .inputBox input:focus {
     outline: none;
 }
 
-.box input[type="submit"], .enviar {
+.box input[type="submit"] {
     border: none;
     outline: none;
     color: var(--color-blanco);
@@ -107,7 +108,10 @@ body{
     float: right;
 }
 
-.box input[type="submit"]:hover, .enviar:hover {
+.box input[type="submit"]:hover {
     background-color: #287ae6;
     box-shadow: 0 1px 1px 0 rgba(66, 133, 244, 0.45), 0 1px 3px 1px rgba(66, 133, 244, 0.3);
+}
+#coinciden{
+    color: var(--color-superadmin);
 }
