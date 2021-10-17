@@ -1,12 +1,14 @@
-import secrets
+import secrets, os
 import dbConnect
 from flask import Flask, render_template, request, session, redirect
 from flask_session import Session
+from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = secrets.token_hex(20)
 app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
+app.config['UPLOAD_FOLDER'] = './static/images/Productos-Proveedores'
 Session(app)
 
 @app.route('/')
@@ -126,3 +128,17 @@ def NewPass():
 @app.route('/ConfirmacionNewPass')
 def ConfirmacionNewPass():
     return render_template('Login.html')
+
+# Codigo provisional. El codigo de esta ruta se puede copiar en el submit de cambiar imagen en las paginas de editar
+# productos, proveedores y usuario.
+
+@app.route("/upload", methods=['POST'])
+def uploader():
+ if request.method == 'POST':
+  # obtenemos el archivo del input "archivo"
+  f = request.files['archivo']
+  filename = secure_filename(f.filename)
+  # Guardamos el archivo en el directorio 
+  f.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+  # Retornamos una respuesta satisfactoria
+  return ("")

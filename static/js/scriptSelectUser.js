@@ -4,7 +4,6 @@ const optionsContainerUsuario = document.querySelector(".options-container-usuar
 const optionsListUsuario = document.querySelectorAll(".option-user");
 
 
-
 selectedUsuario.addEventListener("click", () => {
     if(sessionStorage.getItem('userType')=="superAdmin"){
         optionsContainerUsuario.classList.toggle("active");

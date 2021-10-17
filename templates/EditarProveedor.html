@@ -6,7 +6,7 @@
 
 
 <div class="main_box">
-    <div class="image_side">
+    <form class="image_side">
         <div class="img">
             <img src={{ url_for('static', filename="images/proveedores.jpg" ) }} alt="">
         </div>
@@ -14,6 +14,7 @@
             <a href="#"><button class="add">Agregar imagen</button></a>
         </div>
     </div>
+
     <div class="inputs_side">
         <div class="formulario">
             <label for="name">Nombre del proveedor</label>
@@ -33,8 +34,5 @@
         </div>
     </div>
 </div>
-<script src={{ url_for('static', filename='js/script.js') }}></script>
-
-
 
 {% endblock %}

@@ -33,6 +33,7 @@ body{
     margin-top: 2em;
 }
 .add_button button{
+    border: none;
     padding: 0 15px;
     height: 58px;
     border-radius: var(--radio-boton);
@@ -87,12 +88,15 @@ body{
 .inputs_side .buttons .guardar:hover {
     background: var(--color-gris);
     color: var(--color-usuario);
+    cursor: pointer;
 }
 .inputs_side .buttons .cancelar:hover {
     background: var(--color-gris);
     color: var(--color-usuario);
+    cursor: pointer;
 }
 .image_side .add_button .add:hover{
     background: var(--color-gris);
     color: var(--color-usuario);
+    cursor: pointer;
 }
