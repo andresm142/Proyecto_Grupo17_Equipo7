@@ -18,17 +18,16 @@ def login():
 
 @app.route('/Index', methods=['GET', 'POST'])
 def Index():
-    # Instanciar y crear la conexión hacia la base de datos.
+    # Instanciar módulo de conexión a la base de datos
     conn = dbConnect
-    conn.crearConexion()
 
-    if conn.validarUsuario(request.form["email"], request.form["text"]):
+    if conn.validarContrasena(request.form["email"], request.form["text"]) is not False:
         session["username"] = request.form["email"]
         session["userType"] = conn.validarTipoUsuario(request.form["email"])
         return render_template('Index.html', userType=session["userType"])
     else:
         session["username"] = None
-        return render_template('Login.html')
+        return redirect('/')
 
 
 @app.route('/Home')
