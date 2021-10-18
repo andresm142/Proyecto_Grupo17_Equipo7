@@ -308,6 +308,9 @@ textarea:focus{
     background: var(--color-usuario);
     color: var(--color-blanco);
     border: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .cambiar-imagen:hover, .guardar:hover {

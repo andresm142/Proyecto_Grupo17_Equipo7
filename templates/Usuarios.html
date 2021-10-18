@@ -1,6 +1,9 @@
 {% extends 'MasterPage.html' %}
 
 {% block content %}
+<script>
+    document.body.classList.add(sessionStorage.getItem('userType'));
+</script>
 <link rel="stylesheet" href={{ url_for('static', filename='css/usuarios.css') }}>
 <header class="header-paginas">
     <div class="encabezado-usuarios">
@@ -71,4 +74,5 @@
         </div>
     </div>
 </section>
+
 {% endblock %}

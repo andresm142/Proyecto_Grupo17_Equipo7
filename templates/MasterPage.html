@@ -15,11 +15,6 @@
 </head>
 
 <body>
-    <script>                /* Al principio para evitar el cambio de color al navegar por las paginas*/
-        const body = document.body;
-        body.classList.add(sessionStorage.getItem('userType'));
-
-    </script>
 
     <header class="principal">
         <div class="encabezado">
@@ -33,12 +28,12 @@
                     <div class="select-box">
                       <div class="options-container">
                         <div class="option">
-                          <input type="radio" class="radio" id="automobiles" name="category" value="auto"/>
-                          <label for="automobiles">Proveedores</label>
+                          <input type="radio" class="radio" id="search-proveedores" name="category" value="auto"/>
+                          <label for="search-proveedores">Proveedores</label>
                         </div>
                         <div class="option">
-                          <input type="radio" class="radio" id="film" name="category" />
-                          <label for="film">Productos</label>
+                          <input type="radio" class="radio" id="search-productos" name="category" />
+                          <label for="search-productos">Productos</label>
                         </div>
                       </div>
                       <div class="selected">
@@ -100,20 +95,7 @@
     <script src={{ url_for('static', filename='js/script.js') }}></script>
     <script src={{ url_for('static', filename='js/jquery-3.3.1.js') }}></script>
     <!-- <script src={{ url_for('static', filename='js/loginColor.js') }}></script> -->
-    <script>
-        // const body = document.body;
-        // body.classList.add(sessionStorage.getItem('userType'));
 
-        if (sessionStorage.getItem('userType') === "usuario") {
-            document.getElementById("usuarios").style.display = "none";
-        } else {
-            document.getElementById("usuarios").style.display = "";
-        }
-        if (sessionStorage.getItem('userType') === "admin") {
-            document.getElementById("listas").style.display = "none";
-        }
-
-    </script>
 </body>
 
 </html>

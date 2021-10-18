@@ -2,100 +2,108 @@
 {% block title %} Editar Producto {% endblock %}
 
 {% block content %}
- 
-
-<link rel="stylesheet" href={{ url_for('static', filename='css/editProductos.css') }}>
 
 
-    <div class="contenedor-producto">
-        <div class="info-imagen-producto">
-            <div class="producto">
-                <div class="imagen-producto">
-                    <img src={{ url_for('static', filename='images/Producto.jpg') }} alt="">
+<link rel="stylesheet" href={{ url_for('static', filename='css/editProductos.css' ) }}>
+
+<!-- <form class="info-imagen-producto" action="/upload" method="POST" enctype="multipart/form-data"></form> -->
+<div id="editprod-form" class="contenedor-producto">
+    
+    <div class="info-imagen-producto">
+
+        <div class="producto">
+            <div class="imagen-producto">
+                <img src={{ url_for('static', filename='images/Producto.jpg' ) }} alt="" id="img-producto">
+            </div>
+            <!-- <button class="cambiar-imagen">Cambiar imagen</button> -->
+            <label class="cambiar-imagen" style="display: inline-flex;">
+                <input type="file" name="archivo" style="display: none;">
+                Cambiar imagen
+            </label>
+        </div>
+    </div>
+
+    <div class="info-producto">
+
+        <div class="nombre">
+            <label for="name">Nombre producto</label>
+            <input type="text" name="nombre" id="name">
+        </div>
+        <div class="container-proveedor">
+            <label for="proveedor">Proveedor</label>
+            <div class="select-box-proveedor">
+                <div class="options-container-proveedor">
+                    <div class="option-proveedor">
+                        <input type="radio" class="radio" id="num1" name="category" value="auto" />
+                        <label for="prov1" id="lblnum1">Proveedor 1</label>
+                    </div>
+                    <div class="option-proveedor">
+                        <input type="radio" class="radio" id="num2" name="category" value="auto" />
+                        <label for="prov2" id="lblnum2">Proveedor 2</label>
+                    </div>
                 </div>
-                <button class="cambiar-imagen">Cambiar imagen</button>
+
+                <div class="selected-proveedor">
+                    Proveedor
+                </div>
             </div>
         </div>
-        <div class="info-producto">
-            
-            <div class="nombre">
-                <label for="name">Nombre producto</label>
-                <input type="text" name="nombre" id="name">
+        <div class="descripcion-producto">
+            <label for="descripcion">Descripción del producto</label>
+            <textarea name="descripcion" id="descripcion"></textarea>
+        </div>
+
+        <div class="cantidad-calificacion">
+            <div class="cantidad">
+                <label for="cantidad">Cantidad</label>
+                <input type="number" name="cantidad" id="cantidad">
             </div>
-            <div class="container-proveedor">
-                <label for="proveedor">Proveedor</label>
-                <div class="select-box-proveedor">
-                    <div class="options-container-proveedor">
-                        <div class="option-proveedor">
-                            <input type="radio" class="radio" id="num1" name="category" value="auto"/>
-                            <label for="prov1" id="lblnum1">Proveedor 1</label>
+
+            <div class="container-calificacion">
+                <label for="calificacion">Calificación</label>
+                <div class="select-box-calificacion">
+                    <div class="options-container-calificacion">
+                        <div class="option-calificacion">
+                            <input type="radio" class="radio" id="num1" name="category" value="auto" />
+                            <label for="num1" id="lblnum1">1</label>
                         </div>
-                        <div class="option-proveedor">
-                            <input type="radio" class="radio" id="num2" name="category" value="auto"/>
-                            <label for="prov2" id="lblnum2">Proveedor 2</label>
-                        </div>                        
+                        <div class="option-calificacion">
+                            <input type="radio" class="radio" id="num2" name="category" value="auto" />
+                            <label for="num2" id="lblnum2">2</label>
+                        </div>
+                        <div class="option-calificacion">
+                            <input type="radio" class="radio" id="num3" name="category" value="auto" />
+                            <label for="num3" id="lblnum3">3</label>
+                        </div>
+                        <div class="option-calificacion">
+                            <input type="radio" class="radio" id="num4" name="category" value="auto" />
+                            <label for="num4" id="lblnum4">4</label>
+                        </div>
+                        <div class="option-calificacion">
+                            <input type="radio" class="radio" id="num5" name="category" value="auto" />
+                            <label for="num5" id="lblnum5">5</label>
+                        </div>
+
                     </div>
 
-                    <div class="selected-proveedor">
-                        Proveedor
+                    <div class="selected-calificacion">
+                        1
                     </div>
                 </div>
             </div>
-            <div class="descripcion-producto">
-                <label for="descripcion">Descripción del producto</label>
-                <textarea name="descripcion" id="descripcion"></textarea>
-            </div>
+        </div>
 
-            <div class="cantidad-calificacion">
-                <div class="cantidad">
-                    <label for="cantidad">Cantidad</label>
-                    <input type="number" name="cantidad" id="cantidad">
-                </div>
-                
-                <div class="container-calificacion">
-                    <label for="calificacion">Calificación</label>
-                    <div class="select-box-calificacion">
-                        <div class="options-container-calificacion">
-                            <div class="option-calificacion">
-                                <input type="radio" class="radio" id="num1" name="category" value="auto"/>
-                                <label for="num1" id="lblnum1">1</label>
-                            </div>
-                            <div class="option-calificacion">
-                                <input type="radio" class="radio" id="num2" name="category" value="auto"/>
-                                <label for="num2" id="lblnum2">2</label>
-                            </div>
-                            <div class="option-calificacion">
-                                <input type="radio" class="radio" id="num3" name="category" value="auto"/>
-                                <label for="num3" id="lblnum3">3</label>
-                            </div>
-                            <div class="option-calificacion">
-                                <input type="radio" class="radio" id="num4" name="category" value="auto"/>
-                                <label for="num4" id="lblnum4">4</label>
-                            </div>
-                            <div class="option-calificacion">
-                                <input type="radio" class="radio" id="num5" name="category" value="auto"/>
-                                <label for="num5" id="lblnum5">5</label>
-                            </div>
-                            
-                        </div>
-
-                        <div class="selected-calificacion">
-                            1
-                        </div>
-                    </div>
-                </div>  
-            </div>
-          
-            <div class="guardar-cancelar">
-                <a href="{{url_for('Productos')}}"><button class="cancelar">
+        <div class="guardar-cancelar">
+            <a href="{{url_for('Productos')}}"><button class="cancelar">
                     Cancelar
                 </button></a>
-                <a href="{{url_for('Productos')}}"><button class="guardar" onclick="guardar()">
+            <a href="{{url_for('Productos')}}"><button type="submit" class="guardar" onclick="guardar()">
                     Guardar
                 </button></a>
-            </div>
-        </div>    
+        </div>
     </div>
-    <script src={{ url_for('static', filename='js/scriptSelectProveedor.js') }}></script>
-    <script src={{ url_for('static', filename='js/scriptSelectCalificacion.js') }}></script>
+</div>
+
+<script src={{ url_for('static', filename='js/scriptSelectProveedor.js' ) }}></script>
+<script src={{ url_for('static', filename='js/scriptSelectCalificacion.js' ) }}></script>
 {% endblock %}
