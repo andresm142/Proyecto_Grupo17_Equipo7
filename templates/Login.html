@@ -48,7 +48,7 @@
                 <p>Ingrese su correo para restablecer su contraseña</p>
                 <form action="{{url_for('RecuperarPass')}}" method="POST" class="form-modal" onsubmit="enviado()">
                     <div class="inputBox">
-                        <input type="email" value="" required
+                        <input type="email" name="recuperarEmail" value="" required
                         onkeyup="this.setAttribute('value', this.value);">
                         <label class="lblrecuperar">Correo</label>
                     </div>
@@ -67,6 +67,5 @@
         alert("Correo enviado")
     }
 </script>
-<!-- <script src={{ url_for('static', filename='js/loginValidator.js') }}></script> -->
 
 </html>
