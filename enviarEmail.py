@@ -1,6 +1,10 @@
 # Importando la librería que nos permite enviar correos
 import secrets
+import ssl
+import string
 import smtplib
+
+from werkzeug.security import generate_password_hash, check_password_hash
 
 # Importando modulo para manejo de base de datos.
 import dbConnect
@@ -9,6 +13,7 @@ import dbConnect
 gmail_user = 'saicmotorsa@gmail.com'
 gmail_password = 'Sm1234567'
 
+alphabet = string.ascii_letters + string.digits
 
 def prepararEmail(cuentaCorreo, nombreUsuario, idUsuario):
     """ Preparar los datos para el envío del correo de restablecimiento de claves.
@@ -25,8 +30,9 @@ def prepararEmail(cuentaCorreo, nombreUsuario, idUsuario):
     sent_from = gmail_user
 
     # Datos del correo
-    to = [cuentaCorreo]
-    password = secrets.token_hex(8)
+    to = cuentaCorreo
+    password = ''.join(secrets.choice(alphabet) for i in range(8))
+    passwordHash = generate_password_hash(password)
     subject = 'Solicitud cambio de contraseña - Saic Motor S.A.'
     body = """
 
@@ -55,13 +61,12 @@ def prepararEmail(cuentaCorreo, nombreUsuario, idUsuario):
     Subject: %s
 
     %s
-    """ % (sent_from, ", ".join(to), subject, body)
+    """ % (sent_from, to, subject, body)
 
-    #dbConnect.recuperarContrasena(cuentaCorreo, idUsuario, password)
+    # Cambiar la contraseña en la base de datos.
+    dbConnect.recuperarContrasena(cuentaCorreo, idUsuario, passwordHash)
+
     argumentosEmail = (sent_from, to, email_text)
-
-    print("Ingrese a los datos para preparar correo " + cuentaCorreo + " " + nombreUsuario + " " + idUsuario)
-    # Enviar el correo electrónico de restablecimiento de contraseña.
     return argumentosEmail
     
 
@@ -76,12 +81,12 @@ def enviarCorreo(argumentosEmail):
     """
 
     try:
-        server = smtplib.SMTP_SSL('smtp.gmail.com', 465)
+        server = smtplib.SMTP_SSL('smtp.gmail.com', 465, context=ssl.create_default_context())
         server.ehlo()
-        server.login('saicmotorsa@gmail.com', 'Sm1234567')
-        #server.sendmail('saicmotorsa@gmail.com', argumentosEmail[1], argumentosEmail[2]('utf-8'))
+        server.login(gmail_user, gmail_password)
         server.sendmail(argumentosEmail[0], argumentosEmail[1], argumentosEmail[2].encode('utf-8'))
         server.close()
         return 'Email enviado'
     except Exception as e:
+        print("error en el envío")
         return e

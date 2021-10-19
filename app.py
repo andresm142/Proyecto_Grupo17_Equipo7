@@ -153,7 +153,7 @@ def RecuperarPass():
     if conn.validarUsuario(request.form["recuperarEmail"]) is not False:
         datosUsuario = conn.obtenerDatosUsuario(request.form['recuperarEmail'])
         nombreApellido = datosUsuario['nombre_persona'] + " " + datosUsuario['apellido_persona']
-        datosEmail = enviarEmail.prepararEmail(datosUsuario['email'], nombreApellido, str(datosUsuario['id_usuario']))
+        datosEmail = enviarEmail.prepararEmail(datosUsuario['email'], nombreApellido, datosUsuario['id_usuario'])
         response = enviarEmail.enviarCorreo(datosEmail)
 
     return str(response)

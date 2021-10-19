@@ -181,7 +181,7 @@ def cambiarEstatusUsuario(tipoEstatus, idUsuario):
     queryUpdateStatus = cursor.execute(
         """
         UPDATE Usuario
-                SET estatus = '%s'
+                SET estatus_usuario = '%s'
                 WHERE Usuario.id_persona = '%s';
         """ % (tipoEstatus, idUsuario))
 
@@ -237,7 +237,7 @@ def recuperarContrasena(cuentaCorreo, idUsuario, password):
     """
 
     # Se actualiza la contraseña del usuario.
-    cambiarContraseña(cuentaCorreo, password)
+    cambiarContraseña(idUsuario, password)
 
     # Se actualiza el estatus del usuario para forzar a cambiar la contraseña al iniciar sesión por primera vez.
     cambiarEstatusUsuario(0, idUsuario)
