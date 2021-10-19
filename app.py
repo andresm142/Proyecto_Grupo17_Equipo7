@@ -131,7 +131,7 @@ def AdminUser():
                 email="correo@saicmotor.com"
                 telefono="1234567890"
                 contrasena="pass"
-                image_src="images/avatar.png"
+                image_src="/static/images/avatar.png"
                 resultado1=(id,nombre,apellido,tipoUser,email,telefono,contrasena,image_src)
                 return render_template('AdminUser.html',resultado1=resultado1)
             
@@ -145,7 +145,7 @@ def AdminUser():
                 email=""
                 telefono=""
                 contrasena=""
-                image_src="/static/images/avatar.png"
+                image_src="/static/images/avatar.png"                            #Para pruebas
                 resultado1=(id,nombre,apellido,tipoUser,email,telefono,contrasena,image_src)
                 return render_template('AdminUser.html',resultado1=resultado1)
     # return render_template('AdminUser.html')

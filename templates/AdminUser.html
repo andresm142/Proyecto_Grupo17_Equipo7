@@ -11,7 +11,8 @@
         <div class="info-user">
             <div class="avatar">
                 <div class="imagen-usuario">
-                    <img src="/static/images/avatar.png" ) }} alt="" id="img-usuario">
+                    <img src='{{ resultado1[7] }}' alt="" id="img-usuario">
+                    
                 </div>
 
                 <label class="cambiar-imagen" style="display: inline-flex;">
@@ -80,5 +81,6 @@
         </div>
     </div>
 </form>
+
 <script src={{ url_for('static', filename='js/scriptSelectUser.js' ) }}></script>
 {% endblock %}

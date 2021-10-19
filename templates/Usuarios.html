@@ -36,7 +36,8 @@
     <div class="contenedor-usuarios">
         
         <form class="contenedor" action="/AdminUser" method="POST">
-            <input type="text" name="id" value="1" style="display: none;">
+            <!-- Para pruebas, cambiar el valor de value segun el id del usuario -->
+            <input type="text" name="id" value="1" style="display: none;">      
             <div class="nombre">
                 <img src={{ url_for('static', filename='images/avatar.png') }} alt="">
                 <p>Lorem ipsum</p>
@@ -54,29 +55,11 @@
                 
             </div>
         </form>
-    </div>
 
 
-    <div class="contenedor-usuarios">
-        <div class="contenedor">
-            <div class="nombre">
-                <img src={{ url_for('static', filename='images/avatar.png') }} alt="">
-                <p>Lorem ipsum</p>
-            </div>
-            <div class="tipo">
-               <p>Usuario final</p> 
-            </div>
-            <div class="correo">
-                <p>correo@loremipsum.com</p>
-            </div>
-            <div class="opciones">
-                <a href="#"><div class="boton-eliminar" onclick="eliminar()" onclick="eliminar()"></div></a>
-                
-                <a href="{{url_for('AdminUser')}}"><div class="boton-editar"></div></a>
-                
-            </div>
-        </div>
+
     </div>
+
 </section>
 
 {% endblock %}
