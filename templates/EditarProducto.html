@@ -7,8 +7,8 @@
 <link rel="stylesheet" href={{ url_for('static', filename='css/editProductos.css' ) }}>
 
 <!-- <form class="info-imagen-producto" action="/upload" method="POST" enctype="multipart/form-data"></form> -->
-<div id="editprod-form" class="contenedor-producto">
-    
+<form id="editprod-form" class="contenedor-producto" action="/GuardarProducto" method="POST" enctype="multipart/form-data">
+    <input type="text" id="id" style="display: none;" value="">
     <div class="info-imagen-producto">
 
         <div class="producto">
@@ -28,23 +28,23 @@
 
         <div class="nombre">
             <label for="name">Nombre producto</label>
-            <input type="text" name="nombre" id="name">
+            <input type="text" name="name" id="name">
         </div>
         <div class="container-proveedor">
             <label for="proveedor">Proveedor</label>
             <div class="select-box-proveedor">
                 <div class="options-container-proveedor">
                     <div class="option-proveedor">
-                        <input type="radio" class="radio" id="num1" name="category" value="auto" />
+                        <input type="radio" class="radio" id="num1" name="category" value="Provedor 1" checked />
                         <label for="prov1" id="lblnum1">Proveedor 1</label>
                     </div>
                     <div class="option-proveedor">
-                        <input type="radio" class="radio" id="num2" name="category" value="auto" />
+                        <input type="radio" class="radio" id="num2" name="category" value="Provedor 2" />
                         <label for="prov2" id="lblnum2">Proveedor 2</label>
                     </div>
                 </div>
-
-                <div class="selected-proveedor">
+                
+                <div class="selected-proveedor" name="selected-proveedor">
                     Proveedor
                 </div>
             </div>
@@ -65,29 +65,29 @@
                 <div class="select-box-calificacion">
                     <div class="options-container-calificacion">
                         <div class="option-calificacion">
-                            <input type="radio" class="radio" id="num1" name="category" value="auto" />
+                            <input type="radio" class="radio" id="num1" name="category-cal" value="1" checked/>
                             <label for="num1" id="lblnum1">1</label>
                         </div>
                         <div class="option-calificacion">
-                            <input type="radio" class="radio" id="num2" name="category" value="auto" />
+                            <input type="radio" class="radio" id="num2" name="category-cal" value="2" />
                             <label for="num2" id="lblnum2">2</label>
                         </div>
                         <div class="option-calificacion">
-                            <input type="radio" class="radio" id="num3" name="category" value="auto" />
+                            <input type="radio" class="radio" id="num3" name="category-cal" value="3" />
                             <label for="num3" id="lblnum3">3</label>
                         </div>
                         <div class="option-calificacion">
-                            <input type="radio" class="radio" id="num4" name="category" value="auto" />
+                            <input type="radio" class="radio" id="num4" name="category-cal" value="4" />
                             <label for="num4" id="lblnum4">4</label>
                         </div>
                         <div class="option-calificacion">
-                            <input type="radio" class="radio" id="num5" name="category" value="auto" />
+                            <input type="radio" class="radio" id="num5" name="category-cal" value="5" />
                             <label for="num5" id="lblnum5">5</label>
                         </div>
 
                     </div>
 
-                    <div class="selected-calificacion">
+                    <div class="selected-calificacion" id="selected-calificacion">
                         1
                     </div>
                 </div>
@@ -95,16 +95,17 @@
         </div>
 
         <div class="guardar-cancelar">
-            <a href="{{url_for('Productos')}}"><button class="cancelar">
-                    Cancelar
-                </button></a>
-            <a href="{{url_for('Productos')}}"><button type="submit" class="guardar" onclick="guardar()">
-                    Guardar
-                </button></a>
+            <a href="{{url_for('Productos')}}"><input type="submit" class="cancelar" value="Cancelar">
+                    
+                </a>
+            <input type="submit" class="guardar" onclick="guardar()" value="Guardar">
+                
+            
         </div>
     </div>
-</div>
-
+</form>
+<pre id="log">
+</pre>
 <script src={{ url_for('static', filename='js/scriptSelectProveedor.js' ) }}></script>
 <script src={{ url_for('static', filename='js/scriptSelectCalificacion.js' ) }}></script>
 

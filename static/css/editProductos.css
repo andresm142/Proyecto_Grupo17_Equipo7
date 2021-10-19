@@ -328,7 +328,7 @@ textarea:focus{
 
 .cancelar:hover {
     background: var(--color-gris);
-    color: var(--color-blanco);
+    /* color: var(--color-blanco); */
     border: none;
     cursor: pointer;
 }

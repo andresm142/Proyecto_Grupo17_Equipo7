@@ -128,6 +128,22 @@ def NewPass():
 def ConfirmacionNewPass():
     return render_template('Login.html')
 
+@app.route('/GuardarProducto', methods=['POST', 'GET'])
+def GuardarProducto():
+    id=request.form.get('id')
+    # f = request.files['archivo']
+    # imagen = secure_filename(f.filename)
+    nombreProducto = request.form.get("name")
+    
+    proveedor = request.form.get('category')
+    descripcion =request.form.get("descripcion")
+    cantidad=request.form.get("cantidad")
+    calificacion=request.form.get("category-cal")
+    print("hollaskas")
+    print(id," ",nombreProducto," ",proveedor," ",descripcion," ",cantidad," ",calificacion)
+    return ("ok")
+
+
 # Codigo provisional. El codigo de esta ruta se puede copiar en el submit de cambiar imagen en las paginas de editar
 # productos, proveedores y usuario.
 
