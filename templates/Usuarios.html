@@ -34,7 +34,9 @@
         </div>
     </div>
     <div class="contenedor-usuarios">
-        <div class="contenedor">
+        
+        <form class="contenedor" action="/AdminUser" method="POST">
+            <input type="text" name="id" value="1" style="display: none;">
             <div class="nombre">
                 <img src={{ url_for('static', filename='images/avatar.png') }} alt="">
                 <p>Lorem ipsum</p>
@@ -46,13 +48,15 @@
                 <p>correo@loremipsum.com</p>
             </div>
             <div class="opciones">
-                <a href="#"><div class="boton-eliminar" onclick="eliminar()" onclick="eliminar()"></div></a>
                 
-                <a href="{{url_for('AdminUser')}}"><div class="boton-editar"></div></a>
+                <label class="boton-eliminar"><input type="submit" name="submit_button" id="eliminar" class="boton-eliminar" value="eliminar" style="display: none;"></label>
+                <label class="boton-editar"><input type="submit" name="submit_button" id="editar" class="boton-editar" value="editar" style="display: none;"></label>
                 
             </div>
-        </div>
+        </form>
     </div>
+
+
     <div class="contenedor-usuarios">
         <div class="contenedor">
             <div class="nombre">

@@ -96,9 +96,40 @@ def Editarproducto():
 
 @app.route('/AdminUser', methods=['POST', 'GET'])
 def AdminUser():
+    print("hola")
     if not session.get("username"):
         return redirect("/")
     else:
+        if request.method == 'POST':
+            print("entro aqui post")
+            print(request.form['submit_button'])
+            if request.form.get('submit_button') == 'editar':
+                id=request.form['id']
+                # Aqui se recibe el id del usuario para su busqueda en la base de datos, esta retorna los datos
+                # del usuario
+                # connect_db = dbConnect.get_db()    #Esto lo cambias por como manejas la base de datos
+                # cursor = connect_db.cursor()
+                # consulta = "select * from usuario where id ='{}'".format(id)
+                # cursor.execute(consulta)
+                # resultado = cursor.fetchall()           #Este seria el json, a abria que cambiarlo a clave:valor
+                resultado=""
+                for row in resultado:
+                    id=row[0]
+                    nombre=row[1]
+                    apellido=row[2]
+                    tipoUser=row[3]
+                    email=row[4]
+                    telefono=row[5]
+                    contrasena=row[6]
+                    image_src=row[7]        # Digamos que aqui se guardo el nombre del archivo (foto1.png), debemos 
+                                            # establecer la ruta para usarla en el html. Ejemplo=images/foto1.png
+                resultado1=(id,nombre,apellido,tipoUser,email,telefono,contrasena,image_src)
+                return render_template('AdminUser.html',resultado1=resultado1)
+            
+            elif request.form.get('submit_button') == 'eliminar':
+                print("Boton eliminar")
+                
+            
         return render_template('AdminUser.html')
 
 

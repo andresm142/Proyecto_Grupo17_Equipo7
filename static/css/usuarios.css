@@ -107,6 +107,7 @@ body{
     padding: 10px;
     margin-left: 10px;
     border: var(--border-boton-cancelar-usuario);
+    cursor: pointer;
 }
 
 .boton-editar:hover{
@@ -118,6 +119,7 @@ body{
     border-radius: var(--radio-input);
     padding: 10px;
     border: var(--border-boton-cancelar-usuario);
+    cursor: pointer;
     
 }
 
