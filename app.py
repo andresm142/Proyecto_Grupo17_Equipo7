@@ -1,8 +1,10 @@
 import secrets, os
 import dbConnect
-from flask import Flask, render_template, request, session, redirect
+from flask import Flask, jsonify, render_template, request, session, redirect
 from flask_session import Session
 from werkzeug.utils import secure_filename
+
+import enviarEmail
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = secrets.token_hex(20)
@@ -11,6 +13,9 @@ app.config["SESSION_TYPE"] = "filesystem"
 app.config['UPLOAD_FOLDER'] = './static/images/Productos-Proveedores'
 Session(app)
 
+# Instanciar módulo de conexión a la base de datos
+conn = dbConnect
+
 @app.route('/')
 def login():
     return render_template('Login.html')
@@ -18,9 +23,6 @@ def login():
 
 @app.route('/Index', methods=['GET', 'POST'])
 def Index():
-    # Instanciar módulo de conexión a la base de datos
-    conn = dbConnect
-
     if conn.validarContrasena(request.form["email"], request.form["text"]) is not False:
         session["username"] = request.form["email"]
         session["userType"] = conn.validarTipoUsuario(request.form["email"])
@@ -117,7 +119,13 @@ def EditarProveedores():
 
 @app.route('/RecuperarPass', methods=['POST', 'GET'])
 def RecuperarPass():
-    pass
+    if conn.validarUsuario(request.form["recuperarEmail"]) is not False:
+        datosUsuario = conn.obtenerDatosUsuario(request.form['recuperarEmail'])
+        nombreApellido = datosUsuario['nombre_persona'] + " " + datosUsuario['apellido_persona']
+        datosEmail = enviarEmail.prepararEmail(datosUsuario['email'], nombreApellido, str(datosUsuario['id_usuario']))
+        response = enviarEmail.enviarCorreo(datosEmail)
+
+    return str(response)
 
 @app.route('/NewPass')                      
 def NewPass():
