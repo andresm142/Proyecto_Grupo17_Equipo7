@@ -1,3 +1,4 @@
+import re
 import secrets, os
 import dbConnect
 from flask import Flask, jsonify, render_template, request, session, redirect
@@ -10,7 +11,7 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = secrets.token_hex(20)
 app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
-app.config['UPLOAD_FOLDER'] = './static/images/Productos-Proveedores'
+app.config['UPLOAD_FOLDER'] = './static/images/upload'
 Session(app)
 
 # Instanciar módulo de conexión a la base de datos
@@ -96,13 +97,12 @@ def Editarproducto():
 
 @app.route('/AdminUser', methods=['POST', 'GET'])
 def AdminUser():
-    print("hola")
+    
     if not session.get("username"):
         return redirect("/")
     else:
         if request.method == 'POST':
-            print("entro aqui post")
-            print(request.form['submit_button'])
+            
             if request.form.get('submit_button') == 'editar':
                 id=request.form['id']
                 # Aqui se recibe el id del usuario para su busqueda en la base de datos, esta retorna los datos
@@ -137,9 +137,18 @@ def AdminUser():
             
             elif request.form.get('submit_button') == 'eliminar':
                 print("Boton eliminar")
-                
-            
-        return render_template('AdminUser.html')
+            elif request.form.get('submit_button')=='Añadir usuario +':
+                id=""
+                nombre=""
+                apellido=""
+                tipoUser="Usuario"
+                email=""
+                telefono=""
+                contrasena=""
+                image_src="/static/images/avatar.png"
+                resultado1=(id,nombre,apellido,tipoUser,email,telefono,contrasena,image_src)
+                return render_template('AdminUser.html',resultado1=resultado1)
+    # return render_template('AdminUser.html')
 
 
 @app.route('/EditarLista', methods=['POST', 'GET'])
@@ -176,6 +185,46 @@ def NewPass():
 def ConfirmacionNewPass():
     return render_template('Login.html')
 
+@app.route('/GuardarUser', methods=['POST', 'GET'])
+def GuardarUser():
+    
+    if not session.get("username"):
+        return redirect("/")
+    else:
+        if request.method == 'POST':
+            if request.form['submit_button'] == 'Guardar':
+                id=request.form['id']
+                nombre=request.form['nombre']
+                apellido=request.form['apellido']
+                # tipoUser=request.form['category']     #Falta corregir
+                email=request.form['email']
+                telefono=request.form['telefono']
+                contrasena=request.form['contrasena']
+                image_src=request.files['archivo']            
+               
+                if id=="":
+                    #Consulta para insert en la base de datos
+                    pass
+                else:
+                    if image_src.filename !="":
+                        
+                        image_src=uploader()            #Retorna Foto.png
+                        image_src="/static/images/upload/"+image_src
+                       
+                        #Consulta para update en la base de datos cambiando la imagen por la seleccionada en el momento
+                        # pass
+                    else:
+                        #Consulta para update en la base de datos sin incluir imagen, permanece la actual
+                        
+                        pass 
+               
+                # Despues de realizar la query regresa a la pagina de usuarios 
+                return render_template('Usuarios.html')
+            
+            elif request.form['submit_button'] == 'Cancelar':
+                return render_template('Usuarios.html')
+        
+
 @app.route('/GuardarProducto', methods=['POST', 'GET'])
 def GuardarProducto():
     id=request.form.get('id')
@@ -187,7 +236,7 @@ def GuardarProducto():
     descripcion =request.form.get("descripcion")
     cantidad=request.form.get("cantidad")
     calificacion=request.form.get("category-cal")
-    print("hollaskas")
+    
     print(id," ",nombreProducto," ",proveedor," ",descripcion," ",cantidad," ",calificacion)
     return ("ok")
 
@@ -195,13 +244,16 @@ def GuardarProducto():
 # Codigo provisional. El codigo de esta ruta se puede copiar en el submit de cambiar imagen en las paginas de editar
 # productos, proveedores y usuario.
 
-@app.route("/upload", methods=['POST'])
+
 def uploader():
- if request.method == 'POST':
-  # obtenemos el archivo del input "archivo"
-  f = request.files['archivo']
-  filename = secure_filename(f.filename)
-  # Guardamos el archivo en el directorio 
-  f.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-  # Retornamos una respuesta satisfactoria
-  return ("")
+    """Funcion para suir la imagen en el servidor
+        
+    """
+    # obtenemos el archivo del input "archivo"
+    f = request.files['archivo']
+    filename = secure_filename(f.filename)
+    # Guardamos el archivo en el directorio 
+    f.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+    # Retornamos una respuesta satisfactoria
+    return (filename)
+    

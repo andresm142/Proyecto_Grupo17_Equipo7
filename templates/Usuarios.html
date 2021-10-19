@@ -11,9 +11,9 @@
             <h1>{% block title %} Administrador de Usuarios {% endblock %}</h1>
         </div>
     
-        <div class="boton-anadir">
-            <a href="{{url_for('AdminUser')}}"><button class="anadir"> Añadir usuario + </button></a>
-        </div>
+        <form class="boton-anadir" action="/AdminUser" method="POST">
+            <input type="submit" name="submit_button" id="anadir" class="anadir" value="Añadir usuario +" style="display: inline;">
+        </form>
   
     </div>
 

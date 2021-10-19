@@ -121,7 +121,7 @@ body{
     opacity: 0;
     transition: all 0.4s;
     border-radius: 8px;
-    /* overflow: hidden; */
+    overflow: hidden;
     order: 1;
 }
 
@@ -206,9 +206,12 @@ body{
     background: var(--color-usuario);
     color: var(--color-blanco);
     border: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.cambiar-imagen:hover, .guardar:hover{
+.cambiar-imagen:hover, .guardar:hover, .cancelar:hover{
     background: var(--color-gris);
     color: var(--color-usuario);
     border: var(--border-boton-cancelar-usuario);
@@ -220,12 +223,7 @@ body{
     color: var(--color-usuario);
     border: var(--border-boton-cancelar-usuario);
 }
-.cancelar:hover{
-    background: var(--color-gris);
-    color: var(--color-usuario);
-    border: var(--border-boton-cancelar-usuario);
-    cursor: pointer;
-}
+
 
 .guardar, .cancelar{
     width: 156px;
