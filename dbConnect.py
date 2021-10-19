@@ -70,10 +70,10 @@ def validarContrasena(cuentaCorreo, password):
         cursor = conn.cursor()
 
         queryPass = cursor.execute(
-            "SELECT usr.contrasena FROM Persona per, Usuario usr WHERE usr.id_persona = per.id_persona AND per.email = '%s'" % cuentaCorreo).fetchone()
+            "SELECT usr.contrasena FROM Persona per, Usuario usr WHERE usr.id_persona = per.id_persona AND per.email = '%s'" % cuentaCorreo).fetchone()[0]
     else:
         return False
-
+    
     if check_password_hash(queryPass, password):
         conn.close()
         return True
