@@ -112,17 +112,26 @@ def AdminUser():
                 # consulta = "select * from usuario where id ='{}'".format(id)
                 # cursor.execute(consulta)
                 # resultado = cursor.fetchall()           #Este seria el json, a abria que cambiarlo a clave:valor
-                resultado=""
-                for row in resultado:
-                    id=row[0]
-                    nombre=row[1]
-                    apellido=row[2]
-                    tipoUser=row[3]
-                    email=row[4]
-                    telefono=row[5]
-                    contrasena=row[6]
-                    image_src=row[7]        # Digamos que aqui se guardo el nombre del archivo (foto1.png), debemos 
+                
+                # for row in resultado:
+                #     id=row[0]
+                #     nombre=row[1]
+                #     apellido=row[2]
+                #     tipoUser=row[3]
+                #     email=row[4]
+                #     telefono=row[5]
+                #     contrasena=row[6]
+                #     image_src=row[7]        # Digamos que aqui se guardo el nombre del archivo (foto1.png), debemos 
                                             # establecer la ruta para usarla en el html. Ejemplo=images/foto1.png
+                # codigo temporal, se reemplaza por el de arriba, solo para pruebas
+                id=1
+                nombre="nombre"
+                apellido="apellido"
+                tipoUser="admin"
+                email="correo@saicmotor.com"
+                telefono="1234567890"
+                contrasena="pass"
+                image_src="images/avatar.png"
                 resultado1=(id,nombre,apellido,tipoUser,email,telefono,contrasena,image_src)
                 return render_template('AdminUser.html',resultado1=resultado1)
             
