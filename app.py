@@ -127,7 +127,7 @@ def AdminUser():
                 id=1
                 nombre="nombre"
                 apellido="apellido"
-                tipoUser="admin"
+                tipoUser="Usuario"
                 email="correo@saicmotor.com"
                 telefono="1234567890"
                 contrasena="pass"
