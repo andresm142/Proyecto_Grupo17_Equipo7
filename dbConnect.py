@@ -1,5 +1,6 @@
 import sqlite3
-import secrets
+
+from werkzeug.security import generate_password_hash, check_password_hash
 
 # Ruta relativa de conexión a la base de datos
 database = r'static/db/SaicMotor.db'
@@ -73,7 +74,7 @@ def validarContrasena(cuentaCorreo, password):
     else:
         return False
 
-    if queryPass[0] == password:
+    if check_password_hash(queryPass, password):
         conn.close()
         return True
     else:
