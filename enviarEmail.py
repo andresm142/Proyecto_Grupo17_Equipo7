@@ -63,6 +63,7 @@ def prepararEmail(cuentaCorreo, nombreUsuario, idUsuario):
     %s
     """ % (sent_from, to, subject, body)
 
+    print(password)
     # Cambiar la contraseña en la base de datos.
     dbConnect.recuperarContrasena(cuentaCorreo, idUsuario, passwordHash)
 
@@ -86,7 +87,5 @@ def enviarCorreo(argumentosEmail):
         server.login(gmail_user, gmail_password)
         server.sendmail(argumentosEmail[0], argumentosEmail[1], argumentosEmail[2].encode('utf-8'))
         server.close()
-        return 'Email enviado'
     except Exception as e:
-        print("error en el envío")
         return e
