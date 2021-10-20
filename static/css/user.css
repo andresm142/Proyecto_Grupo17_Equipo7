@@ -85,6 +85,7 @@ body{
     width: 100%;
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 /* FIN CONFIGURACION DE DATOS */
 
@@ -187,19 +188,19 @@ body{
     gap: 20px;
 }
 
-.cambiar-imagen, .cancelar, .guardar{
+.cambiar-imagen, .cancelar, .guardar, #pass{
     padding: 0 15px;
     height: 58px;
     border-radius: var(--radio-boton);
     font: var(--fuente-sub-titulo);
 }
-.cambiar-imagen, .guardar{
+.cambiar-imagen, .guardar, #pass{
     background: var(--color-usuario);
     color: var(--color-blanco);
     border: none;
 }
 
-.cambiar-imagen:hover, .guardar:hover{
+.cambiar-imagen:hover, .guardar:hover, #pass:hover{
     background: var(--color-gris);
     color: var(--color-usuario);
     border: var(--border-boton-cancelar-usuario);
@@ -222,3 +223,123 @@ body{
     width: 156px;
 }
 /* FIN CONFIGURACION DE LOS BOTONES CAMBIAR CANCELAR Y GUARDAR */
+
+
+/* CONIGURACION MODAL */
+
+
+.modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 30%;
+    max-width: 500px;
+    background-color: white;
+    padding: 4rem;
+    border-radius: 5px;
+    box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.3);
+    z-index: 10;
+    text-align: center;
+  }
+
+  .modal h2{
+      font-size: 32px;
+  }
+
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height:fit-content;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(3px);
+    z-index: 5;
+  }
+  
+  .close-modal {
+    position: absolute;
+    top: 0.8rem;
+    right: 1.3rem;
+    font-size: 2.5rem;
+    color: #333;
+    cursor: pointer;
+    border: none;
+    background: none;
+  }
+  
+  /* CLASS TO HIDE MODAL */
+ .modal h2 {
+    margin: 0px 0 -0.125rem;
+    padding: 0;
+    color: var(--color-superadmin);
+    font: var(--fuente-super-titulo);
+    font-variant: small-caps;
+    font-size: 26px;
+}
+  .hidden {
+    display: none;
+  }
+  
+  .inputBox {
+    position: relative;
+    font: var(--fuente-texto);
+    }
+
+    .form-modal input[type="password"] {
+        width: 95%;
+        margin: 15px 0px;
+        padding: 4px 0px;
+        font-size: 1rem;
+        letter-spacing: 0.062rem;
+        margin-bottom: 1.875rem; 
+        border: none;
+        border-bottom: 3px solid var(--color-superadmin);
+        background: transparent;
+    }
+    .enviar {
+        border: none;
+        outline: none;
+        color: var(--color-blanco);
+        background-color: var(--color-superadmin);
+        padding: 0.625rem 1.25rem;
+        cursor: pointer;
+        border-radius: 0.312rem;
+        font: var(--fuente-texto);
+        /* float: right; */
+    }
+    .form-modal .inputBox label {
+        position: absolute;
+        top: 0;
+        left: 10px;
+        padding: 0.625rem 0;
+        font-size: 1rem;
+        color: var(--color-gris);
+        pointer-events: none;
+        transition: 0.5s;
+    }
+    .inputBox input:focus~label, .inputBox input:valid~label, .inputBox input:not([value=""])~label{
+        top: -1.125rem;
+        left: 10px;
+        color: var(--color-superadmin);
+        font-size: 0.85rem;
+        height: 10px;
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+    .form-modal .inputBox input {
+        outline: none;
+    }
+  
+    .enviar:hover {
+        background-color: #287ae6;
+        box-shadow: 0 1px 1px 0 rgba(66, 133, 244, 0.45), 0 1px 3px 1px rgba(66, 133, 244, 0.3);
+    }
+    .show-modal{
+        cursor: pointer;
+        border: none;
+        background: none;
+        color: var(--color-superadmin);
+    }
+  /* FIN CONFIGURACION MODAL */
