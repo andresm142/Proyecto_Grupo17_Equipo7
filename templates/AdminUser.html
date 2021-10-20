@@ -76,7 +76,7 @@
                 <input type="password" name="contrasena" id="cpass" value="{{ resultado1[6] }}">
             </div>
             <div class="guardar-cancelar">
-                <input type="submit" name="submit_button" id="cancelar" class="cancelar" value="Cancelar">
+                <input type="submit" name="submit_button" id="cancelar" class="cancelar" value="Cancelar" onclick="{{url_for('Usuarios')}}">
                 <input type="submit" name="submit_button" id="guardar" class="guardar" value="Guardar"
                     onclick="guardar()">
 

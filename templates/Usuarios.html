@@ -35,33 +35,34 @@
         </div>
     </div>
 
-    {% for fila in range(9) %}
+    {% for fila in range(matriz|length) %}
+        
+        <div class="contenedor-usuarios">
 
-    <div class="contenedor-usuarios">
+            <form class="contenedor" action="/AdminUser" method="POST">
+                <!-- Para pruebas, cambiar el valor de value segun el id del usuario -->
+                <input type="text" name="id" value="{{ matriz[fila][0] }}" style="display: none;">
+                <div class="nombre">
+                    <img src='{{ matriz[fila][5] }}' alt="">
+                    <p>{{ matriz[fila][1] }} {{ matriz[fila][2] }}</p>
+                </div>
+                <div class="tipo">
+                    <p>{{ matriz[fila][3] }}</p>
+                </div>
+                <div class="correo">
+                    <p>{{ matriz[fila][4] }}</p>
+                </div>
+                <div class="opciones">
 
-        <form class="contenedor" action="/AdminUser" method="POST">
-            <!-- Para pruebas, cambiar el valor de value segun el id del usuario -->
-            <input type="text" name="id" value="1" style="display: none;">
-            <div class="nombre">
-                <img src={{ url_for('static', filename='images/avatar.png' ) }} alt="">
-                <p>Lorem ipsum</p>
-            </div>
-            <div class="tipo">
-                <p>Usuario final</p>
-            </div>
-            <div class="correo">
-                <p>correo@loremipsum.com</p>
-            </div>
-            <div class="opciones">
+                    <label class="boton-eliminar"><input type="submit" name="submit_button" id="eliminar"
+                            class="boton-eliminar" value="eliminar" style="display: none;"></label>
+                    <label class="boton-editar"><input type="submit" name="submit_button" id="editar" class="boton-editar"
+                            value="editar" style="display: none;"></label>
 
-                <label class="boton-eliminar"><input type="submit" name="submit_button" id="eliminar"
-                        class="boton-eliminar" value="eliminar" style="display: none;"></label>
-                <label class="boton-editar"><input type="submit" name="submit_button" id="editar" class="boton-editar"
-                        value="editar" style="display: none;"></label>
-
-            </div>
-        </form>
-    </div>
+                </div>
+            </form>
+        </div>
+        
     {% endfor %}
 </section>
 

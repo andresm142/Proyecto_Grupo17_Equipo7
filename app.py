@@ -264,12 +264,8 @@ def GuardarProducto():
     return ("ok")
 
 
-# Codigo provisional. El codigo de esta ruta se puede copiar en el submit de cambiar imagen en las paginas de editar
-# productos, proveedores y usuario.
-
-
 def uploader():
-    """Funcion para suir la imagen en el servidor
+    """Funcion para subir la imagen en el servidor
         
     """
     # obtenemos el archivo del input "archivo"

@@ -39,11 +39,11 @@
     padding-left: 20px;
 }
 .ultimos-productos-titulo{
-    margin: 30px 60px;
+    margin: 30px 20px;
 }
 
 .ultimos-proveedores-titulo{
-    margin: 30px 60px;
+    margin: 30px 20px;
 }
 
 /* FIN ENCABEZADOS */
@@ -55,13 +55,13 @@
     flex-wrap: wrap;
     gap: 1vw;
     /* justify-content: space-around; */
-    margin: 0 60px;
+    margin: 0 20px;
 }
 .contenedor-ultimos{
     background: var(--color-blanco-fondo);
     box-shadow: var(--sombra-contenedores);
     border-radius: var(--radio-contenedor);
-    width: 350px;
+    width: 300px;
     padding: 15px 20px;
     font: var(--fuente-texto);
     display: flex;
