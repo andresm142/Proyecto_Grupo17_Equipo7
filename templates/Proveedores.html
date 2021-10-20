@@ -17,112 +17,34 @@
 
 <section class="proveedores">
     <div class="block">
-        <article>
-            <div class="container-proveedor">
-                <div class="supplier_img">
-                    <img src={{ url_for('static', filename="images/proveedores.jpg" ) }} alt="">
-                </div>
-                <div class="description">
-                    <div class="text">
-                        <h3>Nombre de proveedor</h3>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque consequat iaculis
-                            fermentum. Nulia dapibus at arcu ac iaculis.
-                        </p>
+        {% for fila in range(8) %}
+            <article>
+                <div class="container-proveedor">
+                    <div class="supplier_img">
+                        <img src={{ url_for('static', filename="images/proveedores.jpg" ) }} alt="">
                     </div>
-                    <div class="buttons">
-                        <a href="#">
-                            <div class="remove" onclick="eliminar()"></div>
-                        </a>
+                    <div class="description">
+                        <div class="text">
+                            <h3>Nombre de proveedor</h3>
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque consequat iaculis
+                                fermentum. Nulia dapibus at arcu ac iaculis.
+                            </p>
+                        </div>
+                        <div class="buttons">
+                            <a href="#">
+                                <div class="remove" onclick="eliminar()"></div>
+                            </a>
 
 
-                        <a href="{{url_for('EditarProveedores')}}">
-                            <div class="edit"></div>
-                        </a>
+                            <a href="{{url_for('EditarProveedores')}}">
+                                <div class="edit"></div>
+                            </a>
 
+                        </div>
                     </div>
-                </div>
-        </article>
-        <article>
-            <div class="container-proveedor">
-                <div class="supplier_img">
-                    <img src={{ url_for('static', filename="images/proveedores.jpg" ) }} alt="">
-                </div>
-                <div class="description">
-                    <div class="text">
-                        <h3>Nombre de proveedor</h3>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque consequat iaculis
-                            fermentum. Nulia dapibus at arcu ac iaculis.
-                        </p>
-                    </div>
-                    <div class="buttons">
-                        <a href="#">
-                            <div class="remove" onclick="eliminar()"></div>
-                        </a>
-
-
-                        <a href="{{url_for('EditarProveedores')}}">
-                            <div class="edit"></div>
-                        </a>
-
-                    </div>
-                </div>
-        </article>
-
-        <article>
-            <div class="container-proveedor">
-                <div class="supplier_img">
-                    <img src={{ url_for('static', filename="images/proveedores.jpg" ) }} alt="">
-                </div>
-                <div class="description">
-                    <div class="text">
-                        <h3>Nombre de proveedor</h3>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque consequat iaculis
-                            fermentum. Nulia dapibus at arcu ac iaculis.
-                        </p>
-                    </div>
-                    <div class="buttons">
-                        <a href="#">
-                            <div class="remove" onclick="eliminar()"></div>
-                        </a>
-
-
-                        <a href="{{url_for('EditarProveedores')}}">
-                            <div class="edit"></div>
-                        </a>
-
-                    </div>
-                </div>
-        </article>
-
-        <article>
-            <div class="container-proveedor">
-                <div class="supplier_img">
-                    <img src={{ url_for('static', filename="images/proveedores.jpg" ) }} alt="">
-                </div>
-                <div class="description">
-                    <div class="text">
-                        <h3>Nombre de proveedor</h3>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque consequat iaculis
-                            fermentum. Nulia dapibus at arcu ac iaculis.
-                        </p>
-                    </div>
-                    <div class="buttons">
-                        <a href="#">
-                            <div class="remove" onclick="eliminar()"></div>
-                        </a>
-
-
-                        <a href="{{url_for('EditarProveedores')}}">
-                            <div class="edit"></div>
-                        </a>
-
-                    </div>
-                </div>
-        </article>
+            </article>
+        {% endfor %}
     </div>
 
 </section>

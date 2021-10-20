@@ -74,7 +74,8 @@ def validarContrasena(cuentaCorreo, password):
     else:
         return False
     
-    if check_password_hash(queryPass, password):
+    # if check_password_hash(queryPass, password):
+    if queryPass==password:
         conn.close()
         return True
     else:

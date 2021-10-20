@@ -4,17 +4,18 @@
 <script>
     document.body.classList.add(sessionStorage.getItem('userType'));
 </script>
-<link rel="stylesheet" href={{ url_for('static', filename='css/usuarios.css') }}>
+<link rel="stylesheet" href={{ url_for('static', filename='css/usuarios.css' ) }}>
 <header class="header-paginas">
     <div class="encabezado-usuarios">
         <div class="titulo">
             <h1>{% block title %} Administrador de Usuarios {% endblock %}</h1>
         </div>
-    
+
         <form class="boton-anadir" action="/AdminUser" method="POST">
-            <input type="submit" name="submit_button" id="anadir" class="anadir" value="Añadir usuario +" style="display: inline;">
+            <input type="submit" name="submit_button" id="anadir" class="anadir" value="Añadir usuario +"
+                style="display: inline;">
         </form>
-  
+
     </div>
 
 </header>
@@ -33,33 +34,35 @@
             <h2></h2>
         </div>
     </div>
+
+    {% for fila in range(9) %}
+
     <div class="contenedor-usuarios">
-        
+
         <form class="contenedor" action="/AdminUser" method="POST">
             <!-- Para pruebas, cambiar el valor de value segun el id del usuario -->
-            <input type="text" name="id" value="1" style="display: none;">      
+            <input type="text" name="id" value="1" style="display: none;">
             <div class="nombre">
-                <img src={{ url_for('static', filename='images/avatar.png') }} alt="">
+                <img src={{ url_for('static', filename='images/avatar.png' ) }} alt="">
                 <p>Lorem ipsum</p>
             </div>
             <div class="tipo">
-               <p>Usuario final</p> 
+                <p>Usuario final</p>
             </div>
             <div class="correo">
                 <p>correo@loremipsum.com</p>
             </div>
             <div class="opciones">
-                
-                <label class="boton-eliminar"><input type="submit" name="submit_button" id="eliminar" class="boton-eliminar" value="eliminar" style="display: none;"></label>
-                <label class="boton-editar"><input type="submit" name="submit_button" id="editar" class="boton-editar" value="editar" style="display: none;"></label>
-                
+
+                <label class="boton-eliminar"><input type="submit" name="submit_button" id="eliminar"
+                        class="boton-eliminar" value="eliminar" style="display: none;"></label>
+                <label class="boton-editar"><input type="submit" name="submit_button" id="editar" class="boton-editar"
+                        value="editar" style="display: none;"></label>
+
             </div>
         </form>
-
-
-
     </div>
-
+    {% endfor %}
 </section>
 
 {% endblock %}

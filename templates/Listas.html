@@ -2,7 +2,7 @@
 <script>
     document.body.classList.add(sessionStorage.getItem('userType'));
 </script>
-<link rel="stylesheet" href={{ url_for( 'static', filename='css/listas.css' ) }}>
+<link rel="stylesheet" href={{ url_for( 'static' , filename='css/listas.css' ) }}>
 <header class="header-paginas">
     <div class="encabezado-listas">
         <div class="titulo">
@@ -16,87 +16,94 @@
 </header>
 
 <section class="listas">
-    <div class="titulos">
-        <div class="col-nombre">
-            <h2>Nombre de Lista</h2>
-        </div>
-        <div class="col-cant">
-            <h2>Cantidad de Productos : 25</h2>
-        </div>
-        <div class="opciones">
-            <a href="#">
-                <div class="boton-eliminar" onclick="eliminar()"></div>
-            </a>
+    {% for fila in range(3) %}
+    <div class="contenedor-listas">
+        <div class="titulos">
+            <div class="col-nombre">
+                <h2>Nombre de Lista</h2>
+            </div>
+            <div class="col-cant">
+                <h2>Cantidad de Productos : 25</h2>
+            </div>
+            <div class="opciones">
+                <a href="#">
+                    <div class="boton-eliminar" onclick="eliminar()"></div>
+                </a>
 
-            <a href="{{url_for('EditarLista')}}">
-                <div class="boton-editar"></div>
-            </a>
+                <a href="{{url_for('EditarLista')}}">
+                    <div class="boton-editar"></div>
+                </a>
+
+            </div>
 
         </div>
 
+        <div class="contenedor-subtitulos">
+            <div class="subtitulos">
+                <div class="product">
+                    <h2>NOMBRE DEL PRODUCTO</h2>
+                </div>
+                <div class="cantidad">
+                    <h2>CANTIDAD</h2>
+                </div>
+                <div class="proveed">
+                    <h2>NOMBRE PROVEEDOR</h2>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="contenedor-detallado">
+
+            <div class="detallado">
+                {% for fila in range(5) %}
+                <span class="point"></span>
+                <div class="producto">
+                    <p>Nombre del producto</p>
+                </div>
+                <div class="cant">
+                    <p>5</p>
+                </div>
+                <div class="proveedor">
+                    <p>Nombre del proveedor</p>
+                </div>
+                {% endfor %}
+
+                <!-- <span class="point"></span>
+                <div class="producto">
+                    <p>Nombre del producto</p>
+                </div>
+                <div class="cant">
+                    <p>10</p>
+                </div>
+                <div class="proveedor">
+                    <p>Nombre del proveedor</p>
+                </div>
+
+                <span class="point"></span>
+                <div class="producto">
+                    <p>Nombre del producto</p>
+                </div>
+                <div class="cant">
+                    <p>5</p>
+                </div>
+                <div class="proveedor">
+                    <p>Nombre del proveedor</p>
+                </div>
+
+                <span class="point"></span>
+                <div class="producto">
+                    <p>Nombre del producto</p>
+                </div>
+                <div class="cant">
+                    <p>5</p>
+                </div>
+                <div class="proveedor">
+                    <p>Nombre del proveedor</p>
+                </div> -->
+            </div>
+        </div>
     </div>
-
-    <div class="contenedor-subtitulos">
-        <div class="subtitulos">
-            <div class="product">
-                <h2>NOMBRE DEL PRODUCTO</h2>
-            </div>
-            <div class="cantidad">
-                <h2>CANTIDAD</h2>
-            </div>
-            <div class="proveed">
-                <h2>NOMBRE PROVEEDOR</h2>
-            </div>
-
-        </div>
-    </div>
-
-    <div class="contenedor-detallado">
-        <div class="detallado">
-            <span class="point"></span>
-            <div class="producto">
-                <p>Nombre del producto</p>
-            </div>
-            <div class="cant">
-                <p>5</p>
-            </div>
-            <div class="proveedor">
-                <p>Nombre del proveedor</p>
-            </div>
-
-            <span class="point"></span>
-            <div class="producto">
-                <p>Nombre del producto</p>
-            </div>
-            <div class="cant">
-                <p>10</p>
-            </div>
-            <div class="proveedor">
-                <p>Nombre del proveedor</p>
-            </div>
-
-            <span class="point"></span>
-            <div class="producto">
-                <p>Nombre del producto</p>
-            </div>
-            <div class="cant">
-                <p>5</p>
-            </div>
-            <div class="proveedor">
-                <p>Nombre del proveedor</p>
-            </div>
-
-            <span class="point"></span>
-            <div class="producto">
-                <p>Nombre del producto</p>
-            </div>
-            <div class="cant">
-                <p>5</p>
-            </div>
-            <div class="proveedor">
-                <p>Nombre del proveedor</p>
-            </div>
-        </div>
-    </div>
+    {% endfor %}
 </section>
 {% endblock %}

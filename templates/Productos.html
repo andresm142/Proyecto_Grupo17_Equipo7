@@ -1,43 +1,49 @@
 {% extends 'MasterPage.html' %}
-    
+
 {% block content %}
-    <link rel="stylesheet" href={{ url_for('static', filename='css/productos.css') }}>
-    <header class="header-paginas">
-        <div class="encabezado-productos">
-            <div class="titulo">
-                <h1>{% block title %} Productos {% endblock %}</h1>
-            </div>
-        
-            <div class="boton-anadir" id="anadir">
-                <a href="{{url_for('Editarproducto')}}"><button class="anadir"> Añadir + </button></a>
-            </div>
-            <div class="botones-disponibilidad superadmin" id="botones-superadmin">
-                <div class="boton-disponible">
-                    <button class="bt-disponible"> disponible</button>
-                </div>
-                <div class="boton-nodisponible">
-                    <button class="bt-nodisponible"> no disponible</button>
-                </div>
-            </div>   
+<link rel="stylesheet" href={{ url_for('static', filename='css/productos.css' ) }}>
+<header class="header-paginas">
+    <div class="encabezado-productos">
+        <div class="titulo">
+            <h1>{% block title %} Productos {% endblock %}</h1>
         </div>
 
-    </header>
-    <section class="section-productos">
+        <div class="boton-anadir" id="anadir">
+            <a href="{{url_for('Editarproducto')}}"><button class="anadir"> Añadir + </button></a>
+        </div>
+        <div class="botones-disponibilidad superadmin" id="botones-superadmin">
+            <div class="boton-disponible">
+                <button class="bt-disponible"> disponible</button>
+            </div>
+            <div class="boton-nodisponible">
+                <button class="bt-nodisponible"> no disponible</button>
+            </div>
+        </div>
+    </div>
+
+</header>
+
+<section class="section-productos">
+    {% for fila in range(9) %}
         <div class="box-producto">
             <div class="logo-producto">
-                <div class="imagen"><img src={{ url_for('static', filename='images/Producto.jpg') }} alt=""></div>
+                <div class="imagen"><img src={{ url_for('static', filename='images/Producto.jpg' ) }} alt=""></div>
             </div>
 
             <div class="boton-editar-eliminar">
-                    <a href="#"><div class="boton-eliminar" onclick="eliminar()" onclick="eliminar()">
+                <a href="#">
+                    <div class="boton-eliminar" onclick="eliminar()" onclick="eliminar()">
 
-                    </div></a>
-                    <a href="{{url_for('Editarproducto')}}"><div class="boton-editar">
+                    </div>
+                </a>
+                <a href="{{url_for('Editarproducto')}}">
+                    <div class="boton-editar">
 
-                    </div></a>
-            </div>  
+                    </div>
+                </a>
+            </div>
 
-            <div class="box-fondo">                
+            <div class="box-fondo">
                 <div class="titulo-producto">
                     Nombre del producto
                 </div>
@@ -56,220 +62,32 @@
                     </div>
                 </div>
                 <div class="descripcion">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                 </div>
-                
+
             </div>
         </div>
-        <div class="box-producto">
-            <div class="logo-producto">
-                <div class="imagen"><img src={{ url_for('static', filename='images/Producto.jpg') }} alt=""></div>
-            </div>
+    {% endfor %}
 
-            <div class="boton-editar-eliminar">
-                    <a href="#"><div class="boton-eliminar" onclick="eliminar()">
 
-                    </div></a>
-                    <a href="{{url_for('Editarproducto')}}"><div class="boton-editar">
+</section>
+<script>
 
-                    </div></a>
-            </div>  
+    if (sessionStorage.getItem('userType') == "usuario") {
+        document.getElementById("anadir").style.display = "none";
 
-            <div class="box-fondo">                
-                <div class="titulo-producto">
-                    Nombre del producto
-                </div>
-                <div class="name-proveedor">
-                    Proveedor
-                </div>
-                <div class="disponibe">
-                    Disponible: 20
-                </div>
-                <div class="puntuacion">
-                    <div class="estrellas-outer">
-                        <div class="estrellas-inner"></div>
-                    </div>
-                    <div class="valor">
-                        4.5
-                    </div>
-                </div>
-                <div class="descripcion">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
-                </div>
-                
-            </div>
-        </div>
-        <div class="box-producto">
-            <div class="logo-producto">
-                <div class="imagen"><img src={{ url_for('static', filename='images/Producto.jpg') }} alt=""></div>
-            </div>
+    }
+    else {
+        document.getElementById("anadir").style.display = "";
+    }
+    if (sessionStorage.getItem('userType') == "superAdmin") {
+        document.getElementById("botones-superadmin").style.display = "none";
 
-            <div class="boton-editar-eliminar">
-                    <a href="#"><div class="boton-eliminar" onclick="eliminar()">
+    }
+    else {
+        document.getElementById("botones-superadmin").style.display = "";
+    }
 
-                    </div></a>
-                    <a href="{{url_for('Editarproducto')}}"><div class="boton-editar">
-
-                    </div></a>
-            </div>  
-
-            <div class="box-fondo">                
-                <div class="titulo-producto">
-                    Nombre del producto
-                </div>
-                <div class="name-proveedor">
-                    Proveedor
-                </div>
-                <div class="disponibe">
-                    Disponible: 20
-                </div>
-                <div class="puntuacion">
-                    <div class="estrellas-outer">
-                        <div class="estrellas-inner"></div>
-                    </div>
-                    <div class="valor">
-                        4.5
-                    </div>
-                </div>
-                <div class="descripcion">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
-                </div>
-                
-            </div>
-        </div>
-        <div class="box-producto">
-            <div class="logo-producto">
-                <div class="imagen"><img src={{ url_for('static', filename='images/Producto.jpg') }} alt=""></div>
-            </div>
-
-            <div class="boton-editar-eliminar">
-                    <a href="#"><div class="boton-eliminar" onclick="eliminar()">
-
-                    </div></a>
-                    <a href="{{url_for('Editarproducto')}}"><div class="boton-editar">
-
-                    </div></a>
-            </div>  
-
-            <div class="box-fondo">                
-                <div class="titulo-producto">
-                    Nombre del producto
-                </div>
-                <div class="name-proveedor">
-                    Proveedor
-                </div>
-                <div class="disponibe">
-                    Disponible: 20
-                </div>
-                <div class="puntuacion">
-                    <div class="estrellas-outer">
-                        <div class="estrellas-inner"></div>
-                    </div>
-                    <div class="valor">
-                        4.5
-                    </div>
-                </div>
-                <div class="descripcion">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
-                </div>
-                
-            </div>
-        </div>
-        <div class="box-producto">
-            <div class="logo-producto">
-                <div class="imagen"><img src={{ url_for('static', filename='images/Producto.jpg') }} alt=""></div>
-            </div>
-
-            <div class="boton-editar-eliminar">
-                    <a href="#"><div class="boton-eliminar" onclick="eliminar()">
-
-                    </div></a>
-                    <a href="{{url_for('Editarproducto')}}"><div class="boton-editar">
-
-                    </div></a>
-            </div>  
-
-            <div class="box-fondo">                
-                <div class="titulo-producto">
-                    Nombre del producto
-                </div>
-                <div class="name-proveedor">
-                    Proveedor
-                </div>
-                <div class="disponibe">
-                    Disponible: 20
-                </div>
-                <div class="puntuacion">
-                    <div class="estrellas-outer">
-                        <div class="estrellas-inner"></div>
-                    </div>
-                    <div class="valor">
-                        4.5
-                    </div>
-                </div>
-                <div class="descripcion">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
-                </div>
-                
-            </div>
-        </div>
-        <div class="box-producto">
-            <div class="logo-producto">
-                <div class="imagen"><img src={{ url_for('static', filename='images/Producto.jpg') }} alt=""></div>
-            </div>
-
-            <div class="boton-editar-eliminar">
-                    <a href="#"><div class="boton-eliminar" onclick="eliminar()">
-
-                    </div></a>
-                    <a href="{{url_for('Editarproducto')}}"><div class="boton-editar">
-
-                    </div></a>
-            </div>  
-
-            <div class="box-fondo">                
-                <div class="titulo-producto">
-                    Nombre del producto
-                </div>
-                <div class="name-proveedor">
-                    Proveedor
-                </div>
-                <div class="disponibe">
-                    Disponible: 20
-                </div>
-                <div class="puntuacion">
-                    <div class="estrellas-outer">
-                        <div class="estrellas-inner"></div>
-                    </div>
-                    <div class="valor">
-                        4.5
-                    </div>
-                </div>
-                <div class="descripcion">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
-                </div>
-                
-            </div>
-        </div>
-
-    </section>
-    <script>
-
-        if(sessionStorage.getItem('userType')=="usuario"){
-             document.getElementById("anadir").style.display="none";
-             
-        }
-        else{
-            document.getElementById("anadir").style.display="";
-        }
-        if(sessionStorage.getItem('userType')=="superAdmin"){
-             document.getElementById("botones-superadmin").style.display="none";
-             
-        }
-        else{
-            document.getElementById("botones-superadmin").style.display="";
-        }
-
-    </script>
+</script>
 
 {% endblock %}
