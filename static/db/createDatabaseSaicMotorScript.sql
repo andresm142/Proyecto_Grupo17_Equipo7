@@ -96,6 +96,7 @@ DROP TABLE Usuario;
 DROP TABLE Empresa;
 
 
+
 /* Insertando valores de pruebas */
 /* CREACION DE USUARIOS */
 INSERT INTO Persona(nombre_persona, apellido_persona, telefono_persona, email, imagen_src)
