@@ -79,12 +79,8 @@ def Usuarios():
         return redirect("/")
     else:
         ListaUsuarios = conn.obtenerListaDeUsuarios()
-        print(ListaUsuarios)
-        print(ListaUsuarios[0])
-        print(ListaUsuarios[1])
-        print(ListaUsuarios[2])
-        print(ListaUsuarios[0]["nombre_persona"])
-        return render_template('Usuarios.html')
+  
+        return render_template('Usuarios.html',ListaUsuarios=ListaUsuarios)
 
 
 @app.route('/Logout', methods=['POST', 'GET'])

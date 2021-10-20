@@ -35,22 +35,22 @@
         </div>
     </div>
 
-    {% for fila in range(matriz|length) %}
+    {% for fila in range(ListaUsuarios|length) %}
         
         <div class="contenedor-usuarios">
 
             <form class="contenedor" action="/AdminUser" method="POST">
                 <!-- Para pruebas, cambiar el valor de value segun el id del usuario -->
-                <input type="text" name="id" value="{{ matriz[fila][0] }}" style="display: none;">
+                <input type="text" name="id" value="{{ ListaUsuarios[fila]['id_persona'] }}" style="display: none;">
                 <div class="nombre">
-                    <img src='{{ matriz[fila][5] }}' alt="">
-                    <p>{{ matriz[fila][1] }} {{ matriz[fila][2] }}</p>
+                    <img src="{{ ListaUsuarios[fila]['imagen_src'] }}" alt="">
+                    <p>{{ ListaUsuarios[fila]['nombre_persona'] }} {{ ListaUsuarios[fila]['apellido_persona'] }}</p>
                 </div>
                 <div class="tipo">
-                    <p>{{ matriz[fila][3] }}</p>
+                    <p>{{ ListaUsuarios[fila]['descripcion_rol'] }}</p>
                 </div>
                 <div class="correo">
-                    <p>{{ matriz[fila][4] }}</p>
+                    <p>{{ ListaUsuarios[fila]['email'] }}</p>
                 </div>
                 <div class="opciones">
 
