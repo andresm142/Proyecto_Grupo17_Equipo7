@@ -15,5 +15,8 @@ optionsListUsuario.forEach(o => {
     o.addEventListener("click", () => {
         selectedUsuario.innerHTML = o.querySelector("label").innerHTML;
         optionsContainerUsuario.classList.remove("active");
+        var nombre = document.querySelector(".selected-usuario").textContent;
+        document.getElementById("inputSelected").value=nombre;
+        
     });
 });

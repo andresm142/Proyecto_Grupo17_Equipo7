@@ -127,11 +127,19 @@ def AdminUser():
                 id=1
                 nombre="nombre"
                 apellido="apellido"
-                tipoUser="Usuario"
+                tipoUser="admin"
                 email="correo@saicmotor.com"
                 telefono="1234567890"
                 contrasena="pass"
                 image_src="/static/images/avatar.png"
+                
+                if(tipoUser=="admin"):
+                    tipoUser="Administrador"
+                elif(tipoUser=="superAdmin"):
+                    tipoUser="Super administrador"
+                else:
+                    tipoUser="Usuario";
+                
                 resultado1=(id,nombre,apellido,tipoUser,email,telefono,contrasena,image_src)
                 return render_template('AdminUser.html',resultado1=resultado1)
             
@@ -196,15 +204,30 @@ def GuardarUser():
                 id=request.form['id']
                 nombre=request.form['nombre']
                 apellido=request.form['apellido']
-                # tipoUser=request.form['category']     #Falta corregir
+                tipoUser=request.form['selectedUsuario']    
+                if(tipoUser=="Administrador"):
+                    tipoUser="admin"
+                elif(tipoUser=="Super administrador"):
+                    tipoUser="superAdmin"
+                else:
+                    tipoUser="usuario"; 
+
                 email=request.form['email']
                 telefono=request.form['telefono']
                 contrasena=request.form['contrasena']
                 image_src=request.files['archivo']            
                
                 if id=="":
+                    
+                    if image_src.filename !="":
+                        image_src=uploader()            #Retorna Foto.png
+                        image_src="/static/images/upload/"+image_src
+                        
+                    else:
+                        image_src="/static/images/avatar.png"   # Si no se selecciona ninguna imagen, establece la imagen por defecto
+                    
                     #Consulta para insert en la base de datos
-                    pass
+                    
                 else:
                     if image_src.filename !="":
                         
@@ -212,7 +235,7 @@ def GuardarUser():
                         image_src="/static/images/upload/"+image_src
                        
                         #Consulta para update en la base de datos cambiando la imagen por la seleccionada en el momento
-                        # pass
+                        
                     else:
                         #Consulta para update en la base de datos sin incluir imagen, permanece la actual
                         

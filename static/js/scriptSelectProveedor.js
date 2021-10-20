@@ -12,5 +12,7 @@ optionsListProveedor.forEach(o => {
     o.addEventListener("click", () => {
         selectedProveedor.innerHTML = o.querySelector("label").innerHTML;
         optionsContainerProveedor.classList.remove("active");
+        var nombre = document.querySelector(".selected-proveedor").textContent;
+        document.getElementById("inputSelectedProveedor").value=nombre;
     });
 });

@@ -11,6 +11,8 @@ optionsList.forEach(o => {
     o.addEventListener("click", () => {
         selected.innerHTML = o.querySelector("label").innerHTML;
         optionsContainer.classList.remove("active");
+        var nombre = document.querySelector(".selected").textContent;
+        document.getElementById("inputSelectedSearch").value=nombre;
     });
 });
 

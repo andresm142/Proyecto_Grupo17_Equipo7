@@ -11,5 +11,7 @@ optionsListCalificacion.forEach(o => {
     o.addEventListener("click", () => {
         selectedCalificacion.innerHTML = o.querySelector("label").innerHTML;
         optionsContainerCalificacion.classList.remove("active");
+        var nombre = document.querySelector(".selected-calificacion").textContent;
+        document.getElementById("inputSelectedCalificacion").value=nombre;
     });
 });

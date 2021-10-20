@@ -38,24 +38,27 @@
                     <div class="select-box-usuario">
                         <div class="options-container-usuario">
                             <div class="option-user">
-                                <input type="radio" class="radio" id="usuario" name="category" />
+                                <input type="radio" class="radio" id="usuario" name="category" value="usuario" />
                                 <label for="usuario" id="primer-tipo-usuario">Usuario</label>
                             </div>
                             <div class="option-user">
-                                <input type="radio" class="radio" id="administrador" name="category" />
+                                <input type="radio" class="radio" id="administrador" name="category" value="admin"/>
                                 <label for="administrador" id="segundo-tipo-usuario">Administrador</label>
                             </div>
                             <div class="option-user">
-                                <input type="radio" class="radio" id="superadmin" name="category" />
+                                <input type="radio" class="radio" id="superadmin" name="category" value="superAdmin"/>
                                 <label for="superadmin" id="tercer-tipo-usuario">Super administrador</label>
                             </div>
                         </div>
                         <div class="selected-usuario">
                             {{ resultado1[3] }}
+                            
                         </div>
+                        <input type="hidden" id="inputSelected" name="selectedUsuario"  value="{{ resultado1[3] }}">
                     </div>
                 </div>
             </div>
+            
             <div class="correo">
                 <label for="email">Email</label>
                 <input type="email" name="email" id="email" value="{{ resultado1[4] }}">
