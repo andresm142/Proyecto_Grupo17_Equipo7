@@ -78,6 +78,12 @@ def Usuarios():
     if not session.get("username"):
         return redirect("/")
     else:
+        ListaUsuarios = conn.obtenerListaDeUsuarios()
+        print(ListaUsuarios)
+        print(ListaUsuarios[0])
+        print(ListaUsuarios[1])
+        print(ListaUsuarios[2])
+        print(ListaUsuarios[0]["nombre_persona"])
         return render_template('Usuarios.html')
 
 
@@ -97,7 +103,6 @@ def Editarproducto():
 
 @app.route('/AdminUser', methods=['POST', 'GET'])
 def AdminUser():
-    
     if not session.get("username"):
         return redirect("/")
     else:
@@ -242,10 +247,10 @@ def GuardarUser():
                         pass 
                
                 # Despues de realizar la query regresa a la pagina de usuarios 
-                return render_template('Usuarios.html')
+                return redirect('/Usuarios')
             
             elif request.form['submit_button'] == 'Cancelar':
-                return render_template('Usuarios.html')
+                return redirect('/Usuarios')
         
 
 @app.route('/GuardarProducto', methods=['POST', 'GET'])

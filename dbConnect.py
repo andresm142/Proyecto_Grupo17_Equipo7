@@ -1,4 +1,6 @@
+import json
 import sqlite3
+from flask import jsonify
 
 from werkzeug.security import generate_password_hash, check_password_hash
 
@@ -226,6 +228,37 @@ def obtenerDatosUsuario(cuentaCorreo):
     
     conn.close()
     return datosUsuario
+
+
+def obtenerListaDeUsuarios():
+    """ Obtener un listado de usuarios creado en la plataforma.
+
+    Este método devuelve un listado de usuarios para ser mostrados en la página Usuarios.html.
+    """
+
+    # Crear nuevamente la conexión a la base de datos. Por buenas prácticas, se debe cerrar
+    # la conexión después de cada ejecución de un método/proceso.
+    conn = crearConexion()
+    cursor = conn.cursor()
+
+    queryDatosUsuarios = cursor.execute(
+        """
+            SELECT per.id_persona, per.nombre_persona, per.apellido_persona, Rol.descripcion_rol, per.email, per.imagen_src
+            FROM Persona per,
+                Rol,
+                Usuario usr
+            WHERE usr.id_rol = rol.id_rol
+            AND per.id_persona = usr.id_persona
+        """)
+    
+
+    nombreColumnas = [i[0] for i in cursor.description]
+    datosUsuariosDB = queryDatosUsuarios.fetchall()
+
+    jsonlistaUsuarios=[]
+    for result in datosUsuariosDB:
+        jsonlistaUsuarios.append(dict(zip(nombreColumnas,result)))
+    return jsonlistaUsuarios
 
 
 def recuperarContrasena(cuentaCorreo, idUsuario, password):
