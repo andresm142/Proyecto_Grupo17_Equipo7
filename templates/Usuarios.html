@@ -41,7 +41,7 @@
 
             <form class="contenedor" action="/AdminUser" method="POST">
                 <!-- Para pruebas, cambiar el valor de value segun el id del usuario -->
-                <input type="text" name="id" value="{{ ListaUsuarios[fila]['id_persona'] }}" style="display: none;">
+                <input type="hidden" name="id" value="{{ ListaUsuarios[fila]['id_persona'] }}">
                 <div class="nombre">
                     <img src="{{ ListaUsuarios[fila]['imagen_src'] }}" alt="">
                     <p>{{ ListaUsuarios[fila]['nombre_persona'] }} {{ ListaUsuarios[fila]['apellido_persona'] }}</p>
