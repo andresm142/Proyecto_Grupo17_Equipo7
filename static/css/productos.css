@@ -168,7 +168,7 @@ body{
 .boton-editar-eliminar{
     display: flex;
     font-family: "icomoon";
-    justify-content: end;
+    justify-content:right;
     margin: -27px 27px 0 0;
 
 }
