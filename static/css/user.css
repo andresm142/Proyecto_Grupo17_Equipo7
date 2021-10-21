@@ -198,6 +198,8 @@ body{
     background: var(--color-usuario);
     color: var(--color-blanco);
     border: none;
+    justify-content: center;
+    align-items: center;
 }
 
 .cambiar-imagen:hover, .guardar:hover, #pass:hover{
@@ -341,5 +343,9 @@ body{
         border: none;
         background: none;
         color: var(--color-superadmin);
+    }
+    #coinciden{
+        color: var(--color-superadmin);
+        align-items: flex-start;
     }
   /* FIN CONFIGURACION MODAL */

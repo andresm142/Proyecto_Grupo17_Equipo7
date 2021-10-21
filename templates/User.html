@@ -3,113 +3,134 @@
 
 {% block content %}
 <link rel="stylesheet" href={{ url_for('static', filename='css/user.css' ) }}>
+<form class="admin-user" action="" method="POST" enctype="multipart/form-data">
+    <!-- ID del usuario, oculto -->
+    <input type="hidden" name="id" id="id" value="">
 
-<div class="contenedor-usuario">
-    <div class="info-user">
-        <div class="avatar">
-            <div class="imagen-usuario">
-                <img src={{ url_for('static', filename='images/avatar.png' ) }} alt="">
+    <div class="contenedor-usuario">
+        <div class="info-user">
+            <div class="avatar">
+                <div class="imagen-usuario">
+                    <img id="img-usuario" src={{ url_for('static', filename='images/avatar.png' ) }} alt="">
+                </div>
+                <label class="cambiar-imagen" style="display: inline-flex;">
+                    <input type="file" name="archivo" style="display: none;" accept="image/png, image/jpeg"
+                        onchange="document.getElementById('img-usuario').src = window.URL.createObjectURL(this.files[0])">
+                    Cambiar imagen
+                </label>
+                <!-- <button class="cambiar-imagen">Cambiar imagen</button> -->
             </div>
-            <label class="cambiar-imagen" style="display: inline-flex;">
-                <input type="file" name="archivo" style="display: none;" accept="image/png, image/jpeg" 
-                onchange="document.getElementById('img-producto').src = window.URL.createObjectURL(this.files[0])" >
-                Cambiar imagen
-            </label>
-            <!-- <button class="cambiar-imagen">Cambiar imagen</button> -->
         </div>
-    </div>
-    <div class="info-cuenta">
-        <div class="nombre">
-            <label for="name">Nombre</label>
-            <input type="text" name="nombre" id="name">
-        </div>
-        <div class="apellido">
-            <label for="lastname">Apellido</label>
-            <input type="text" name="apellido" id="lastname">
-        </div>
-        <div class="tipo-de-usuario">
-            <label for="rol">Tipo de usuario</label>
-            <div class="contenedor-tipo-de-usuario">
-                <div class="select-box-usuario">
-                    <div class="options-container-usuario">
-                        <div class="option-user" id="option">
-                            <input type="radio" class="radio" id="usuario" name="category" />
-                            <label for="usuario" id="primer-tipo-usuario">Usuario</label>
+        <div class="info-cuenta">
+            <div class="nombre">
+                <label for="name">Nombre</label>
+                <input type="text" name="nombre" id="name">
+            </div>
+            <div class="apellido">
+                <label for="lastname">Apellido</label>
+                <input type="text" name="apellido" id="lastname">
+            </div>
+            <div class="tipo-de-usuario">
+                <label for="rol">Tipo de usuario</label>
+                <div class="contenedor-tipo-de-usuario">
+                    <div class="select-box-usuario">
+                        <div class="options-container-usuario">
+                            <div class="option-user" id="option">
+                                <input type="radio" class="radio" id="usuario" name="category" />
+                                <label for="usuario" id="primer-tipo-usuario">Usuario</label>
+                            </div>
+                            <div class="option-user" id="option">
+                                <input type="radio" class="radio" id="administrador" name="category" />
+                                <label for="administrador" id="segundo-tipo-usuario">Administrador</label>
+                            </div>
+                            <div class="option-user" id="option">
+                                <input type="radio" class="radio" id="superadmin" name="category" />
+                                <label for="superadmin" id="tercer-tipo-usuario">Super administrador</label>
+                            </div>
                         </div>
-                        <div class="option-user" id="option">
-                            <input type="radio" class="radio" id="administrador" name="category" />
-                            <label for="administrador" id="segundo-tipo-usuario">Administrador</label>
+                        <div class="selected-usuario">
+                            Usuario
                         </div>
-                        <div class="option-user" id="option">
-                            <input type="radio" class="radio" id="superadmin" name="category" />
-                            <label for="superadmin" id="tercer-tipo-usuario">Super administrador</label>
-                        </div>
-                    </div>
-                    <div class="selected-usuario">
-                        Usuario
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="correo">
-            <label for="email">Email</label>
-            <input type="email" name="email" id="email">
-        </div>
-        <div class="telefono">
-            <label for="phone">Telefono</label>
-            <input type="number" name="telefono" id="phone">
-        </div>
-        <div class="contrasena">
-            <label for="password">Contraseña</label>
-            <input type="button" class="show-modal" name="Contrasena" id="pass" value="Cambiar">
-        </div>
-        <!-- <div class="contrasena">
-            <label for="password">Contraseña</label>
-            <input type="password" name="Contrasena" id="pass" value="Cambiar">
-        </div> -->
-        <!-- <div class="confirmar-contrasena">
-            <label for="password">Confirmar contraseña</label>
-            <input type="password" name="contrasena" id="cpass">
-        </div> -->
-        <div class="guardar-cancelar">
-            <a href="{{url_for('Home')}}"><button class="cancelar">
-                    Cancelar
-                </button></a>
-            <button class="guardar" onclick="guardar()">
-                Guardar
-            </button>
-        </div>
-    </div>
-    <!-- MODAL -->
-    <div class="modal hidden">
-        <!-- botón para cerrar el modal -->
-        <button class="close-modal">&times;</button>
+            <div class="correo">
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email">
+            </div>
+            <div class="telefono">
+                <label for="phone">Telefono</label>
+                <input type="number" name="telefono" id="phone">
+            </div>
+            <div class="contrasena">
+                <label for="password">Contraseña</label>
+                <input type="button" class="show-modal" name="Contrasena" id="pass" value="Cambiar">
+            </div>
 
-        <h2>Cambiar contraseña</h2>
-        
-        <form action="{{url_for('RecuperarPass')}}" method="POST" class="form-modal" onsubmit="enviado()">
-            <div class="inputBox">
-                <input type="password" name="text" value="" required
-                    onkeyup="this.setAttribute('value', this.value);">
-                <label>Contraseña actual</label>
+            <div class="guardar-cancelar">
+                <a href="{{url_for('Home')}}"><button class="cancelar">
+                        Cancelar
+                    </button></a>
+                <button class="guardar" onclick="guardar()">
+                    Guardar
+                </button>
             </div>
-            <div class="inputBox">
-                <input type="password" name="text" value="" required
-                    onkeyup="this.setAttribute('value', this.value);">
-                <label>Contraseña nueva</label>
-            </div>
-            <div class="inputBox">
-                <input type="password" name="text" value="" required
-                    onkeyup="this.setAttribute('value', this.value);">
-                <label>Repetir contraseña nueva</label>
-            </div>
-            <input type="submit" class="enviar" value="Cambiar contraseña">
+        </div>
+</form>
+<!-- MODAL -->
+<div class="modal hidden">
+    <!-- botón para cerrar el modal -->
+    <button class="close-modal">&times;</button>
 
-        </form>
-    </div>
-    <div class="overlay hidden"></div>
+    <h2>Cambiar contraseña</h2>
+
+    <form action="{{url_for('CambiarPass')}}" method="POST" class="form-modal" onsubmit="enviado()">
+        <input type="hidden" name="id" id="id" value="">
+        <div class="inputBox">
+            <input type="password" name="text" value="" id="actualpw" required
+                onkeyup="this.setAttribute('value', this.value);">
+            <label>Contraseña actual</label>
+        </div>
+        <div class="inputBox">
+            <input type="password" name="text" value="" id="newpw" required
+                onkeyup="this.setAttribute('value', this.value);">
+            <label>Contraseña nueva</label>
+        </div>
+        <div class="inputBox">
+            <input type="password" name="text" value="" id="confirmpw" required
+                onkeyup="this.setAttribute('value', this.value);">
+            <label>Repetir contraseña nueva</label>
+        </div>
+        <label id="coinciden" style="display: none;">Las contraseñas no coinciden</label>
+        <br>
+        <input type="submit" class="enviar" value="Cambiar contraseña">
+
+    </form>
+</div>
+<div class="overlay hidden"></div>
 
 </div>
+<script>
+    var password = document.getElementById("newpw");
+    var confirm_password = document.getElementById("confirmpw");
+
+    function validatePassword() {
+        if (password.value != confirm_password.value) {
+
+            document.getElementById("coinciden").style.display = "flex";
+            // confirm_password.setCustomValidity("Las contraseñas no coinciden");
+        } else {
+            confirm_password.setCustomValidity('');
+            document.getElementById("coinciden").style.display = "none";
+        }
+    }
+
+    function enviado() {
+        alert("Contraseña cambiada")
+    }
+    // password.onchange = validatePassword;
+    confirm_password.onkeyup = validatePassword;
+</script>
 <script src={{ url_for('static', filename='js/scriptSelectUser.js' ) }}></script>
 <script src={{ url_for('static', filename='js/scriptModal.js' ) }}></script>
 {% endblock %}

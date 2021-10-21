@@ -271,6 +271,10 @@ def NewPass():
 def ConfirmacionNewPass():
     return render_template('Login.html')
 
+@app.route('/CambiarPass', methods=['POST', 'GET'])
+def CambiarPass():
+    return("Contraseña cambiada")
+
 @app.route('/GuardarUser', methods=['POST', 'GET'])
 def GuardarUser():
     
