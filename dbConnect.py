@@ -276,3 +276,35 @@ def recuperarContrasena(cuentaCorreo, idUsuario, password):
 
     # Se actualiza el estatus del usuario para forzar a cambiar la contraseña al iniciar sesión por primera vez.
     cambiarEstatusUsuario(0, idUsuario)
+
+
+def listaProductos():
+    """ Obtener un listado de productos creados en la plataforma.
+
+    Este método devuelve un listado de productos para ser mostrados en la página Productos.html.
+    """
+
+    # Crear nuevamente la conexión a la base de datos. Por buenas prácticas, se debe cerrar
+    # la conexión después de cada ejecución de un método/proceso.
+    conn = crearConexion()
+    cursor = conn.cursor()
+
+    queryDatosProductos = cursor.execute(
+        """
+            SELECT  pro.id_producto,
+                    pro.nombre_producto,
+                    pro.cantidad_disponible,
+                    pro.descripcion_producto,
+                    pro.calificacion,
+                    pro.src_imagen
+            FROM Producto pro
+            ORDER BY pro.fecha_creado DESC
+        """)
+
+    nombreColumnas = [i[0] for i in cursor.description]
+    datosUsuariosDB = queryDatosProductos.fetchall()
+
+    jsonlistaProductos=[]
+    for result in datosUsuariosDB:
+        jsonlistaProductos.append(dict(zip(nombreColumnas,result)))
+    return jsonlistaProductos
