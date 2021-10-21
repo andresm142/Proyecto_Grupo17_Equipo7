@@ -96,7 +96,7 @@ body{
     left: 0;
     white-space: nowrap;
     overflow: hidden;
-    width: 90%;                        /*Para cambiar el relleno de las estrellas */
+    /* width: 90%;  */                     /* Para cambiar el relleno de las estrellas */
 }
 
 /* FIN ESTRELLAS */
@@ -189,6 +189,7 @@ body{
     padding: 10px;
     margin-left: 10px;
     border: var(--border-boton-cancelar-usuario);
+    cursor: pointer;
 }
 
 .boton-editar:hover{
@@ -200,6 +201,7 @@ body{
     border-radius: var(--radio-input);
     padding: 10px;
     border: var(--border-boton-cancelar-usuario);
+    cursor: pointer;
     
 }
 

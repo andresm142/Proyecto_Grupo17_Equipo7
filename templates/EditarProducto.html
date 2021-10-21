@@ -8,14 +8,16 @@
 
 <!-- <form class="info-imagen-producto" action="/upload" method="POST" enctype="multipart/form-data"></form> -->
 <form id="editprod-form" class="contenedor-producto" action="/GuardarProducto" method="POST" enctype="multipart/form-data">
-    <input type="text" id="id" style="display: none;" value="">
+    
+    <input type="hidden" id="id" style="display: none;" value="">
+
     <div class="info-imagen-producto">
 
         <div class="producto">
             <div class="imagen-producto">
                 <img src={{ url_for('static', filename='images/Producto.jpg' ) }} alt="" id="img-producto">
             </div>
-            <!-- <button class="cambiar-imagen">Cambiar imagen</button> -->
+            
             <label class="cambiar-imagen" style="display: inline-flex;">
                 <input type="file" name="archivo" style="display: none;" accept="image/png, image/jpeg" 
                 onchange="document.getElementById('img-producto').src = window.URL.createObjectURL(this.files[0])" >

@@ -10,7 +10,12 @@
             <div class="imagen-usuario">
                 <img src={{ url_for('static', filename='images/avatar.png' ) }} alt="">
             </div>
-            <button class="cambiar-imagen">Cambiar imagen</button>
+            <label class="cambiar-imagen" style="display: inline-flex;">
+                <input type="file" name="archivo" style="display: none;" accept="image/png, image/jpeg" 
+                onchange="document.getElementById('img-producto').src = window.URL.createObjectURL(this.files[0])" >
+                Cambiar imagen
+            </label>
+            <!-- <button class="cambiar-imagen">Cambiar imagen</button> -->
         </div>
     </div>
     <div class="info-cuenta">

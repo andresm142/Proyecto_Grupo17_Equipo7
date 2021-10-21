@@ -2,37 +2,44 @@
 {% block title %} Editar Proveedores {% endblock %}
 
 {% block content %}
-<link rel="stylesheet" href={{ url_for('static', filename='css/EditarProveedores.css') }}>
+<link rel="stylesheet" href={{ url_for('static', filename='css/EditarProveedores.css' ) }}>
 
-
-<div class="main_box">
-    <div class="image_side">
-        <div class="img">
-            <img src={{ url_for('static', filename="images/proveedores.jpg" ) }} alt="">
+<form id="editprov-form" class="contenedor-proveedor" action="" method="POST"
+    enctype="multipart/form-data">
+    <div class="main_box">
+        <div class="image_side">
+            <div class="img">
+                <img id="img-proveedor" src={{ url_for('static', filename="images/proveedores.jpg" ) }} alt="">
+            </div>
+          
+            <div class="add_button" id="add">
+                <label class="add" style="display: inline-flex;">
+                    <input type="file" name="archivo" style="display: none;" accept="image/png, image/jpeg" 
+                    onchange="document.getElementById('img-proveedor').src = window.URL.createObjectURL(this.files[0])" >
+                    Cambiar imagen
+                </label>
+                
+            </div>
         </div>
-        <div class="add_button" id="add">
-            <a href="#"><button class="add">Agregar imagen</button></a>
+
+        <div class="inputs_side">
+            <div class="formulario">
+                <label for="name">Nombre del proveedor</label>
+                <input type="text" name="nombre" id="name">
+            </div>
+            <div class="formulario">
+                <label for="description">Descripción del proveedor</label>
+                <textarea type="textarea" name="description" id="description" rows="4" cols="50"></textarea>
+            </div>
+            <div class="buttons">
+                <input type="submit" name="submit_button" id="cancelar" class="cancelar" value="Cancelar">
+                <input type="submit" name="submit_button" id="guardar" class="guardar" value="Guardar"
+                    onclick="guardar()">
+
+
+            </div>
         </div>
     </div>
-
-    <div class="inputs_side">
-        <div class="formulario">
-            <label for="name">Nombre del proveedor</label>
-            <input type="text" name="nombre" id="name">   
-        </div>
-        <div class="formulario">
-            <label for="description">Descripción del proveedor</label>
-            <textarea type="textarea" name="description" id="description" rows="4" cols="50"></textarea>
-        </div>
-        <div class="buttons">
-            <a href="{{url_for('Proveedores')}}"><button class="cancelar">
-                Cancelar
-            </button></a>
-            <a href="{{url_for('Proveedores')}}"><button class="guardar" onclick="guardar()">
-                Guardar
-            </button></a>
-        </div>
-    </div>
-</div>
+</form>
 
 {% endblock %}

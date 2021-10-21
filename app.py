@@ -145,6 +145,15 @@ def Editarproducto():
                 image_src="/static/images/proveedor.png"                            #Para pruebas
                 resultado1=(id,nombre_producto,proveedor,descripcion,cantidad,calificacion,image_src)
                 # return render_template('AdminUser.html',resultado1=resultado1)
+                
+            elif request.form.get('submit_button') == 'Disponible':
+                id=request.form['id']
+                # consulta para eliminar producto
+                print("Boton eliminar")
+            elif request.form.get('submit_button') == 'No disponible':
+                id=request.form['id']
+                # consulta para eliminar producto
+                print("Boton eliminar")
         return render_template('EditarProducto.html')
 
 
@@ -225,7 +234,7 @@ def EditarProveedores():
                
                 
                 resultado1=(id,nombre_proveedor,descripcion,image_src)
-                return render_template('EditarProducto.html',resultado1=resultado1)
+                return render_template('EditarProveedor.html',resultado1=resultado1)
             
             elif request.form.get('submit_button') == 'eliminar':
                 id=request.form['id']
@@ -240,7 +249,7 @@ def EditarProveedores():
                 image_src="/static/images/proveedor.png"                            #Para pruebas
                 
                 resultado1=(id,nombre_proveedor,descripcion,image_src)
-                return render_template('AdminUser.html',resultado1=resultado1)
+                return render_template('EditarProveedor.html',resultado1=resultado1)
         return render_template('EditarProveedor.html')
 
 @app.route('/RecuperarPass', methods=['POST', 'GET'])

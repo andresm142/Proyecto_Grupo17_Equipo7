@@ -9,16 +9,23 @@
         <div class="title">
             <h1>{% block title %}Proveedores{% endblock %}</h1>
         </div>
-        <div class="boton-anadir" id="anadir">
-            <a href="{{url_for('EditarProveedores')}}"><button class="anadir">Añadir proveedor +</button></a>
-        </div>
+
+        <form class="boton-anadir" action="/EditarProveedores" method="POST">
+            <input type="submit" name="submit_button" id="anadir" class="anadir" value="Añadir proveedor +"
+                style="display: inline;">
+
+        </form>
     </div>
 </header>
 
 <section class="proveedores">
     <div class="block">
         {% for fila in range(8) %}
-            <article>
+        <article>
+            <form class="contenedor" action="/EditarProveedores" method="POST">
+
+                <input type="hidden" name="id" value="1">
+
                 <div class="container-proveedor">
                     <div class="supplier_img">
                         <img src={{ url_for('static', filename="images/proveedores.jpg" ) }} alt="">
@@ -32,18 +39,15 @@
                             </p>
                         </div>
                         <div class="buttons">
-                            <a href="#">
-                                <div class="remove" onclick="eliminar()"></div>
-                            </a>
 
-
-                            <a href="{{url_for('EditarProveedores')}}">
-                                <div class="edit"></div>
-                            </a>
-
+                            <label class="remove"><input type="submit" name="submit_button" id="eliminar" class="remove"
+                                    value="eliminar" style="display: none;"></label>
+                            <label class="edit"><input type="submit" name="submit_button" id="editar" class="edit"
+                                    value="editar" style="display: none;"></label>
                         </div>
                     </div>
-            </article>
+            </form>
+        </article>
         {% endfor %}
     </div>
 

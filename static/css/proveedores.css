@@ -130,6 +130,7 @@ section article .description .text p{
     padding: 10px;
     margin-left: 10px;
     border: var(--border-boton-cancelar-usuario);
+    cursor: pointer;
 }
 
 .description .edit:hover{
@@ -141,7 +142,7 @@ section article .description .text p{
     border-radius: var(--radio-input);
     padding: 10px;
     border: var(--border-boton-cancelar-usuario);
-    
+    cursor: pointer;    
 }
 
 .description .remove:hover{

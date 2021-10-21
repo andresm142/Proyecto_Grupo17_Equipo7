@@ -8,39 +8,47 @@
             <h1>{% block title %} Productos {% endblock %}</h1>
         </div>
 
-        <div class="boton-anadir" id="anadir">
-            <a href="{{url_for('Editarproducto')}}"><button class="anadir"> Añadir + </button></a>
-        </div>
-        <div class="botones-disponibilidad superadmin" id="botones-superadmin">
-            <div class="boton-disponible">
-                <button class="bt-disponible"> disponible</button>
+
+        <form class="boton-anadir" action="/Editarproducto" method="POST">
+            <input type="submit" name="submit_button" id="anadir" class="anadir" value="Añadir +"
+                style="display: inline;">
+            
+            <div class="botones-disponibilidad superadmin" id="botones-superadmin">
+                <div class="boton-disponible">
+                    <input type="submit" name="submit_button" id="bt-disponible" class="bt-disponible"
+                        value="Disponible" style="display: inline;">
+                    
+                </div>
+                <div class="boton-nodisponible">
+                    <input type="submit" name="submit_button" id="bt-nodisponible" class="bt-nodisponible"
+                        value="No Disponible" style="display: inline;">
+                    
+                </div>
             </div>
-            <div class="boton-nodisponible">
-                <button class="bt-nodisponible"> no disponible</button>
-            </div>
-        </div>
+        </form>
     </div>
 
 </header>
 
 <section class="section-productos">
     {% for fila in range(9) %}
-        <div class="box-producto">
+    <div class="box-producto">
+        <form class="contenedor" action="/Editarproducto" method="POST">
+            
+            <input type="hidden" name="id" value="1">
+
             <div class="logo-producto">
                 <div class="imagen"><img src={{ url_for('static', filename='images/Producto.jpg' ) }} alt=""></div>
             </div>
 
             <div class="boton-editar-eliminar">
-                <a href="#">
-                    <div class="boton-eliminar" onclick="eliminar()" onclick="eliminar()">
 
-                    </div>
-                </a>
-                <a href="{{url_for('Editarproducto')}}">
-                    <div class="boton-editar">
 
-                    </div>
-                </a>
+                <label class="boton-eliminar"><input type="submit" name="submit_button" id="eliminar"
+                        class="boton-eliminar" value="eliminar" style="display: none;"></label>
+                <label class="boton-editar"><input type="submit" name="submit_button" id="editar" class="boton-editar"
+                        value="editar" style="display: none;"></label>
+
             </div>
 
             <div class="box-fondo">
@@ -55,7 +63,7 @@
                 </div>
                 <div class="puntuacion">
                     <div class="estrellas-outer">
-                        <div class="estrellas-inner"></div>
+                        <div class="estrellas-inner" style="width: 4.5rem;"></div>
                     </div>
                     <div class="valor">
                         4.5
@@ -66,7 +74,8 @@
                 </div>
 
             </div>
-        </div>
+        </form>
+    </div>
     {% endfor %}
 
 
