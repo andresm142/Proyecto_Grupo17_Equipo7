@@ -38,6 +38,16 @@ def Home():
     if not session.get("username"):
         return redirect("/")
     else:
+        # Consulta para el index, aqui se realizaran dos consultas, Productos y proveedores.
+        # La consulta productos retorna: 'nombre producto', 'Proveedor', 'disponibles', 'imagen_src','fecha_creado
+        # La consulta proveedores retorna: 'nombre proveedor', 'imagen_src','fecha_creado'
+        # Cada consulta se guarda en una variable distinta
+        # consultaProductos
+        # consultaProveedor
+        
+        
+        
+        # return render_template('Index.html', userType=session["userType"],consultaProductos=consultaProductos,consultaProveedor=consultaProveedor)
         return render_template('Index.html', userType=session["userType"])
 
 
@@ -46,6 +56,8 @@ def Productos():
     if not session.get("username"):
         return redirect("/")
     else:
+        # Consulta para productos retorna:(id,nombre_producto,proveedor,disponibles,descripcion,calificacion,imagen_src)
+        
         return render_template('Productos.html')
 
 
@@ -70,6 +82,8 @@ def Proveedores():
     if not session.get("username"):
         return redirect("/")
     else:
+        # Consulta para productos retorna:(id,nombre_proveedor,descripcion,imagen_src)
+        
         return render_template('Proveedores.html')
 
 
@@ -94,6 +108,43 @@ def Editarproducto():
     if not session.get("username"):
         return redirect("/")
     else:
+        
+        if request.method == 'POST':
+            
+            if request.form.get('submit_button') == 'editar':
+                id=request.form['id']
+                # Aqui se recibe el id del producto para su busqueda en la base de datos, esta retorna los datos
+                # del usuario
+                
+                # codigo temporal, se reemplaza por los datos de la consulta, solo para pruebas
+                id=1
+                nombre_producto="Motor toyota"
+                proveedor="Contactamos S.A."
+                descripcion="Motor para camionetas 2.0"
+                cantidad="20"
+                calificacion="4"
+                image_src="/static/images/avatar.png"
+               
+                
+                resultado1=(id,nombre_producto,proveedor,descripcion,cantidad,calificacion,image_src)
+                return render_template('EditarProducto.html',resultado1=resultado1)
+            
+            elif request.form.get('submit_button') == 'eliminar':
+                id=request.form['id']
+                # consulta para eliminar producto
+                print("Boton eliminar")
+                
+            elif request.form.get('submit_button')=='Añadir +':
+                # Formulario en blanco para añadir producto
+                id=""
+                nombre_producto=""
+                proveedor=""
+                descripcion=""
+                cantidad=""
+                calificacion=""
+                image_src="/static/images/proveedor.png"                            #Para pruebas
+                resultado1=(id,nombre_producto,proveedor,descripcion,cantidad,calificacion,image_src)
+                # return render_template('AdminUser.html',resultado1=resultado1)
         return render_template('EditarProducto.html')
 
 
@@ -109,7 +160,7 @@ def AdminUser():
                 # Aqui se recibe el id del usuario para su busqueda en la base de datos, esta retorna los datos
                 # del usuario
                 
-                # codigo temporal, se reemplaza por el de arriba, solo para pruebas
+                # codigo temporal, se reemplaza por la consulta, solo para pruebas
                 id=1
                 nombre="nombre"
                 apellido="apellido"
@@ -158,6 +209,38 @@ def EditarProveedores():
     if not session.get("username"):
         return redirect("/")
     else:
+        
+        if request.method == 'POST':
+            
+            if request.form.get('submit_button') == 'editar':
+                id=request.form['id']
+                # Aqui se recibe el id del proveedor para su busqueda en la base de datos, esta retorna los datos
+                # del usuario
+                
+                # codigo temporal, se reemplaza por los datos de la consulta, solo para pruebas
+                id=1
+                nombre_proveedor="Motor toyota"
+                descripcion="Motor para camionetas 2.0"
+                image_src="/static/images/avatar.png"
+               
+                
+                resultado1=(id,nombre_proveedor,descripcion,image_src)
+                return render_template('EditarProducto.html',resultado1=resultado1)
+            
+            elif request.form.get('submit_button') == 'eliminar':
+                id=request.form['id']
+                # consulta para eliminar proveedor
+                print("Boton eliminar")
+                
+            elif request.form.get('submit_button')=='Añadir +':
+                # Formulario en blanco para añadir proveedor
+                id=""
+                nombre_proveedor="Motor toyota"
+                descripcion="Motor para camionetas 2.0"
+                image_src="/static/images/proveedor.png"                            #Para pruebas
+                
+                resultado1=(id,nombre_proveedor,descripcion,image_src)
+                return render_template('AdminUser.html',resultado1=resultado1)
         return render_template('EditarProveedor.html')
 
 @app.route('/RecuperarPass', methods=['POST', 'GET'])
