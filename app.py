@@ -59,7 +59,6 @@ def Productos():
         return redirect("/")
     else:
         # Consulta para productos retorna:(id,nombre_producto,proveedor,disponibles,descripcion,calificacion,imagen_src)
-        print(conn.listaProductos())
         return render_template('Productos.html')
 
 
