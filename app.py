@@ -24,10 +24,12 @@ def login():
 
 @app.route('/Index', methods=['GET', 'POST'])
 def Index():
-    if conn.validarContrasena(request.form["email"], request.form["text"]) is not False:
+    if conn.validarContrasena(request.form["email"], request.form["password"]) is not False:
         session["username"] = request.form["email"]
         session["userType"] = conn.validarTipoUsuario(request.form["email"])
-        return render_template('Index.html', userType=session["userType"])
+        session["usuario"] = ("1","nombre","apellido","/static/images/avatar.png")  #Reemplazar por base de datos
+        
+        return render_template('Index.html', userType=session["userType"],usuario=session["usuario"])
     else:
         session["username"] = None
         return redirect('/')
