@@ -59,9 +59,9 @@
     <div id="sidebar" class="sidebar" style="width: 250px;">
         <div class="region-user">
             <div class="logo-user">
-                <img src={{ url_for('static', filename='images/avatar.png') }} alt="">
+                <img id="img-user" src={{ url_for('static', filename='images/avatar.png') }} alt="">
             </div>
-            <h2 class="nombre-user">Usuario</h2> 
+            <h2 class="nombre-user"><label id="nombre-user" style="font-size: 25px;">Usuario</label></h2> 
         </div>
         <div class="region-funciones">
             <a href="{{url_for('Home')}}"><div class="home">
@@ -81,17 +81,21 @@
             </div></a>
         </div>
         <div class="region-cuenta">
-            <a href="{{url_for('Configuracion')}}"><div class="config">
-                Configuración
-            </div>
+            
+            <a href="#" onclick="document.getElementById('form_config').submit()">
+                <form action="/Configuracion" method="POST" name="form_config" id="form_config" class="config">
+                    <input type="hidden" id="id-user" name="id-user" value="">
+                    Configuración
+                </form>
             </a>
+        
             <a href="{{ url_for('Logout') }}">
                 <div class="logout">
                     Cerrar sesión
                 </div>
             </a>
         </div>
-        <input type="hidden" id="id" value="">
+        
     </div>
     <script src={{ url_for('static', filename='js/script.js') }}></script>
     <script src={{ url_for('static', filename='js/jquery-3.3.1.js') }}></script>

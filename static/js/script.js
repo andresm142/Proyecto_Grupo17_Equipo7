@@ -20,7 +20,9 @@ optionsList.forEach(o => {
 
 // const body = document.body;
 document.body.classList.add(sessionStorage.getItem('userType'));
-document.getElementById("id").value=sessionStorage.getItem('id')
+document.getElementById("id-user").value=sessionStorage.getItem('id')
+document.getElementById("nombre-user").innerHTML=sessionStorage.getItem('usuario')
+document.getElementById("img-user").src=sessionStorage.getItem('imagen')
 
 // MOSTRAR / OCULTAR OPCIONES SEGUN TIPO DE USUARIO
 

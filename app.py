@@ -27,7 +27,10 @@ def Index():
     if conn.validarContrasena(request.form["email"], request.form["password"]) is not False:
         session["username"] = request.form["email"]
         session["userType"] = conn.validarTipoUsuario(request.form["email"])
-        session["usuario"] = ("1","nombre","apellido","/static/images/avatar.png")  #Reemplazar por base de datos
+        datosusuarios=conn.obtenerDatosUsuario(request.form["email"])
+        
+        session["usuario"] = (datosusuarios['id_persona'],datosusuarios['nombre_persona'],datosusuarios['apellido_persona'],
+                              datosusuarios['imagen_src']) 
         
         return render_template('Index.html', userType=session["userType"],usuario=session["usuario"])
     else:
@@ -50,7 +53,7 @@ def Home():
         
         
         # return render_template('Index.html', userType=session["userType"],consultaProductos=consultaProductos,consultaProveedor=consultaProveedor)
-        return render_template('Index.html', userType=session["userType"])
+        return render_template('Index.html', userType=session["userType"],usuario=session["usuario"])
 
 
 @app.route('/Productos', methods=['POST', 'GET'])
@@ -77,7 +80,17 @@ def Configuracion():
     if not session.get("username"):
         return redirect("/")
     else:
-        return render_template('User.html')
+        if request.method == 'POST':
+            
+            datosusuarios=conn.obtenerDatosUsuarioById(request.form["id-user"])
+            if(datosusuarios['descripcion_rol']=="admin"):
+                datosusuarios['descripcion_rol']="Administrador"
+            elif(datosusuarios['descripcion_rol']=="superAdmin"):
+                datosusuarios['descripcion_rol']="Super administrador"
+            else:
+                datosusuarios['descripcion_rol']="Usuario";
+                    
+            return render_template('User.html',datosusuarios=datosusuarios)
 
 
 @app.route('/Proveedores', methods=['POST', 'GET'])
@@ -348,6 +361,13 @@ def GuardarProducto():
     print(id," ",nombreProducto," ",proveedor," ",descripcion," ",cantidad," ",calificacion)
     return ("ok")
 
+@app.route('/Guardarconfiguracion', methods=['POST', 'GET'])
+def Guardarconfiguracion():
+    if request.method == 'POST':
+        if request.form.get('submit_button') == 'Guardar':
+            pass
+        return redirect('/Home')
+       
 
 def uploader():
     """Funcion para subir la imagen en el servidor

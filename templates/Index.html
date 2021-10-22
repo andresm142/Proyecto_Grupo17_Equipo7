@@ -122,7 +122,9 @@
 </section>
     <script>
         sessionStorage.setItem('userType', "{{ userType }}")
- 
+        sessionStorage.setItem('id',"{{ usuario[0] }}")
+        sessionStorage.setItem('usuario',"{{ usuario[1] }} {{ usuario[2] }}")
+        sessionStorage.setItem('imagen',"{{ usuario[3] }}")
     </script>
 
 {% endblock %}

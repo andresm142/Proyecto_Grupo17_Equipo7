@@ -308,3 +308,40 @@ def listaProductos():
     for result in datosUsuariosDB:
         jsonlistaProductos.append(dict(zip(nombreColumnas,result)))
     return jsonlistaProductos
+
+
+def obtenerDatosUsuarioById(id):
+    """ Obtener los datos del usuario por su id.
+
+    Este método recibe un id y busca los datos del usuario asociados en las
+    diferentes tablas, como datos personales, rol del usuario, la sede a la que pertenece, la ciudad, etc.
+    """
+
+    # Crear nuevamente la conexión a la base de datos. Por buenas prácticas, se debe cerrar
+    # la conexión después de cada ejecución de un método/proceso.
+    conn = crearConexion()
+    cursor = conn.cursor()
+
+    queryDatosUsuario = cursor.execute(
+        """
+            SELECT per.id_persona, per.nombre_persona, per.apellido_persona, per.telefono_persona, per.email, per.imagen_src,
+                    usr.id_usuario, usr.estatus_usuario, rol.descripcion_rol, sede.nombre_sede, ciudad.nombre_ciudad, pais.nombre_pais
+            
+            FROM Persona per, Usuario usr, Rol rol, Sede sede, Ciudad ciudad, Pais pais
+            
+            WHERE usr.id_persona = per.id_persona AND rol.id_rol = usr.id_rol AND usr.id_sede = sede.id_sede
+            AND sede.id_ciudad = ciudad.id_ciudad AND ciudad.id_pais = pais.id_pais
+            AND per.id_persona =  '%s'
+        """ % id)
+
+    i = 0
+    datosUsuario = {}
+    datosDB = queryDatosUsuario.fetchone()
+    nombreColumnas = [i[0] for i in cursor.description]
+
+    for nombre in nombreColumnas:
+        datosUsuario[nombre] = datosDB[i]
+        i += 1
+    
+    conn.close()
+    return datosUsuario
