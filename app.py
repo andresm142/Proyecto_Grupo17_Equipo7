@@ -62,14 +62,9 @@ def Productos():
         return redirect("/")
     else:
         # Consulta para productos retorna:(id,nombre_producto,proveedor,disponibles,descripcion,calificacion,imagen_src)
-<<<<<<< HEAD
-        return render_template('Productos.html')
-=======
         # print(conn.listaProductos())
         lista=conn.listaProductos()
         return render_template('Productos.html',lista=lista)
->>>>>>> 63cc83a0bd50f7137239c711ec22ab14022bbc1b
-
 
 @app.route('/Listas', methods=['POST', 'GET'])
 def Listas():
