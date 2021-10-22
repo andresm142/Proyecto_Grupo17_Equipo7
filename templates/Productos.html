@@ -31,14 +31,14 @@
 </header>
 
 <section class="section-productos">
-    {% for fila in range(lista|length) %}
+    {% for fila in range(9) %}
     <div class="box-producto">
         <form class="contenedor" action="/Editarproducto" method="POST">
             
             <input type="hidden" name="id" value="1">
 
             <div class="logo-producto">
-                <div class="imagen"><img src="{{ lista[fila]['src_imagen'] }}" alt=""></div>
+                <div class="imagen"><img src={{ url_for('static', filename='images/Producto.jpg' ) }} alt=""></div>
             </div>
 
             <div class="boton-editar-eliminar">
@@ -53,38 +53,35 @@
 
             <div class="box-fondo">
                 <div class="titulo-producto">
-                    {{ lista[fila]['nombre_producto'] }}
+                    Nombre del producto
                 </div>
                 <div class="name-proveedor">
                     Proveedor
                 </div>
                 <div class="disponibe">
-                    Disponible: {{ lista[fila]['cantidad_disponible'] }}
+                    Disponible: 20
                 </div>
                 <div class="puntuacion">
                     <div class="estrellas-outer">
-                        <div class="estrellas-inner" style="width: {{ lista[fila]['calificacion'] }}rem;"></div>
-
-                        
+                        <div class="estrellas-inner" style="width: 4.5rem;"></div>
                     </div>
                     <div class="valor">
-                        {{ lista[fila]['calificacion'] }}
+                        4.5
                     </div>
                 </div>
                 <div class="descripcion">
-                    {{ lista[fila]['descripcion_producto'] }}
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                 </div>
 
             </div>
         </form>
     </div>
-
     {% endfor %}
 
 
 </section>
 <script>
-    
+
     if (sessionStorage.getItem('userType') == "usuario") {
         document.getElementById("anadir").style.display = "none";
 
