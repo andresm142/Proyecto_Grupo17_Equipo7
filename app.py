@@ -182,11 +182,11 @@ def Editarproducto():
             elif request.form.get('submit_button') == 'Disponible':
                 id=request.form['id']
                 # consulta para eliminar producto
-                print("Boton eliminar")
+                print("Disponible")
             elif request.form.get('submit_button') == 'No disponible':
                 id=request.form['id']
                 # consulta para eliminar producto
-                print("Boton eliminar")
+                print("No disponible")
         return render_template('EditarProducto.html')
 
 
@@ -367,16 +367,18 @@ def GuardarProducto():
         return redirect("/")
     else:
         if request.method == 'POST':
-            id=request.form.get('id')
-            # f = request.files['archivo']
-            # imagen = secure_filename(f.filename)
-            nombreProducto = request.form.get("name")
-            
-            proveedor = request.form.get('category')
-            descripcion =request.form.get("descripcion")
-            cantidad=request.form.get("cantidad")
-            calificacion=request.form.get("category-cal")
-            return ("ok")
+            if request.form['submit_button'] == 'Guardar':
+                id=request.form.get('id')
+                # f = request.files['archivo']
+                # imagen = secure_filename(f.filename)
+                nombreProducto = request.form.get("name")
+                proveedor = request.form['selectedProveedor']
+                descripcion =request.form.get("descripcion")
+                cantidad=request.form.get("cantidad")
+                calificacion=request.form["selectedCalificacion"]
+                return redirect('/Productos')
+            elif request.form['submit_button'] == 'Cancelar':
+                return redirect('/Productos')
 
 # Guardar datos del proveedor. Llega des la pagina Editar proveedor
 @app.route('/GuardarProveedor', methods=['POST', 'GET'])
