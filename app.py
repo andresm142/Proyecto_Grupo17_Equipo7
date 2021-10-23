@@ -31,8 +31,10 @@ def Index():
         
         session["usuario"] = (datosusuarios['id_persona'],datosusuarios['nombre_persona'],datosusuarios['apellido_persona'],
                               datosusuarios['imagen_src']) 
-        
-        return render_template('Index.html', userType=session["userType"],usuario=session["usuario"])
+        consultaProductos=conn.listaProductos
+        consultaProveedor=conn.listaProveedores
+        return render_template('Index.html', userType=session["userType"],usuario=session["usuario"],consultaProductos=consultaProductos,
+                               consultaProveedor=consultaProveedor)
     else:
         session["username"] = None
         return redirect('/')
@@ -47,13 +49,12 @@ def Home():
         # La consulta productos retorna: 'nombre producto', 'Proveedor', 'disponibles', 'imagen_src','fecha_creado
         # La consulta proveedores retorna: 'nombre proveedor', 'imagen_src','fecha_creado'
         # Cada consulta se guarda en una variable distinta
-        # consultaProductos
-        # consultaProveedor
-        
-        
-        
+        consultaProductos=conn.listaProductos()
+        consultaProveedor=conn.listaProveedores()
+
         # return render_template('Index.html', userType=session["userType"],consultaProductos=consultaProductos,consultaProveedor=consultaProveedor)
-        return render_template('Index.html', userType=session["userType"],usuario=session["usuario"])
+        return render_template('Index.html', userType=session["userType"],usuario=session["usuario"],consultaProductos=consultaProductos,
+                               consultaProveedor=consultaProveedor)
 
 
 @app.route('/Productos', methods=['POST', 'GET'])
@@ -347,18 +348,20 @@ def GuardarUser():
 
 @app.route('/GuardarProducto', methods=['POST', 'GET'])
 def GuardarProducto():
-    id=request.form.get('id')
-    # f = request.files['archivo']
-    # imagen = secure_filename(f.filename)
-    nombreProducto = request.form.get("name")
-    
-    proveedor = request.form.get('category')
-    descripcion =request.form.get("descripcion")
-    cantidad=request.form.get("cantidad")
-    calificacion=request.form.get("category-cal")
-    
-    print(id," ",nombreProducto," ",proveedor," ",descripcion," ",cantidad," ",calificacion)
-    return ("ok")
+    if not session.get("username"):
+        return redirect("/")
+    else:
+        if request.method == 'POST':
+            id=request.form.get('id')
+            # f = request.files['archivo']
+            # imagen = secure_filename(f.filename)
+            nombreProducto = request.form.get("name")
+            
+            proveedor = request.form.get('category')
+            descripcion =request.form.get("descripcion")
+            cantidad=request.form.get("cantidad")
+            calificacion=request.form.get("category-cal")
+            return ("ok")
 
 @app.route('/GuardarProveedor', methods=['POST', 'GET'])
 def GuardarProveedor():
@@ -374,21 +377,27 @@ def GuardarProveedor():
 
 @app.route('/Guardarconfiguracion', methods=['POST', 'GET'])
 def Guardarconfiguracion():
-    if request.method == 'POST':
-        if request.form.get('submit_button') == 'Guardar':
-            pass
-        return redirect('/Home')
+    if not session.get("username"):
+        return redirect("/")
+    else:
+        if request.method == 'POST':
+            if request.form.get('submit_button') == 'Guardar':
+                pass
+            return redirect('/Home')
        
 
 def uploader():
     """Funcion para subir la imagen en el servidor
         
     """
+    if not session.get("username"):
+        return redirect("/")
+    else:
     # obtenemos el archivo del input "archivo"
-    f = request.files['archivo']
-    filename = secure_filename(f.filename)
-    # Guardamos el archivo en el directorio 
-    f.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-    # Retornamos una respuesta satisfactoria
-    return (filename)
+        f = request.files['archivo']
+        filename = secure_filename(f.filename)
+        # Guardamos el archivo en el directorio 
+        f.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+        # Retornamos una respuesta satisfactoria
+        return (filename)
     

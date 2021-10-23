@@ -19,13 +19,14 @@
     </div>
     <div class="ultimos-productos">
         <div class="contenedor">
+            {% for fila in range(3) %}
             <div class="contenedor-ultimos">
                 <div class="imagen">
-                    <img src={{ url_for('static', filename='images/Producto.jpg' ) }} alt="">
+                    <img src="{{ consultaProductos[fila]['src_imagen'] }}" alt="">
                 </div>
                 <div class="informacion">
                     <div class="nombre-producto" id="name">
-                        Nombre del producto
+                        {{ consultaProductos[fila]['nombre_producto'] }}
                     </div>
                     <div class="nombre-proveedor">
                         Proveedor
@@ -36,43 +37,8 @@
 
                 </div>
             </div>
-
-            <div class="contenedor-ultimos">
-                <div class="imagen">
-                    <img src={{ url_for('static', filename='images/Producto.jpg' ) }} alt="">
-                </div>
-                <div class="informacion">
-                    <div class="nombre-producto" id="name">
-                        Nombre del producto
-                    </div>
-                    <div class="nombre-proveedor">
-                        Proveedor
-                    </div>
-                    <div class="disponible">
-                        <p>Disponible</p><span>: 20</span>
-                    </div>
-
-                </div>
-            </div>
-
-            <div class="contenedor-ultimos">
-                <div class="imagen">
-                    <img src={{ url_for('static', filename='images/Producto.jpg' ) }} alt="">
-                </div>
-                <div class="informacion">
-                    <div class="nombre-producto" id="name">
-                        Nombre del producto
-                    </div>
-                    <div class="nombre-proveedor">
-                        Proveedor
-                    </div>
-                    <div class="disponible">
-                        <p>Disponible</p><span>: 20</span>
-                    </div>
-
-                </div>
-            </div>
-
+            {% endfor %}
+            
         </div>
 
     </div>
@@ -83,38 +49,19 @@
     <div class="ultimos-proveedores">
 
         <div class="contenedor">
+            {% for fila in range(consultaProveedor|length) %}
             <div class="contenedor-ultimos">
                 <div class="imagen">
-                    <img src={{ url_for('static', filename='images/Proveedores.png' ) }} alt="">
+                    <img src="{{ consultaProveedor[fila]['src_imagen'] }}" alt="">
                 </div>
                 <div class="informacion">
                     <div class="nombre-proveedor" id="name">
-                        Nombre del proveedor
+                        {{ consultaProveedor[fila]['nombre_proveedor'] }}
                     </div>
                 </div>
             </div>
-
-            <div class="contenedor-ultimos">
-                <div class="imagen">
-                    <img src={{ url_for('static', filename='images/Proveedores.png' ) }} alt="">
-                </div>
-                <div class="informacion">
-                    <div class="nombre-proveedor" id="name">
-                        Nombre del proveedor
-                    </div>
-                </div>
-            </div>
-
-            <div class="contenedor-ultimos">
-                <div class="imagen">
-                    <img src={{ url_for('static', filename='images/Proveedores.png' ) }} alt="">
-                </div>
-                <div class="informacion">
-                    <div class="nombre-proveedor" id="name">
-                        Nombre del proveedor
-                    </div>
-                </div>
-            </div>
+            {% endfor %}
+            
         </div>
 
     </div>
