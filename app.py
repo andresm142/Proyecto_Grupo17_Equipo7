@@ -19,7 +19,10 @@ conn = dbConnect
 
 @app.route('/')
 def login():
-    return render_template('Login.html')
+    if not session.get("username"):
+        return render_template('Login.html')
+    else:
+        return redirect("/Home")
 
 
 @app.route('/Index', methods=['GET', 'POST'])

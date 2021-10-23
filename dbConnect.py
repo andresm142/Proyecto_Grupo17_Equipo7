@@ -1,7 +1,5 @@
 import json
 import sqlite3
-from flask import jsonify
-
 from werkzeug.security import generate_password_hash, check_password_hash
 
 # Ruta relativa de conexión a la base de datos
@@ -291,13 +289,16 @@ def listaProductos():
 
     queryDatosProductos = cursor.execute(
         """
-            SELECT  pro.id_producto,
-                    pro.nombre_producto,
-                    pro.descripcion_producto,
-                    pro.calificacion,
-                    pro.src_imagen
-            FROM Producto pro
-            ORDER BY pro.fecha_creado DESC
+            SELECT pro.id_producto,
+                pro.nombre_producto,
+                prove.nombre_proveedor,
+                pro.descripcion_producto,
+                pro.calificacion,
+                pro.src_imagen,
+                alm.cantidad_disponible
+            FROM Producto pro, Almacen alm, Proveedor prove
+            WHERE alm.id_producto = pro.id_producto AND alm.id_proveedor = prove.id_proveedor
+            ORDER BY pro.fecha_creado DESC;
         """)
 
     nombreColumnas = [i[0] for i in cursor.description]
