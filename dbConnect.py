@@ -443,3 +443,47 @@ def obtenerProductoPorID(idProveedor, idProducto):
     for result in datosProductoDB:
         jsonlistaProducto.append(dict(zip(nombreColumnas,result)))
     return jsonlistaProducto
+
+
+def cambiarImagenProducto(srcProducto, idProducto):
+    """ Cambiar la imagen del producto.
+
+    Este método recibe una imagen y la cambia en la base de datos.
+    """
+
+    # Crear nuevamente la conexión a la base de datos. Por buenas prácticas, se debe cerrar
+    # la conexión después de cada ejecución de un método/proceso.
+    conn = crearConexion()
+    cursor = conn.cursor()
+
+    cursor.execute(
+        """
+            UPDATE Producto
+            SET src_imagen = '%s'
+            WHERE id_producto = '%s'
+        """ % (srcProducto, idProducto))
+
+    conn.commit()
+    conn.close()
+
+
+def cambiarImagenUsuario(srcImagen, idPersona):
+    """ Cambiar la imagen del usuario.
+
+    Este método recibe una imagen y la cambia en la base de datos.
+    """
+
+    # Crear nuevamente la conexión a la base de datos. Por buenas prácticas, se debe cerrar
+    # la conexión después de cada ejecución de un método/proceso.
+    conn = crearConexion()
+    cursor = conn.cursor()
+
+    cursor.execute(
+        """
+            UPDATE Persona
+            SET imagen_src = '%s'
+            WHERE id_persona = '%s'
+        """ % (srcImagen, idPersona))
+
+    conn.commit()
+    conn.close()
