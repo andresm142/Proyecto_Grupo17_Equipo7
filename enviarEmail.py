@@ -63,7 +63,6 @@ def prepararEmail(cuentaCorreo, nombreUsuario, idUsuario):
     %s
     """ % (sent_from, to, subject, body)
 
-    print(password)
     # Cambiar la contraseña en la base de datos.
     dbConnect.recuperarContrasena(cuentaCorreo, idUsuario, passwordHash)
 
