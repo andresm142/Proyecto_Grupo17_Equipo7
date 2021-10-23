@@ -76,10 +76,10 @@
 
         </div>
     </div>
-<!-- </form> -->
+</form>
 
 <!-- MODAL -->
-<!-- <form action="/CambiarPass" method="POST" class="form-modal" onsubmit="enviado()"> -->
+<form action="/CambiarPass" method="POST" class="form-modal" onsubmit="enviado()">
     <div class="modal hidden" id="hiden">
         <!-- botón para cerrar el modal -->
         <button class="close-modal">&times;</button>
@@ -87,7 +87,7 @@
         <h2>Cambiar contraseña</h2>
 
 
-        <!-- <input type="hidden" name="id" id="id1" value="{{ datosusuarios['id_persona'] }}"> -->
+        <input type="hidden" name="id" id="id1" value="{{ datosusuarios['id_persona'] }}">
         <div class="inputBox">
             <input type="password" name="actualpw" value="" id="actualpw" required
                 onkeyup="this.setAttribute('value', this.value);">
