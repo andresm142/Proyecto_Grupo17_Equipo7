@@ -66,9 +66,7 @@ def Productos():
         return redirect("/")
     else:
         # Consulta para productos retorna:(id,nombre_producto,proveedor,disponibles,descripcion,calificacion,imagen_src)
-        print(conn.listaProductos())
         lista=conn.listaProductos()
-        # lista=""
         return render_template('Productos.html',lista=lista)
 
 @app.route('/Listas', methods=['POST', 'GET'])
@@ -148,7 +146,6 @@ def Editarproducto():
                 # Aqui se recibe el id del producto para su busqueda en la base de datos, esta retorna los datos
                 # del producto
                 datosProducto = conn.obtenerProductoPorID("2", "1")
-                print(datosProducto)
                 # codigo temporal, se reemplaza por los datos de la consulta, solo para pruebas
                 id=1
                 nombre_producto="Motor toyota"
