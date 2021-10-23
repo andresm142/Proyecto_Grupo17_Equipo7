@@ -9,13 +9,13 @@
 <!-- <form class="info-imagen-producto" action="/upload" method="POST" enctype="multipart/form-data"></form> -->
 <form id="editprod-form" class="contenedor-producto" action="/GuardarProducto" method="POST" enctype="multipart/form-data">
     
-    <input type="hidden" id="id" style="display: none;" value="">
+    <input type="hidden" id="id" style="display: none;" value="{{ datosProducto['id_producto'] }}">
 
     <div class="info-imagen-producto">
 
         <div class="producto">
             <div class="imagen-producto">
-                <img src={{ url_for('static', filename='images/Producto.jpg' ) }} alt="" id="img-producto">
+                <img src="{{ datosProducto['src_imagen'] }}" alt="" id="img-producto">
             </div>
             
             <label class="cambiar-imagen" style="display: inline-flex;">
@@ -30,7 +30,7 @@
 
         <div class="nombre">
             <label for="name">Nombre producto</label>
-            <input type="text" name="name" id="name">
+            <input type="text" name="name" id="name" value="{{ datosProducto['nombre_producto'] }}">
         </div>
         <div class="container-proveedor">
             <label for="proveedor">Proveedor</label>
@@ -47,20 +47,20 @@
                 </div>
                 
                 <div class="selected-proveedor">
-                    Proveedor
+                    "{{ datosProducto['nombre_proveedor'] }}"
                 </div>
             </div>
-            <input type="hidden" id="inputSelectedProveedor" name="selectedProveedor"  value="">
+            <input type="hidden" id="inputSelectedProveedor" name="selectedProveedor"  value=""{{ datosProducto['nombre_proveedor'] }}"">
         </div>
         <div class="descripcion-producto">
             <label for="descripcion">Descripción del producto</label>
-            <textarea name="descripcion" id="descripcion"></textarea>
+            <textarea name="descripcion" id="descripcion">{{ datosProducto['descripcion_producto'] }}</textarea>
         </div>
 
         <div class="cantidad-calificacion">
             <div class="cantidad">
                 <label for="cantidad">Cantidad</label>
-                <input type="number" name="cantidad" id="cantidad">
+                <input type="number" name="cantidad" id="cantidad" value="{{ datosProducto['cantidad_disponible'] }}">
             </div>
 
             <div class="container-calificacion">
@@ -91,10 +91,10 @@
                     </div>
 
                     <div class="selected-calificacion" id="selected-calificacion">
-                        1
+                        {{ datosProducto['calificacion'] }}
                     </div>
                 </div>
-                <input type="hidden" id="inputSelectedCalificacion" name="selectedCalificacion"  value="">
+                <input type="hidden" id="inputSelectedCalificacion" name="selectedCalificacion"  value="{{ datosProducto['calificacion'] }}">
             </div>
         </div>
 

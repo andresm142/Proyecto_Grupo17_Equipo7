@@ -435,14 +435,19 @@ def obtenerProductoPorID(idProveedor, idProducto):
             FROM Producto pro, Almacen alm, Proveedor prove
             WHERE alm.id_producto = pro.id_producto AND alm.id_proveedor = prove.id_proveedor AND pro.id_producto=alm.id_producto AND pro.id_producto='%s' AND alm.id_proveedor = '%s'
         """ % (idProducto, idProveedor))
-    
+   
+    i = 0
+    datosProducto = {}
+    datosDB = queryDatosProducto.fetchone()
     nombreColumnas = [i[0] for i in cursor.description]
-    datosProductoDB = queryDatosProducto.fetchall()
 
-    jsonlistaProducto=[]
-    for result in datosProductoDB:
-        jsonlistaProducto.append(dict(zip(nombreColumnas,result)))
-    return jsonlistaProducto
+    for nombre in nombreColumnas:
+        datosProducto[nombre] = datosDB[i]
+        i += 1
+    
+    conn.close()   
+        
+    return datosProducto
 
 
 def cambiarImagenProducto(srcProducto, idProducto):

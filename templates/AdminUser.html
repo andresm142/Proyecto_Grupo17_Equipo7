@@ -26,11 +26,11 @@
         <div class="info-cuenta">
             <div class="nombre">
                 <label for="name">Nombre</label>
-                <input type="text" name="nombre" id="name" value="{{ datosusuarios['nombre_persona'] }}">
+                <input type="text" name="nombre" id="name" required value="{{ datosusuarios['nombre_persona'] }}">
             </div>
             <div class="apellido">
                 <label for="lastname">Apellido</label>
-                <input type="text" name="apellido" id="lastname" value="{{ datosusuarios['apellido_persona'] }}">
+                <input type="text" name="apellido" id="lastname" required value="{{ datosusuarios['apellido_persona'] }}">
             </div>
             <div class="tipo-de-usuario">
                 <label for="rol">Tipo de usuario</label>
@@ -61,11 +61,11 @@
             
             <div class="correo">
                 <label for="email">Email</label>
-                <input type="email" name="email" id="email" value="{{ datosusuarios['email'] }}">
+                <input type="email" name="email" id="email" required value="{{ datosusuarios['email'] }}">
             </div>
             <div class="telefono">
                 <label for="phone">Telefono</label>
-                <input type="number" name="telefono" id="phone" value="{{ datosusuarios['telefono_persona'] }}">
+                <input type="number" name="telefono" id="phone" required value="{{ datosusuarios['telefono_persona'] }}">
             </div>
             <div class="contrasena">
                 <label for="password">Contraseña</label>
@@ -73,7 +73,7 @@
             </div>
 
             <div class="guardar-cancelar">
-                <input type="submit" name="submit_button" id="cancelar" class="cancelar" value="Cancelar" onclick="{{url_for('Usuarios')}}">
+                <a href="{{url_for('Usuarios')}}"><input type="button" name="submit_button" id="cancelar" class="cancelar" value="Cancelar"></a>
                 <input type="submit" name="submit_button" id="guardar" class="guardar" value="Guardar"
                     onclick="guardar()">
 

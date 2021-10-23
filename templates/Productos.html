@@ -37,6 +37,7 @@
         <form class="contenedor" action="/Editarproducto" method="POST">
 
             <input type="hidden" name="id" value="{{ lista[fila]['id_producto'] }}">
+            <input type="hidden" name="idproveedor" value="{{ lista[fila]['id_proveedor'] }}">
 
             <div class="logo-producto">
                 <div class="imagen"><img src="{{ lista[fila]['src_imagen'] }}" alt=""></div>

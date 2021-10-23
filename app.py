@@ -142,27 +142,18 @@ def Editarproducto():
         if request.method == 'POST':
             
             if request.form.get('submit_button') == 'editar':
-                id=request.form['id']
+                idProducto=request.form['id']
+                idproveedor=request.form['idproveedor']
                 # Aqui se recibe el id del producto para su busqueda en la base de datos, esta retorna los datos
                 # del producto
-                datosProducto = conn.obtenerProductoPorID("2", "1")
-                # codigo temporal, se reemplaza por los datos de la consulta, solo para pruebas
-                id=1
-                nombre_producto="Motor toyota"
-                proveedor="Contactamos S.A."
-                descripcion="Motor para camionetas 2.0"
-                cantidad="20"
-                calificacion="4"
-                image_src="/static/images/avatar.png"
-               
-                
-                resultado1=(id,nombre_producto,proveedor,descripcion,cantidad,calificacion,image_src)
-                return render_template('EditarProducto.html',resultado1=resultado1)
+                datosProducto = conn.obtenerProductoPorID(idproveedor, idProducto)
+                return render_template('EditarProducto.html',datosProducto=datosProducto)
             
             elif request.form.get('submit_button') == 'eliminar':
                 id=request.form['id']
                 # consulta para eliminar producto
                 print("Boton eliminar")
+                return redirect('/Productos')
                 
             elif request.form.get('submit_button')=='Añadir +':
                 # Formulario en blanco para añadir producto
@@ -172,9 +163,9 @@ def Editarproducto():
                 descripcion=""
                 cantidad=""
                 calificacion=""
-                image_src="/static/images/proveedor.png"                            #Para pruebas
-                resultado1=(id,nombre_producto,proveedor,descripcion,cantidad,calificacion,image_src)
-                # return render_template('AdminUser.html',resultado1=resultado1)
+                                         
+                datosProducto={'id_producto':'','id_proveedor':'','nombre_proveedor': 'Proveedor','calificacion':1,'src_imagen':'/static/images/Producto.jpg'}
+                return render_template('EditarProducto.html',datosProducto=datosProducto)
                 
             elif request.form.get('submit_button') == 'Disponible':
                 id=request.form['id']
@@ -221,7 +212,8 @@ def AdminUser():
                 telefono=""
                 contrasena=""
                 image_src="/static/images/avatar.png"                            
-                datosusuarios=[{'id_proveedor': 1, 'nombre_proveedor': 'Contactamos S.A.', 'descripcion_proveedor': 'Proveedor de llantas y amortiguadores', 'src_imagen': 'urlToImage.jpg'}]
+                datosusuarios={'id_persona': 0, 'nombre_persona': '', 'apellido_persona': '',
+                               'descripcion_rol': 'Usuario', 'email': '','telefono_persona': '', 'imagen_src': '/static/images/avatar.png'}
                 
                 return render_template('AdminUser.html',datosusuarios=datosusuarios)
     # return render_template('AdminUser.html')
@@ -243,7 +235,7 @@ def EditarProveedores():
         
         if request.method == 'POST':
             
-            if request.form.get('submit_button') == 'editar':
+            if request.form['submit_button'] == 'editar':
                 id=request.form['id']
                 # Aqui se recibe el id del proveedor para su busqueda en la base de datos, esta retorna los datos
                 # del usuario
@@ -252,20 +244,19 @@ def EditarProveedores():
                
                 return render_template('EditarProveedor.html',datosProveedor=datosProveedor)
             
-            elif request.form.get('submit_button') == 'eliminar':
+            elif request.form['submit_button'] == 'eliminar':
                 id=request.form['id']
                 # consulta para eliminar proveedor
                 print("Boton eliminar")
                 
-            elif request.form.get('submit_button')=='Añadir +':
+            elif request.form['submit_button']=='Añadir proveedor +':
                 # Formulario en blanco para añadir proveedor
-                id=""
-                nombre_proveedor="Motor toyota"
-                descripcion="Motor para camionetas 2.0"
-                image_src="/static/images/proveedor.png"                            #Para pruebas
-                
-                resultado1=(id,nombre_proveedor,descripcion,image_src)
-                return render_template('EditarProveedor.html',resultado1=resultado1)
+                # id=""
+                # nombre_proveedor=""
+                # descripcion=""
+                # image_src="/static/images/proveedor.png"                            #Para pruebas
+                datosProveedor={'id_proveedor': 0, 'nombre_proveedor': '', 'descripcion_proveedor': '', 'src_imagen': '/static/images/proveedores.png'}
+                return render_template('EditarProveedor.html',datosProveedor=datosProveedor)
         
 
 @app.route('/RecuperarPass', methods=['POST', 'GET'])
