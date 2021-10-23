@@ -55,8 +55,6 @@ def Home():
         consultaProductos=conn.listaProductos()
         consultaProveedor=conn.listaProveedores()
 
-        print(consultaProductos)
-
         # return render_template('Index.html', userType=session["userType"],consultaProductos=consultaProductos,consultaProveedor=consultaProveedor)
         return render_template('Index.html', userType=session["userType"],usuario=session["usuario"],consultaProductos=consultaProductos,
                                consultaProveedor=consultaProveedor)
