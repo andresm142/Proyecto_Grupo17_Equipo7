@@ -19,7 +19,10 @@ conn = dbConnect
 
 @app.route('/')
 def login():
-    return render_template('Login.html')
+    if not session.get("username"):
+        return render_template('Login.html')
+    else:
+        return redirect("/Home")
 
 
 @app.route('/Index', methods=['GET', 'POST'])
@@ -51,6 +54,8 @@ def Home():
         # Cada consulta se guarda en una variable distinta
         consultaProductos=conn.listaProductos()
         consultaProveedor=conn.listaProveedores()
+
+        print(consultaProductos)
 
         # return render_template('Index.html', userType=session["userType"],consultaProductos=consultaProductos,consultaProveedor=consultaProveedor)
         return render_template('Index.html', userType=session["userType"],usuario=session["usuario"],consultaProductos=consultaProductos,

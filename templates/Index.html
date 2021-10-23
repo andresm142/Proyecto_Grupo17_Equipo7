@@ -29,10 +29,10 @@
                         {{ consultaProductos[fila]['nombre_producto'] }}
                     </div>
                     <div class="nombre-proveedor">
-                        Proveedor
+                        {{ consultaProductos[fila]['nombre_proveedor'] }}
                     </div>
                     <div class="disponible">
-                        <p>Disponible</p><span>: 20</span>
+                        <p>Disponible</p><span>: {{ consultaProductos[fila]['cantidad_disponible'] }}</span>
                     </div>
 
                 </div>
