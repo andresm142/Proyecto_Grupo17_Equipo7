@@ -7,22 +7,23 @@
         <div class="titulo">
             <h1>{% block title %} Productos {% endblock %}</h1>
         </div>
-        
+
 
         <form class="boton-anadir" action="/Editarproducto" method="POST">
-            <input type="submit" name="submit_button" id="anadir" class="anadir" value="Añadir +"
-                style="display: inline;">
-            
+            <div>
+                <input type="submit" name="submit_button" id="anadir" class="anadir" value="Añadir +"
+                    style="display: inline;">
+            </div>
             <div class="botones-disponibilidad superadmin" id="botones-superadmin">
                 <div class="boton-disponible">
                     <input type="submit" name="submit_button" id="bt-disponible" class="bt-disponible"
                         value="Disponible" style="display: inline;">
-                    
+
                 </div>
                 <div class="boton-nodisponible">
                     <input type="submit" name="submit_button" id="bt-nodisponible" class="bt-nodisponible"
                         value="No Disponible" style="display: inline;">
-                    
+
                 </div>
             </div>
         </form>
@@ -34,7 +35,7 @@
     {% for fila in range(lista|length) %}
     <div class="box-producto">
         <form class="contenedor" action="/Editarproducto" method="POST">
-            
+
             <input type="hidden" name="id" value="{{ lista[fila]['id_producto'] }}">
 
             <div class="logo-producto">
@@ -65,7 +66,7 @@
                     <div class="estrellas-outer">
                         <div class="estrellas-inner" style="width: {{ lista[fila]['calificacion'] }}rem;"></div>
 
-                        
+
                     </div>
                     <div class="valor">
                         {{ lista[fila]['calificacion'] }}
@@ -84,7 +85,7 @@
 
 </section>
 <script>
-    
+
     if (sessionStorage.getItem('userType') == "usuario") {
         document.getElementById("anadir").style.display = "none";
 
