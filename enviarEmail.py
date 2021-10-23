@@ -10,8 +10,8 @@ from werkzeug.security import generate_password_hash, check_password_hash
 import dbConnect
 
 # Datos cuenta envío de correos.
-gmail_user = 'saicmotorsa@gmail.com'
-gmail_password = 'Sm1234567'
+gmail_user = 'almsaicmotors@gmail.com'
+gmail_password = 'Soporte2021*'
 
 alphabet = string.ascii_letters + string.digits
 
