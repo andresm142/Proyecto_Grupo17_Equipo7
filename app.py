@@ -31,8 +31,8 @@ def Index():
         
         session["usuario"] = (datosusuarios['id_persona'],datosusuarios['nombre_persona'],datosusuarios['apellido_persona'],
                               datosusuarios['imagen_src']) 
-        consultaProductos=conn.listaProductos
-        consultaProveedor=conn.listaProveedores
+        consultaProductos=conn.listaProductos()
+        consultaProveedor=conn.listaProveedores()
         return render_template('Index.html', userType=session["userType"],usuario=session["usuario"],consultaProductos=consultaProductos,
                                consultaProveedor=consultaProveedor)
     else:
