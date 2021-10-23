@@ -467,10 +467,10 @@ def cambiarImagenProducto(srcProducto, idProducto):
     conn.close()
 
 
-def cambiarImagenUsuario(srcImagen, idPersona):
-    """ Cambiar la imagen del usuario.
+def editarConfiguracionUsuario(srcImagen, idPersona, telefonoPersona):
+    """ Editar la configuración del usuario.
 
-    Este método recibe una imagen y la cambia en la base de datos.
+    Este método recibe una imagen, un id y un telefono y los cambia en la base de datos.
     """
 
     # Crear nuevamente la conexión a la base de datos. Por buenas prácticas, se debe cerrar
@@ -481,9 +481,9 @@ def cambiarImagenUsuario(srcImagen, idPersona):
     cursor.execute(
         """
             UPDATE Persona
-            SET imagen_src = '%s'
+            SET imagen_src = '%s', telefono_persona = '%s'
             WHERE id_persona = '%s'
-        """ % (srcImagen, idPersona))
+        """ % (srcImagen, telefonoPersona, idPersona))
 
     conn.commit()
     conn.close()
