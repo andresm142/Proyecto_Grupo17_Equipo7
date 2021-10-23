@@ -4,12 +4,13 @@
 {% block content %}
 <link rel="stylesheet" href={{ url_for('static', filename='css/EditarProveedores.css' ) }}>
 
-<form id="editprov-form" class="contenedor-proveedor" action="" method="POST"
+<form id="editprov-form" class="contenedor-proveedor" action="/GuardarProveedor" method="POST"
     enctype="multipart/form-data">
+    <input type="hidden" id="id" style="display: none;" value="{{ datosProveedor['id_proveedor'] }}">
     <div class="main_box">
         <div class="image_side">
             <div class="img">
-                <img id="img-proveedor" src={{ url_for('static', filename="images/proveedores.jpg" ) }} alt="">
+                <img id="img-proveedor" src="{{ datosProveedor['src_imagen'] }}" alt="">
             </div>
           
             <div class="add_button" id="add">
@@ -25,11 +26,11 @@
         <div class="inputs_side">
             <div class="formulario">
                 <label for="name">Nombre del proveedor</label>
-                <input type="text" name="nombre" id="name">
+                <input type="text" name="nombre" id="name" value="{{ datosProveedor['nombre_proveedor'] }}">
             </div>
             <div class="formulario">
                 <label for="description">Descripción del proveedor</label>
-                <textarea type="textarea" name="description" id="description" rows="4" cols="50"></textarea>
+                <textarea type="textarea" name="description" id="description" rows="4" cols="50">{{ datosProveedor['descripcion_proveedor'] }}</textarea>
             </div>
             <div class="buttons">
                 <input type="submit" name="submit_button" id="cancelar" class="cancelar" value="Cancelar">

@@ -293,7 +293,6 @@ def listaProductos():
         """
             SELECT  pro.id_producto,
                     pro.nombre_producto,
-                    pro.cantidad_disponible,
                     pro.descripcion_producto,
                     pro.calificacion,
                     pro.src_imagen
@@ -309,6 +308,34 @@ def listaProductos():
         jsonlistaProductos.append(dict(zip(nombreColumnas,result)))
     return jsonlistaProductos
 
+def listaProveedores():
+    """ Obtener un listado de proveedores creados en la plataforma.
+
+    Este método devuelve un listado de proveedores para ser mostrados en la página Proveedores.html.
+    """
+
+    # Crear nuevamente la conexión a la base de datos. Por buenas prácticas, se debe cerrar
+    # la conexión después de cada ejecución de un método/proceso.
+    conn = crearConexion()
+    cursor = conn.cursor()
+
+    queryDatosProveedores = cursor.execute(
+        """
+            SELECT  pro.id_proveedor,
+                    pro.nombre_proveedor,
+                    pro.descripcion_proveedor,
+                    pro.src_imagen
+            FROM Proveedor pro
+            ORDER BY pro.fecha_creado DESC
+        """)
+
+    nombreColumnas = [i[0] for i in cursor.description]
+    datosProveedoresDB = queryDatosProveedores.fetchall()
+
+    jsonlistaProveedores=[]
+    for result in datosProveedoresDB:
+        jsonlistaProveedores.append(dict(zip(nombreColumnas,result)))
+    return jsonlistaProveedores
 
 def obtenerDatosUsuarioById(id):
     """ Obtener los datos del usuario por su id.
@@ -345,3 +372,37 @@ def obtenerDatosUsuarioById(id):
     
     conn.close()
     return datosUsuario
+
+def obtenerProveedorById(id):
+    """ Obtener los datos del proveedor por su id.
+
+    Este método recibe un id y busca los datos del proveedor asociados en las
+    diferentes tablas.
+    """
+
+    # Crear nuevamente la conexión a la base de datos. Por buenas prácticas, se debe cerrar
+    # la conexión después de cada ejecución de un método/proceso.
+    conn = crearConexion()
+    cursor = conn.cursor()
+
+    queryDatosProveedor = cursor.execute(
+        """
+            SELECT  pro.id_proveedor,
+                    pro.nombre_proveedor,
+                    pro.descripcion_proveedor,
+                    pro.src_imagen
+            FROM Proveedor pro
+            WHERE pro.id_proveedor = '%s'
+        """ % id)
+
+    i = 0
+    datosProveedor = {}
+    datosDB = queryDatosProveedor.fetchone()
+    nombreColumnas = [i[0] for i in cursor.description]
+
+    for nombre in nombreColumnas:
+        datosProveedor[nombre] = datosDB[i]
+        i += 1
+    
+    conn.close()
+    return datosProveedor

@@ -94,6 +94,7 @@ body{
     width: 100%;
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 /* FIN CONFIGURACION DE DATOS */
 
@@ -196,13 +197,13 @@ body{
     gap: 20px;
 }
 
-.cambiar-imagen, .cancelar, .guardar{
+.cambiar-imagen, .cancelar, .guardar, .resetPass{
     padding: 0 15px;
     height: 58px;
     border-radius: var(--radio-boton);
     font: var(--fuente-sub-titulo);
 }
-.cambiar-imagen, .guardar{
+.cambiar-imagen, .guardar, .resetPass{
     background: var(--color-usuario);
     color: var(--color-blanco);
     border: none;
@@ -211,7 +212,7 @@ body{
     justify-content: center;
 }
 
-.cambiar-imagen:hover, .guardar:hover, .cancelar:hover{
+.cambiar-imagen:hover, .guardar:hover, .cancelar:hover, .resetPass:hover{
     background: var(--color-gris);
     color: var(--color-usuario);
     border: var(--border-boton-cancelar-usuario);

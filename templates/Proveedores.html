@@ -20,22 +20,21 @@
 
 <section class="proveedores">
     <div class="block">
-        {% for fila in range(8) %}
+        {% for fila in range(lista|length) %}
         <article>
             <form class="contenedor" action="/EditarProveedores" method="POST">
 
-                <input type="hidden" name="id" value="1">
+                <input type="hidden" name="id" value="{{ lista[fila]['id_proveedor'] }}">
 
                 <div class="container-proveedor">
                     <div class="supplier_img">
-                        <img src={{ url_for('static', filename="images/proveedores.jpg" ) }} alt="">
+                        <img src="{{ lista[fila]['src_imagen'] }}" alt="">
                     </div>
                     <div class="description">
                         <div class="text">
-                            <h3>Nombre de proveedor</h3>
+                            <h3>{{ lista[fila]['nombre_proveedor'] }}</h3>
                             <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque consequat iaculis
-                                fermentum. Nulia dapibus at arcu ac iaculis.
+                                {{ lista[fila]['descripcion_proveedor'] }}
                             </p>
                         </div>
                         <div class="buttons">

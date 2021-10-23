@@ -11,7 +11,7 @@
         <div class="info-user">
             <div class="avatar">
                 <div class="imagen-usuario">
-                    <img id="img-usuario" src={{ url_for('static', filename='images/avatar.png' ) }} alt="">
+                    <img id="img-usuario" src="{{ datosusuarios['imagen_src'] }}" alt="">
                 </div>
                 <label class="cambiar-imagen" style="display: inline-flex;">
                     <input type="file" name="archivo" style="display: none;" accept="image/png, image/jpeg"
@@ -52,6 +52,7 @@
                         <div class="selected-usuario">
                             {{ datosusuarios['descripcion_rol'] }}
                         </div>
+                        <input type="hidden" id="inputSelected" name="selectedUsuario"  value="{{ datosusuarios['descripcion_rol'] }}">
                     </div>
                 </div>
             </div>

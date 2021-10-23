@@ -62,8 +62,9 @@ def Productos():
         return redirect("/")
     else:
         # Consulta para productos retorna:(id,nombre_producto,proveedor,disponibles,descripcion,calificacion,imagen_src)
-        # print(conn.listaProductos())
+        print(conn.listaProductos())
         lista=conn.listaProductos()
+        # lista=""
         return render_template('Productos.html',lista=lista)
 
 @app.route('/Listas', methods=['POST', 'GET'])
@@ -98,8 +99,9 @@ def Proveedores():
         return redirect("/")
     else:
         # Consulta para productos retorna:(id,nombre_proveedor,descripcion,imagen_src)
-        
-        return render_template('Proveedores.html')
+        lista=conn.listaProveedores()
+        print(lista)
+        return render_template('Proveedores.html',lista=lista)
 
 
 @app.route('/Usuarios', methods=['POST', 'GET'])
@@ -108,7 +110,15 @@ def Usuarios():
         return redirect("/")
     else:
         ListaUsuarios = conn.obtenerListaDeUsuarios()
-  
+        
+        for x in range(len(ListaUsuarios)):
+            if(ListaUsuarios[x]['descripcion_rol']=="admin"):
+                ListaUsuarios[x]['descripcion_rol']="Administrador"
+            elif(ListaUsuarios[x]['descripcion_rol']=="superAdmin"):
+                ListaUsuarios[x]['descripcion_rol']="Super administrador"
+            else:
+                ListaUsuarios[x]['descripcion_rol']="Usuario";
+            
         return render_template('Usuarios.html',ListaUsuarios=ListaUsuarios)
 
 
@@ -183,26 +193,17 @@ def AdminUser():
                 id=request.form['id']
                 # Aqui se recibe el id del usuario para su busqueda en la base de datos, esta retorna los datos
                 # del usuario
+                datosusuarios=conn.obtenerDatosUsuarioById(request.form["id"])
                 
-                # codigo temporal, se reemplaza por la consulta, solo para pruebas
-                id=1
-                nombre="nombre"
-                apellido="apellido"
-                tipoUser="admin"
-                email="correo@saicmotor.com"
-                telefono="1234567890"
-                contrasena="pass"
-                image_src="/static/images/avatar.png"
-                
-                if(tipoUser=="admin"):
-                    tipoUser="Administrador"
-                elif(tipoUser=="superAdmin"):
-                    tipoUser="Super administrador"
+                if(datosusuarios['descripcion_rol']=="admin"):
+                    datosusuarios['descripcion_rol']="Administrador"
+                elif(datosusuarios['descripcion_rol']=="superAdmin"):
+                    datosusuarios['descripcion_rol']="Super administrador"
                 else:
-                    tipoUser="Usuario";
+                    datosusuarios['descripcion_rol']="Usuario";
                 
-                resultado1=(id,nombre,apellido,tipoUser,email,telefono,contrasena,image_src)
-                return render_template('AdminUser.html',resultado1=resultado1)
+                
+                return render_template('AdminUser.html',datosusuarios=datosusuarios)
             
             elif request.form.get('submit_button') == 'eliminar':
                 print("Boton eliminar")
@@ -214,9 +215,10 @@ def AdminUser():
                 email=""
                 telefono=""
                 contrasena=""
-                image_src="/static/images/avatar.png"                            #Para pruebas
-                resultado1=(id,nombre,apellido,tipoUser,email,telefono,contrasena,image_src)
-                return render_template('AdminUser.html',resultado1=resultado1)
+                image_src="/static/images/avatar.png"                            
+                datosusuarios=[{'id_proveedor': 1, 'nombre_proveedor': 'Contactamos S.A.', 'descripcion_proveedor': 'Proveedor de llantas y amortiguadores', 'src_imagen': 'urlToImage.jpg'}]
+                
+                return render_template('AdminUser.html',datosusuarios=datosusuarios)
     # return render_template('AdminUser.html')
 
 
@@ -240,16 +242,10 @@ def EditarProveedores():
                 id=request.form['id']
                 # Aqui se recibe el id del proveedor para su busqueda en la base de datos, esta retorna los datos
                 # del usuario
+                datosProveedor=conn.obtenerProveedorById(request.form['id'])
                 
-                # codigo temporal, se reemplaza por los datos de la consulta, solo para pruebas
-                id=1
-                nombre_proveedor="Motor toyota"
-                descripcion="Motor para camionetas 2.0"
-                image_src="/static/images/avatar.png"
                
-                
-                resultado1=(id,nombre_proveedor,descripcion,image_src)
-                return render_template('EditarProveedor.html',resultado1=resultado1)
+                return render_template('EditarProveedor.html',datosProveedor=datosProveedor)
             
             elif request.form.get('submit_button') == 'eliminar':
                 id=request.form['id']
@@ -265,7 +261,7 @@ def EditarProveedores():
                 
                 resultado1=(id,nombre_proveedor,descripcion,image_src)
                 return render_template('EditarProveedor.html',resultado1=resultado1)
-        return render_template('EditarProveedor.html')
+        
 
 @app.route('/RecuperarPass', methods=['POST', 'GET'])
 def RecuperarPass():
@@ -311,7 +307,7 @@ def GuardarUser():
 
                 email=request.form['email']
                 telefono=request.form['telefono']
-                contrasena=request.form['contrasena']
+                
                 image_src=request.files['archivo']            
                
                 if id=="":
@@ -341,8 +337,12 @@ def GuardarUser():
                 # Despues de realizar la query regresa a la pagina de usuarios 
                 return redirect('/Usuarios')
             
+            elif request.form['submit_button'] == 'Restablecer contraseña usuario':
+                # Codigo para enviar correo con la contraseña nueva
+                return redirect('/Usuarios')
             elif request.form['submit_button'] == 'Cancelar':
                 return redirect('/Usuarios')
+
         
 
 @app.route('/GuardarProducto', methods=['POST', 'GET'])
@@ -359,6 +359,18 @@ def GuardarProducto():
     
     print(id," ",nombreProducto," ",proveedor," ",descripcion," ",cantidad," ",calificacion)
     return ("ok")
+
+@app.route('/GuardarProveedor', methods=['POST', 'GET'])
+def GuardarProveedor():
+    if not session.get("username"):
+        return redirect("/")
+    else:
+        if request.method == 'POST':
+            if request.form['submit_button'] == 'Guardar':
+                return redirect('/Proveedores')
+            elif request.form['submit_button'] == 'Cancelar':
+                return redirect('/Proveedores')   
+            
 
 @app.route('/Guardarconfiguracion', methods=['POST', 'GET'])
 def Guardarconfiguracion():
