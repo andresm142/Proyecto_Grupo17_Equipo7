@@ -3,116 +3,117 @@
 
 {% block content %}
 <link rel="stylesheet" href={{ url_for('static', filename='css/user.css' ) }}>
-<form class="admin-user" action="/Guardarconfiguracion" method="POST" enctype="multipart/form-data">
+<!-- <form action="/Guardarconfiguracion" method="POST" enctype="multipart/form-data"> -->
+
+<form class="contenedor-usuario" action="/Guardarconfiguracion" method="POST" enctype="multipart/form-data">
     <!-- ID del usuario, oculto -->
     <input type="hidden" name="id" id="id" value="{{ datosusuarios['id_persona'] }}">
-
-    <div class="contenedor-usuario">
-        <div class="info-user">
-            <div class="avatar">
-                <div class="imagen-usuario">
-                    <img id="img-usuario" src="{{ datosusuarios['imagen_src'] }}" alt="">
-                </div>
-                <label class="cambiar-imagen" style="display: inline-flex;">
-                    <input type="file" name="archivo" style="display: none;" accept="image/png, image/jpeg"
-                        onchange="document.getElementById('img-usuario').src = window.URL.createObjectURL(this.files[0])">
-                    Cambiar imagen
-                </label>
-                <!-- <button class="cambiar-imagen">Cambiar imagen</button> -->
+    <div class="info-user">
+        <div class="avatar">
+            <div class="imagen-usuario">
+                <img id="img-usuario" src="{{ datosusuarios['imagen_src'] }}" alt="">
             </div>
+            <label class="cambiar-imagen" style="display: inline-flex;">
+                <input type="file" name="archivo" style="display: none;" accept="image/png, image/jpeg"
+                    onchange="document.getElementById('img-usuario').src = window.URL.createObjectURL(this.files[0])">
+                Cambiar imagen
+            </label>
+            <!-- <button class="cambiar-imagen">Cambiar imagen</button> -->
         </div>
-        <div class="info-cuenta">
-            <div class="nombre">
-                <label for="name">Nombre</label>
-                <input type="text" name="nombre" id="name" readonly value="{{ datosusuarios['nombre_persona'] }}">
-            </div>
-            <div class="apellido">
-                <label for="lastname">Apellido</label>
-                <input type="text" name="apellido" id="lastname" readonly
-                    value="{{ datosusuarios['apellido_persona'] }}">
-            </div>
-            <div class="tipo-de-usuario">
-                <label for="rol">Tipo de usuario</label>
-                <div class="contenedor-tipo-de-usuario">
-                    <div class="select-box-usuario">
-                        <div class="options-container-usuario">
-                            <div class="option-user" id="option">
-                                <input type="radio" class="radio" id="usuario" name="category" />
-                                <label for="usuario" id="primer-tipo-usuario">Usuario</label>
-                            </div>
-                            <div class="option-user" id="option">
-                                <input type="radio" class="radio" id="administrador" name="category" />
-                                <label for="administrador" id="segundo-tipo-usuario">Administrador</label>
-                            </div>
-                            <div class="option-user" id="option">
-                                <input type="radio" class="radio" id="superadmin" name="category" />
-                                <label for="superadmin" id="tercer-tipo-usuario">Super administrador</label>
-                            </div>
+    </div>
+    <div class="info-cuenta">
+        <div class="nombre">
+            <label for="name">Nombre</label>
+            <input type="text" name="nombre" id="name" readonly value="{{ datosusuarios['nombre_persona'] }}">
+        </div>
+        <div class="apellido">
+            <label for="lastname">Apellido</label>
+            <input type="text" name="apellido" id="lastname" readonly value="{{ datosusuarios['apellido_persona'] }}">
+        </div>
+        <div class="tipo-de-usuario">
+            <label for="rol">Tipo de usuario</label>
+            <div class="contenedor-tipo-de-usuario">
+                <div class="select-box-usuario">
+                    <div class="options-container-usuario">
+                        <div class="option-user" id="option">
+                            <input type="radio" class="radio" id="usuario" name="category" />
+                            <label for="usuario" id="primer-tipo-usuario">Usuario</label>
                         </div>
-                        <div class="selected-usuario">
-                            {{ datosusuarios['descripcion_rol'] }}
+                        <div class="option-user" id="option">
+                            <input type="radio" class="radio" id="administrador" name="category" />
+                            <label for="administrador" id="segundo-tipo-usuario">Administrador</label>
                         </div>
-                        <input type="hidden" id="inputSelected" name="selectedUsuario"  value="{{ datosusuarios['descripcion_rol'] }}">
+                        <div class="option-user" id="option">
+                            <input type="radio" class="radio" id="superadmin" name="category" />
+                            <label for="superadmin" id="tercer-tipo-usuario">Super administrador</label>
+                        </div>
                     </div>
+                    <div class="selected-usuario">
+                        {{ datosusuarios['descripcion_rol'] }}
+                    </div>
+                    <input type="hidden" id="inputSelected" name="selectedUsuario"
+                        value="{{ datosusuarios['descripcion_rol'] }}">
                 </div>
             </div>
-            <div class="correo">
-                <label for="email">Email</label>
-                <input type="email" name="email" id="email" readonly value="{{ datosusuarios['email'] }}">
-            </div>
-            <div class="telefono">
-                <label for="phone">Telefono</label>
-                <input type="number" name="telefono" id="phone" value="{{ datosusuarios['telefono_persona'] }}">
-            </div>
-            <div class="contrasena">
-                <label for="password">Contraseña</label>
-                <input type="button" class="show-modal" name="Contrasena" id="pass" value="Cambiar">
-            </div>
-
-            <div class="guardar-cancelar">
-                <input type="submit" name="submit_button" class="cancelar" value="Cancelar">
-                    
-                <input type="submit" name="submit_button" class="guardar" value="Guardar" onclick="guardar()">
-                    
-            </div>
         </div>
-</form>
+        <div class="correo">
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" readonly value="{{ datosusuarios['email'] }}">
+        </div>
+        <div class="telefono">
+            <label for="phone">Telefono</label>
+            <input type="number" name="telefono" id="phone" value="{{ datosusuarios['telefono_persona'] }}">
+        </div>
+        <div class="contrasena">
+            <label for="password">Contraseña</label>
+            <input type="button" class="show-modal" name="Contrasena" id="pass" value="Cambiar">
+        </div>
+
+        <div class="guardar-cancelar">
+            <input type="submit" name="submit_button" class="cancelar" value="Cancelar">
+
+            <input type="submit" name="submit_button" class="guardar" value="Guardar" onclick="guardar()">
+
+        </div>
+    </div>
+<!-- </form> -->
+
 <!-- MODAL -->
-<div class="modal hidden">
-    <!-- botón para cerrar el modal -->
-    <button class="close-modal">&times;</button>
+<!-- <form action="/CambiarPass" method="POST" class="form-modal" onsubmit="enviado()"> -->
+    <div class="modal hidden" id="hiden">
+        <!-- botón para cerrar el modal -->
+        <button class="close-modal">&times;</button>
 
-    <h2>Cambiar contraseña</h2>
+        <h2>Cambiar contraseña</h2>
 
-    <form action="{{url_for('CambiarPass')}}" method="POST" class="form-modal" onsubmit="enviado()">
-        <input type="hidden" name="id" id="id1" value="{{ datosusuarios['id_persona'] }}">
+
+        <!-- <input type="hidden" name="id" id="id1" value="{{ datosusuarios['id_persona'] }}"> -->
         <div class="inputBox">
-            <input type="password" name="text" value="" id="actualpw" required
+            <input type="password" name="actualpw" value="" id="actualpw" required
                 onkeyup="this.setAttribute('value', this.value);">
             <label>Contraseña actual</label>
         </div>
         <div class="inputBox">
-            <input type="password" name="text" value="" id="newpw" required
+            <input type="password" name="newpw" value="" id="newpw" required
                 onkeyup="this.setAttribute('value', this.value);">
             <label>Contraseña nueva</label>
         </div>
         <div class="inputBox">
-            <input type="password" name="text" value="" id="confirmpw" required
+            <input type="password" name="confirnpw" value="" id="confirmpw" required
                 onkeyup="this.setAttribute('value', this.value);">
             <label>Repetir contraseña nueva</label>
         </div>
         <label id="coinciden" style="display: none;">Las contraseñas no coinciden</label>
         <br>
-        <input type="submit" class="enviar" value="Cambiar contraseña">
+        <input type="submit" class="enviar" name="submit_button" value="Cambiar contraseña">
 
-    </form>
-</div>
-<div class="overlay hidden"></div>
+    </div>
+    <div class="overlay hidden"></div>
 
-</div>
+</form>
 <script>
     var password = document.getElementById("newpw");
-    var confirm_password = document.getElementById("confirmpw");
+    var confirm_password = document.getElementById("confirnpw");
 
     function validatePassword() {
         if (password.value != confirm_password.value) {
@@ -126,6 +127,7 @@
     }
 
     function enviado() {
+
         alert("Contraseña cambiada")
     }
     // password.onchange = validatePassword;

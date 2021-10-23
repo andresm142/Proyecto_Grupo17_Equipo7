@@ -110,18 +110,21 @@ def Usuarios():
     if not session.get("username"):
         return redirect("/")
     else:
-        ListaUsuarios = conn.obtenerListaDeUsuarios()
         
-        for x in range(len(ListaUsuarios)):
-            if(ListaUsuarios[x]['descripcion_rol']=="admin"):
-                ListaUsuarios[x]['descripcion_rol']="Administrador"
-            elif(ListaUsuarios[x]['descripcion_rol']=="superAdmin"):
-                ListaUsuarios[x]['descripcion_rol']="Super administrador"
-            else:
-                ListaUsuarios[x]['descripcion_rol']="Usuario";
+        if session.get("userType")=='admin' or session.get("userType")=='superAdmin':
+            ListaUsuarios = conn.obtenerListaDeUsuarios()
             
-        return render_template('Usuarios.html',ListaUsuarios=ListaUsuarios)
-
+            for x in range(len(ListaUsuarios)):
+                if(ListaUsuarios[x]['descripcion_rol']=="admin"):
+                    ListaUsuarios[x]['descripcion_rol']="Administrador"
+                elif(ListaUsuarios[x]['descripcion_rol']=="superAdmin"):
+                    ListaUsuarios[x]['descripcion_rol']="Super administrador"
+                else:
+                    ListaUsuarios[x]['descripcion_rol']="Usuario";
+                
+            return render_template('Usuarios.html',ListaUsuarios=ListaUsuarios)
+        else:
+            return render_template('AccessDenied.html')
 
 @app.route('/Logout', methods=['POST', 'GET'])
 def Logout():
@@ -140,7 +143,7 @@ def Editarproducto():
             if request.form.get('submit_button') == 'editar':
                 id=request.form['id']
                 # Aqui se recibe el id del producto para su busqueda en la base de datos, esta retorna los datos
-                # del usuario
+                # del producto
                 
                 # codigo temporal, se reemplaza por los datos de la consulta, solo para pruebas
                 id=1
@@ -277,7 +280,7 @@ def RecuperarPass():
 @app.route('/NewPass')                      
 def NewPass():
     
-    return render_template('CambiarContraseña.html')        
+    return render_template('CambiarContrasena.html')        
 
 @app.route('/ConfirmacionNewPass')
 def ConfirmacionNewPass():
@@ -285,67 +288,75 @@ def ConfirmacionNewPass():
 
 @app.route('/CambiarPass', methods=['POST', 'GET'])
 def CambiarPass():
-    return("Contraseña cambiada")
+    if not session.get("username"):
+        return redirect("/")
+    else:
+        if request.method == 'POST':
+            if request.form['submit_button'] == 'Cambiar contraseña':
+                return redirect("/Home")
 
+# Guardar datos de los usuarios. Llega des la pagina adminUser
 @app.route('/GuardarUser', methods=['POST', 'GET'])
 def GuardarUser():
     
     if not session.get("username"):
         return redirect("/")
     else:
-        if request.method == 'POST':
-            if request.form['submit_button'] == 'Guardar':
-                id=request.form['id']
-                nombre=request.form['nombre']
-                apellido=request.form['apellido']
-                tipoUser=request.form['selectedUsuario']    
-                if(tipoUser=="Administrador"):
-                    tipoUser="admin"
-                elif(tipoUser=="Super administrador"):
-                    tipoUser="superAdmin"
-                else:
-                    tipoUser="usuario"; 
+        if session.get("userType")=='admin' or session.get("userType")=='superAdmin':
+            if request.method == 'POST':
+                if request.form['submit_button'] == 'Guardar':
+                    id=request.form['id']
+                    nombre=request.form['nombre']
+                    apellido=request.form['apellido']
+                    tipoUser=request.form['selectedUsuario']    
+                    if(tipoUser=="Administrador"):
+                        tipoUser="admin"
+                    elif(tipoUser=="Super administrador"):
+                        tipoUser="superAdmin"
+                    else:
+                        tipoUser="usuario"; 
 
-                email=request.form['email']
-                telefono=request.form['telefono']
+                    email=request.form['email']
+                    telefono=request.form['telefono']
+                    
+                    image_src=request.files['archivo']            
                 
-                image_src=request.files['archivo']            
-               
-                if id=="":
-                    
-                    if image_src.filename !="":
-                        image_src=uploader()            #Retorna Foto.png
-                        image_src="/static/images/upload/"+image_src
+                    if id=="":
+                        
+                        if image_src.filename !="":
+                            image_src=uploader()            #Retorna Foto.png
+                            image_src="/static/images/upload/"+image_src
+                            
+                        else:
+                            image_src="/static/images/avatar.png"   # Si no se selecciona ninguna imagen, establece la imagen por defecto
+                        
+                        #Consulta para insert en la base de datos
                         
                     else:
-                        image_src="/static/images/avatar.png"   # Si no se selecciona ninguna imagen, establece la imagen por defecto
-                    
-                    #Consulta para insert en la base de datos
-                    
-                else:
-                    if image_src.filename !="":
+                        if image_src.filename !="":
+                            
+                            image_src=uploader()            #Retorna Foto.png
+                            image_src="/static/images/upload/"+image_src
                         
-                        image_src=uploader()            #Retorna Foto.png
-                        image_src="/static/images/upload/"+image_src
-                       
-                        #Consulta para update en la base de datos cambiando la imagen por la seleccionada en el momento
-                        
-                    else:
-                        #Consulta para update en la base de datos sin incluir imagen, permanece la actual
-                        
-                        pass 
-               
-                # Despues de realizar la query regresa a la pagina de usuarios 
-                return redirect('/Usuarios')
-            
-            elif request.form['submit_button'] == 'Restablecer contraseña usuario':
-                # Codigo para enviar correo con la contraseña nueva
-                return redirect('/Usuarios')
-            elif request.form['submit_button'] == 'Cancelar':
-                return redirect('/Usuarios')
-
+                            #Consulta para update en la base de datos cambiando la imagen por la seleccionada en el momento
+                            
+                        else:
+                            #Consulta para update en la base de datos sin incluir imagen, permanece la actual
+                            
+                            pass 
+                
+                    # Despues de realizar la query regresa a la pagina de usuarios 
+                    return redirect('/Usuarios')
+                
+                elif request.form['submit_button'] == 'Restablecer contraseña usuario':
+                    # Codigo para enviar correo con la contraseña nueva
+                    return redirect('/Usuarios')
+                elif request.form['submit_button'] == 'Cancelar':
+                    return redirect('/Usuarios')
+        else:
+            return render_template('AccessDenied.html')
         
-
+# Guardar datos del productos. Llega des la pagina Editar productos
 @app.route('/GuardarProducto', methods=['POST', 'GET'])
 def GuardarProducto():
     if not session.get("username"):
@@ -363,6 +374,7 @@ def GuardarProducto():
             calificacion=request.form.get("category-cal")
             return ("ok")
 
+# Guardar datos del proveedor. Llega des la pagina Editar proveedor
 @app.route('/GuardarProveedor', methods=['POST', 'GET'])
 def GuardarProveedor():
     if not session.get("username"):
@@ -374,17 +386,40 @@ def GuardarProveedor():
             elif request.form['submit_button'] == 'Cancelar':
                 return redirect('/Proveedores')   
             
-
+# Guardar configuracion de usuario. Llega desde la pagina User
 @app.route('/Guardarconfiguracion', methods=['POST', 'GET'])
 def Guardarconfiguracion():
     if not session.get("username"):
         return redirect("/")
     else:
         if request.method == 'POST':
-            if request.form.get('submit_button') == 'Guardar':
-                pass
-            return redirect('/Home')
-       
+        
+            
+            if request.form['submit_button'] == 'Guardar':
+                id=request.form['id']
+                telefono=request.form['telefono']
+                image_src=request.files['archivo']
+                if image_src.filename !="":
+                    image_src=uploader()            #Retorna Foto.png
+                    image_src="/static/images/upload/"+image_src
+                    #Consulta para update en la base de datos cambiando la imagen por la seleccionada en el momento. Busqueda por id
+                else:
+                    #Consulta para update en la base de datos sin cambiar la imagen. Busqueda por id
+                    pass
+                
+                return redirect('/Home')
+            elif request.form['submit_button'] == 'Cancelar':
+                
+                return redirect('/Home')
+            elif request.form['submit_button'] == 'Cambiar contraseña':
+                id=request.form['id']
+                actualpw=request.form['actualpw']
+                newpw=request.form['confirnpw']
+                # Consulta para cambiar la contraseña del usuario por medio de su id
+                return redirect('/Home')
+            else:
+                return ('ok')
+        return
 
 def uploader():
     """Funcion para subir la imagen en el servidor

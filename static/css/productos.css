@@ -16,6 +16,11 @@ body{
     margin-top: 20px;
 }
 
+.boton-anadir{
+    display: flex;
+    align-items: center;
+}
+
 .anadir, .bt-disponible{
     background: var(--color-usuario);
     color: var(--color-blanco);

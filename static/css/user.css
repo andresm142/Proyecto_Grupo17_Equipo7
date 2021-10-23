@@ -254,7 +254,7 @@ body{
     top: 0;
     left: 0;
     width: 100%;
-    height:fit-content;
+    height:115%;
     background-color: rgba(0, 0, 0, 0.6);
     backdrop-filter: blur(3px);
     z-index: 5;
