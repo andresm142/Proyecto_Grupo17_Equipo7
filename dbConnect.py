@@ -291,6 +291,7 @@ def listaProductos():
         """
             SELECT pro.id_producto,
                 pro.nombre_producto,
+                prove.id_proveedor,
                 prove.nombre_proveedor,
                 pro.descripcion_producto,
                 pro.calificacion,
@@ -407,3 +408,38 @@ def obtenerProveedorById(id):
     
     conn.close()
     return datosProveedor
+
+
+def obtenerProductoPorID(idProveedor, idProducto):
+    """ Obtener los datos del producto por su id.
+
+    Este método recibe un id y busca los datos del producto asociados en las
+    diferentes tablas.
+    """
+
+    # Crear nuevamente la conexión a la base de datos. Por buenas prácticas, se debe cerrar
+    # la conexión después de cada ejecución de un método/proceso.
+    conn = crearConexion()
+    cursor = conn.cursor()
+
+    queryDatosProducto = cursor.execute(
+        """
+            SELECT pro.id_producto,
+                pro.nombre_producto,
+                prove.nombre_proveedor,
+                pro.descripcion_producto,
+                pro.calificacion,
+                pro.src_imagen,
+                alm.cantidad_disponible,
+                pro.cantidad_minima
+            FROM Producto pro, Almacen alm, Proveedor prove
+            WHERE alm.id_producto = pro.id_producto AND alm.id_proveedor = prove.id_proveedor AND pro.id_producto=alm.id_producto AND pro.id_producto='%s' AND alm.id_proveedor = '%s'
+        """ % (idProducto, idProveedor))
+    
+    nombreColumnas = [i[0] for i in cursor.description]
+    datosProductoDB = queryDatosProducto.fetchall()
+
+    jsonlistaProducto=[]
+    for result in datosProductoDB:
+        jsonlistaProducto.append(dict(zip(nombreColumnas,result)))
+    return jsonlistaProducto

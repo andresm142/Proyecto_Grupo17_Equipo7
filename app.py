@@ -147,7 +147,8 @@ def Editarproducto():
                 id=request.form['id']
                 # Aqui se recibe el id del producto para su busqueda en la base de datos, esta retorna los datos
                 # del producto
-                
+                datosProducto = conn.obtenerProductoPorID("2", "1")
+                print(datosProducto)
                 # codigo temporal, se reemplaza por los datos de la consulta, solo para pruebas
                 id=1
                 nombre_producto="Motor toyota"
