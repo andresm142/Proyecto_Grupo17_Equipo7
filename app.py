@@ -141,21 +141,22 @@ def Editarproducto():
         
         if request.method == 'POST':
             
-            if request.form.get('submit_button') == 'editar':
+            if request.form['submit_button'] == 'editar':
                 idProducto=request.form['id']
                 idproveedor=request.form['idproveedor']
                 # Aqui se recibe el id del producto para su busqueda en la base de datos, esta retorna los datos
                 # del producto
                 datosProducto = conn.obtenerProductoPorID(idproveedor, idProducto)
-                return render_template('EditarProducto.html',datosProducto=datosProducto)
+                proveedores=conn.listaProveedores()
+                return render_template('EditarProducto.html',datosProducto=datosProducto,proveedores=proveedores)
             
-            elif request.form.get('submit_button') == 'eliminar':
+            elif request.form['submit_button'] == 'eliminar':
                 id=request.form['id']
                 # consulta para eliminar producto
                 print("Boton eliminar")
                 return redirect('/Productos')
                 
-            elif request.form.get('submit_button')=='Añadir +':
+            elif request.form['submit_button']=='Añadir +':
                 # Formulario en blanco para añadir producto
                 id=""
                 nombre_producto=""
@@ -163,21 +164,32 @@ def Editarproducto():
                 descripcion=""
                 cantidad=""
                 calificacion=""
-                                         
+                proveedores=conn.listaProveedores()               
                 datosProducto={'id_producto':'','id_proveedor':'','nombre_proveedor': 'Proveedor','calificacion':1,'src_imagen':'/static/images/Producto.jpg'}
-                return render_template('EditarProducto.html',datosProducto=datosProducto)
+                return render_template('EditarProducto.html',datosProducto=datosProducto,proveedores=proveedores)
                 
-            elif request.form.get('submit_button') == 'Disponible':
-                id=request.form['id']
-                # consulta para eliminar producto
+            elif request.form['submit_button'] == 'Disponible':
+                
+                textoBuscar='productos'
+                buscarPor='Disponibles'
+           
+                resultadobusqueda=''        #Consulta para Disponibles. se considera Disponible cuando la cantiada 
+                                            # diponible es mayor a la cantidad minima en bodega
+                
+                return render_template('Search.html',textoBuscar=textoBuscar,buscarPor=buscarPor,
+                                       resultadobusqueda=resultadobusqueda)
+                # consulta para buscar los productos disponibles
                 print("Disponible")
-            elif request.form.get('submit_button') == 'No disponible':
-                id=request.form['id']
-                # consulta para eliminar producto
-                print("No disponible")
-        return render_template('EditarProducto.html')
-
-
+            elif request.form['submit_button'] == 'No Disponible':
+                textoBuscar='productos'
+                buscarPor='No Disponibles'
+           
+                resultadobusqueda=''     # Consulta para No disponible, se considera no disponible cuando la cantiada 
+                                         # diponible es menor a la cantidad minima en bodega
+                return render_template('Search.html',textoBuscar=textoBuscar,buscarPor=buscarPor,
+                                       resultadobusqueda=resultadobusqueda)
+ 
+ 
 @app.route('/AdminUser', methods=['POST', 'GET'])
 def AdminUser():
     if not session.get("username"):
@@ -202,7 +214,8 @@ def AdminUser():
                 return render_template('AdminUser.html',datosusuarios=datosusuarios)
             
             elif request.form.get('submit_button') == 'eliminar':
-                print("Boton eliminar")
+                # Consulta para eliminar usuarios
+                return redirect('/Usuarios')
             elif request.form.get('submit_button')=='Añadir usuario +':
                 id=""
                 nombre=""
@@ -247,7 +260,8 @@ def EditarProveedores():
             elif request.form['submit_button'] == 'eliminar':
                 id=request.form['id']
                 # consulta para eliminar proveedor
-                print("Boton eliminar")
+                
+                return redirect('/Proveedores')
                 
             elif request.form['submit_button']=='Añadir proveedor +':
                 # Formulario en blanco para añadir proveedor
@@ -438,14 +452,14 @@ def Search():
         if request.method == 'POST':
             textoBuscar=request.form['txtsearch']
             buscarPor=request.form['selectedSearch']
-            print("-----------------------------------")
-            print(textoBuscar)
-            print(buscarPor)
+            
             if buscarPor=='Productos':
                 resultadobusqueda=conn.buscarPorProducto(textoBuscar)
-                print(resultadobusqueda)
-                return render_template('Search.html',textoBuscar=textoBuscar,buscarPor=buscarPor,resultadobusqueda=resultadobusqueda)
+                
+                return render_template('Search.html',textoBuscar=textoBuscar,buscarPor=buscarPor,
+                                       resultadobusqueda=resultadobusqueda)
             elif buscarPor=='Proveedores':
                 resultadobusqueda=conn.buscarPorProveedor(textoBuscar)
-                print(resultadobusqueda)
-                return render_template('Search.html',textoBuscar=textoBuscar,buscarPor=buscarPor,resultadobusqueda=resultadobusqueda)
+                
+                return render_template('Search.html',textoBuscar=textoBuscar,buscarPor=buscarPor,
+                                       resultadobusqueda=resultadobusqueda)

@@ -512,7 +512,8 @@ def buscarPorProducto(texto):
             pro.calificacion,
             pro.src_imagen,
             alm.cantidad_disponible,
-            pro.cantidad_minima
+            pro.cantidad_minima,
+            prove.id_proveedor
         FROM Producto pro, Almacen alm, Proveedor prove
         WHERE alm.id_producto = pro.id_producto AND alm.id_proveedor = prove.id_proveedor AND pro.id_producto=alm.id_producto AND pro.nombre_producto LIKE '%s'
     """ % ('%'+texto+'%'))

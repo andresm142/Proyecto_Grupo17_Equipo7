@@ -36,21 +36,23 @@
             <label for="proveedor">Proveedor</label>
             <div class="select-box-proveedor">
                 <div class="options-container-proveedor">
+                    {% for fila in range(proveedores|length) %}
                     <div class="option-proveedor">
                         <input type="radio" class="radio" id="num1" name="category" value="Provedor 1" checked />
-                        <label for="prov1" id="lblnum1">Proveedor 1</label>
+                        <label for="prov1" id="lblnum1">{{proveedores[fila]['nombre_proveedor']}} </label>
                     </div>
-                    <div class="option-proveedor">
+                    {% endfor %}
+                    <!-- <div class="option-proveedor">
                         <input type="radio" class="radio" id="num2" name="category" value="Provedor 2" />
                         <label for="prov2" id="lblnum2">Proveedor 2</label>
-                    </div>
+                    </div> -->
                 </div>
                 
                 <div class="selected-proveedor">
-                    "{{ datosProducto['nombre_proveedor'] }}"
+                    {{ datosProducto['nombre_proveedor'] }}
                 </div>
             </div>
-            <input type="hidden" id="inputSelectedProveedor" name="selectedProveedor"  value=""{{ datosProducto['nombre_proveedor'] }}"">
+            <input type="hidden" id="inputSelectedProveedor" name="selectedProveedor"  value="{{ datosProducto['nombre_proveedor'] }}">
         </div>
         <div class="descripcion-producto">
             <label for="descripcion">Descripción del producto</label>
