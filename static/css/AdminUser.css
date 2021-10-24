@@ -19,7 +19,9 @@ body{
     box-shadow: var(--sombra-contenedores);
     border-radius: var(--radio-contenedor-grande);
     width: 85%;
+    max-width: 1170px;
     min-height: 85vh;
+    max-height: 600px;
     display: grid;
     grid-template-columns: 1fr 2fr;
     margin: 60px auto;
@@ -45,12 +47,14 @@ body{
 }
 
 .info-user .avatar .imagen-usuario{
-    width: 215px;
-    height: 215px;
+    /* width: 215px;
+    height: 215px; */
 } 
 
 .info-user .avatar .imagen-usuario img{
-    width: 100%;
+    width: 215px;
+    height: 215px;
+    object-fit: contain;
     align-content: center;
     border-radius: 100px;
 }

@@ -39,6 +39,10 @@ body{
     cursor: pointer;
 }
 
+.bt-disponible{
+    margin-left: 20px;
+}
+
 .bt-nodisponible{
     background: var(--color-blanco-fondo);
     color: var(--color-usuario);
