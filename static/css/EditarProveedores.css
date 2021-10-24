@@ -9,7 +9,9 @@ body{
     box-shadow: var(--sombra-contenedores);
     border-radius: var(--radio-contenedor-grande);
     width: 85%;
-    min-height: 85vh;
+    max-width: 1200px;
+    min-height: 75vh;
+    max-height: 80vh;
     display: grid;
     grid-template-columns: 1fr 2fr;
     margin: 60px auto;
@@ -50,16 +52,19 @@ body{
     align-items: center;
 }
 .inputs_side{
-    margin-left: 1em;
+    margin-left: 60px;
 }
 .inputs_side .formulario input, .inputs_side .formulario textarea{
     border-radius: var(--radio-input);
     border: var(--boder-inputs);
     background: var(--color-fondo);
-    padding: 0 20px;
+    padding: 10px 20px;
     width: 70%;
     min-height:2em;
     margin-bottom: 2em;
+}
+.inputs_side .formulario textarea{
+    padding: 20px 20px;
 }
 .inputs_side .formulario label{
     font: var(--fuente-sub-titulo);
