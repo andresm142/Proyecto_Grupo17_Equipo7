@@ -491,3 +491,70 @@ def editarConfiguracionUsuario(srcImagen, idPersona, telefonoPersona):
 
     conn.commit()
     conn.close()
+    
+def buscarPorProducto(texto):
+    """ Editar la configuración del usuario.
+
+    Este método recibe una imagen, un id y un telefono y los cambia en la base de datos.
+    """
+
+    # Crear nuevamente la conexión a la base de datos. Por buenas prácticas, se debe cerrar
+    # la conexión después de cada ejecución de un método/proceso.
+    conn = crearConexion()
+    cursor = conn.cursor()
+
+    queryDatosProducto = cursor.execute(
+    """
+        SELECT pro.id_producto,
+            pro.nombre_producto,
+            prove.nombre_proveedor,
+            pro.descripcion_producto,
+            pro.calificacion,
+            pro.src_imagen,
+            alm.cantidad_disponible,
+            pro.cantidad_minima
+        FROM Producto pro, Almacen alm, Proveedor prove
+        WHERE alm.id_producto = pro.id_producto AND alm.id_proveedor = prove.id_proveedor AND pro.id_producto=alm.id_producto AND pro.nombre_producto LIKE '%s'
+    """ % ('%'+texto+'%'))
+    
+    nombreColumnas = [i[0] for i in cursor.description]
+    datosProductosDB = queryDatosProducto.fetchall()
+
+    jsonlistaProductos=[]
+    for result in datosProductosDB:
+        jsonlistaProductos.append(dict(zip(nombreColumnas,result)))
+    
+    conn.close()
+    return jsonlistaProductos
+
+def buscarPorProveedor(texto):
+    """ Editar la configuración del usuario.
+
+    Este método recibe una imagen, un id y un telefono y los cambia en la base de datos.
+    """
+
+    # Crear nuevamente la conexión a la base de datos. Por buenas prácticas, se debe cerrar
+    # la conexión después de cada ejecución de un método/proceso.
+    conn = crearConexion()
+    cursor = conn.cursor()
+
+    queryDatosProveedor = cursor.execute(
+    """
+            SELECT  pro.id_proveedor,
+                    pro.nombre_proveedor,
+                    pro.descripcion_proveedor,
+                    pro.src_imagen
+            FROM Proveedor pro
+            WHERE pro.nombre_proveedor LIKE '%s'
+        """ % ('%'+texto+'%'))
+    
+    
+    nombreColumnas = [i[0] for i in cursor.description]
+    datosProveedorDB = queryDatosProveedor.fetchall()
+
+    jsonlistaProveedor=[]
+    for result in datosProveedorDB:
+        jsonlistaProveedor.append(dict(zip(nombreColumnas,result)))
+    
+    conn.close()
+    return jsonlistaProveedor
