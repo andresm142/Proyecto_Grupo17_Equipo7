@@ -25,7 +25,11 @@
 }
 
 .section-search{
-    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:space-between;
+    margin: 30px 30px;
+    gap: 50px 20px;
 }
 
 .section-search h2{
@@ -34,12 +38,12 @@
 }
 
 /* FIN ENCABEZADOS */
-
+/* 
 .contenedor{
     display: flex;
     flex-wrap: wrap;
     gap: 1vw;
-    /* justify-content: space-around; */
+    
     margin: 0 20px;
 }
 .contenedor-resultado{
@@ -78,4 +82,279 @@
 }
 .disponible p{
     margin: 0px;
+} */
+
+
+/* INICIO ESTRELLAS */
+
+.estrellas-outer{
+    display: inline-block;
+    position: relative;
+    font-family: "icomoon";
 }
+
+.estrellas-outer::before{
+   
+    content: "\e9d7 \e9d7 \e9d7 \e9d7 \e9d7";
+
+}
+.estrellas-inner::before{
+    content: "\e9d9 \e9d9 \e9d9 \e9d9 \e9d9";
+    color: var(--color-usuario);
+
+}
+.estrellas-inner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    /* width: 90%;  */                     /* Para cambiar el relleno de las estrellas */
+}
+
+/* FIN ESTRELLAS */
+
+/* INICIO BOX PRODUCTO */
+
+.section-productos{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:space-between;
+    margin: 30px 30px;
+    gap: 50px 20px;
+}
+
+.box-producto{
+    width: 300px;
+    display: inline-block;
+    text-align: center;
+    z-index: 1;
+    margin: 10px;
+}
+.logo-producto{
+    z-index: 1;
+}
+.box-producto .logo-producto .imagen img{
+    width:250px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: var(--radio-contenedor);
+}
+
+.box-producto .box-fondo{
+    display: flex;
+    flex-direction: column;
+    text-align: justify;
+    padding: 110px 30px 20px 30px;
+    margin: -100px 0px 0px 0px;
+    background: var(--color-blanco-fondo);
+    box-shadow: var(--sombra-contenedores);
+    border-radius: var(--radio-contenedor);
+}
+
+.image{
+    margin: 1%;
+}
+
+.titulo-producto{
+    font: var(--fuente-sub-titulo);
+    font-size: 18px;
+}
+.name-proveedor{
+    font: var(--fuente-texto);
+}
+.disponibe{
+    font: var(--fuente-texto);
+    text-align: end;
+}
+.puntuacion{
+    display: flex;   
+}
+.valor{
+    margin-left: 10px;
+    color: var(--color-usuario);
+    font: var(--fuente-texto);
+    font-weight: bold;
+}
+.descripcion{
+    font: var(--fuente-texto);
+    margin: 10px 0px;
+}
+
+/* INICIO BOTON EDITAR Y ELIMINAR */
+.boton-editar-eliminar{
+    display: flex;
+    font-family: "icomoon";
+    justify-content:right;
+    margin: -27px 27px 0 0;
+    z-index: 1;
+}
+
+.boton-editar::after{
+    content:"\e905";
+    color:white;
+}
+
+.boton-eliminar::after{
+    content:"\e9ac";
+    color: var(--color-usuario)
+}
+
+.boton-editar{
+    background: var(--color-usuario);
+    border-radius: var(--radio-input);
+    padding: 10px;
+    margin-left: 10px;
+    border: var(--border-boton-cancelar-usuario);
+    cursor: pointer;
+}
+
+.boton-editar:hover{
+    background: var(--color-gris);
+}
+
+.boton-eliminar{
+    background: var(--color-blanco);
+    border-radius: var(--radio-input);
+    padding: 10px;
+    border: var(--border-boton-cancelar-usuario);
+    cursor: pointer;
+    
+}
+
+.boton-eliminar:hover{
+    background: var(--color-gris);
+}
+
+/* FIN BOTON EDITAR Y ELIMINAR */
+
+
+/* PROVEEDORES */
+
+
+.container-proveedor{
+    display: flex;
+}
+.contenedor-proveedor{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap:30px;
+}
+section article{
+    background-color: var(--color-blanco);
+    border-radius: var(--radio-contenedor);
+    max-width: 400px;
+    display: inline-flex;
+    margin-top: 50px;
+    padding: 30px; 
+    box-shadow: var(--sombra-contenedores);
+    font: var(--fuente-texto);
+}
+section article .supplier_img img{
+    width:190px;
+    height:140px;
+    border-radius: 15px;
+}
+section article .supplier_img, section article .description{
+    display: grid;
+    align-content: center;
+    vertical-align: top;
+    position: relative;
+}
+section article .description h3{
+    margin-top: 0px;
+    margin-bottom: 15px;
+    margin-left: 20px;
+    color: var(--color-gris);
+    font-size: 0.9em;
+}   
+
+section article .description .text p{
+    margin-top: 0px;
+    justify-content: left;
+    text-align: left;
+    flex-wrap: wrap;
+    color:var(--color-gris);
+    margin-left: 20px;
+    font-size: 0.8em;
+}
+/* .buttons a{
+    font-size: 20px;
+    margin-left: 10px;
+} */
+
+.buttons{
+    display: flex;
+    font-family: "icomoon";
+    justify-content: end;
+}
+
+
+.edit::after{
+    content:"\e905";
+    color:white;
+}
+
+.remove::after{
+    content:"\e9ac";
+    color: var(--color-usuario)
+}
+
+.description .edit{
+    background: var(--color-usuario);
+    border-radius: var(--radio-input);
+    padding: 10px;
+    margin-left: 10px;
+    border: var(--border-boton-cancelar-usuario);
+    cursor: pointer;
+}
+
+.description .edit:hover{
+    background: var(--color-gris);
+}
+
+.description .remove{
+    background: var(--color-blanco);
+    border-radius: var(--radio-input);
+    padding: 10px;
+    border: var(--border-boton-cancelar-usuario);
+    cursor: pointer;    
+}
+
+.description .remove:hover{
+    background: var(--color-gris);
+}
+
+
+.description .edit {
+    background: var(--color-usuario);
+    border-radius: var(--radio-input);
+    padding: 10px;
+    margin-left: 10px;
+    border: var(--border-boton-cancelar-usuario);
+}
+.description .remove {
+    background: var(--color-blanco);
+    border-radius: var(--radio-input);
+    padding: 10px;
+    border: var(--border-boton-cancelar-usuario);
+}
+.description .remove a{
+    color: var(--color-usuario);
+    padding:5px 10px 5px 10px;
+    margin:0px;
+}
+.description .edit a{
+    color: white;
+    padding:5px 8px 5px 10px;
+    margin:0px;
+}
+
+.description .remove a{
+    color: var(--color-usuario);
+}
+.buttons, .supplier_img .img img{
+    vertical-align: bottom;
+} 
