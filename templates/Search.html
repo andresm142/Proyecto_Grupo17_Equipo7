@@ -1,0 +1,63 @@
+{% extends 'MasterPage.html' %}
+{% block title %} Inicio {% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href={{ url_for('static', filename='css/search.css' ) }}>
+
+<header class="header-paginas">
+    <div class="encabezado-inicio">
+        <div class="titulo">
+            <h1>Resultado de la busqueda de </h1><span>{{ textoBuscar }} </span><h1>en {{ buscarPor }}</h1>
+            
+        </div>
+    </div>
+</header>
+<section class="section-search">
+    {% if buscarPor=='Productos'%}
+        <div class="contenedor">
+            {% for fila in range(resultadobusqueda|length) %}
+            <div class="contenedor-resultado">
+                <div class="imagen">
+                    <img src="{{ resultadobusqueda[fila]['src_imagen'] }}" alt="">
+                </div>
+                <div class="informacion">
+                    <div class="nombre-producto" id="name">
+                        {{ resultadobusqueda[fila]['nombre_producto'] }}
+                    </div>
+                    <div class="nombre-proveedor">
+                        {{ resultadobusqueda[fila]['nombre_proveedor'] }}
+                    </div>
+                    <div class="disponible">
+                        <p>Disponible</p><span>: {{ resultadobusqueda[fila]['cantidad_disponible'] }}</span>
+                    </div>
+
+                </div>
+            </div>
+            {% endfor %}
+            
+        </div>
+        
+    {%else%}
+        <div class="contenedor">
+            {% for fila in range(resultadobusqueda|length) %}
+            <div class="contenedor-resultado">
+                <div class="imagen">
+                    <img src="{{ resultadobusqueda[fila]['src_imagen'] }}" alt="">
+                </div>
+                <div class="informacion">
+                    <div class="nombre-proveedor" id="name">
+                       {{ resultadobusqueda[fila]['nombre_proveedor'] }}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            
+        </div>
+        
+    {%endif%} 
+
+  
+       
+</section>
+
+{% endblock %}

@@ -429,4 +429,23 @@ def uploader():
         f.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
         # Retornamos una respuesta satisfactoria
         return (filename)
-    
+
+@app.route('/Search', methods=['POST', 'GET'])
+def Search():
+    if not session.get("username"):
+        return redirect("/")
+    else:
+        if request.method == 'POST':
+            textoBuscar=request.form['txtsearch']
+            buscarPor=request.form['selectedSearch']
+            print("-----------------------------------")
+            print(textoBuscar)
+            print(buscarPor)
+            if buscarPor=='Productos':
+                resultadobusqueda=conn.buscarPorProducto(textoBuscar)
+                print(resultadobusqueda)
+                return render_template('Search.html',textoBuscar=textoBuscar,buscarPor=buscarPor,resultadobusqueda=resultadobusqueda)
+            elif buscarPor=='Proveedores':
+                resultadobusqueda=conn.buscarPorProveedor(textoBuscar)
+                print(resultadobusqueda)
+                return render_template('Search.html',textoBuscar=textoBuscar,buscarPor=buscarPor,resultadobusqueda=resultadobusqueda)

@@ -23,7 +23,7 @@
                 style="display: none;"></a>
                 <a id="cerrar" class="abrir-cerrar" href="#" onclick="ocultar()" style="display: none;"></a>
             </div>
-            <div class="buscar">
+            <form class="buscar" action="/Search" method="POST">
                 <div class="container-tipo-de-busqueda">
                     <div class="select-box">
                       <div class="options-container">
@@ -40,11 +40,12 @@
                         Proveedores
                       </div>
                     </div>
-                    <input type="hidden" id="inputSelectedSearch" name="selectedSearch"  value="">
+                    <input type="hidden" id="inputSelectedSearch" name="selectedSearch"  value="Proveedores">
                 </div>                
-                <input class="search" type="search" id="search" placeholder="Buscar">
+                <input class="search" type="search" id="search" placeholder="Buscar" name="txtsearch">
                 <i class="fa fa-search" id="lupa"></i>
-            </div>
+            </form>
+
             <div class="logo">
                 <img src={{ url_for('static', filename='images/LogoSM.png') }} alt="">
             </div>
