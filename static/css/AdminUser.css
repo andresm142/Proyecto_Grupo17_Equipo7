@@ -52,8 +52,8 @@ body{
 } 
 
 .info-user .avatar .imagen-usuario img{
-    width: 215px;
-    height: 215px;
+    width: 200px;
+    height: 200px;
     object-fit: contain;
     align-content: center;
     border-radius: 100px;
@@ -97,6 +97,7 @@ body{
 .nombre, .apellido, .tipo-de-usuario, .correo, .telefono, .contrasena, .confirmar-contrasena{
     width: 100%;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
 }
@@ -104,12 +105,12 @@ body{
 
 /* CONFIGURACION DEL SELECTOR TIPO DE USUARIO */
 .tipo-de-usuario .contenedor-tipo-de-usuario{
-    width: 27vw;
+    width: 100%;
 }
 
 @media screen and (min-width:1336px) {
     .tipo-de-usuario .contenedor-tipo-de-usuario{
-        width: 27.6vw;
+        width: 58%;
     }
 }
 
