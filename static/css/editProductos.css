@@ -165,7 +165,7 @@ textarea:focus{
 }
 
 .select-box-proveedor .options-container-proveedor.active {
-    max-height: 240px;
+    max-height: 150px;
     opacity: 1;
     overflow-y: scroll;
 }

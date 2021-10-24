@@ -19,7 +19,14 @@
     </div>
     <div class="ultimos-productos">
         <div class="contenedor">
-            {% for fila in range(3) %}
+            {% set rango = 0 %}
+            {% if (consultaProductos|length) > 6%}
+                {% set rango=6%}
+            {%else%}
+                {% set rango=consultaProductos|length %}
+            {%endif%}
+
+            {% for fila in range(rango) %}
             <div class="contenedor-ultimos">
                 <div class="imagen">
                     <img src="{{ consultaProductos[fila]['src_imagen'] }}" alt="">
@@ -49,7 +56,15 @@
     <div class="ultimos-proveedores">
 
         <div class="contenedor">
-            {% for fila in range(consultaProveedor|length) %}
+            {% set rango1 = 0 %}
+            {% if (consultaProveedor|length) > 6%}
+                {% set rango1=6%}
+            {%else%}
+                {% set rango1=consultaProveedor|length %}
+            {%endif%}
+
+            {% for fila in range(rango1) %}
+            
             <div class="contenedor-ultimos">
                 <div class="imagen">
                     <img src="{{ consultaProveedor[fila]['src_imagen'] }}" alt="">
