@@ -65,3 +65,15 @@ function guardar() {                     //Temporal, solo para navegabilidad
 function eliminar() {
     alert("Eliminado")
 }
+
+
+/////...........................................
+//AutoComplete
+var searchInput = document.getElementById("search");
+var awesomplete = new Awesomplete(searchInput, {
+  minChars: 1,
+  maxItems: 5,
+  autoFirst: true
+});
+console.log(searchInput.offsetTop);
+awesomplete.list = ["China", "India", "Japan", "Russia", "UK", "USA"];
