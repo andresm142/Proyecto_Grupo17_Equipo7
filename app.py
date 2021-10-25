@@ -405,7 +405,7 @@ def GuardarProveedor():
             if request.form['submit_button'] == 'Guardar':
                 return redirect('/Proveedores')
             elif request.form['submit_button'] == 'Cancelar':
-                return redirect('/Proveedores')   
+                return redirect('/Proveedores')
             
 # Guardar configuracion de usuario. Llega desde la pagina User
 @app.route('/Guardarconfiguracion', methods=['POST', 'GET'])
