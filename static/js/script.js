@@ -13,6 +13,7 @@ optionsList.forEach(o => {
         optionsContainer.classList.remove("active");
         var nombre = document.querySelector(".selected").textContent;
         document.getElementById("inputSelectedSearch").value=nombre;
+        tipoAutoComplete();
     });
 });
 
@@ -70,12 +71,27 @@ function eliminar() {
 /////...........................................
 //AutoComplete
 var searchInput = document.getElementById("search");
+var autocompleteType = document.querySelector(".selected");
 var awesomplete = new Awesomplete(searchInput, {
   minChars: 1,
   maxItems: 5,
   autoFirst: true
 });
 console.log(searchInput.offsetTop);
-awesomplete.list = sessionStorage.getItem('autocompletarProductos');
-console.log(sessionStorage.getItem('autocompletarProductos'));
+// awesomplete.list = sessionStorage.getItem('autoCompletarProveedores');
+// console.log(sessionStorage.getItem('autocompletarProductos'));
 //awesomplete.list = ["China", "India", "Japan", "Russia", "UK", "USA"];
+if (autocompleteType.textContent.includes("Proveedores")) {
+  awesomplete.list = sessionStorage.getItem('autoCompletarProveedores');
+  console.log(autocompleteType.textContent);
+}
+
+function tipoAutoComplete() {
+    if (autocompleteType.textContent.includes("Productos")) {
+        awesomplete.list = sessionStorage.getItem('autocompletarProductos');
+        console.log(autocompleteType.textContent);
+    }else if (autocompleteType.textContent.includes("Proveedores")) {
+        awesomplete.list = sessionStorage.getItem('autoCompletarProveedores');
+        console.log(autocompleteType.textContent);
+    }
+}
