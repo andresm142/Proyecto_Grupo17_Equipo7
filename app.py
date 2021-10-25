@@ -36,9 +36,12 @@ def Index():
                               datosusuarios['imagen_src']) 
         consultaProductos=conn.listaProductos()
         consultaProveedor=conn.listaProveedores()
+        session['autocompletarProductos'] = conn.autocompletarListaProductos()
+        session['autoCompletarProveedores'] = conn.autocompletarListaProveedores()
         
         return render_template('Index.html', userType=session["userType"],usuario=session["usuario"],consultaProductos=consultaProductos,
-                               consultaProveedor=consultaProveedor)
+                               consultaProveedor=consultaProveedor,autocompletarProductos=session['autocompletarProductos'], 
+                               autoCompletarProveedores=session['autoCompletarProveedores'])
     else:
         session["username"] = None
         return redirect('/')
@@ -55,13 +58,13 @@ def Home():
         # Cada consulta se guarda en una variable distinta
         consultaProductos=conn.listaProductos()
         consultaProveedor=conn.listaProveedores()
-        session['autocompletarProductos'] = conn.autocompletarListaProductos()
-        session['autoCompletarProveedores'] = conn.autocompletarListaProveedores()
+
         print(session['autocompletarProductos'])
 
         # return render_template('Index.html', userType=session["userType"],consultaProductos=consultaProductos,consultaProveedor=consultaProveedor)
         return render_template('Index.html', userType=session["userType"],usuario=session["usuario"],consultaProductos=consultaProductos,
-                               consultaProveedor=consultaProveedor, autocompletarProductos=session['autocompletarProductos'], autoCompletarProveedores=session['autoCompletarProveedores'])
+                               consultaProveedor=consultaProveedor, autocompletarProductos=session['autocompletarProductos'], 
+                               autoCompletarProveedores=session['autoCompletarProveedores'])
 
 
 @app.route('/Productos', methods=['POST', 'GET'])
