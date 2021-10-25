@@ -320,6 +320,7 @@ def GuardarUser():
         if session.get("userType")=='admin' or session.get("userType")=='superAdmin':
             if request.method == 'POST':
                 if request.form['submit_button'] == 'Guardar':
+                    print("---------------------------------------------------------")
                     id=request.form['id']
                     nombre=request.form['nombre']
                     apellido=request.form['apellido']
@@ -335,9 +336,9 @@ def GuardarUser():
                     telefono=request.form['telefono']
                     
                     image_src=request.files['archivo']            
-                
-                    if id=="":
-                        
+                    
+                    if id=="0":
+                        print("insert---------------------------------------------------------")
                         if image_src.filename !="":
                             image_src=uploader()            #Retorna Foto.png
                             image_src="/static/images/upload/"+image_src
@@ -346,16 +347,19 @@ def GuardarUser():
                             image_src="/static/images/avatar.png"   # Si no se selecciona ninguna imagen, establece la imagen por defecto
                         
                         #Consulta para insert en la base de datos
+                        conn.insertarPersona(nombre,apellido,telefono,email,image_src,tipoUser)
+                        
                         
                     else:
                         if image_src.filename !="":
-                            
+                            print("aqui---------------------------------------------------------")
                             image_src=uploader()            #Retorna Foto.png
                             image_src="/static/images/upload/"+image_src
                         
                             #Consulta para update en la base de datos cambiando la imagen por la seleccionada en el momento
                             
                         else:
+                            print("-en este--------------------------------------------------------")
                             #Consulta para update en la base de datos sin incluir imagen, permanece la actual
                             
                             pass 
