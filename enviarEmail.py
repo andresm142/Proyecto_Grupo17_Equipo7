@@ -15,7 +15,7 @@ gmail_password = 'Soporte2021*'
 
 alphabet = string.ascii_letters + string.digits
 
-def prepararEmail(cuentaCorreo, nombreUsuario, idUsuario):
+def emailRestablecerCuenta(cuentaCorreo, nombreUsuario, idUsuario):
     """ Preparar los datos para el envío del correo de restablecimiento de claves.
 
     Este método después de recibir la petición de restablecimiento de contraseña,
@@ -68,7 +68,60 @@ def prepararEmail(cuentaCorreo, nombreUsuario, idUsuario):
 
     argumentosEmail = (sent_from, to, email_text)
     return argumentosEmail
-    
+
+
+def emailCrearUsuario(cuentaCorreo, nombreUsuario, idUsuario, password):
+    """ Preparar los datos para el envío del correo de restablecimiento de claves.
+
+    Este método después de recibir la petición de restablecimiento de contraseña,
+    verifica si existe el usuario en la base de datos. Si es un correo válido, envía la nueva clave.
+
+    Parameters
+
+    cuentaCorreo -- Es la cuenta a la que se le enviará el correo de restablecimiento.
+    """
+
+    # Datos de la cuenta
+    sent_from = gmail_user
+
+    # Datos del correo
+    to = cuentaCorreo
+    subject = 'Notificación Creación de Usuario - Saic Motor S.A.'
+    body = """
+
+    Estimado(a) %s
+
+    Tu cuenta ha sido creada con éxito. Tu contraseña asignada es: %s
+
+    ¿No reconoces esta actividad?
+
+    Revisa ahora los dispositivos que has utilizado recientemente. Si no hiciste estos cambios o si crees que alguien ha accedido a tu cuenta sin autorización, deberás cambiar tu contraseña de acceso inmediatamente con tu cuenta en Saic Motor.
+
+    No respondas a este correo ya que solamente es informativo, recuerda que es generado de manera automática y no es un canal oficial de comunicación de Saic Motor.
+
+
+    Saludos.
+
+    Equipo Saic Motor
+
+    Este es un correo de carácter informativo, favor de no responderlo.
+
+    """ % (nombreUsuario, password)
+
+    email_text = """\
+    From: %s
+    To: %s
+    Subject: %s
+
+    %s
+    """ % (sent_from, to, subject, body)
+
+    # Cambiar la contraseña en la base de datos.
+    dbConnect.recuperarContrasena(cuentaCorreo, idUsuario, password)
+
+    argumentosEmail = (sent_from, to, email_text)
+    return argumentosEmail
+
 
 def enviarCorreo(argumentosEmail):
     """ Envío del correo de restablecimiento de claves.
