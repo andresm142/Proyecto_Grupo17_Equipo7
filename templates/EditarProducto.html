@@ -9,7 +9,7 @@
 <!-- <form class="info-imagen-producto" action="/upload" method="POST" enctype="multipart/form-data"></form> -->
 <form id="editprod-form" class="contenedor-producto" action="/GuardarProducto" method="POST" enctype="multipart/form-data">
     
-    <input type="hidden" id="id" style="display: none;" value="{{ datosProducto['id_producto'] }}">
+    <input type="hidden" name="id_producto" id="id" style="display: none;" value="{{ datosProducto['id_producto'] }}">
 
     <div class="info-imagen-producto">
 
@@ -30,7 +30,7 @@
 
         <div class="nombre">
             <label for="name">Nombre producto</label>
-            <input type="text" name="name" id="name" value="{{ datosProducto['nombre_producto'] }}">
+            <input type="text" name="nombre_producto" id="name" value="{{ datosProducto['nombre_producto'] }}">
         </div>
         <div class="container-proveedor">
             <label for="proveedor">Proveedor</label>

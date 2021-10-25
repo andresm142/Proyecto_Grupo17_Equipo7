@@ -739,7 +739,7 @@ def insertarProducto(nombreProducto, descripcionProducto, calificacion, srcImage
     cursor.execute(
         """
             INSERT INTO Producto (nombre_producto, descripcion_producto, calificacion, src_imagen, fecha_creado, id_empresa, cantidad_minima)
-            VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s')
+            VALUES ('%s', '%s', %s, '%s', '%s', %s, %s)
         """ % (nombreProducto, descripcionProducto, calificacion, srcImagen, fechaHora, 1, cantidadMinima))
 
     conn.commit()
@@ -765,7 +765,7 @@ def insertarRegistroAlmacen(idProducto, idProveedor, cantidadDisponible):
     cursor.execute(
         """
             INSERT INTO Registro_Almacen (id_bodega, id_producto, id_proveedor, cantidad_disponible)
-            VALUES ('%s', '%s', '%s', '%s')
+            VALUES (%s, %s, %s, %s)
         """ % (1, idProducto, idProveedor, cantidadDisponible))
 
     conn.commit()

@@ -383,15 +383,15 @@ def GuardarProducto():
     else:
         if request.method == 'POST':
             if request.form['submit_button'] == 'Guardar':
-                id=request.form.get('id')
-                nombreProducto = request.form.get("name")
+                id=request.form['id_producto']
+                nombreProducto = request.form.get("nombre_producto")
                 proveedor = request.form['selectedProveedor']
                 descripcion =request.form.get("descripcion")
                 disponible=request.form.get("cantidad_disponible")
                 cantidad_minima=request.form.get("cantidad_minima")
                 calificacion=request.form["selectedCalificacion"]
                 image_src=request.files['archivo']
-                if id=="0":
+                if id=="":
                     
                     if image_src.filename !="":
                         image_src=uploader()
