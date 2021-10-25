@@ -3,6 +3,7 @@ import random
 import sqlite3
 import string
 from werkzeug.security import generate_password_hash, check_password_hash
+import enviarEmail
 
 # Ruta relativa de conexión a la base de datos
 database = r'static/db/SaicMotor.db'
@@ -639,10 +640,14 @@ def insertarPersona(nombre, apellido, telefono, email, imagen_src, rolUsuario):
     conn.close()
 
     idPersona = cursor.lastrowid
-    print(idPersona)
     idRol = buscarIdRol(rolUsuario)
-    passwordHash = generate_password_hash(crearContrasena())
+    password = crearContrasena()
+    passwordHash = generate_password_hash(password)
+
     insertarUsuario(idPersona, idRol, passwordHash)
+
+    idUsuario = obtenerIDUsuario(email)
+    enviarEmailCreacionCuenta(email, nombre + " " + apellido, idUsuario, password)
 
 
 def insertarUsuario(idPersona, idRol, contrasena):
@@ -664,6 +669,10 @@ def insertarUsuario(idPersona, idRol, contrasena):
 
     conn.commit()
     conn.close()
+
+def enviarEmailCreacionCuenta(email, nombreApellido, idUsuario, contrasena):
+    datosEmail = enviarEmail.emailCrearUsuario(email, nombreApellido, idUsuario, contrasena)
+    response = enviarEmail.enviarCorreo(datosEmail)
 
 
 def insertarProducto(nombreProducto, descripcionProducto, srcImagen, calificacion, cantidadMinima, idProveedor):
