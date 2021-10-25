@@ -1,3 +1,4 @@
+import datetime
 import json
 import random
 import sqlite3
@@ -706,12 +707,13 @@ def insertarProveedor(nombreProveedor, descripcionProveedor, srcImagen):
     # la conexión después de cada ejecución de un método/proceso.
     conn = crearConexion()
     cursor = conn.cursor()
+    fechaHora = datetime.datetime.now()
 
     cursor.execute(
         """
-            INSERT INTO Proveedor (nombre_proveedor, descripcion_proveedor, src_imagen)
-            VALUES ('%s', '%s', '%s')
-        """ % (nombreProveedor, descripcionProveedor, srcImagen))
+            INSERT INTO Proveedor (nombre_proveedor, descripcion_proveedor, src_imagen, fecha_creado, id_empresa)
+            VALUES ('%s', '%s', '%s', '%s', '%s')
+        """ % (nombreProveedor, descripcionProveedor, srcImagen, fechaHora, 1))
 
     conn.commit()
     conn.close()
