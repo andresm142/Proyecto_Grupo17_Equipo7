@@ -347,7 +347,7 @@ def GuardarUser():
                             image_src="/static/images/avatar.png"   # Si no se selecciona ninguna imagen, establece la imagen por defecto
                         
                         #Consulta para insert en la base de datos
-                        conn.insertarPersona(nombre,apellido,email,telefono,image_src,tipoUser)
+                        conn.insertarPersona(nombre,apellido,telefono,email,image_src,tipoUser)
                         
                         
                     else:
