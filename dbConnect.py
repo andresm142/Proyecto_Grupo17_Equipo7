@@ -1,5 +1,7 @@
 import json
+import random
 import sqlite3
+import string
 from werkzeug.security import generate_password_hash, check_password_hash
 
 # Ruta relativa de conexión a la base de datos
@@ -161,6 +163,28 @@ def cambiarContraseña(idUsuario, password):
     conn.close()
 
 
+def buscarIdRol(rol):
+    """ Buscar el id del rol de la base de datos.
+
+    Este método recibe una descripción de rol y busca el id de rol asociado en la tabla Rol.
+
+    Parameters
+
+    rol -- Es la descripción del rol que se buscará.
+    """
+
+    # Crear nuevamente la conexión a la base de datos. Por buenas prácticas, se debe cerrar
+    # la conexión después de cada ejecución de un método/proceso.
+    conn = crearConexion()
+    cursor = conn.cursor()
+
+    queryRolId = cursor.execute(
+        "SELECT id_rol FROM Rol WHERE descripcion_rol = '%s'" % rol).fetchone()[0]
+
+    conn.close()
+    return queryRolId[0]
+
+
 def cambiarEstatusUsuario(tipoEstatus, idUsuario):
     """ Cambiar el estatus de un usuario en la base de datos.
 
@@ -255,6 +279,9 @@ def obtenerListaDeUsuarios():
     jsonlistaUsuarios=[]
     for result in datosUsuariosDB:
         jsonlistaUsuarios.append(dict(zip(nombreColumnas,result)))
+    
+    conn.close()
+
     return jsonlistaUsuarios
 
 
@@ -306,6 +333,8 @@ def listaProductos():
     jsonlistaProductos=[]
     for result in datosUsuariosDB:
         jsonlistaProductos.append(dict(zip(nombreColumnas,result)))
+    
+    conn.close()
     return jsonlistaProductos
 
 def listaProveedores():
@@ -335,6 +364,9 @@ def listaProveedores():
     jsonlistaProveedores=[]
     for result in datosProveedoresDB:
         jsonlistaProveedores.append(dict(zip(nombreColumnas,result)))
+    
+    conn.close()
+
     return jsonlistaProveedores
 
 
@@ -348,9 +380,10 @@ def autocompletarListaProductos():
 
 def autocompletarListaProveedores():
     listaProveedor = listaProveedores()
-    msj = ""
+
+    msj = []
     for proveedor in listaProveedor:
-        msj += proveedor['nombre_proveedor'] + ", "
+        msj.append(proveedor['nombre_proveedor'])
     return msj
 
 
@@ -575,3 +608,79 @@ def buscarPorProveedor(texto):
     
     conn.close()
     return jsonlistaProveedor
+
+
+def crearContrasena():
+    """ Crear una contraseña aleatoria.
+
+    Este método crea una contraseña aleatoria.
+    """
+    return ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(8))
+
+
+def insertarPersona(nombre, apellido, telefono, email, imagen_src, rolUsuario):
+    """ Insertar una persona en la base de datos.
+
+    Este método recibe los datos de una persona y los inserta en la base de datos.
+    """
+
+    # Crear nuevamente la conexión a la base de datos. Por buenas prácticas, se debe cerrar
+    # la conexión después de cada ejecución de un método/proceso.
+    conn = crearConexion()
+    cursor = conn.cursor()
+
+    cursor.execute(
+        """
+            INSERT INTO Persona (nombre_persona, apellido_persona, telefono_persona, email, imagen_src)
+            VALUES ('%s', '%s', '%s', '%s', '%s', '%s')
+        """ % (nombre, apellido, telefono, email, imagen_src, rolUsuario))
+
+    conn.commit()
+    conn.close()
+
+    idPersona = cursor.lastrowid
+    idRol = buscarIdRol(rolUsuario)
+    contrasena = crearContrasena()
+    insertarUsuario(idPersona, idRol, contrasena)
+
+
+def insertarUsuario(idPersona, idRol, contrasena):
+    """ Insertar un usuario en la base de datos.
+
+    Este método recibe los datos de un usuario y los inserta en la base de datos.
+    """
+
+    # Crear nuevamente la conexión a la base de datos. Por buenas prácticas, se debe cerrar
+    # la conexión después de cada ejecución de un método/proceso.
+    conn = crearConexion()
+    cursor = conn.cursor()
+
+    cursor.execute(
+        """
+            INSERT INTO Usuario (contrasena, estatus_usuario, id_persona, id_rol, id_sede)
+            VALUES ('%s', 1, '%s', '%s', 1)
+        """ % (contrasena, idPersona, idRol))
+
+    conn.commit()
+    conn.close()
+
+
+def insertarProducto(nombreProducto, descripcionProducto, srcImagen, calificacion, cantidadMinima, idProveedor):
+    """ Insertar un producto en la base de datos.
+
+    Este método recibe una imagen, un id y un telefono y los cambia en la base de datos.
+    """
+
+    # Crear nuevamente la conexión a la base de datos. Por buenas prácticas, se debe cerrar
+    # la conexión después de cada ejecución de un método/proceso.
+    conn = crearConexion()
+    cursor = conn.cursor()
+
+    cursor.execute(
+        """
+            INSERT INTO Producto (nombre_producto, descripcion_producto, src_imagen, calificacion, cantidad_minima, id_proveedor)
+            VALUES ('%s', '%s', '%s', '%s', '%s', '%s')
+        """ % (nombreProducto, descripcionProducto, srcImagen, calificacion, cantidadMinima, idProveedor))
+
+    conn.commit()
+    conn.close()

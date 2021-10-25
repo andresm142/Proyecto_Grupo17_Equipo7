@@ -77,4 +77,5 @@ var awesomplete = new Awesomplete(searchInput, {
 });
 console.log(searchInput.offsetTop);
 awesomplete.list = sessionStorage.getItem('autocompletarProductos');
+console.log(sessionStorage.getItem('autocompletarProductos'));
 //awesomplete.list = ["China", "India", "Japan", "Russia", "UK", "USA"];

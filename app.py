@@ -59,7 +59,6 @@ def Home():
         consultaProductos=conn.listaProductos()
         consultaProveedor=conn.listaProveedores()
 
-        print(session['autocompletarProductos'])
 
         # return render_template('Index.html', userType=session["userType"],consultaProductos=consultaProductos,consultaProveedor=consultaProveedor)
         return render_template('Index.html', userType=session["userType"],usuario=session["usuario"],consultaProductos=consultaProductos,
@@ -74,6 +73,8 @@ def Productos():
     else:
         # Consulta para productos retorna:(id,nombre_producto,proveedor,disponibles,descripcion,calificacion,imagen_src)
         lista=conn.listaProductos()
+        session['autocompletarProductos'] = conn.autocompletarListaProductos()
+        session['autoCompletarProveedores'] = conn.autocompletarListaProveedores()
         return render_template('Productos.html',lista=lista)
 
 @app.route('/Listas', methods=['POST', 'GET'])
@@ -109,7 +110,8 @@ def Proveedores():
     else:
         # Consulta para productos retorna:(id,nombre_proveedor,descripcion,imagen_src)
         lista=conn.listaProveedores()
-        print(lista)
+        session['autocompletarProductos'] = conn.autocompletarListaProductos()
+        session['autoCompletarProveedores'] = conn.autocompletarListaProveedores()
         return render_template('Proveedores.html',lista=lista)
 
 
