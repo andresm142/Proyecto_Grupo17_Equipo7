@@ -5,7 +5,7 @@
 <link rel="stylesheet" href={{ url_for('static', filename='css/AdminUser.css' ) }}>
 <form class="admin-user" action="/GuardarUser" method="POST" enctype="multipart/form-data">
     <!-- ID del usuario, oculto -->
-    <input type="text" name="id" id="id" value="{{ datosusuarios['id_persona'] }}">
+    <input type="hidden" name="id" id="id" value="{{ datosusuarios['id_persona'] }}">
 
     <div class="contenedor-usuario">
         <div class="info-user">
