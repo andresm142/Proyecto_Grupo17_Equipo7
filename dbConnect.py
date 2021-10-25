@@ -744,7 +744,7 @@ def insertarProveedor(nombreProveedor, descripcionProveedor, srcImagen):
     conn.close()
 
 
-def insertarProducto(nombreProducto, descripcionProducto, calificacion, srcImagen, cantidadMinima, nombreProveedor, cantidadDisponible):
+def insertarProducto(nombreProducto, descripcionProducto, calificacion, srcImagen, cantidadMinima, cantidadDisponible, nombreProveedor):
     """ Insertar un producto en la base de datos.
 
     Este método recibe una imagen, un id y un telefono y los cambia en la base de datos.
