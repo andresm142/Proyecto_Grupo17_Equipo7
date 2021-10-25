@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>DATABASE</ID>
+  <OriginalElement>81cc3392-0d94-4c02-b335-251deb4faf12</OriginalElement>
+  <nodes>
+    <node x="45.457677215512376" y="313.0">81cc3392-0d94-4c02-b335-251deb4faf12.TABLE:main.Ciudad</node>
+    <node x="166.0" y="714.0">81cc3392-0d94-4c02-b335-251deb4faf12.TABLE:main.Producto</node>
+    <node x="617.8091397849462" y="324.0">81cc3392-0d94-4c02-b335-251deb4faf12.TABLE:main.Rol</node>
+    <node x="361.0" y="736.0">81cc3392-0d94-4c02-b335-251deb4faf12.TABLE:main.Proveedor</node>
+    <node x="288.18279569892474" y="313.0">81cc3392-0d94-4c02-b335-251deb4faf12.TABLE:main.Sede</node>
+    <node x="-190.1702848697957" y="313.0">81cc3392-0d94-4c02-b335-251deb4faf12.TABLE:main.Pais</node>
+    <node x="444.80913978494624" y="280.0">81cc3392-0d94-4c02-b335-251deb4faf12.TABLE:main.Persona</node>
+    <node x="801.8091397849462" y="0.0">81cc3392-0d94-4c02-b335-251deb4faf12.TABLE:main.sqlite_master</node>
+    <node x="277.18279569892474" y="530.0">81cc3392-0d94-4c02-b335-251deb4faf12.TABLE:main.Empresa</node>
+    <node x="0.0" y="780.0">81cc3392-0d94-4c02-b335-251deb4faf12.TABLE:main.Bodega</node>
+    <node x="158.3172043010753" y="975.0">81cc3392-0d94-4c02-b335-251deb4faf12.TABLE:main.Almacen</node>
+    <node x="975.8091397849462" y="0.0">81cc3392-0d94-4c02-b335-251deb4faf12.TABLE:main.sqlite_sequence</node>
+    <node x="450.6236559139785" y="497.0">81cc3392-0d94-4c02-b335-251deb4faf12.TABLE:main.Usuario</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="81cc3392-0d94-4c02-b335-251deb4faf12.TABLE:main.Empresa" target="81cc3392-0d94-4c02-b335-251deb4faf12.TABLE:main.Sede" relationship="REFERENCES">
+      <point x="0.0" y="-50.5" />
+      <point x="0.0" y="50.5" />
+    </edge>
+    <edge source="81cc3392-0d94-4c02-b335-251deb4faf12.TABLE:main.Usuario" target="81cc3392-0d94-4c02-b335-251deb4faf12.TABLE:main.Persona" relationship="REFERENCES">
+      <point x="0.0" y="-83.5" />
+      <point x="529.6236559139785" y="472.0" />
+      <point x="521.3091397849462" y="472.0" />
+      <point x="0.0" y="83.5" />
+    </edge>
+    <edge source="81cc3392-0d94-4c02-b335-251deb4faf12.TABLE:main.Producto" target="81cc3392-0d94-4c02-b335-251deb4faf12.TABLE:main.Empresa" relationship="REFERENCES">
+      <point x="0.0" y="-105.5" />
+      <point x="253.5" y="689.0" />
+      <point x="353.68279569892474" y="689.0" />
+      <point x="0.0" y="50.5" />
+    </edge>
+    <edge source="81cc3392-0d94-4c02-b335-251deb4faf12.TABLE:main.Almacen" target="81cc3392-0d94-4c02-b335-251deb4faf12.TABLE:main.Producto" relationship="REFERENCES">
+      <point x="0.0" y="-72.5" />
+      <point x="261.8172043010753" y="950.0" />
+      <point x="253.5" y="950.0" />
+      <point x="0.0" y="105.5" />
+    </edge>
+    <edge source="81cc3392-0d94-4c02-b335-251deb4faf12.TABLE:main.Almacen" target="81cc3392-0d94-4c02-b335-251deb4faf12.TABLE:main.Bodega" relationship="REFERENCES">
+      <point x="-69.0" y="-72.5" />
+      <point x="192.8172043010753" y="950.0" />
+      <point x="73.0" y="950.0" />
+      <point x="0.0" y="39.5" />
+    </edge>
+    <edge source="81cc3392-0d94-4c02-b335-251deb4faf12.TABLE:main.Proveedor" target="81cc3392-0d94-4c02-b335-251deb4faf12.TABLE:main.Empresa" relationship="REFERENCES">
+      <point x="0.0" y="-83.5" />
+      <point x="452.5" y="689.0" />
+      <point x="353.68279569892474" y="689.0" />
+      <point x="0.0" y="50.5" />
+    </edge>
+    <edge source="81cc3392-0d94-4c02-b335-251deb4faf12.TABLE:main.Sede" target="81cc3392-0d94-4c02-b335-251deb4faf12.TABLE:main.Ciudad" relationship="REFERENCES">
+      <point x="0.0" y="-50.5" />
+      <point x="353.68279569892474" y="271.5" />
+      <point x="115.95767721551238" y="271.5" />
+      <point x="0.0" y="50.5" />
+    </edge>
+    <edge source="81cc3392-0d94-4c02-b335-251deb4faf12.TABLE:main.Usuario" target="81cc3392-0d94-4c02-b335-251deb4faf12.TABLE:main.Rol" relationship="REFERENCES">
+      <point x="52.66666666666663" y="-83.5" />
+      <point x="582.2903225806451" y="472.0" />
+      <point x="687.3091397849462" y="472.0" />
+      <point x="0.0" y="39.5" />
+    </edge>
+    <edge source="81cc3392-0d94-4c02-b335-251deb4faf12.TABLE:main.Almacen" target="81cc3392-0d94-4c02-b335-251deb4faf12.TABLE:main.Proveedor" relationship="REFERENCES">
+      <point x="69.0" y="-72.5" />
+      <point x="330.8172043010753" y="950.0" />
+      <point x="452.5" y="950.0" />
+      <point x="0.0" y="83.5" />
+    </edge>
+    <edge source="81cc3392-0d94-4c02-b335-251deb4faf12.TABLE:main.Usuario" target="81cc3392-0d94-4c02-b335-251deb4faf12.TABLE:main.Sede" relationship="REFERENCES">
+      <point x="-52.66666666666663" y="-83.5" />
+      <point x="476.95698924731187" y="472.0" />
+      <point x="353.68279569892474" y="472.0" />
+      <point x="0.0" y="50.5" />
+    </edge>
+    <edge source="81cc3392-0d94-4c02-b335-251deb4faf12.TABLE:main.Ciudad" target="81cc3392-0d94-4c02-b335-251deb4faf12.TABLE:main.Pais" relationship="REFERENCES">
+      <point x="0.0" y="-50.5" />
+      <point x="115.95767721551238" y="104.0" />
+      <point x="-127.1702848697957" y="104.0" />
+      <point x="0.0" y="39.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic" zoom="0.9254385964912278" showDependencies="false" x="465.90591212720585" y="675.1516587677727" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Columns</Category>
+    <Category>Comments</Category>
+    <Category>Key columns</Category>
+    <Category>Virtual foreign keys</Category>
+  </Categories>
+</Diagram>
+
