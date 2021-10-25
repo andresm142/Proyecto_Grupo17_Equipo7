@@ -320,7 +320,7 @@ def GuardarUser():
         if session.get("userType")=='admin' or session.get("userType")=='superAdmin':
             if request.method == 'POST':
                 if request.form['submit_button'] == 'Guardar':
-                    print("---------------------------------------------------------")
+                    
                     id=request.form['id']
                     nombre=request.form['nombre']
                     apellido=request.form['apellido']
@@ -338,7 +338,7 @@ def GuardarUser():
                     image_src=request.files['archivo']            
                     
                     if id=="0":
-                        print("insert---------------------------------------------------------")
+                        
                         if image_src.filename !="":
                             image_src=uploader()            #Retorna Foto.png
                             image_src="/static/images/upload/"+image_src
@@ -367,9 +367,9 @@ def GuardarUser():
                     # Despues de realizar la query regresa a la pagina de usuarios 
                     return redirect('/Usuarios')
                 
-                elif request.form['submit_button'] == 'Restablecer contraseña usuario':
-                    # Codigo para enviar correo con la contraseña nueva
-                    return redirect('/Usuarios')
+                # elif request.form['submit_button'] == 'Restablecer contraseña usuario':
+                #     # Codigo para enviar correo con la contraseña nueva
+                #     return redirect('/Usuarios')
                 elif request.form['submit_button'] == 'Cancelar':
                     return redirect('/Usuarios')
         else:
