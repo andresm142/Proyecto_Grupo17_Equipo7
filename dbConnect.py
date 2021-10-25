@@ -179,7 +179,7 @@ def buscarIdRol(rol):
     cursor = conn.cursor()
 
     queryRolId = cursor.execute(
-        "SELECT id_rol FROM Rol WHERE descripcion_rol = '%s'" % rol).fetchone()[0]
+        "SELECT id_rol FROM Rol WHERE descripcion_rol = '%s'" % rol).fetchone()
 
     conn.close()
     return queryRolId[0]
@@ -632,13 +632,14 @@ def insertarPersona(nombre, apellido, telefono, email, imagen_src, rolUsuario):
     cursor.execute(
         """
             INSERT INTO Persona (nombre_persona, apellido_persona, telefono_persona, email, imagen_src)
-            VALUES ('%s', '%s', '%s', '%s', '%s', '%s')
+            VALUES ('%s', '%s', '%s', '%s', '%s')
         """ % (nombre, apellido, telefono, email, imagen_src))
 
     conn.commit()
     conn.close()
 
     idPersona = cursor.lastrowid
+    print(idPersona)
     idRol = buscarIdRol(rolUsuario)
     passwordHash = generate_password_hash(crearContrasena())
     insertarUsuario(idPersona, idRol, passwordHash)
