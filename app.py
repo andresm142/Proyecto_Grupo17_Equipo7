@@ -36,6 +36,7 @@ def Index():
                               datosusuarios['imagen_src']) 
         consultaProductos=conn.listaProductos()
         consultaProveedor=conn.listaProveedores()
+        
         return render_template('Index.html', userType=session["userType"],usuario=session["usuario"],consultaProductos=consultaProductos,
                                consultaProveedor=consultaProveedor)
     else:
@@ -54,10 +55,12 @@ def Home():
         # Cada consulta se guarda en una variable distinta
         consultaProductos=conn.listaProductos()
         consultaProveedor=conn.listaProveedores()
+        autocompletarProductos = conn.autocompletarListaProductos()
+        autoCompletarProveedores = conn.autocompletarListaProveedores()
 
         # return render_template('Index.html', userType=session["userType"],consultaProductos=consultaProductos,consultaProveedor=consultaProveedor)
         return render_template('Index.html', userType=session["userType"],usuario=session["usuario"],consultaProductos=consultaProductos,
-                               consultaProveedor=consultaProveedor)
+                               consultaProveedor=consultaProveedor, autocompletarProductos=autocompletarProductos, autoCompletarProveedores=autoCompletarProveedores)
 
 
 @app.route('/Productos', methods=['POST', 'GET'])

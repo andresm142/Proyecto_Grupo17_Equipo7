@@ -274,7 +274,6 @@ def recuperarContrasena(cuentaCorreo, idUsuario, password):
     # Se actualiza el estatus del usuario para forzar a cambiar la contraseña al iniciar sesión por primera vez.
     cambiarEstatusUsuario(0, idUsuario)
 
-
 def listaProductos():
     """ Obtener un listado de productos creados en la plataforma.
 
@@ -337,6 +336,23 @@ def listaProveedores():
     for result in datosProveedoresDB:
         jsonlistaProveedores.append(dict(zip(nombreColumnas,result)))
     return jsonlistaProveedores
+
+
+def autocompletarListaProductos():
+    listaProducto = listaProductos()
+    msj = ""
+    for producto in listaProducto:
+        msj += producto['nombre_producto'] + ", "
+    return msj
+
+
+def autocompletarListaProveedores():
+    listaProveedor = listaProveedores()
+    msj = ""
+    for proveedor in listaProveedor:
+        msj += proveedor['nombre_proveedor'] + ", "
+    return msj
+
 
 def obtenerDatosUsuarioById(id):
     """ Obtener los datos del usuario por su id.
