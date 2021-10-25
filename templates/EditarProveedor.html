@@ -6,7 +6,7 @@
 
 <form id="editprov-form" class="contenedor-proveedor" action="/GuardarProveedor" method="POST"
     enctype="multipart/form-data">
-    <input type="hidden" id="id" style="display: none;" value="{{ datosProveedor['id_proveedor'] }}">
+    <input type="hidden" id="id" name="id_proveedor" style="display: none;" value="{{ datosProveedor['id_proveedor'] }}">
     <div class="main_box">
         <div class="image_side">
             <div class="img">
@@ -26,11 +26,11 @@
         <div class="inputs_side">
             <div class="formulario">
                 <label for="name">Nombre del proveedor</label>
-                <input type="text" name="nombre" id="name" value="{{ datosProveedor['nombre_proveedor'] }}">
+                <input type="text" name="nombre_proveedor" id="name" value="{{ datosProveedor['nombre_proveedor'] }}">
             </div>
             <div class="formulario">
                 <label for="description">Descripción del proveedor</label>
-                <textarea type="textarea" name="description" id="description" rows="4" cols="50">{{ datosProveedor['descripcion_proveedor'] }}</textarea>
+                <textarea type="textarea" name="descripcion_proveedor" id="description" rows="4" cols="50">{{ datosProveedor['descripcion_proveedor'] }}</textarea>
             </div>
             <div class="buttons">
                 <input type="submit" name="submit_button" id="cancelar" class="cancelar" value="Cancelar">
@@ -42,5 +42,5 @@
         </div>
     </div>
 </form>
-jjjjj{{ datosProveedor['src_imagen'] }}
+
 {% endblock %}

@@ -403,7 +403,36 @@ def GuardarProveedor():
     else:
         if request.method == 'POST':
             if request.form['submit_button'] == 'Guardar':
+                id=request.form['id_proveedor']
+                nombre_proveedor=request.form['nombre_proveedor']
+                descripcion_proveedor=request.form['descripcion_proveedor']
+                image_src=request.files['archivo']  
+                if id=="0":
+                    print("aqui-insert-------------------------------------")
+                    if image_src.filename !="":
+                        image_src=uploader()
+                        image_src="/static/images/upload/"+image_src
+                        
+                    else:
+                            image_src="/static/images/proveedores.png"   # Si no se selecciona ninguna imagen, establece la imagen por defecto
+                        
+                    #Consulta para insert en la base de datos
+                    conn.insertarProveedor(nombre_proveedor,descripcion_proveedor,image_src)
+                else:
+                        if image_src.filename !="":
+                            print("aqui---------------------------------------------------------")
+                            image_src=uploader()            #Retorna Foto.png
+                            image_src="/static/images/upload/"+image_src
+                        
+                            #Consulta para update en la base de datos cambiando la imagen por la seleccionada en el momento
+                            
+                        else:
+                            print("-en este--------------------------------------------------------")
+                            #Consulta para update en la base de datos sin incluir imagen, permanece la actual
+                            
+                            pass         
                 return redirect('/Proveedores')
+            
             elif request.form['submit_button'] == 'Cancelar':
                 return redirect('/Proveedores')
             
