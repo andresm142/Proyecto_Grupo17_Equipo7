@@ -52,7 +52,7 @@
                     {{ datosProducto['nombre_proveedor'] }}
                 </div>
             </div>
-            <input type="hidden" id="inputSelectedProveedor" name="selectedProveedor"  value="{{ datosProducto['nombre_proveedor'] }}">
+            <input type="hidden" id="inputSelectedProveedor" name="selectedProveedor"  value="{{datosProducto['nombre_proveedor']}}">
         </div>
         <div class="descripcion-producto">
             <label for="descripcion">Descripción del producto</label>
@@ -66,7 +66,7 @@
             </div>
             <div class="cantidad">
                 <label for="cantidad-minima">Cantidad minima</label>
-                <input type="number" name="cantidad-minima" id="cantidad" value="{{ datosProducto['cantidad_disponible'] }}">
+                <input type="number" name="cantidad_minima" id="cantidad" value="{{ datosProducto['cantidad_disponible'] }}">
             </div>
             <div class="container-calificacion">
                 <label for="calificacion">Calificación</label>
