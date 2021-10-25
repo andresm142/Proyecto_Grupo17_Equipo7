@@ -57,6 +57,7 @@ def Home():
         consultaProveedor=conn.listaProveedores()
         session['autocompletarProductos'] = conn.autocompletarListaProductos()
         session['autoCompletarProveedores'] = conn.autocompletarListaProveedores()
+        print(session['autocompletarProductos'])
 
         # return render_template('Index.html', userType=session["userType"],consultaProductos=consultaProductos,consultaProveedor=consultaProveedor)
         return render_template('Index.html', userType=session["userType"],usuario=session["usuario"],consultaProductos=consultaProductos,

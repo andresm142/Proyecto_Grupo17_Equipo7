@@ -340,9 +340,9 @@ def listaProveedores():
 
 def autocompletarListaProductos():
     listaProducto = listaProductos()
-    msj = ""
+    msj = []
     for producto in listaProducto:
-        msj += producto['nombre_producto'] + ", "
+        msj.append(producto['nombre_producto'])
     return msj
 
 
