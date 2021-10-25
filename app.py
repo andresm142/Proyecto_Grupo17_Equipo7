@@ -55,12 +55,12 @@ def Home():
         # Cada consulta se guarda en una variable distinta
         consultaProductos=conn.listaProductos()
         consultaProveedor=conn.listaProveedores()
-        autocompletarProductos = conn.autocompletarListaProductos()
-        autoCompletarProveedores = conn.autocompletarListaProveedores()
+        session['autocompletarProductos'] = conn.autocompletarListaProductos()
+        session['autoCompletarProveedores'] = conn.autocompletarListaProveedores()
 
         # return render_template('Index.html', userType=session["userType"],consultaProductos=consultaProductos,consultaProveedor=consultaProveedor)
         return render_template('Index.html', userType=session["userType"],usuario=session["usuario"],consultaProductos=consultaProductos,
-                               consultaProveedor=consultaProveedor, autocompletarProductos=autocompletarProductos, autoCompletarProveedores=autoCompletarProveedores)
+                               consultaProveedor=consultaProveedor, autocompletarProductos=session['autocompletarProductos'], autoCompletarProveedores=session['autoCompletarProveedores'])
 
 
 @app.route('/Productos', methods=['POST', 'GET'])
