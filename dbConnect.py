@@ -389,6 +389,31 @@ def autocompletarListaProveedores():
     return msj
 
 
+def buscarIdProveedor(nombreProveedor):
+    """ Buscar un proveedor por su nombre.
+
+    Este método busca un proveedor por su nombre y devuelve su id.
+    """
+
+    # Crear nuevamente la conexión a la base de datos. Por buenas prácticas, se debe cerrar
+    # la conexión después de cada ejecución de un método/proceso.
+    conn = crearConexion()
+    cursor = conn.cursor()
+
+    queryIdProveedor = cursor.execute(
+        """
+            SELECT id_proveedor
+            FROM Proveedor
+            WHERE nombre_proveedor = '%s'
+        """ % (nombreProveedor))
+
+    idProveedor = queryIdProveedor.fetchone()
+
+    conn.close()
+
+    return idProveedor[0]
+
+
 def obtenerDatosUsuarioById(id):
     """ Obtener los datos del usuario por su id.
 
@@ -714,6 +739,55 @@ def insertarProveedor(nombreProveedor, descripcionProveedor, srcImagen):
             INSERT INTO Proveedor (nombre_proveedor, descripcion_proveedor, src_imagen, fecha_creado, id_empresa)
             VALUES ('%s', '%s', '%s', '%s', '%s')
         """ % (nombreProveedor, descripcionProveedor, srcImagen, fechaHora, 1))
+
+    conn.commit()
+    conn.close()
+
+
+def insertarProducto(nombreProducto, descripcionProducto, calificacion, srcImagen, cantidadMinima, nombreProveedor, cantidadDisponible):
+    """ Insertar un producto en la base de datos.
+
+    Este método recibe una imagen, un id y un telefono y los cambia en la base de datos.
+    """
+
+    # Crear nuevamente la conexión a la base de datos. Por buenas prácticas, se debe cerrar
+    # la conexión después de cada ejecución de un método/proceso.
+    conn = crearConexion()
+    cursor = conn.cursor()
+
+    fechaHora = datetime.datetime.now()
+
+    cursor.execute(
+        """
+            INSERT INTO Producto (nombre_producto, descripcion_producto, calificacion, src_imagen, fecha_creado, id_empresa, cantidad_minima)
+            VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s')
+        """ % (nombreProducto, descripcionProducto, calificacion, srcImagen, fechaHora, 1, cantidadMinima))
+
+    conn.commit()
+    conn.close()
+
+    idProducto = cursor.lastrowid
+    idProveedor = buscarIdProveedor(nombreProveedor)
+    insertarRegistroAlmacen(idProducto, idProveedor, cantidadDisponible)
+
+
+def insertarRegistroAlmacen(idProducto, idProveedor, cantidadDisponible):
+    """ Insertar un registro de almacén en la base de datos.
+
+    Este método recibe una imagen, un id y un telefono y los cambia en la base de datos.
+    """
+
+    # Crear nuevamente la conexión a la base de datos. Por buenas prácticas, se debe cerrar
+    # la conexión después de cada ejecución de un método/proceso.
+    conn = crearConexion()
+    cursor = conn.cursor()
+
+
+    cursor.execute(
+        """
+            INSERT INTO Registro_Almacen (id_bodega, id_producto, id_proveedor, cantidad_disponible)
+            VALUES ('%s', '%s', '%s', '%s')
+        """ % (1, idProducto, idProveedor, cantidadDisponible))
 
     conn.commit()
     conn.close()
