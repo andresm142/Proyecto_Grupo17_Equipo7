@@ -701,27 +701,6 @@ def enviarEmailCreacionCuenta(email, nombreApellido, idUsuario, contrasena):
     response = enviarEmail.enviarCorreo(datosEmail)
 
 
-def insertarProducto(nombreProducto, descripcionProducto, srcImagen, calificacion, cantidadMinima, idProveedor):
-    """ Insertar un producto en la base de datos.
-
-    Este método recibe una imagen, un id y un telefono y los cambia en la base de datos.
-    """
-
-    # Crear nuevamente la conexión a la base de datos. Por buenas prácticas, se debe cerrar
-    # la conexión después de cada ejecución de un método/proceso.
-    conn = crearConexion()
-    cursor = conn.cursor()
-
-    cursor.execute(
-        """
-            INSERT INTO Producto (nombre_producto, descripcion_producto, src_imagen, calificacion, cantidad_minima, id_proveedor)
-            VALUES ('%s', '%s', '%s', '%s', '%s', '%s')
-        """ % (nombreProducto, descripcionProducto, srcImagen, calificacion, cantidadMinima, idProveedor))
-
-    conn.commit()
-    conn.close()
-
-
 def insertarProveedor(nombreProveedor, descripcionProveedor, srcImagen):
     """ Insertar un proveedor en la base de datos.
 
