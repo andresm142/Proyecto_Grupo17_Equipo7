@@ -400,6 +400,7 @@ def buscarIdProveedor(nombreProveedor):
     conn = crearConexion()
     cursor = conn.cursor()
 
+    print("Ingresé" + nombreProveedor + "a")
     queryIdProveedor = cursor.execute(
         """
             SELECT id_proveedor
@@ -764,7 +765,7 @@ def insertarRegistroAlmacen(idProducto, idProveedor, cantidadDisponible):
 
     cursor.execute(
         """
-            INSERT INTO Registro_Almacen (id_bodega, id_producto, id_proveedor, cantidad_disponible)
+            INSERT INTO Almacen (id_bodega, id_producto, id_proveedor, cantidad_disponible)
             VALUES (%s, %s, %s, %s)
         """ % (1, idProducto, idProveedor, cantidadDisponible))
 
