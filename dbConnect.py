@@ -633,15 +633,15 @@ def insertarPersona(nombre, apellido, telefono, email, imagen_src, rolUsuario):
         """
             INSERT INTO Persona (nombre_persona, apellido_persona, telefono_persona, email, imagen_src)
             VALUES ('%s', '%s', '%s', '%s', '%s', '%s')
-        """ % (nombre, apellido, telefono, email, imagen_src, rolUsuario))
+        """ % (nombre, apellido, telefono, email, imagen_src))
 
     conn.commit()
     conn.close()
 
     idPersona = cursor.lastrowid
     idRol = buscarIdRol(rolUsuario)
-    contrasena = crearContrasena()
-    insertarUsuario(idPersona, idRol, contrasena)
+    passwordHash = generate_password_hash(crearContrasena())
+    insertarUsuario(idPersona, idRol, passwordHash)
 
 
 def insertarUsuario(idPersona, idRol, contrasena):
