@@ -352,17 +352,17 @@ def GuardarUser():
                         
                     else:
                         if image_src.filename !="":
-                            print("aqui---------------------------------------------------------")
+                            
                             image_src=uploader()            #Retorna Foto.png
                             image_src="/static/images/upload/"+image_src
                         
                             #Consulta para update en la base de datos cambiando la imagen por la seleccionada en el momento
-                            
+                            conn.insertarPersona(nombre,apellido,telefono,email,image_src,tipoUser)
                         else:
-                            print("-en este--------------------------------------------------------")
-                            #Consulta para update en la base de datos sin incluir imagen, permanece la actual
                             
-                            pass 
+                            #Consulta para update en la base de datos sin incluir imagen, permanece la actual
+                            conn.insertarPersona(nombre,apellido,telefono,email,image_src,tipoUser)
+                            
                 
                     # Despues de realizar la query regresa a la pagina de usuarios 
                     return redirect('/Usuarios')
@@ -391,6 +391,30 @@ def GuardarProducto():
                 descripcion =request.form.get("descripcion")
                 cantidad=request.form.get("cantidad")
                 calificacion=request.form["selectedCalificacion"]
+                image_src=request.files['archivo'] 
+                if id=="0":
+                    
+                    if image_src.filename !="":
+                        image_src=uploader()
+                        image_src="/static/images/upload/"+image_src
+                        
+                    else:
+                            image_src="/static/images/Prodcuto.jpg"   # Si no se selecciona ninguna imagen, establece la imagen por defecto
+                        
+                    #Consulta para insert en la base de datos
+                   
+                else:
+                        if image_src.filename !="":
+                            
+                            image_src=uploader()            #Retorna Foto.png
+                            image_src="/static/images/upload/"+image_src
+                        
+                            #Consulta para update en la base de datos cambiando la imagen por la seleccionada en el momento
+                            
+                        else:
+                            
+                            #Consulta para update en la base de datos sin incluir imagen, permanece la actual
+                            pass
                 return redirect('/Productos')
             elif request.form['submit_button'] == 'Cancelar':
                 return redirect('/Productos')
@@ -408,29 +432,29 @@ def GuardarProveedor():
                 descripcion_proveedor=request.form['descripcion_proveedor']
                 image_src=request.files['archivo']  
                 if id=="0":
-                    print("aqui-insert-------------------------------------")
+                    
                     if image_src.filename !="":
                         image_src=uploader()
                         image_src="/static/images/upload/"+image_src
                         
                     else:
-                            image_src="/static/images/proveedores.png"   # Si no se selecciona ninguna imagen, establece la imagen por defecto
+                        image_src="/static/images/proveedores.png"   # Si no se selecciona ninguna imagen, establece la imagen por defecto
                         
                     #Consulta para insert en la base de datos
                     conn.insertarProveedor(nombre_proveedor,descripcion_proveedor,image_src)
                 else:
                         if image_src.filename !="":
-                            print("aqui---------------------------------------------------------")
+                            
                             image_src=uploader()            #Retorna Foto.png
                             image_src="/static/images/upload/"+image_src
                         
                             #Consulta para update en la base de datos cambiando la imagen por la seleccionada en el momento
-                            
+                            conn.insertarProveedor(nombre_proveedor,descripcion_proveedor,image_src)
                         else:
-                            print("-en este--------------------------------------------------------")
-                            #Consulta para update en la base de datos sin incluir imagen, permanece la actual
                             
-                            pass         
+                            #Consulta para update en la base de datos sin incluir imagen, permanece la actual
+                            conn.insertarProveedor(nombre_proveedor,descripcion_proveedor,image_src)
+                                   
                 return redirect('/Proveedores')
             
             elif request.form['submit_button'] == 'Cancelar':
