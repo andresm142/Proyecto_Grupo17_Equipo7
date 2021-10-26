@@ -187,6 +187,28 @@ def buscarIdRol(rol):
     return queryRolId[0]
 
 
+def comprobarEstatusUsuario(idUsuario):
+    """ Comprobar el estatus del usuario.
+
+    Este método recibe un id de usuario y busca el estatus de la persona asociada al usuario.
+
+    Parameters
+
+    idUsuario -- Es el id del usuario que se buscará.
+    """
+
+    # Crear nuevamente la conexión a la base de datos. Por buenas prácticas, se debe cerrar
+    # la conexión después de cada ejecución de un método/proceso.
+    conn = crearConexion()
+    cursor = conn.cursor()
+
+    queryEstatus = cursor.execute(
+        "SELECT estatus_usuario FROM Usuario WHERE id_usuario = '%s'" % idUsuario).fetchone()
+
+    conn.close()
+    return queryEstatus[0]
+
+
 def cambiarEstatusUsuario(tipoEstatus, idUsuario):
     """ Cambiar el estatus de un usuario en la base de datos.
 
