@@ -4,6 +4,7 @@ import dbConnect
 from flask import Flask, jsonify, render_template, request, session, redirect
 from flask_session import Session
 from werkzeug.utils import secure_filename
+from werkzeug.security import generate_password_hash
 
 import enviarEmail
 
@@ -30,7 +31,6 @@ def Index():
     if conn.validarContrasena(request.form["email"], request.form["password"]) is not False:
 
         # Verificar si el usuario solicitó recuperación de contraseña o es primera vez que inicia sesión
-
         if conn.comprobarEstatusUsuario(conn.obtenerIDUsuario(request.form["email"])) == 0:
             return render_template('CambiarContrasena.html', email=request.form["email"])
         else:
@@ -305,8 +305,18 @@ def NewPass():
     
     return render_template('CambiarContrasena.html')        
 
-@app.route('/ConfirmacionNewPass')
+@app.route('/ConfirmacionNewPass', methods=['POST', 'GET'])
 def ConfirmacionNewPass():
+    if request.form['sign-in'] == 'Guardar':
+        contrasenaActual = request.form['actualpw']
+        nuevaContrasena = request.form['confirmpw']
+        if conn.validarContrasena(request.form['email'], contrasenaActual) is not False:
+            conn.cambiarContraseña(conn.obtenerIDUsuario(request.form['email']), generate_password_hash(nuevaContrasena))
+            conn.cambiarEstatusUsuario(1, conn.obtenerIDUsuario(request.form['email']))
+            return redirect('/')
+        else:
+            return "Error"
+
     return render_template('Login.html')
 
 @app.route('/CambiarPass', methods=['POST', 'GET'])
@@ -316,8 +326,8 @@ def CambiarPass():
     else:
         if request.method == 'POST':
             if request.form['submit_button'] == 'Cambiar contraseña':
-                contrasenaActual = request.form['contrasenaActual']
-                nuevaContrasena = request.form['nuevaContrasena']
+                #contrasenaActual = request.form['contrasenaActual']
+                #nuevaContrasena = request.form['nuevaContrasena']
                 return redirect("/Home")
 
 # Guardar datos de los usuarios. Llega des la pagina adminUser
