@@ -6,37 +6,16 @@
 <header class="header-paginas">
     <div class="encabezado-listas">
         <div class="titulo">
-            <h1>{% block title %} Listas {% endblock %}</h1>
+            <h1 style="font-size: 2rem;">{% block title %} Listas de productos por debajo de cantidad minima en bodega{% endblock %}</h1>
         </div>
 
-        <div class="boton-anadir">
-            <a href="{{url_for('EditarLista')}}"><button class="anadir"> Añadir Lista + </button></a>
-        </div>
     </div>
 </header>
 
 <section class="listas">
-    {% for fila in range(3) %}
+    
     <div class="contenedor-listas">
-        <div class="titulos">
-            <div class="col-nombre">
-                <h2>Nombre de Lista</h2>
-            </div>
-            <div class="col-cant">
-                <h2>Cantidad de Productos : 25</h2>
-            </div>
-            <div class="opciones">
-                <a href="#">
-                    <div class="boton-eliminar" onclick="eliminar()"></div>
-                </a>
 
-                <a href="{{url_for('EditarLista')}}">
-                    <div class="boton-editar"></div>
-                </a>
-
-            </div>
-
-        </div>
 
         <div class="contenedor-subtitulos">
             <div class="subtitulos">
@@ -69,41 +48,10 @@
                 </div>
                 {% endfor %}
 
-                <!-- <span class="point"></span>
-                <div class="producto">
-                    <p>Nombre del producto</p>
-                </div>
-                <div class="cant">
-                    <p>10</p>
-                </div>
-                <div class="proveedor">
-                    <p>Nombre del proveedor</p>
-                </div>
-
-                <span class="point"></span>
-                <div class="producto">
-                    <p>Nombre del producto</p>
-                </div>
-                <div class="cant">
-                    <p>5</p>
-                </div>
-                <div class="proveedor">
-                    <p>Nombre del proveedor</p>
-                </div>
-
-                <span class="point"></span>
-                <div class="producto">
-                    <p>Nombre del producto</p>
-                </div>
-                <div class="cant">
-                    <p>5</p>
-                </div>
-                <div class="proveedor">
-                    <p>Nombre del proveedor</p>
-                </div> -->
+     
             </div>
         </div>
     </div>
-    {% endfor %}
+   
 </section>
 {% endblock %}
