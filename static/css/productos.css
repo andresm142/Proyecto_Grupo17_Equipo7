@@ -143,21 +143,23 @@ body{
     box-shadow: var(--sombra-contenedores);
     border-radius: var(--radio-contenedor);
     height: 180px;
-    /* overflow-y: scroll; */
+    /* overflow-y: auto; */
 }
 .descripcion{
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 
 .box-producto .box-fondo .descripcion::-webkit-scrollbar {
-    width: 20px;
-    color: var(--color-gris);
-    background: var(--color-superadmin)+5e; 
+    width: 10px;
+    color: var(--color-usuario);
+    
+    /* background: var(--color-usuario); */
+    border: 1px solid var(--color-usuario);
 }
 
 .box-producto .box-fondo .descripcion::-webkit-scrollbar-thumb {
-    background: var(--color-gris);
-    border-radius: 0 8px 8px 0;
+    background: var(--color-usuario);
+    /* border: 1px solid var(--color-usuario); */
 }
 
 .image{
@@ -187,6 +189,7 @@ body{
 .descripcion{
     font: var(--fuente-texto);
     margin: 10px 0px;
+    padding-right: 5px;
 }
 
 /* INICIO BOTON EDITAR Y ELIMINAR */
