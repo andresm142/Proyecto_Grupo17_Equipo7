@@ -374,18 +374,18 @@ def listaProveedores():
 
 def autocompletarListaProductos():
     listaProducto = listaProductos()
-    msj = []
+    msj = ""
     for producto in listaProducto:
-        msj.append(producto['nombre_producto'])
+        msj += producto['nombre_producto'] + ","
     return msj
 
 
 def autocompletarListaProveedores():
     listaProveedor = listaProveedores()
 
-    msj = []
+    msj = ""
     for proveedor in listaProveedor:
-        msj.append(proveedor['nombre_proveedor'])
+        msj += proveedor['nombre_proveedor'] + ","
     return msj
 
 
