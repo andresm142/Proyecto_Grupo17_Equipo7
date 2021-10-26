@@ -152,8 +152,7 @@ body{
 .box-producto .box-fondo .descripcion::-webkit-scrollbar {
     width: 10px;
     color: var(--color-usuario);
-    
-    /* background: var(--color-usuario); */
+    border-radius: var(--radio-contenedor);
     border: 1px solid var(--color-usuario);
 }
 

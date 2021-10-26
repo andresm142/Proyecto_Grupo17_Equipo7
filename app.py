@@ -13,6 +13,7 @@ app.config['SECRET_KEY'] = secrets.token_hex(20)
 app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
 app.config['UPLOAD_FOLDER'] = './static/images/upload'
+ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}
 Session(app)
 
 # Instanciar módulo de conexión a la base de datos
@@ -157,10 +158,11 @@ def Editarproducto():
     else:
         
         if request.method == 'POST':
+            idProducto=request.form['id']
+            idproveedor=request.form['idproveedor']
             
             if request.form['submit_button'] == 'editar':
-                idProducto=request.form['id']
-                idproveedor=request.form['idproveedor']
+               
                 # Aqui se recibe el id del producto para su busqueda en la base de datos, esta retorna los datos
                 # del producto
                 datosProducto = conn.obtenerProductoPorID(idproveedor, idProducto)
@@ -168,19 +170,14 @@ def Editarproducto():
                 return render_template('EditarProducto.html',datosProducto=datosProducto,proveedores=proveedores)
             
             elif request.form['submit_button'] == 'eliminar':
-                id=request.form['id']
+                
                 # consulta para eliminar producto
                 print("Boton eliminar")
                 return redirect('/Productos')
                 
             elif request.form['submit_button']=='Añadir +':
                 # Formulario en blanco para añadir producto
-                id=""
-                nombre_producto=""
-                proveedor=""
-                descripcion=""
-                cantidad=""
-                calificacion=""
+                
                 proveedores=conn.listaProveedores()               
                 datosProducto={'id_producto':'','id_proveedor':'','nombre_proveedor': 'Proveedor','calificacion':1,'src_imagen':'/static/images/Producto.jpg'}
                 return render_template('EditarProducto.html',datosProducto=datosProducto,proveedores=proveedores)
@@ -196,7 +193,7 @@ def Editarproducto():
                 return render_template('Search.html',textoBuscar=textoBuscar,buscarPor=buscarPor,
                                        resultadobusqueda=resultadobusqueda)
                 # consulta para buscar los productos disponibles
-                print("Disponible")
+                
             elif request.form['submit_button'] == 'No Disponible':
                 textoBuscar='productos'
                 buscarPor='No Disponibles'
@@ -215,7 +212,7 @@ def AdminUser():
         if request.method == 'POST':
             
             if request.form.get('submit_button') == 'editar':
-                id=request.form['id']
+                
                 # Aqui se recibe el id del usuario para su busqueda en la base de datos, esta retorna los datos
                 # del usuario
                 datosusuarios=conn.obtenerDatosUsuarioById(request.form["id"])
@@ -234,14 +231,7 @@ def AdminUser():
                 # Consulta para eliminar usuarios
                 return redirect('/Usuarios')
             elif request.form.get('submit_button')=='Añadir usuario +':
-                id=""
-                nombre=""
-                apellido=""
-                tipoUser="Usuario"
-                email=""
-                telefono=""
-                contrasena=""
-                image_src="/static/images/avatar.png"                            
+                                          
                 datosusuarios={'id_persona': 0, 'nombre_persona': '', 'apellido_persona': '',
                                'descripcion_rol': 'Usuario', 'email': '','telefono_persona': '', 'imagen_src': '/static/images/avatar.png'}
                 
@@ -282,10 +272,7 @@ def EditarProveedores():
                 
             elif request.form['submit_button']=='Añadir proveedor +':
                 # Formulario en blanco para añadir proveedor
-                # id=""
-                # nombre_proveedor=""
-                # descripcion=""
-                # image_src="/static/images/proveedor.png"                            #Para pruebas
+ 
                 datosProveedor={'id_proveedor': 0, 'nombre_proveedor': '', 'descripcion_proveedor': '', 'src_imagen': '/static/images/proveedores.png'}
                 return render_template('EditarProveedor.html',datosProveedor=datosProveedor)
         
@@ -300,23 +287,22 @@ def RecuperarPass():
 
     return str(response)
 
-@app.route('/NewPass')                      
-def NewPass():
-    
-    return render_template('CambiarContrasena.html')        
-
 @app.route('/ConfirmacionNewPass', methods=['POST', 'GET'])
 def ConfirmacionNewPass():
-    if request.form['sign-in'] == 'Guardar':
-        contrasenaActual = request.form['actualpw']
-        nuevaContrasena = request.form['confirmpw']
-        if conn.validarContrasena(request.form['email'], contrasenaActual) is not False:
-            conn.cambiarContraseña(conn.obtenerIDUsuario(request.form['email']), generate_password_hash(nuevaContrasena))
-            conn.cambiarEstatusUsuario(1, conn.obtenerIDUsuario(request.form['email']))
-            return redirect('/')
-        else:
-            return "Error"
-    return render_template('Login.html')
+    if not session.get("username"):
+        return redirect("/")
+    else:
+        if request.method == 'POST':
+            if request.form['sign-in'] == 'Guardar':
+                contrasenaActual = request.form['actualpw']
+                nuevaContrasena = request.form['confirmpw']
+                if conn.validarContrasena(request.form['email'], contrasenaActual) is not False:
+                    conn.cambiarContraseña(conn.obtenerIDUsuario(request.form['email']), generate_password_hash(nuevaContrasena))
+                    conn.cambiarEstatusUsuario(1, conn.obtenerIDUsuario(request.form['email']))
+                    return redirect('/')
+                else:
+                    return "Error"
+            return render_template('Login.html')
 
 @app.route('/CambiarPass', methods=['POST', 'GET'])
 def CambiarPass():
@@ -386,15 +372,13 @@ def GuardarUser():
                         else:
                             
                             #Consulta para update en la base de datos sin incluir imagen, permanece la actual
-                            conn.insertarPersona(nombre,apellido,telefono,email,image_src,tipoUser)
+                            pass
                             
                 
                     # Despues de realizar la query regresa a la pagina de usuarios 
                     return redirect('/Usuarios')
                 
-                # elif request.form['submit_button'] == 'Restablecer contraseña usuario':
-                #     # Codigo para enviar correo con la contraseña nueva
-                #     return redirect('/Usuarios')
+
                 elif request.form['submit_button'] == 'Cancelar':
                     return redirect('/Usuarios')
         else:
@@ -482,7 +466,7 @@ def GuardarProveedor():
                         else:
                             
                             #Consulta para update en la base de datos sin incluir imagen, permanece la actual
-                            conn.insertarProveedor(nombre_proveedor,descripcion_proveedor,image_src)
+                            pass
                                    
                 return redirect('/Proveedores')
             
@@ -516,17 +500,7 @@ def Guardarconfiguracion():
             elif request.form['submit_button'] == 'Cancelar':
                 
                 return redirect('/Home')
-            elif request.form['submit_button'] == 'Cambiar contraseña':
-                id=request.form['id']
-                actualpw=request.form['actualpw']
-                newpw=request.form['confirnpw']
-                # Consulta para cambiar la contraseña del usuario por medio de su id
-                
-                # if conn.constraseñaActual(id,actualpw)==True:
-                #     conn.cambiarContraseña(id,newpw)
-                #     return redirect('/Home')
-                
-                return redirect('/Home')
+           
             else:
                 return ('ok')
         else:
@@ -541,12 +515,19 @@ def uploader():
     else:
     # obtenemos el archivo del input "archivo"
         f = request.files['archivo']
-        filename = secure_filename(f.filename)
-        # Guardamos el archivo en el directorio 
-        f.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+        if f and allowed_file(f.filename):
+
+            filename = secure_filename(f.filename)
+            # Guardamos el archivo en el directorio 
+            f.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
         # Retornamos una respuesta satisfactoria
         return (filename)
 
+def allowed_file(filename):
+    return '.' in filename and \
+           filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+           
+           
 @app.route('/Search', methods=['POST', 'GET'])
 def Search():
     if not session.get("username"):
