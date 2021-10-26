@@ -2,4 +2,5 @@ __pycache__
 entorno
 flask_session
 venv_grupo17
-__pycache__/app.cpython-39.pyc
+app.cpython-39.pyc
+app.cpython-39.pyo

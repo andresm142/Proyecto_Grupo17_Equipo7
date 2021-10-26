@@ -143,16 +143,19 @@ body{
     box-shadow: var(--sombra-contenedores);
     border-radius: var(--radio-contenedor);
     height: 160px;
+    /* overflow-y: scroll; */
+}
+.descripcion{
     overflow-y: scroll;
 }
 
-.box-producto .box-fondo::-webkit-scrollbar {
+.box-producto .box-fondo .descripcion::-webkit-scrollbar {
     width: 20px;
     color: var(--color-gris);
     background: var(--color-superadmin)+5e; 
 }
 
-.box-producto .box-fondo::-webkit-scrollbar-thumb {
+.box-producto .box-fondo .descripcion::-webkit-scrollbar-thumb {
     background: var(--color-gris);
     border-radius: 0 8px 8px 0;
 }
