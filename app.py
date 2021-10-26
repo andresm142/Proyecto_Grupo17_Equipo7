@@ -386,6 +386,7 @@ def GuardarProducto():
                 id=request.form['id_producto']
                 nombreProducto = request.form["nombre_producto"]
                 proveedor = request.form['selectedProveedor']
+                proveedor= proveedor.strip()
                 descripcion =request.form["descripcion"]
                 disponible=request.form["cantidad_disponible"]
                 cantidad_minima=request.form["cantidad_minima"]

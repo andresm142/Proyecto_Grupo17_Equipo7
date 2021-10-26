@@ -400,7 +400,6 @@ def buscarIdProveedor(nombreProveedor):
     conn = crearConexion()
     cursor = conn.cursor()
 
-    print("Ingresé" + nombreProveedor + "a")
     queryIdProveedor = cursor.execute(
         """
             SELECT id_proveedor
