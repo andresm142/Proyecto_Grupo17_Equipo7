@@ -6,8 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cambiar contraseña</title>
-    <link rel="stylesheet" href={{ url_for('static', filename='css/normalize.css' ) }}>
-    <link rel="stylesheet" href={{ url_for('static', filename='css/newPass.css' ) }}>
+    <link rel="stylesheet" href={{ url_for( 'static', filename='css/normalize.css' ) }}>
+    <link rel="stylesheet" href={{ url_for( 'static', filename='css/newPass.css' ) }}>
 </head>
 
 <body>
@@ -18,21 +18,16 @@
             <form action="{{ url_for('ConfirmacionNewPass') }}" method="POST" id="login-form">
 
                 <div class="inputBox">
-                    <input type="password" name="text" value="" required
-                        onkeyup="this.setAttribute('value', this.value);">
+                    <input type="password" name="text" value="" required onkeyup="this.setAttribute('value', this.value);">
                     <label>Contraseña actual</label>
                 </div>
 
                 <div class="inputBox">
-                    <input type="password" name="text" value="" id="newpw" required
-                        onkeyup="this.setAttribute('value', this.value);" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-                        title="Debe contener al menos un número y una letra mayúscula y minúscula, y al menos 8 caracteres o más">
+                    <input type="password" name="text" value="" id="newpw" required onkeyup="this.setAttribute('value', this.value);" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Debe contener al menos un número y una letra mayúscula y minúscula, y al menos 8 caracteres o más">
                     <label>Nueva contraseña</label>
                 </div>
                 <div class="inputBox">
-                    <input type="password" name="text" value="" id="confirmpw" required
-                        onkeyup="this.setAttribute('value', this.value);" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-                        title="Debe contener al menos un número y una letra mayúscula y minúscula, y al menos 8 caracteres o más">
+                    <input type="password" name="text" value="" id="confirmpw" minlength="8" required onkeyup="this.setAttribute('value', this.value);" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Debe contener al menos un número y una letra mayúscula y minúscula, y al menos 8 caracteres o más">
                     <label>Repetir nueva contraseña</label>
                 </div>
                 <label id="coinciden" style="display: none;">Las contraseñas no coinciden</label>
@@ -48,12 +43,12 @@
 
     function validatePassword() {
         if (password.value != confirm_password.value) {
-            
-            document.getElementById("coinciden").style.display="inline";
+
+            document.getElementById("coinciden").style.display = "inline";
             // confirm_password.setCustomValidity("Las contraseñas no coinciden");
         } else {
             confirm_password.setCustomValidity('');
-            document.getElementById("coinciden").style.display="none";
+            document.getElementById("coinciden").style.display = "none";
         }
     }
 
