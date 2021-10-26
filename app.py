@@ -82,7 +82,9 @@ def Listas():
     if not session.get("username"):
         return redirect("/")
     else:
-        return render_template('Listas.html')
+        lista=conn.obtnerProductosMinimosDiponible()
+        
+        return render_template('Listas.html',lista=lista)
 
 
 @app.route('/Configuracion', methods=['POST', 'GET'])
