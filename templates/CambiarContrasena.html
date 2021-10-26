@@ -15,24 +15,24 @@
         <div class="login">
             <h2>Cambiar contraseña</h2>
             <p>Cambio Requerido. Por favor ingrese su contraseña actual y la nueva contraseña</p>
-            <form action="{{ url_for('ConfirmacionNewPass') }}" method="POST" id="login-form">
-
+            <form action="/ConfirmacionNewPass" method="POST" id="login-form">
+                <input type="hidden" name="email" value="{{ email }}" id="email">
                 <div class="inputBox">
-                    <input type="password" name="text" value="" required onkeyup="this.setAttribute('value', this.value);">
+                    <input type="password" name="actualpw" value="" required onkeyup="this.setAttribute('value', this.value);">
                     <label>Contraseña actual</label>
                 </div>
 
                 <div class="inputBox">
-                    <input type="password" name="text" value="" id="newpw" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="El campo es de tipo alfanumerico, Minimo 8 Caracteres" required onkeyup="this.setAttribute('value', this.value);" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                    <input type="password" name="newpw" value="" id="newpw" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="El campo es de tipo alfanumerico, Minimo 8 Caracteres" required onkeyup="this.setAttribute('value', this.value);" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
                         title="Debe contener al menos un número y una letra mayúscula y minúscula, y al menos 8 caracteres o más">
                     <label>Nueva contraseña</label>
                 </div>
                 <div class="inputBox">
-                    <input type="password" name="text" value="" id="confirmpw" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="El campo es de tipo alfanumerico, Minimo 8 Caracteres" required onkeyup="this.setAttribute('value', this.value);" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                    <input type="password" name="confirmpw" value="" id="confirmpw" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="El campo es de tipo alfanumerico, Minimo 8 Caracteres" required onkeyup="this.setAttribute('value', this.value);" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
                         title="Debe contener al menos un número y una letra mayúscula y minúscula, y al menos 8 caracteres o más">
                     <label>Repetir nueva contraseña</label>
                 </div>
-                <label id="coinciden" style="display: none;">Las contraseñas no coinciden</label>
+                <label id="coinciden" style="display: none;">¡Las contraseñas no coinciden!</label>
                 <br>
                 <input type="submit" name="sign-in" value="Guardar">
             </form>

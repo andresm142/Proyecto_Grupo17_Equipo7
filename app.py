@@ -28,6 +28,7 @@ def login():
 @app.route('/Index', methods=['GET', 'POST'])
 def Index():
     if conn.validarContrasena(request.form["email"], request.form["password"]) is not False:
+        
         session["username"] = request.form["email"]
         session["userType"] = conn.validarTipoUsuario(request.form["email"])
         datosusuarios=conn.obtenerDatosUsuario(request.form["email"])
