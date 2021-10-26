@@ -23,11 +23,13 @@
                 </div>
 
                 <div class="inputBox">
-                    <input type="password" name="text" value="" id="newpw" required onkeyup="this.setAttribute('value', this.value);" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Debe contener al menos un número y una letra mayúscula y minúscula, y al menos 8 caracteres o más">
+                    <input type="password" name="text" value="" id="newpw" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="El campo es de tipo alfanumerico, Minimo 8 Caracteres" required onkeyup="this.setAttribute('value', this.value);" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                        title="Debe contener al menos un número y una letra mayúscula y minúscula, y al menos 8 caracteres o más">
                     <label>Nueva contraseña</label>
                 </div>
                 <div class="inputBox">
-                    <input type="password" name="text" value="" id="confirmpw" minlength="8" required onkeyup="this.setAttribute('value', this.value);" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Debe contener al menos un número y una letra mayúscula y minúscula, y al menos 8 caracteres o más">
+                    <input type="password" name="text" value="" id="confirmpw" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="El campo es de tipo alfanumerico, Minimo 8 Caracteres" required onkeyup="this.setAttribute('value', this.value);" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                        title="Debe contener al menos un número y una letra mayúscula y minúscula, y al menos 8 caracteres o más">
                     <label>Repetir nueva contraseña</label>
                 </div>
                 <label id="coinciden" style="display: none;">Las contraseñas no coinciden</label>

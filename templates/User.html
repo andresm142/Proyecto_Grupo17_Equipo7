@@ -1,8 +1,5 @@
-{% extends 'MasterPage.html' %}
-{% block title %} Configuración {% endblock %}
-
-{% block content %}
-<link rel="stylesheet" href={{ url_for('static', filename='css/user.css' ) }}>
+{% extends 'MasterPage.html' %} {% block title %} Configuración {% endblock %} {% block content %}
+<link rel="stylesheet" href={{ url_for( 'static', filename='css/user.css' ) }}>
 <!-- <form action="/Guardarconfiguracion" method="POST" enctype="multipart/form-data"> -->
 
 <form class="contenedor-usuario" action="/Guardarconfiguracion" method="POST" enctype="multipart/form-data">
@@ -51,8 +48,7 @@
                     <div class="selected-usuario">
                         {{ datosusuarios['descripcion_rol'] }}
                     </div>
-                    <input type="hidden" id="inputSelected" name="selectedUsuario"
-                        value="{{ datosusuarios['descripcion_rol'] }}">
+                    <input type="hidden" id="inputSelected" name="selectedUsuario" value="{{ datosusuarios['descripcion_rol'] }}">
                 </div>
             </div>
         </div>
@@ -89,18 +85,15 @@
 
         <input type="hidden" name="id" id="id1" value="{{ datosusuarios['id_persona'] }}">
         <div class="inputBox">
-            <input type="password" name="actualpw" value="" id="actualpw" required
-                onkeyup="this.setAttribute('value', this.value);">
+            <input type="password" name="actualpw" value="" id="actualpw" required onkeyup="this.setAttribute('value', this.value);">
             <label>Contraseña actual</label>
         </div>
         <div class="inputBox">
-            <input type="password" name="newpw" value="" id="newpw" required
-                onkeyup="this.setAttribute('value', this.value);">
+            <input type="password" name="newpw" value="" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="El campo es de tipo alfanumerico, Minimo 8 Caracteres" id="newpw" required onkeyup="this.setAttribute('value', this.value);">
             <label>Contraseña nueva</label>
         </div>
         <div class="inputBox">
-            <input type="password" name="confirnpw" value="" id="confirnpw" required
-                onkeyup="this.setAttribute('value', this.value);">
+            <input type="password" name="confirnpw" value="" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="El campo es de tipo Alfanumerico, Minimo 8 Caracteres" id="confirnpw" required onkeyup="this.setAttribute('value', this.value);">
             <label>Repetir contraseña nueva</label>
         </div>
         <label id="coinciden" style="display: none;">Las contraseñas no coinciden</label>
@@ -118,7 +111,7 @@
 
     function validatePassword() {
         if (password.value != confirm_password.value) {
-            
+
             document.getElementById("coinciden").style.display = "flex";
             confirm_password.setCustomValidity("¡Las contraseñas no coinciden!");
         } else {
@@ -134,6 +127,6 @@
     // password.onchange = validatePassword;
     confirm_password.onkeyup = validatePassword;
 </script>
-<script src={{ url_for('static', filename='js/scriptSelectUser.js' ) }}></script>
-<script src={{ url_for('static', filename='js/scriptModal.js' ) }}></script>
+<script src={{ url_for( 'static', filename='js/scriptSelectUser.js' ) }}></script>
+<script src={{ url_for( 'static', filename='js/scriptModal.js' ) }}></script>
 {% endblock %}
