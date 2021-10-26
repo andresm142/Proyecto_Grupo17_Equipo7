@@ -35,16 +35,16 @@
         <div class="contenedor-detallado">
 
             <div class="detallado">
-                {% for fila in range(5) %}
+                {% for fila in range(lista|length) %}
                 <span class="point"></span>
                 <div class="producto">
-                    <p>Nombre del producto</p>
+                    <p>{{ lista[fila]['nombre_producto'] }}</p>
                 </div>
                 <div class="cant">
-                    <p>5</p>
+                    <p>{{ lista[fila]['cantidad_disponible'] }}</p>
                 </div>
                 <div class="proveedor">
-                    <p>Nombre del proveedor</p>
+                    <p>{{ lista[fila]['nombre_proveedor'] }}</p>
                 </div>
                 {% endfor %}
 

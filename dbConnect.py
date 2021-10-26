@@ -770,3 +770,41 @@ def insertarRegistroAlmacen(idProducto, idProveedor, cantidadDisponible):
 
     conn.commit()
     conn.close()
+    
+def obtnerProductosMinimosDiponible():
+    """ Obtener los productos con cantidad mínima disponible.
+
+    Este método obtiene los productos con cantidad mínima disponible.
+    """
+
+    # Crear nuevamente la conexión a la base de datos. Por buenas prácticas, se debe cerrar
+    # la conexión después de cada ejecución de un método/proceso.
+    conn = crearConexion()
+    cursor = conn.cursor()
+
+    queryDatosProductos=cursor.execute(
+        """
+            SELECT  pro.nombre_producto,
+                        pro.id_producto,
+                        prov.id_proveedor,
+                        pro.cantidad_minima,
+                        prov.nombre_proveedor,
+                        alm.cantidad_disponible
+                    FROM Producto pro, Almacen alm, Proveedor prov
+                    WHERE pro.id_producto=prov.id_proveedor AND alm.id_producto=pro.id_producto AND alm.cantidad_disponible<pro.cantidad_minima
+        """
+    )
+
+    
+    nombreColumnas = [i[0] for i in cursor.description]
+    datosProductos = queryDatosProductos.fetchall()
+
+    jsonProductos = []
+        
+    for result in datosProductos:
+        jsonProductos.append(dict(zip(nombreColumnas,result)))
+    
+    conn.close()
+    return jsonProductos
+
+    
