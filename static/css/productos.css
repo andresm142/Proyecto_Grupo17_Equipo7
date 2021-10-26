@@ -142,7 +142,7 @@ body{
     background: var(--color-blanco-fondo);
     box-shadow: var(--sombra-contenedores);
     border-radius: var(--radio-contenedor);
-    height: 160px;
+    height: 180px;
     /* overflow-y: scroll; */
 }
 .descripcion{
