@@ -23,7 +23,10 @@
                     <h2>NOMBRE DEL PRODUCTO</h2>
                 </div>
                 <div class="cantidad">
-                    <h2>CANTIDAD</h2>
+                    <h2>DISPONIBLE</h2>
+                </div>
+                <div class="cantidad">
+                    <h2>CANTIDAD MINIMA</h2>
                 </div>
                 <div class="proveed">
                     <h2>NOMBRE PROVEEDOR</h2>
@@ -42,6 +45,9 @@
                 </div>
                 <div class="cant">
                     <p>{{ lista[fila]['cantidad_disponible'] }}</p>
+                </div>
+                <div class="cant">
+                    <p>{{ lista[fila]['cantidad_minima'] }}</p>
                 </div>
                 <div class="proveedor">
                     <p>{{ lista[fila]['nombre_proveedor'] }}</p>

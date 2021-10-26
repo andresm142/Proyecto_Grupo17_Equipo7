@@ -59,7 +59,7 @@ body {
 
 .titulos {
     display: grid;
-    grid-template-columns: 1fr 1fr 0.5fr;
+    grid-template-columns: 1fr 1fr 1fr 0.5fr;
     background: var(--color-blanco-fondo);
     box-shadow: var(--sombra-contenedores);
     border-radius: var(--radio-input);
@@ -81,7 +81,7 @@ body {
 
 .subtitulos {
     display: grid;
-    grid-template-columns: 1.5fr 1fr 1fr;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
     margin: 0px 50px;
     padding: 5px 15px;
     align-items: center;
@@ -96,7 +96,7 @@ body {
 
 .detallado {
     display: grid;
-    grid-template-columns: 22px 1.5fr 1fr 1fr;
+    grid-template-columns: 22px 1.5fr 1fr 1fr 1fr;
     border-radius: var(--radio-input);
     margin: 0px 50px;
     padding: 5px 15px;

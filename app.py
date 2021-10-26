@@ -418,7 +418,8 @@ def GuardarProducto():
                         else:
                             
                             #Consulta para update en la base de datos sin incluir imagen, permanece la actual
-                            conn.insertarProducto(nombreProducto, descripcion, calificacion, image_src, cantidad_minima, disponible, proveedor)
+                            # conn.insertarProducto(nombreProducto, descripcion, calificacion, image_src, cantidad_minima, disponible, proveedor)
+                            pass
                             
                 return redirect('/Productos')
             elif request.form['submit_button'] == 'Cancelar':
