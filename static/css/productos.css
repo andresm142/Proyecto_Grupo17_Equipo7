@@ -142,6 +142,19 @@ body{
     background: var(--color-blanco-fondo);
     box-shadow: var(--sombra-contenedores);
     border-radius: var(--radio-contenedor);
+    height: 160px;
+    overflow-y: scroll;
+}
+
+.box-producto .box-fondo::-webkit-scrollbar {
+    width: 20px;
+    color: var(--color-gris);
+    background: var(--color-superadmin)+5e; 
+}
+
+.box-producto .box-fondo::-webkit-scrollbar-thumb {
+    background: var(--color-gris);
+    border-radius: 0 8px 8px 0;
 }
 
 .image{
