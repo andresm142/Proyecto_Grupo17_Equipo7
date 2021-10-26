@@ -28,21 +28,26 @@ def login():
 @app.route('/Index', methods=['GET', 'POST'])
 def Index():
     if conn.validarContrasena(request.form["email"], request.form["password"]) is not False:
-        
-        session["username"] = request.form["email"]
-        session["userType"] = conn.validarTipoUsuario(request.form["email"])
-        datosusuarios=conn.obtenerDatosUsuario(request.form["email"])
-        
-        session["usuario"] = (datosusuarios['id_persona'],datosusuarios['nombre_persona'],datosusuarios['apellido_persona'],
-                              datosusuarios['imagen_src']) 
-        consultaProductos=conn.listaProductos()
-        consultaProveedor=conn.listaProveedores()
-        session['autocompletarProductos'] = conn.autocompletarListaProductos()
-        session['autoCompletarProveedores'] = conn.autocompletarListaProveedores()
-        
-        return render_template('Index.html', userType=session["userType"],usuario=session["usuario"],consultaProductos=consultaProductos,
-                               consultaProveedor=consultaProveedor,autocompletarProductos=session['autocompletarProductos'], 
-                               autoCompletarProveedores=session['autoCompletarProveedores'])
+
+        # Verificar si el usuario solicitó recuperación de contraseña o es primera vez que inicia sesión
+
+        if conn.comprobarEstatusUsuario(conn.obtenerIDUsuario(request.form["email"])) == 0:
+            return render_template('CambiarContrasena.html', email=request.form["email"])
+        else:
+            session["username"] = request.form["email"]
+            session["userType"] = conn.validarTipoUsuario(request.form["email"])
+            datosusuarios=conn.obtenerDatosUsuario(request.form["email"])
+            
+            session["usuario"] = (datosusuarios['id_persona'],datosusuarios['nombre_persona'],datosusuarios['apellido_persona'],
+                                datosusuarios['imagen_src']) 
+            consultaProductos=conn.listaProductos()
+            consultaProveedor=conn.listaProveedores()
+            session['autocompletarProductos'] = conn.autocompletarListaProductos()
+            session['autoCompletarProveedores'] = conn.autocompletarListaProveedores()
+            
+            return render_template('Index.html', userType=session["userType"],usuario=session["usuario"],consultaProductos=consultaProductos,
+                                consultaProveedor=consultaProveedor,autocompletarProductos=session['autocompletarProductos'], 
+                                autoCompletarProveedores=session['autoCompletarProveedores'])
     else:
         session["username"] = None
         return redirect('/')
@@ -311,6 +316,8 @@ def CambiarPass():
     else:
         if request.method == 'POST':
             if request.form['submit_button'] == 'Cambiar contraseña':
+                contrasenaActual = request.form['contrasenaActual']
+                nuevaContrasena = request.form['nuevaContrasena']
                 return redirect("/Home")
 
 # Guardar datos de los usuarios. Llega des la pagina adminUser
