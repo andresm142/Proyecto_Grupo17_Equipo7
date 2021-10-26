@@ -158,11 +158,11 @@ def Editarproducto():
     else:
         
         if request.method == 'POST':
-            idProducto=request.form['id']
-            idproveedor=request.form['idproveedor']
+            
             
             if request.form['submit_button'] == 'editar':
-               
+                idProducto=request.form['id']
+                idproveedor=request.form['idproveedor']
                 # Aqui se recibe el id del producto para su busqueda en la base de datos, esta retorna los datos
                 # del producto
                 datosProducto = conn.obtenerProductoPorID(idproveedor, idProducto)
@@ -179,7 +179,7 @@ def Editarproducto():
                 # Formulario en blanco para añadir producto
                 
                 proveedores=conn.listaProveedores()               
-                datosProducto={'id_producto':'','id_proveedor':'','nombre_proveedor': 'Proveedor','calificacion':1,'src_imagen':'/static/images/Producto.jpg'}
+                datosProducto={'id_producto':'0','id_proveedor':'','nombre_proveedor': 'Proveedor','calificacion':1,'src_imagen':'/static/images/Producto.jpg'}
                 return render_template('EditarProducto.html',datosProducto=datosProducto,proveedores=proveedores)
                 
             elif request.form['submit_button'] == 'Disponible':
@@ -401,7 +401,7 @@ def GuardarProducto():
                 cantidad_minima=request.form["cantidad_minima"]
                 calificacion=request.form["selectedCalificacion"]
                 image_src=request.files['archivo']
-                if id=="":
+                if id=="0":
                     
                     if image_src.filename !="":
                         image_src=uploader()
