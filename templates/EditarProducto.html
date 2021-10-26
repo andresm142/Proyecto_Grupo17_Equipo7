@@ -30,7 +30,7 @@
 
         <div class="nombre">
             <label for="name">Nombre producto</label>
-            <input type="text" name="nombre_producto" id="name" value="{{ datosProducto['nombre_producto'] }}">
+            <input type="text" name="nombre_producto" id="name" required value="{{ datosProducto['nombre_producto'] }}">
         </div>
         <div class="container-proveedor">
             <label for="proveedor">Proveedor</label>
@@ -38,7 +38,7 @@
                 <div class="options-container-proveedor">
                     {% for fila in range(proveedores|length) %}
                     <div class="option-proveedor">
-                        <input type="radio" class="radio" id="num1" name="category" value="Provedor 1" checked />
+                        <input type="radio" class="radio" id="num1" name="category" value="Provedor" checked />
                         <label for="prov1" id="lblnum1">{{proveedores[fila]['nombre_proveedor']}} </label>
                     </div>
                     {% endfor %}
@@ -49,24 +49,33 @@
                 </div>
                 
                 <div class="selected-proveedor">
-                    {{ datosProducto['nombre_proveedor'] }}
+                    {% if datosProducto['nombre_proveedor']=='Proveedor' %}
+                        {{ proveedores[0]['nombre_proveedor'] }}
+                    {% else %}
+                        {{ datosProducto['nombre_proveedor'] }}
+                    {% endif %}
                 </div>
             </div>
-            <input type="hidden" id="inputSelectedProveedor" name="selectedProveedor"  value="{{ datosProducto['nombre_proveedor'] }}">
+            {% if datosProducto['nombre_proveedor']=='Proveedor' %}
+                <input type="hidden" id="inputSelectedProveedor" name="selectedProveedor"  value="{{ proveedores[0]['id_proveedor'] }}">
+            {% else %}
+                <input type="hidden" id="inputSelectedProveedor" name="selectedProveedor"  value="{{datosProducto['nombre_proveedor']}}">
+            {% endif %}
+            
         </div>
         <div class="descripcion-producto">
             <label for="descripcion">Descripción del producto</label>
-            <textarea name="descripcion" id="descripcion">{{ datosProducto['descripcion_producto'] }}</textarea>
+            <textarea name="descripcion" required id="descripcion">{{ datosProducto['descripcion_producto'] }}</textarea>
         </div>
 
         <div class="cantidad-calificacion">
             <div class="cantidad">
                 <label for="cantidad">Diponible</label>
-                <input type="number" name="cantidad_disponible" id="cantidad" value="{{ datosProducto['cantidad_disponible'] }}">
+                <input type="number" name="cantidad_disponible" required id="cantidad" value="{{ datosProducto['cantidad_disponible'] }}">
             </div>
             <div class="cantidad">
                 <label for="cantidad-minima">Cantidad minima</label>
-                <input type="number" name="cantidad-minima" id="cantidad" value="{{ datosProducto['cantidad_disponible'] }}">
+                <input type="number" name="cantidad_minima" required id="cantidad" value="{{ datosProducto['cantidad_disponible'] }}">
             </div>
             <div class="container-calificacion">
                 <label for="calificacion">Calificación</label>
