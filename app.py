@@ -411,22 +411,20 @@ def GuardarProducto():
                             image_src="/static/images/Prodcuto.jpg"   # Si no se selecciona ninguna imagen, establece la imagen por defecto
                         
                     #Consulta para insert en la base de datos
-                    print(nombreProducto, descripcion, calificacion, image_src, cantidad_minima, disponible, proveedor)
                     conn.insertarProducto(nombreProducto, descripcion, calificacion, image_src, cantidad_minima, disponible, proveedor)
                    
                 else:
-                        if image_src.filename !="":
-                            
-                            image_src=uploader()            #Retorna Foto.png
-                            image_src="/static/images/upload/"+image_src
+                    if image_src.filename !="":
                         
-                            #Consulta para update en la base de datos cambiando la imagen por la seleccionada en el momento
-                            conn.insertarProducto(nombreProducto, descripcion, calificacion, image_src, cantidad_minima, disponible, proveedor)
-                        else:
-                            
-                            #Consulta para update en la base de datos sin incluir imagen, permanece la actual
-                            # conn.insertarProducto(nombreProducto, descripcion, calificacion, image_src, cantidad_minima, disponible, proveedor)
-                            pass
+                        image_src=uploader()            #Retorna Foto.png
+                        image_src="/static/images/upload/"+image_src
+                    
+                        #Consulta para update en la base de datos cambiando la imagen por la seleccionada en el momento
+                        conn.actualizarProducto(id, nombreProducto, descripcion, calificacion, image_src, cantidad_minima, disponible, proveedor)
+                    else:
+                        image_src = conn.obtenerImagenProducto(id)
+                        #Consulta para update en la base de datos sin incluir imagen, permanece la actual
+                        conn.actualizarProducto(id, nombreProducto, descripcion, calificacion, image_src, cantidad_minima, disponible, proveedor)
                             
                 return redirect('/Productos')
             elif request.form['submit_button'] == 'Cancelar':

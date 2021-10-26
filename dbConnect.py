@@ -850,14 +850,16 @@ def actualizarProducto(idProducto, nombreProducto, descripcionProducto, califica
     conn = crearConexion()
     cursor = conn.cursor()
 
-    fechaHora = datetime.datetime.now()
-
     cursor.execute(
         """
             UPDATE Producto
-            SET nombre_producto='%s', descripcion_producto='%s', calificacion=%s, src_imagen='%s', fecha_modificado='%s', cantidad_minima=%s
-            WHERE id_producto=%s
-        """ % (nombreProducto, descripcionProducto, calificacion, srcImagen, fechaHora, cantidadMinima, idProducto))
+            SET nombre_producto = '%s',
+                descripcion_producto = '%s',
+                calificacion = %s,
+                src_imagen = '%s',
+                cantidad_minima = %s
+            WHERE id_producto = %s
+        """ % (nombreProducto, descripcionProducto, calificacion, srcImagen, cantidadMinima, idProducto))
 
     conn.commit()
     conn.close()
@@ -865,15 +867,50 @@ def actualizarProducto(idProducto, nombreProducto, descripcionProducto, califica
     idProveedor = buscarIdProveedor(nombreProveedor)
     actualizarRegistroAlmacen(idProducto, idProveedor, cantidadDisponible)
 
-    
-    nombreColumnas = [i[0] for i in cursor.description]
-    datosProductos = queryDatosProductos.fetchall()
 
-    jsonProductos = []
-        
-    for result in datosProductos:
-        jsonProductos.append(dict(zip(nombreColumnas,result)))
-    
+def actualizarRegistroAlmacen(idProducto, idProveedor, cantidadDisponible):
+    """ Actualizar un registro de almacén en la base de datos.
+
+    Este método recibe una imagen, un id y un telefono y los cambia en la base de datos.
+    """
+
+    # Crear nuevamente la conexión a la base de datos. Por buenas prácticas, se debe cerrar
+    # la conexión después de cada ejecución de un método/proceso.
+    conn = crearConexion()
+    cursor = conn.cursor()
+
+    cursor.execute(
+        """
+            UPDATE Almacen
+            SET cantidad_disponible = %s
+            WHERE id_producto = %s AND id_proveedor = %s
+        """ % (cantidadDisponible, idProducto, idProveedor))
+
+    conn.commit()
     conn.close()
-    return jsonProductos
+
+
+def obtenerImagenProducto(idProducto):
+    """ Obtener la imagen de un producto.
+
+    Este método recibe un id y devuelve la imagen correspondiente.
+    """
+
+    # Crear nuevamente la conexión a la base de datos. Por buenas prácticas, se debe cerrar
+    # la conexión después de cada ejecución de un método/proceso.
+    conn = crearConexion()
+    cursor = conn.cursor()
+
+    cursor.execute(
+        """
+            SELECT src_imagen
+            FROM Producto
+            WHERE id_producto = %s
+        """ % (idProducto))
+
+    imagen = cursor.fetchone()
+
+    conn.close()
+
+    return imagen[0]
 
