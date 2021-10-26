@@ -567,7 +567,28 @@ def editarConfiguracionUsuario(srcImagen, idPersona, telefonoPersona):
 
     conn.commit()
     conn.close()
-    
+
+def editarConfiguracionUsuarioSinImagen(id_persona,telefono_persona):
+    """ Editar la configuración del usuario.
+
+    Este método recibe un id y un telefono y los cambia en la base de datos.
+    """
+
+    # Crear nuevamente la conexión a la base de datos. Por buenas prácticas, se debe cerrar
+    # la conexión después de cada ejecución de un método/proceso.
+    conn = crearConexion()
+    cursor = conn.cursor()
+
+    cursor.execute(
+        """
+            UPDATE Persona
+            SET telefono_persona = '%s'
+            WHERE id_persona = '%s'
+        """ % (telefono_persona, id_persona))
+
+    conn.commit()
+    conn.close()
+ 
 def buscarPorProducto(texto):
     """ Editar la configuración del usuario.
 
@@ -807,4 +828,3 @@ def obtnerProductosMinimosDiponible():
     conn.close()
     return jsonProductos
 
-    

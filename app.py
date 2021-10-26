@@ -260,7 +260,7 @@ def EditarProveedores():
         if request.method == 'POST':
             
             if request.form['submit_button'] == 'editar':
-                id=request.form['id']
+                
                 # Aqui se recibe el id del proveedor para su busqueda en la base de datos, esta retorna los datos
                 # del usuario
                 datosProveedor=conn.obtenerProveedorById(request.form['id'])
@@ -269,7 +269,7 @@ def EditarProveedores():
                 return render_template('EditarProveedor.html',datosProveedor=datosProveedor)
             
             elif request.form['submit_button'] == 'eliminar':
-                id=request.form['id']
+                
                 # consulta para eliminar proveedor
                 
                 return redirect('/Proveedores')
@@ -405,7 +405,7 @@ def GuardarProducto():
                         
                     #Consulta para insert en la base de datos
                     print(nombreProducto, descripcion, calificacion, image_src, cantidad_minima, disponible, proveedor)
-                    # conn.insertarProducto(nombreProducto, descripcion, calificacion, image_src, cantidad_minima, disponible, proveedor)
+                    conn.insertarProducto(nombreProducto, descripcion, calificacion, image_src, cantidad_minima, disponible, proveedor)
                    
                 else:
                         if image_src.filename !="":
@@ -414,11 +414,12 @@ def GuardarProducto():
                             image_src="/static/images/upload/"+image_src
                         
                             #Consulta para update en la base de datos cambiando la imagen por la seleccionada en el momento
-                            
+                            conn.insertarProducto(nombreProducto, descripcion, calificacion, image_src, cantidad_minima, disponible, proveedor)
                         else:
                             
                             #Consulta para update en la base de datos sin incluir imagen, permanece la actual
-                            pass
+                            conn.insertarProducto(nombreProducto, descripcion, calificacion, image_src, cantidad_minima, disponible, proveedor)
+                            
                 return redirect('/Productos')
             elif request.form['submit_button'] == 'Cancelar':
                 return redirect('/Productos')
@@ -481,9 +482,11 @@ def Guardarconfiguracion():
                     image_src=uploader()            #Retorna Foto.png
                     image_src="/static/images/upload/"+image_src
                     #Consulta para update en la base de datos cambiando la imagen por la seleccionada en el momento. Busqueda por id
+                    conn.editarConfiguracionUsuario(image_src,id,telefono)
                 else:
                     #Consulta para update en la base de datos sin cambiar la imagen. Busqueda por id
-                    pass
+                    conn.editarConfiguracionUsuarioSinImagen(id,telefono)
+                    
                 
                 return redirect('/Home')
             elif request.form['submit_button'] == 'Cancelar':
@@ -494,10 +497,16 @@ def Guardarconfiguracion():
                 actualpw=request.form['actualpw']
                 newpw=request.form['confirnpw']
                 # Consulta para cambiar la contraseña del usuario por medio de su id
+                
+                # if conn.constraseñaActual(id,actualpw)==True:
+                #     conn.cambiarContraseña(id,newpw)
+                #     return redirect('/Home')
+                
                 return redirect('/Home')
             else:
                 return ('ok')
-        return
+        else:
+            return redirect('/Home')
 
 def uploader():
     """Funcion para subir la imagen en el servidor
