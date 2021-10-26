@@ -79,13 +79,13 @@
 </form>
 
 <!-- MODAL -->
-<form action="/CambiarPass" method="POST" class="form-modal" onsubmit="enviado()">
-    <div class="modal hidden" id="hiden">
-        <!-- botón para cerrar el modal -->
-        <button class="close-modal">&times;</button>
 
-        <h2>Cambiar contraseña</h2>
+<div class="modal hidden" id="hiden">
+    <!-- botón para cerrar el modal -->
+    <button class="close-modal">&times;</button>
 
+    <h2>Cambiar contraseña</h2>
+    <form action="/CambiarPass" method="POST" class="form-modal" onsubmit="enviado()">
 
         <input type="hidden" name="id" id="id1" value="{{ datosusuarios['id_persona'] }}">
         <div class="inputBox">
@@ -99,27 +99,28 @@
             <label>Contraseña nueva</label>
         </div>
         <div class="inputBox">
-            <input type="password" name="confirnpw" value="" id="confirmpw" required
+            <input type="password" name="confirnpw" value="" id="confirnpw" required
                 onkeyup="this.setAttribute('value', this.value);">
             <label>Repetir contraseña nueva</label>
         </div>
         <label id="coinciden" style="display: none;">Las contraseñas no coinciden</label>
         <br>
         <input type="submit" class="enviar" name="submit_button" value="Cambiar contraseña">
+    </form>
+</div>
+<div class="overlay hidden"></div>
 
-    </div>
-    <div class="overlay hidden"></div>
 
-</form>
+
 <script>
     var password = document.getElementById("newpw");
     var confirm_password = document.getElementById("confirnpw");
 
     function validatePassword() {
         if (password.value != confirm_password.value) {
-
+            
             document.getElementById("coinciden").style.display = "flex";
-            // confirm_password.setCustomValidity("Las contraseñas no coinciden");
+            confirm_password.setCustomValidity("¡Las contraseñas no coinciden!");
         } else {
             confirm_password.setCustomValidity('');
             document.getElementById("coinciden").style.display = "none";
