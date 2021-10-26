@@ -101,6 +101,19 @@ section article .description .text p{
     color:var(--color-gris);
     margin-left: 20px;
     font-size: 0.8em;
+    height: 100px;
+    overflow-y: auto;
+}
+
+section article .description .text p::-webkit-scrollbar {
+    width: 10px;
+    color: var(--color-usuario);
+    /* background: var(--color-usuario); */
+    border: 1px solid var(--color-usuario);
+}
+
+section article .description .text p::-webkit-scrollbar-thumb {
+    background: var(--color-usuario);
 }
 /* .buttons a{
     font-size: 20px;
