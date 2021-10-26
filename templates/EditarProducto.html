@@ -57,11 +57,11 @@
                 </div>
             </div>
             {% if datosProducto['nombre_proveedor']=='Proveedor' %}
-                <input type="hidden" name="id_proveedor" value="{{ proveedores[0]['id_proveedor'] }}">
+                <input type="hidden" id="inputSelectedProveedor" name="selectedProveedor"  value="{{ proveedores[0]['id_proveedor'] }}">
             {% else %}
-                <input type="hidden" name="id_proveedor" value="{{ datosProducto['id_proveedor'] }}">
+                <input type="hidden" id="inputSelectedProveedor" name="selectedProveedor"  value="{{datosProducto['nombre_proveedor']}}">
             {% endif %}
-            <input type="hidden" id="inputSelectedProveedor" name="selectedProveedor"  value="{{datosProducto['nombre_proveedor']}}">
+            
         </div>
         <div class="descripcion-producto">
             <label for="descripcion">Descripción del producto</label>
