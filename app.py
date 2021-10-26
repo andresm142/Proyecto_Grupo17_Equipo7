@@ -316,7 +316,6 @@ def ConfirmacionNewPass():
             return redirect('/')
         else:
             return "Error"
-
     return render_template('Login.html')
 
 @app.route('/CambiarPass', methods=['POST', 'GET'])
@@ -326,9 +325,15 @@ def CambiarPass():
     else:
         if request.method == 'POST':
             if request.form['submit_button'] == 'Cambiar contraseña':
-                #contrasenaActual = request.form['contrasenaActual']
-                #nuevaContrasena = request.form['nuevaContrasena']
-                return redirect("/Home")
+                contrasenaActual = request.form['actualpw']
+                nuevaContrasena = request.form['confirnpw']
+                if conn.validarContrasena(session['username'], contrasenaActual) is not False:
+                    conn.cambiarContraseña(request.form['id'], generate_password_hash(nuevaContrasena))
+                    conn.cambiarEstatusUsuario(1, (request.form['id']))
+                    return redirect('/')
+                else:
+                    return "Error"
+        return redirect("/Home")
 
 # Guardar datos de los usuarios. Llega des la pagina adminUser
 @app.route('/GuardarUser', methods=['POST', 'GET'])
