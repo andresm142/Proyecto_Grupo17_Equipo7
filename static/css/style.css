@@ -341,15 +341,6 @@ header .encabezado .logo img {
     width: 110px;
 }
 
-header .encabezado .hora h3 {
-    width: 70px;
-}
-
-header .region-user .hora h3 {
-    font-family: var(--fuente-texto);
-    color: var(--color-blanco);
-}
-
 
 /* INICIO STYLE USER */
 
