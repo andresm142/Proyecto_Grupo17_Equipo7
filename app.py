@@ -232,7 +232,23 @@ def AdminUser():
             
             elif request.form.get('submit_button') == 'eliminar':
                 # Consulta para eliminar usuarios
-                conn.eliminarUsuario(conn.obtenerIDUsuarioDesdePersona(request.form["id"]), request.form["id"])
+                # consulta para obtner el tipo de usuario del que se quiere borrar
+                datosusuarios=conn.obtenerDatosUsuarioById(request.form["id"])
+                tipoUSuario=datosusuarios['descripcion_rol']
+                if session['userType']=='admin':
+                   
+                    if tipoUSuario=="usuario":
+                        conn.eliminarUsuario(conn.obtenerIDUsuarioDesdePersona(request.form["id"]), request.form["id"])        
+                    # else: no se puede borrar un usuario de tipo administrador y super administrador
+                else:
+                    if session['userType']=='superAdmin':
+                        if tipoUSuario=="usuario" or tipoUSuario=="admin":
+                            # Puede borrar un usuario de tipo usuario y administrador, pero no super administrador
+                            conn.eliminarUsuario(conn.obtenerIDUsuarioDesdePersona(request.form["id"]), request.form["id"])
+                        # else: no se puede borrar un usuario de tipo super administrador
+                        
+                        # conn.eliminarUsuario(conn.obtenerIDUsuarioDesdePersona(request.form["id"]), request.form["id"])
+                        
                 return redirect('/Usuarios')
             elif request.form.get('submit_button')=='Añadir usuario +':
                                           
