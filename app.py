@@ -232,6 +232,7 @@ def AdminUser():
             
             elif request.form.get('submit_button') == 'eliminar':
                 # Consulta para eliminar usuarios
+                conn.eliminarUsuario(conn.obtenerIDUsuarioDesdePersona(request.form["id"]), request.form["id"])
                 return redirect('/Usuarios')
             elif request.form.get('submit_button')=='Añadir usuario +':
                                           
@@ -371,11 +372,13 @@ def GuardarUser():
                             image_src="/static/images/upload/"+image_src
                         
                             #Consulta para update en la base de datos cambiando la imagen por la seleccionada en el momento
-                            conn.insertarPersona(nombre,apellido,telefono,email,image_src,tipoUser)
+                            conn.actualizarPersona(id,nombre,apellido,telefono,email,image_src)
+                            conn.actualizarRolUsuario(conn.obtenerIDUsuarioDesdePersona(id), conn.buscarIdRol(tipoUser.strip()))
                         else:
-                            
                             #Consulta para update en la base de datos sin incluir imagen, permanece la actual
-                            pass
+                            image_src = conn.obtenerImagenPersona(id)
+                            conn.actualizarPersona(id,nombre,apellido,telefono,email,image_src)
+                            conn.actualizarRolUsuario(conn.obtenerIDUsuarioDesdePersona(id), conn.buscarIdRol(tipoUser.strip()))
                             
                 
                     # Despues de realizar la query regresa a la pagina de usuarios 
