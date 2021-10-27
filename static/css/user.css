@@ -69,6 +69,11 @@ body{
     padding: 0 20px;
 }
 
+#name, #lastname, #email{
+    background: var(--color-gris);
+    color: var(--color-blanco);
+}
+
 @media screen and (min-width:1024px) {
     #name, #lastname, #email, #phone, #pass, #cpass{ 
         width: 50%;
@@ -106,7 +111,7 @@ body{
   }
   
 .tipo-de-usuario .contenedor-tipo-de-usuario .select-box-usuario .options-container-usuario {
-    background: var(--color-usuario);
+    background: var(--color-gris);
     color: var(--color-blanco) !important;
     max-height: 0;
     width: 100%;
@@ -118,7 +123,7 @@ body{
 }
 
 .tipo-de-usuario .contenedor-tipo-de-usuario .selected-usuario {
-    background: var(--color-usuario);
+    background: var(--color-gris);
     border-radius: var(--radio-input);
     margin-bottom: 8px;
     color: var(--color-blanco);
