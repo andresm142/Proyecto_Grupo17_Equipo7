@@ -463,12 +463,12 @@ def GuardarProveedor():
                             image_src="/static/images/upload/"+image_src
                         
                             #Consulta para update en la base de datos cambiando la imagen por la seleccionada en el momento
-                            conn.insertarProveedor(nombre_proveedor,descripcion_proveedor,image_src)
+                            conn.actualizarProveedor(id, nombre_proveedor, descripcion_proveedor, image_src)
                         else:
-                            
+                            image_src = conn.obtenerImagenProveedor(id)
                             #Consulta para update en la base de datos sin incluir imagen, permanece la actual
-                            pass
-                                   
+                            conn.actualizarProveedor(id, nombre_proveedor, descripcion_proveedor, image_src)
+
                 return redirect('/Proveedores')
             
             elif request.form['submit_button'] == 'Cancelar':

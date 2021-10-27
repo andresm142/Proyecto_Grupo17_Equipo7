@@ -945,3 +945,51 @@ def eliminarRegistroAlmacen(idProducto, idProveedor):
     conn.commit()
     conn.close()
 
+
+def actualizarProveedor(idProveedor, nombreProveedor, descripcionProveedor, src_imagen):
+    """ Actualizar un proveedor en la base de datos.
+
+    Este método recibe los datos de un proveedor y actualiza la información en la base de datos.
+    """
+
+    # Crear nuevamente la conexión a la base de datos. Por buenas prácticas, se debe cerrar
+    # la conexión después de cada ejecución de un método/proceso.
+    conn = crearConexion()
+    cursor = conn.cursor()
+
+    cursor.execute(
+        """
+            UPDATE Proveedor
+            SET nombre_proveedor = '%s',
+                descripcion_proveedor = '%s',
+                src_imagen = '%s'
+            WHERE id_proveedor = %s
+        """ % (nombreProveedor, descripcionProveedor, src_imagen, idProveedor))
+
+    conn.commit()
+    conn.close()
+
+
+def obtenerImagenProveedor(idProveedor):
+    """ Obtener la imagen de un proveedor.
+
+    Este método recibe un id y devuelve la imagen correspondiente.
+    """
+
+    # Crear nuevamente la conexión a la base de datos. Por buenas prácticas, se debe cerrar
+    # la conexión después de cada ejecución de un método/proceso.
+    conn = crearConexion()
+    cursor = conn.cursor()
+
+    cursor.execute(
+        """
+            SELECT src_imagen
+            FROM Proveedor
+            WHERE id_proveedor = %s
+        """ % (idProveedor))
+
+    imagen = cursor.fetchone()
+
+    conn.close()
+
+    return imagen[0]
