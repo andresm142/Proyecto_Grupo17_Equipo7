@@ -1,5 +1,5 @@
 {% extends 'MasterPage.html' %}
-{% block title %} Editar Producto {% endblock %}
+{% block title %} Añadir Producto {% endblock %}
 
 {% block content %}
 
@@ -57,7 +57,7 @@
                 </div>
             </div>
             {% if datosProducto['nombre_proveedor']=='Proveedor' %}
-                <input type="hidden" id="inputSelectedProveedor" name="selectedProveedor"  value="{{ proveedores[0]['id_proveedor'] }}">
+                <input type="hidden" id="inputSelectedProveedor" name="selectedProveedor"  value="{{ proveedores[0]['nombre_proveedor'] }}">
             {% else %}
                 <input type="hidden" id="inputSelectedProveedor" name="selectedProveedor"  value="{{datosProducto['nombre_proveedor']}}">
             {% endif %}
