@@ -839,6 +839,17 @@ def obtnerProductosMinimosDiponible():
     )
 
 
+    nombreColumnas = [i[0] for i in cursor.description]
+    datosProductos = queryDatosProductos.fetchall()
+
+    jsonProductos = []
+
+    for result in datosProductos:
+        jsonProductos.append(dict(zip(nombreColumnas,result)))
+
+    conn.close()
+    return jsonProductos
+
 def actualizarProducto(idProducto, nombreProducto, descripcionProducto, calificacion, srcImagen, cantidadMinima, cantidadDisponible, nombreProveedor):
     """ Actualizar un producto en la base de datos.
 

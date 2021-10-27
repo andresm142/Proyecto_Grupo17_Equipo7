@@ -90,7 +90,7 @@ def Listas():
         return redirect("/")
     else:
         lista=conn.obtnerProductosMinimosDiponible()
-        
+        # lista=""
         return render_template('Listas.html',lista=lista)
 
 
