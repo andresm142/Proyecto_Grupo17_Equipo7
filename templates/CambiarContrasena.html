@@ -35,10 +35,20 @@
                 <label id="coinciden" style="display: none;">¡Las contraseñas no coinciden!</label>
                 <br>
                 <input type="submit" name="sign-in" value="Guardar">
+                {# Mostrar mensajes / errores si es que existen #}
+                {% with mensajes_flash = get_flashed_messages() %}
+                    {% if mensajes_flash %}
+                    <script>
+                        alert('{{ mensajes_flash[0] }}');
+                    </script>
+                        
+                    {% endif %}
+                {% endwith %}
             </form>
         </div>
     </div>
 </body>
+
 <script>
     var password = document.getElementById("newpw");
     var confirm_password = document.getElementById("confirmpw");
@@ -56,6 +66,7 @@
 
     // password.onchange = validatePassword;
     confirm_password.onkeyup = validatePassword;
+    
 </script>
 
 </html>

@@ -80,6 +80,15 @@
             </div>
         </div>
     </div>
+    {# Mostrar mensajes / errores si es que existen #}
+    {% with mensajes_flash = get_flashed_messages() %}
+        {% if mensajes_flash %}
+        <script>
+            alert('{{ mensajes_flash[0] }}');
+        </script>
+            
+        {% endif %}
+    {% endwith %}
 </form>
 
 <script src={{ url_for('static', filename='js/scriptSelectUser.js' ) }}></script>

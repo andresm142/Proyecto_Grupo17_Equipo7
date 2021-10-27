@@ -1,7 +1,7 @@
 import re
 import secrets, os
 import dbConnect
-from flask import Flask, jsonify, render_template, request, session, redirect
+from flask import Flask, jsonify, render_template, request, session, redirect, flash
 from flask_session import Session
 from werkzeug.utils import secure_filename
 from werkzeug.security import generate_password_hash
@@ -33,6 +33,7 @@ def Index():
 
         # Verificar si el usuario solicitó recuperación de contraseña o es primera vez que inicia sesión
         if conn.comprobarEstatusUsuario(conn.obtenerIDUsuario(request.form["email"])) == 0:
+            flash("Bienvenido a la aplicación, por favor cambia tu contraseña", "success")
             return render_template('CambiarContrasena.html', email=request.form["email"])
         else:
             session["username"] = request.form["email"]
@@ -51,6 +52,7 @@ def Index():
                                 autoCompletarProveedores=session['autoCompletarProveedores'])
     else:
         session["username"] = None
+        flash("Correo o contraseña incorrectos")
         return redirect('/')
 
 
@@ -148,6 +150,7 @@ def Usuarios():
 @app.route('/Logout', methods=['POST', 'GET'])
 def Logout():
     session.pop('username', None)
+    flash(" ")
     return redirect('/')
 
 
@@ -167,12 +170,14 @@ def Editarproducto():
                 # del producto
                 datosProducto = conn.obtenerProductoPorID(idproveedor, idProducto)
                 proveedores=conn.listaProveedores()
+                
                 return render_template('EditarProducto.html',datosProducto=datosProducto,proveedores=proveedores)
             
             elif request.form['submit_button'] == 'eliminar':
                 
                 # consulta para eliminar producto
                 conn.eliminarRegistroAlmacen(request.form['id'], request.form['idproveedor'])
+                flash("Prodcuto eliminado correctamente")
                 return redirect('/Productos')
                 
             elif request.form['submit_button']=='Añadir +':
@@ -239,14 +244,17 @@ def AdminUser():
                    
                     if tipoUSuario=="usuario":
                         conn.eliminarUsuario(conn.obtenerIDUsuarioDesdePersona(request.form["id"]), request.form["id"])        
-                    # else: no se puede borrar un usuario de tipo administrador y super administrador
+                        flash("Usuario eliminado correctamente")
+                    else: 
+                        flash("No posees los permisos para borrar un usuario de tipo administrador y super administrador")
                 else:
                     if session['userType']=='superAdmin':
                         if tipoUSuario=="usuario" or tipoUSuario=="admin":
                             # Puede borrar un usuario de tipo usuario y administrador, pero no super administrador
                             conn.eliminarUsuario(conn.obtenerIDUsuarioDesdePersona(request.form["id"]), request.form["id"])
-                        # else: no se puede borrar un usuario de tipo super administrador
-                        
+                            flash("Usuario eliminado correctamente")
+                        else:
+                            flash("No se puede borrar un usuario de tipo Super administrador")
                         # conn.eliminarUsuario(conn.obtenerIDUsuarioDesdePersona(request.form["id"]), request.form["id"])
                         
                 return redirect('/Usuarios')
@@ -281,13 +289,14 @@ def EditarProveedores():
                 # del usuario
                 datosProveedor=conn.obtenerProveedorById(request.form['id'])
                 
-               
+                flash("Usuario actualizado correctamente")
                 return render_template('EditarProveedor.html',datosProveedor=datosProveedor)
             
             elif request.form['submit_button'] == 'eliminar':
                 
                 # consulta para eliminar proveedor
                 conn.borrarRegistrosProveedorTdAlmacen(request.form['id'])
+                flash("Proveedor eliminado")
                 return redirect('/Proveedores')
                 
             elif request.form['submit_button']=='Añadir proveedor +':
@@ -319,6 +328,7 @@ def ConfirmacionNewPass():
                 if conn.validarContrasena(request.form['email'], contrasenaActual) is not False:
                     conn.cambiarContraseña(conn.obtenerIDUsuario(request.form['email']), generate_password_hash(nuevaContrasena))
                     conn.cambiarEstatusUsuario(1, conn.obtenerIDUsuario(request.form['email']))
+                    
                     return redirect('/')
                 else:
                     return "Error"
@@ -336,6 +346,7 @@ def CambiarPass():
                 if conn.validarContrasena(session['username'], contrasenaActual) is not False:
                     conn.cambiarContraseña(request.form['id'], generate_password_hash(nuevaContrasena))
                     conn.cambiarEstatusUsuario(1, (request.form['id']))
+                    flash("Contraseña cambiada correctamente")
                     return redirect('/')
                 else:
                     return "Error"
@@ -379,7 +390,7 @@ def GuardarUser():
                         
                         #Consulta para insert en la base de datos
                         conn.insertarPersona(nombre,apellido,telefono,email,image_src,tipoUser)
-                        
+                        flash("Usuario creado correctamente")
                         
                     else:
                         if image_src.filename !="":
@@ -390,12 +401,13 @@ def GuardarUser():
                             #Consulta para update en la base de datos cambiando la imagen por la seleccionada en el momento
                             conn.actualizarPersona(id,nombre,apellido,telefono,email,image_src)
                             conn.actualizarRolUsuario(conn.obtenerIDUsuarioDesdePersona(id), conn.buscarIdRol(tipoUser.strip()))
+                            flash("Usuario actualizado correctamente")
                         else:
                             #Consulta para update en la base de datos sin incluir imagen, permanece la actual
                             image_src = conn.obtenerImagenPersona(id)
                             conn.actualizarPersona(id,nombre,apellido,telefono,email,image_src)
                             conn.actualizarRolUsuario(conn.obtenerIDUsuarioDesdePersona(id), conn.buscarIdRol(tipoUser.strip()))
-                            
+                            flash("Usuario actualizado correctamente")
                 
                     # Despues de realizar la query regresa a la pagina de usuarios 
                     return redirect('/Usuarios')
@@ -434,7 +446,7 @@ def GuardarProducto():
                         
                     #Consulta para insert en la base de datos
                     conn.insertarProducto(nombreProducto, descripcion, calificacion, image_src, cantidad_minima, disponible, proveedor)
-                   
+                    flash("Producto guardado correctamente")
                 else:
                     if image_src.filename !="":
                         
@@ -443,10 +455,12 @@ def GuardarProducto():
                     
                         #Consulta para update en la base de datos cambiando la imagen por la seleccionada en el momento
                         conn.actualizarProducto(id, nombreProducto, descripcion, calificacion, image_src, cantidad_minima, disponible, proveedor)
+                        flash("Producto guardado correctamente")
                     else:
                         image_src = conn.obtenerImagenProducto(id)
                         #Consulta para update en la base de datos sin incluir imagen, permanece la actual
                         conn.actualizarProducto(id, nombreProducto, descripcion, calificacion, image_src, cantidad_minima, disponible, proveedor)
+                        flash("Producto guardado correctamente")
                             
                 return redirect('/Productos')
             elif request.form['submit_button'] == 'Cancelar':
@@ -475,6 +489,7 @@ def GuardarProveedor():
                         
                     #Consulta para insert en la base de datos
                     conn.insertarProveedor(nombre_proveedor,descripcion_proveedor,image_src)
+                    flash("Proveedor guardado correctamente")
                 else:
                         if image_src.filename !="":
                             
@@ -483,10 +498,12 @@ def GuardarProveedor():
                         
                             #Consulta para update en la base de datos cambiando la imagen por la seleccionada en el momento
                             conn.actualizarProveedor(id, nombre_proveedor, descripcion_proveedor, image_src)
+                            flash("Proveedor guardado correctamente")
                         else:
                             image_src = conn.obtenerImagenProveedor(id)
                             #Consulta para update en la base de datos sin incluir imagen, permanece la actual
                             conn.actualizarProveedor(id, nombre_proveedor, descripcion_proveedor, image_src)
+                            flash("Proveedor guardado correctamente")
 
                 return redirect('/Proveedores')
             
@@ -511,10 +528,11 @@ def Guardarconfiguracion():
                     image_src="/static/images/upload/"+image_src
                     #Consulta para update en la base de datos cambiando la imagen por la seleccionada en el momento. Busqueda por id
                     conn.editarConfiguracionUsuario(image_src,id,telefono)
+                    flash("Configuracion de usuario guardada correctamente")
                 else:
                     #Consulta para update en la base de datos sin cambiar la imagen. Busqueda por id
                     conn.editarConfiguracionUsuarioSinImagen(id,telefono)
-                    
+                    flash("Configuracion de usuario guardada correctamente")    
                 
                 return redirect('/Home')
             elif request.form['submit_button'] == 'Cancelar':

@@ -115,10 +115,18 @@
         <div class="guardar-cancelar">
             <input type="button" class="cancelar" name="submit_button" value="Cancelar" onclick="history.back()">
             <input type="submit" class="guardar" name="submit_button" onclick="guardar()" value="Guardar">
-                
             
         </div>
     </div>
+    {# Mostrar mensajes / errores si es que existen #}
+    {% with mensajes_flash = get_flashed_messages() %}
+        {% if mensajes_flash %}
+        <script>
+            alert('{{ mensajes_flash[0] }}');
+        </script>
+            
+        {% endif %}
+    {% endwith %}
 </form>
 <script src={{ url_for('static', filename='js/awesomplete.js') }}></script>
 <script src={{ url_for('static', filename='js/scriptSelectProveedor.js' ) }}></script>
