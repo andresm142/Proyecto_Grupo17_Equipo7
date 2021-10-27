@@ -1135,3 +1135,47 @@ def obtenerIDUsuarioDesdePersona(idPersona):
     conn.close()
 
     return idUsuario[0]
+
+
+def eliminarUsuario(idUsuario, idPersona):
+    """ Eliminar un usuario en la base de datos.
+
+    Este método recibe el id de usuario y lo elimina de la base de datos.
+    """
+
+    # Crear nuevamente la conexión a la base de datos. Por buenas prácticas, se debe cerrar
+    # la conexión después de cada ejecución de un método/proceso.
+    conn = crearConexion()
+    cursor = conn.cursor()
+
+    cursor.execute(
+        """
+            DELETE FROM Usuario
+            WHERE id_usuario = %s
+        """ % (idUsuario))
+
+    conn.commit()
+    conn.close()
+
+    eliminarPersona(idPersona)
+
+
+def eliminarPersona(idPersona):
+    """ Eliminar una persona en la base de datos.
+
+    Este método recibe el id de persona y lo elimina de la base de datos.
+    """
+
+    # Crear nuevamente la conexión a la base de datos. Por buenas prácticas, se debe cerrar
+    # la conexión después de cada ejecución de un método/proceso.
+    conn = crearConexion()
+    cursor = conn.cursor()
+
+    cursor.execute(
+        """
+            DELETE FROM Persona
+            WHERE id_persona = %s
+        """ % (idPersona))
+
+    conn.commit()
+    conn.close()

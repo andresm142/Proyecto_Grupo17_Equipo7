@@ -232,6 +232,7 @@ def AdminUser():
             
             elif request.form.get('submit_button') == 'eliminar':
                 # Consulta para eliminar usuarios
+                conn.eliminarUsuario(conn.obtenerIDUsuarioDesdePersona(request.form["id"]), request.form["id"])
                 return redirect('/Usuarios')
             elif request.form.get('submit_button')=='Añadir usuario +':
                                           
