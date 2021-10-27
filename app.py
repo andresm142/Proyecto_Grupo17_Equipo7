@@ -13,7 +13,7 @@ app.config['SECRET_KEY'] = secrets.token_hex(20)
 app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
 app.config['UPLOAD_FOLDER'] = './static/images/upload'
-ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}
+ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
 Session(app)
 
 # Instanciar módulo de conexión a la base de datos

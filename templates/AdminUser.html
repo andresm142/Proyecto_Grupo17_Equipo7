@@ -73,7 +73,7 @@
             </div> -->
 
             <div class="guardar-cancelar">
-                <a href="{{url_for('Usuarios')}}"><input type="button" name="submit_button" id="cancelar" class="cancelar" value="Cancelar"></a>
+                <input type="button" name="submit_button" id="cancelar" class="cancelar" value="Cancelar" onclick="history.back()">
                 <input type="submit" name="submit_button" id="guardar" class="guardar" value="Guardar"
                     onclick="guardar()">
 

@@ -33,7 +33,7 @@
                 <textarea type="textarea" name="descripcion_proveedor" id="description" rows="4" cols="50">{{ datosProveedor['descripcion_proveedor'] }}</textarea>
             </div>
             <div class="buttons">
-                <input type="submit" name="submit_button" id="cancelar" class="cancelar" value="Cancelar">
+                <input type="button" name="submit_button" id="cancelar" class="cancelar" value="Cancelar" onclick="history.back()">
                 <input type="submit" name="submit_button" id="guardar" class="guardar" value="Guardar"
                     onclick="guardar()">
 
