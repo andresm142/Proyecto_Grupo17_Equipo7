@@ -1112,7 +1112,7 @@ def obtenerImagenPersona(idPersona):
     return imagen[0]
 
 
-def obtenerIDUsuario(idPersona):
+def obtenerIDUsuarioDesdePersona(idPersona):
     """ Obtener el id de un usuario.
 
     Este método recibe un id de persona y devuelve el id de usuario correspondiente.
