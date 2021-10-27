@@ -993,3 +993,47 @@ def obtenerImagenProveedor(idProveedor):
     conn.close()
 
     return imagen[0]
+
+
+def eliminarProveedor(idProveedor):
+    """ Eliminar un proveedor en la base de datos.
+
+    Este método recibe el id de proveedor y lo elimina de la base de datos.
+    """
+
+    # Crear nuevamente la conexión a la base de datos. Por buenas prácticas, se debe cerrar
+    # la conexión después de cada ejecución de un método/proceso.
+    conn = crearConexion()
+    cursor = conn.cursor()
+
+    cursor.execute(
+        """
+            DELETE FROM Proveedor
+            WHERE id_proveedor = %s
+        """ % (idProveedor))
+
+    conn.commit()
+    conn.close()
+
+
+def borrarRegistrosProveedorTdAlmacen(idProveedor):
+    """ Borrar todos los registros de un proveedor en la tabla Almacen.
+
+    Este método recibe el id de proveedor y lo elimina de la tabla Almacen.
+    """
+
+    # Crear nuevamente la conexión a la base de datos. Por buenas prácticas, se debe cerrar
+    # la conexión después de cada ejecución de un método/proceso.
+    conn = crearConexion()
+    cursor = conn.cursor()
+
+    cursor.execute(
+        """
+            DELETE FROM Almacen
+            WHERE id_proveedor = %s
+        """ % (idProveedor))
+
+    conn.commit()
+    conn.close()
+
+    eliminarProveedor(idProveedor)

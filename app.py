@@ -270,7 +270,7 @@ def EditarProveedores():
             elif request.form['submit_button'] == 'eliminar':
                 
                 # consulta para eliminar proveedor
-                
+                conn.borrarRegistrosProveedorTdAlmacen(request.form['id'])
                 return redirect('/Proveedores')
                 
             elif request.form['submit_button']=='Añadir proveedor +':
