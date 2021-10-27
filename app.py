@@ -372,12 +372,12 @@ def GuardarUser():
                         
                             #Consulta para update en la base de datos cambiando la imagen por la seleccionada en el momento
                             conn.actualizarPersona(id,nombre,apellido,telefono,email,image_src)
-                            conn.actualizarRolUsuario(conn.obtenerIDUsuario(id), conn.buscarIdRol(tipoUser.strip()))
+                            conn.actualizarRolUsuario(conn.obtenerIDUsuarioDesdePersona(id), conn.buscarIdRol(tipoUser.strip()))
                         else:
                             #Consulta para update en la base de datos sin incluir imagen, permanece la actual
                             image_src = conn.obtenerImagenPersona(id)
                             conn.actualizarPersona(id,nombre,apellido,telefono,email,image_src)
-                            conn.actualizarRolUsuario(conn.obtenerIDUsuario(id), conn.buscarIdRol(tipoUser.strip()))
+                            conn.actualizarRolUsuario(conn.obtenerIDUsuarioDesdePersona(id), conn.buscarIdRol(tipoUser.strip()))
                             
                 
                     # Despues de realizar la query regresa a la pagina de usuarios 
