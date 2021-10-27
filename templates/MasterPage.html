@@ -6,10 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %} {% endblock %}</title>
-    <link rel="stylesheet" href={{ url_for('static', filename='css/normalize.css') }}>
-    <link rel="stylesheet" href={{ url_for('static', filename='css/style.css') }}>
-    <link rel="stylesheet" href={{ url_for('static', filename='css/font-awesome.min.css') }}>
-    <link rel="stylesheet" href={{ url_for('static', filename='css/awesomplete.css') }}>
+    <link rel="stylesheet" href={{ url_for( 'static', filename='css/normalize.css' ) }}>
+    <link rel="stylesheet" href={{ url_for( 'static', filename='css/style.css' ) }}>
+    <link rel="stylesheet" href={{ url_for( 'static', filename='css/font-awesome.min.css' ) }}>
+    <link rel="stylesheet" href={{ url_for( 'static', filename='css/awesomplete.css' ) }}>
     <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet"/> -->
 
 
@@ -20,91 +20,105 @@
     <header class="principal">
         <div class="encabezado">
             <div id="abrir-menu">
-                <a id="abrir" class="abrir-cerrar" href="javascript:void(0)" onclick="mostrar()"
-                style="display: none;"></a>
+                <a id="abrir" class="abrir-cerrar" href="javascript:void(0)" onclick="mostrar()" style="display: none;"></a>
                 <a id="cerrar" class="abrir-cerrar" href="#" onclick="ocultar()" style="display: none;"></a>
             </div>
             <form class="buscar" action="/Search" method="POST">
                 <div class="container-tipo-de-busqueda">
                     <div class="select-box">
-                      <div class="options-container">
-                        <div class="option">
-                          <input type="radio" class="radio" id="search-proveedores" name="category" value="auto"/>
-                          <label for="search-proveedores">Proveedores</label>
+                        <div class="options-container">
+                            <div class="option">
+                                <input type="radio" class="radio" id="search-proveedores" name="category" value="auto" />
+                                <label for="search-proveedores">Proveedores</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" class="radio" id="search-productos" name="category" />
+                                <label for="search-productos">Productos</label>
+                            </div>
                         </div>
-                        <div class="option">
-                          <input type="radio" class="radio" id="search-productos" name="category" />
-                          <label for="search-productos">Productos</label>
+                        <div class="selected">
+                            Proveedores
                         </div>
-                      </div>
-                      <div class="selected">
-                        Proveedores
-                      </div>
                     </div>
-                    <input type="hidden" id="inputSelectedSearch" name="selectedSearch"  value="Proveedores">
-                </div>                
+                    <input type="hidden" id="inputSelectedSearch" name="selectedSearch" value="Proveedores">
+                </div>
                 <input class="search" type="search" id="search" placeholder="Buscar" name="txtsearch">
                 <i class="fa fa-search" id="lupa"></i>
             </form>
 
             <div class="logo">
-                <img src={{ url_for('static', filename='images/LogoSM.png') }} alt="">
+                <img src={{ url_for( 'static', filename='images/LogoSM.png' ) }} alt="">
+
             </div>
+
         </div>
     </header>
 
     <section class="contenido" id="contenido" style="margin-left: 250px;">
         {% block content %} {% endblock %}
-        
+
     </section>
 
     <div id="sidebar" class="sidebar" style="width: 250px;">
         <div class="region-user">
-            <div class="logo-user">
-                <img id="img-user" src={{ url_for('static', filename='images/avatar.png') }} alt="">
+            <div class="hora">
+                <h3 id="HoraActual"> </h3>
             </div>
-            <h2 class="nombre-user"><label id="nombre-user" style="font-size: 25px;">Usuario</label></h2> 
+            <div class="logo-user">
+                <img id="img-user" src={{ url_for( 'static', filename='images/avatar.png' ) }} alt="">
+            </div>
+            <h2 class="nombre-user"><label id="nombre-user" style="font-size: 25px;">Usuario</label></h2>
         </div>
         <div class="region-funciones">
-            <a href="{{url_for('Home')}}"><div class="home">
-                Home
-            </div></a>
-            <a href="{{url_for('Productos')}}"><div class="productos">
-                Productos
-            </div></a>
-            <a href="{{url_for('Listas')}}"><div class="listas" id="listas">
-                Listas
-            </div></a>
-            <a href="{{url_for('Usuarios')}}"><div class="usuarios" id="usuarios">
-                Usuarios
-            </div></a>
-            <a href="{{url_for('Proveedores')}}"><div class="proveedores">
-                Provedores
-            </div></a>
+            <a href="{{url_for('Home')}}">
+                <div class="home">
+                    Home
+                </div>
+            </a>
+            <a href="{{url_for('Productos')}}">
+                <div class="productos">
+                    Productos
+                </div>
+            </a>
+            <a href="{{url_for('Listas')}}">
+                <div class="listas" id="listas">
+                    Listas
+                </div>
+            </a>
+            <a href="{{url_for('Usuarios')}}">
+                <div class="usuarios" id="usuarios">
+                    Usuarios
+                </div>
+            </a>
+            <a href="{{url_for('Proveedores')}}">
+                <div class="proveedores">
+                    Provedores
+                </div>
+            </a>
         </div>
         <div class="region-cuenta">
-            
+
             <a href="#" onclick="document.getElementById('form_config').submit()">
                 <form action="/Configuracion" method="POST" name="form_config" id="form_config" class="config">
-                    <input type="hidden" id="id-user" name="id-user" value="">
-                    Configuración
+                    <input type="hidden" id="id-user" name="id-user" value=""> Configuración
                 </form>
             </a>
-        
+
             <a href="{{ url_for('Logout') }}">
                 <div class="logout">
                     Cerrar sesión
                 </div>
             </a>
         </div>
-        
+
     </div>
-    <script src={{ url_for('static', filename='js/awesomplete.js') }}></script>
-    
-    <script src={{ url_for('static', filename='js/script.js') }}></script>
-    <script src={{ url_for('static', filename='js/jquery-3.3.1.js') }}></script>
+    <script src={{ url_for( 'static', filename='js/awesomplete.js' ) }}></script>
+
+    <script src={{ url_for( 'static', filename='js/script.js' ) }}></script>
+    <script src={{ url_for( 'static', filename='js/jquery-3.3.1.js' ) }}></script>
+    <script src={{ url_for( 'static', filename='js/hora.js' ) }}></script>
     <!-- <script src={{ url_for('static', filename='js/loginColor.js') }}></script> -->
-   
+
 
 </body>
 
