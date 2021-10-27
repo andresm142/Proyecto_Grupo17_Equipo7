@@ -1037,3 +1037,101 @@ def borrarRegistrosProveedorTdAlmacen(idProveedor):
     conn.close()
 
     eliminarProveedor(idProveedor)
+
+
+def actualizarPersona(idPersona, nombrePersona, apellidoPersona, telefono, email, src_imagen):
+    """ Actualizar una persona en la base de datos.
+
+    Este método recibe los datos de una persona y actualiza la información en la base de datos.
+    """
+
+    # Crear nuevamente la conexión a la base de datos. Por buenas prácticas, se debe cerrar
+    # la conexión después de cada ejecución de un método/proceso.
+    conn = crearConexion()
+    cursor = conn.cursor()
+
+    cursor.execute(
+        """
+            UPDATE Persona
+            SET nombre_persona = '%s',
+                apellido_persona = '%s',
+                telefono_persona = '%s',
+                email = '%s',
+                imagen_src = '%s'
+            WHERE id_persona = %s
+        """ % (nombrePersona, apellidoPersona, telefono, email, src_imagen, idPersona))
+
+    conn.commit()
+    conn.close()
+
+
+def actualizarRolUsuario(idUsuario, idRol):
+    """ Actualizar un rol de usuario en la base de datos.
+
+    Este método recibe los datos de una persona y actualiza la información en la base de datos.
+    """
+
+    # Crear nuevamente la conexión a la base de datos. Por buenas prácticas, se debe cerrar
+    # la conexión después de cada ejecución de un método/proceso.
+    conn = crearConexion()
+    cursor = conn.cursor()
+
+    cursor.execute(
+        """
+            UPDATE Usuario
+            SET id_rol = %s
+            WHERE id_usuario = %s
+        """ % (idRol, idUsuario))
+
+    conn.commit()
+    conn.close()
+
+
+def obtenerImagenPersona(idPersona):
+    """ Obtener la imagen de una persona.
+
+    Este método recibe un id y devuelve la imagen correspondiente.
+    """
+
+    # Crear nuevamente la conexión a la base de datos. Por buenas prácticas, se debe cerrar
+    # la conexión después de cada ejecución de un método/proceso.
+    conn = crearConexion()
+    cursor = conn.cursor()
+
+    cursor.execute(
+        """
+            SELECT imagen_src
+            FROM Persona
+            WHERE id_persona = %s
+        """ % (idPersona))
+
+    imagen = cursor.fetchone()
+
+    conn.close()
+
+    return imagen[0]
+
+
+def obtenerIDUsuario(idPersona):
+    """ Obtener el id de un usuario.
+
+    Este método recibe un id de persona y devuelve el id de usuario correspondiente.
+    """
+
+    # Crear nuevamente la conexión a la base de datos. Por buenas prácticas, se debe cerrar
+    # la conexión después de cada ejecución de un método/proceso.
+    conn = crearConexion()
+    cursor = conn.cursor()
+
+    cursor.execute(
+        """
+            SELECT id_usuario
+            FROM Usuario
+            WHERE id_persona = %s
+        """ % (idPersona))
+
+    idUsuario = cursor.fetchone()
+
+    conn.close()
+
+    return idUsuario[0]
