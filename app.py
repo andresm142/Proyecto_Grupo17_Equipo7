@@ -178,9 +178,7 @@ def Editarproducto():
             elif request.form['submit_button']=='Añadir +':
                 # Formulario en blanco para añadir producto
                 
-                proveedores=conn.listaProveedores()               
-                datosProducto={'id_producto':'0','id_proveedor':'','nombre_proveedor': 'Proveedor','calificacion':1,'src_imagen':'/static/images/Producto.jpg'}
-                return render_template('EditarProducto.html',datosProducto=datosProducto,proveedores=proveedores)
+                return redirect('/AnadirProductos')
                 
             elif request.form['submit_button'] == 'Disponible':
                 
@@ -202,7 +200,12 @@ def Editarproducto():
                                          # diponible es menor a la cantidad minima en bodega
                 return render_template('Search.html',textoBuscar=textoBuscar,buscarPor=buscarPor,
                                        resultadobusqueda=resultadobusqueda)
- 
+
+@app.route('/AnadirProductos', methods=['POST', 'GET'])
+def AnadirProductos():
+    proveedores=conn.listaProveedores()               
+    datosProducto={'id_producto':'0','id_proveedor':'','nombre_proveedor': 'Proveedor','calificacion':1,'src_imagen':'/static/images/Producto.jpg'}
+    return render_template('AnadirProducto.html',datosProducto=datosProducto,proveedores=proveedores)
  
 @app.route('/AdminUser', methods=['POST', 'GET'])
 def AdminUser():

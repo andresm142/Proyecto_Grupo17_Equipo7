@@ -5,6 +5,7 @@ const optionsContainerProveedor = document.querySelector(".options-container-pro
 const optionsListProveedor = document.querySelectorAll(".option-proveedor");
 
 selectedProveedor.addEventListener("click", () => {
+   
     optionsContainerProveedor.classList.toggle("active");
 });
 
@@ -16,3 +17,13 @@ optionsListProveedor.forEach(o => {
         document.getElementById("inputSelectedProveedor").value=nombre;
     });
 });
+// AUTOCOMPLETADO DE LA BUSQUEDA
+var searchInput = document.getElementById("name");
+
+var awesomplete = new Awesomplete(searchInput, {
+  minChars: 1,
+  maxItems: 5,
+  autoFirst: true
+});
+
+awesomplete.list = sessionStorage.getItem('autocompletarProductos');
