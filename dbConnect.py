@@ -914,3 +914,23 @@ def obtenerImagenProducto(idProducto):
 
     return imagen[0]
 
+def eliminarRegistroAlmacen(idProducto, idProveedor):
+    """ Eliminar un registro de almacén en la base de datos.
+
+    Este método recibe el id de producto y un id de proveedor para eliminar su registro en la tabla Almacen.
+    """
+
+    # Crear nuevamente la conexión a la base de datos. Por buenas prácticas, se debe cerrar
+    # la conexión después de cada ejecución de un método/proceso.
+    conn = crearConexion()
+    cursor = conn.cursor()
+
+    cursor.execute(
+        """
+            DELETE FROM Almacen
+            WHERE id_producto = %s AND id_proveedor = %s
+        """ % (idProducto, idProveedor))
+
+    conn.commit()
+    conn.close()
+
