@@ -172,7 +172,7 @@ def Editarproducto():
             elif request.form['submit_button'] == 'eliminar':
                 
                 # consulta para eliminar producto
-                print("Boton eliminar")
+                conn.eliminarRegistroAlmacen(request.form['id'], request.form['idproveedor'])
                 return redirect('/Productos')
                 
             elif request.form['submit_button']=='Añadir +':
