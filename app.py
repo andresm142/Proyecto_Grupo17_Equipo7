@@ -289,7 +289,7 @@ def EditarProveedores():
                 # del usuario
                 datosProveedor=conn.obtenerProveedorById(request.form['id'])
                 
-                flash("Usuario actualizado correctamente")
+                
                 return render_template('EditarProveedor.html',datosProveedor=datosProveedor)
             
             elif request.form['submit_button'] == 'eliminar':
