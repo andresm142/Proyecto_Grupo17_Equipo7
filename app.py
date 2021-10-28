@@ -1,7 +1,7 @@
 import re
 import secrets, os
 import dbConnect
-from flask import Flask, jsonify, render_template, request, session, redirect, flash
+from flask import Flask, render_template, request, session, redirect, flash
 from flask_session import Session
 from werkzeug.utils import secure_filename
 from werkzeug.security import generate_password_hash
@@ -313,8 +313,9 @@ def RecuperarPass():
         nombreApellido = datosUsuario['nombre_persona'] + " " + datosUsuario['apellido_persona']
         datosEmail = enviarEmail.emailRestablecerCuenta(datosUsuario['email'], nombreApellido, datosUsuario['id_usuario'])
         response = enviarEmail.enviarCorreo(datosEmail)
-
-    return str(response)
+        return flash("Se ha enviado un correo a su cuenta de email con las instrucciones para restablecer su contraseña")
+    else:
+        return flash("El email ingresado no se encuentra registrado")
 
 @app.route('/ConfirmacionNewPass', methods=['POST', 'GET'])
 def ConfirmacionNewPass():
