@@ -1179,3 +1179,77 @@ def eliminarPersona(idPersona):
 
     conn.commit()
     conn.close()
+    
+def productosDisponibles():
+    """ Obtener los productos disponibles.
+
+    Este método recibe una cantidad y devuelve los productos disponibles.
+    """
+
+    # Crear nuevamente la conexión a la base de datos. Por buenas prácticas, se debe cerrar
+    # la conexión después de cada ejecución de un método/proceso.
+    conn = crearConexion()
+    cursor = conn.cursor()
+
+    queryDatosProductos=cursor.execute(
+        """
+            SELECT pro.id_producto,
+                pro.nombre_producto,
+                prove.id_proveedor,
+                prove.nombre_proveedor,
+                pro.descripcion_producto,
+                pro.calificacion,
+                pro.src_imagen,
+                alm.cantidad_disponible
+            FROM Producto pro, Almacen alm, Proveedor prove
+            WHERE alm.id_producto = pro.id_producto AND alm.id_proveedor = prove.id_proveedor AND alm.cantidad_disponible > 0
+            ORDER BY pro.fecha_creado DESC;
+        """ )
+
+   
+    nombreColumnas = [i[0] for i in cursor.description]
+    datosUsuariosDB = queryDatosProductos.fetchall()
+
+    jsonlistaProductos=[]
+    for result in datosUsuariosDB:
+        jsonlistaProductos.append(dict(zip(nombreColumnas,result)))
+    
+    conn.close()
+    return jsonlistaProductos
+    
+def productosNoDisponibles():
+    """ Obtener los productos no disponibles.
+
+    Este método recibe una cantidad y devuelve los productos no disponibles.
+    """
+
+    # Crear nuevamente la conexión a la base de datos. Por buenas prácticas, se debe cerrar
+    # la conexión después de cada ejecución de un método/proceso.
+    conn = crearConexion()
+    cursor = conn.cursor()
+
+    queryDatosProductos=cursor.execute(
+        """
+            SELECT pro.id_producto,
+                pro.nombre_producto,
+                prove.id_proveedor,
+                prove.nombre_proveedor,
+                pro.descripcion_producto,
+                pro.calificacion,
+                pro.src_imagen,
+                alm.cantidad_disponible
+            FROM Producto pro, Almacen alm, Proveedor prove
+            WHERE alm.id_producto = pro.id_producto AND alm.id_proveedor = prove.id_proveedor AND alm.cantidad_disponible = 0
+            ORDER BY pro.fecha_creado DESC;
+        """ )
+
+   
+    nombreColumnas = [i[0] for i in cursor.description]
+    datosUsuariosDB = queryDatosProductos.fetchall()
+
+    jsonlistaProductos=[]
+    for result in datosUsuariosDB:
+        jsonlistaProductos.append(dict(zip(nombreColumnas,result)))
+    
+    conn.close()
+    return jsonlistaProductos

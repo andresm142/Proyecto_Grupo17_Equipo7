@@ -189,20 +189,20 @@ def Editarproducto():
                 
                 textoBuscar='productos'
                 buscarPor='Disponibles'
-           
-                resultadobusqueda=''        #Consulta para Disponibles. se considera Disponible cuando la cantiada 
-                                            # diponible es mayor a la cantidad minima en bodega
+                #Consulta para Disponibles. 
+                resultadobusqueda=conn.productosDisponibles()        
+                                             
                 
                 return render_template('Search.html',textoBuscar=textoBuscar,buscarPor=buscarPor,
                                        resultadobusqueda=resultadobusqueda)
-                # consulta para buscar los productos disponibles
+                
                 
             elif request.form['submit_button'] == 'No Disponible':
                 textoBuscar='productos'
                 buscarPor='No Disponibles'
-           
-                resultadobusqueda=''     # Consulta para No disponible, se considera no disponible cuando la cantiada 
-                                         # diponible es menor a la cantidad minima en bodega
+                # Consulta para No disponible, se considera no disponible cuando la cantiada de productos es 0
+                resultadobusqueda=conn.productosNoDisponibles()
+                                         
                 return render_template('Search.html',textoBuscar=textoBuscar,buscarPor=buscarPor,
                                        resultadobusqueda=resultadobusqueda)
 
