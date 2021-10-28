@@ -16,7 +16,12 @@
             <h2>Cambiar contraseña</h2>
             <p>Cambio Requerido. Por favor ingrese su contraseña actual y la nueva contraseña</p>
             <form action="/ConfirmacionNewPass" method="POST" id="login-form">
-                <input type="hidden" name="email" value="{{ email }}" id="email">
+                
+                <div class="inputBox">
+                    <input type="email" name="email" value="" required
+                        onkeyup="this.setAttribute('value', this.value);">
+                    <label>Usuario</label>
+                </div>
                 <div class="inputBox">
                     <input type="password" name="actualpw" value="" required onkeyup="this.setAttribute('value', this.value);">
                     <label>Contraseña actual</label>

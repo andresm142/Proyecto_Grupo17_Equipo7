@@ -11,7 +11,7 @@ body{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 50%;
+    width: 40%;
     height: 79vh;
     box-sizing: border-box;
     border-radius: var(--radio-contenedor-grande);
@@ -57,10 +57,11 @@ body{
 .box .inputBox {
     position: relative;
     font: var(--fuente-texto);
+    margin:0px 40px
 }
 
 .box .inputBox input{
-    width: 70%;
+    width: 100%;
     margin: 15px 0px;
     padding: 4px 0px;
     font-size: 1rem;
