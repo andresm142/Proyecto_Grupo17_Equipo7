@@ -394,6 +394,39 @@ def listaProveedores():
     return jsonlistaProveedores
 
 
+def listaEmailUsuarios():
+    """ Obtener un listado de correos electrónicos de los usuarios.
+
+    Este método devuelve un listado de correos electrónicos de los usuarios para ser mostrados en la página
+    listas para el envío de correo de productos pendientes de stock.
+    """
+
+    # Crear nuevamente la conexión a la base de datos. Por buenas prácticas, se debe cerrar
+    # la conexión después de cada ejecución de un método/proceso.
+    conn = crearConexion()
+    cursor = conn.cursor()
+
+    queryDatosUsuarios = cursor.execute(
+        """
+            SELECT per.email
+            FROM Persona per,
+                Usuario usr
+            WHERE usr.id_persona = per.id_persona
+        """)
+
+    nombreColumnas = [i[0] for i in cursor.description]
+    datosUsuariosDB = queryDatosUsuarios.fetchall()
+
+    jsonlistaUsuarios=[]
+    for result in datosUsuariosDB:
+        jsonlistaUsuarios.append(dict(zip(nombreColumnas,result)))
+    
+    conn.close()
+
+    return jsonlistaUsuarios
+
+
+
 def autocompletarListaProductos():
     listaProducto = listaProductos()
     msj = ""
@@ -408,6 +441,14 @@ def autocompletarListaProveedores():
     msj = ""
     for proveedor in listaProveedor:
         msj += proveedor['nombre_proveedor'] + ","
+    return msj
+
+def autocompletarListaEmail():
+    listaEmail = listaEmailUsuarios()
+
+    msj = ""
+    for email in listaEmail:
+        msj += email['email'] + ","
     return msj
 
 

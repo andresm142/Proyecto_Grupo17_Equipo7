@@ -100,9 +100,10 @@ def Listas():
     if not session.get("username"):
         return redirect("/")
     else:
+        #session['autoCompletarProveedores'] = conn.autocompletarListaProveedores()
+        session['autoCompletarEmail'] = conn.autocompletarListaEmail()
         lista=conn.obtnerProductosMinimosDiponible()
-        # lista=""
-        return render_template('Listas.html',lista=lista)
+        return render_template('Listas.html',lista=lista, autoCompletarEmail=session['autoCompletarEmail'],)
 
 
 @app.route('/Configuracion', methods=['POST', 'GET'])
