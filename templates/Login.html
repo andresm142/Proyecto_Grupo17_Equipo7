@@ -43,6 +43,11 @@
                             <script>
                                 alert('{{ mensajes_flash[0] }}');
                             </script>
+                        {% elif mensajes_flash[0] != ' ' %}
+                            <script>
+                                alert('{{ mensajes_flash[0] }}');
+                            </script>
+                        
                         {% endif %}
 
 
