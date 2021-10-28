@@ -34,7 +34,8 @@ def Index():
         # Verificar si el usuario solicitó recuperación de contraseña o es primera vez que inicia sesión
         if conn.comprobarEstatusUsuario(conn.obtenerIDUsuario(request.form["email"])) == 0:
             flash("Bienvenido a la aplicación, por favor cambia tu contraseña", "success")
-            return render_template('CambiarContrasena.html', email=request.form["email"])
+            session["cambiarPass"]=True
+            return redirect('/CambiarContrasena')
         else:
             session["username"] = request.form["email"]
             session["userType"] = conn.validarTipoUsuario(request.form["email"])
@@ -55,6 +56,14 @@ def Index():
         flash("Correo o contraseña incorrectos")
         return redirect('/')
 
+@app.route('/CambiarContrasena', methods=['GET', 'POST'])
+def CambiarContrasena():
+    if session.get("cambiarPass") is True:
+        return render_template('CambiarContrasena.html')
+    session["cambiarPass"]=False
+    return redirect("/")
+    
+    
 
 @app.route('/Home')
 def Home():
@@ -318,21 +327,19 @@ def RecuperarPass():
 
 @app.route('/ConfirmacionNewPass', methods=['POST', 'GET'])
 def ConfirmacionNewPass():
-    if not session.get("username"):
-        return redirect("/")
-    else:
-        if request.method == 'POST':
-            if request.form['sign-in'] == 'Guardar':
-                contrasenaActual = request.form['actualpw']
-                nuevaContrasena = request.form['confirmpw']
-                if conn.validarContrasena(request.form['email'], contrasenaActual) is not False:
-                    conn.cambiarContraseña(conn.obtenerIDUsuario(request.form['email']), generate_password_hash(nuevaContrasena))
-                    conn.cambiarEstatusUsuario(1, conn.obtenerIDUsuario(request.form['email']))
-                    
-                    return redirect('/')
-                else:
-                    return "Error"
-            return render_template('Login.html')
+
+    if request.method == 'POST':
+        if request.form['sign-in'] == 'Guardar':
+            contrasenaActual = request.form['actualpw']
+            nuevaContrasena = request.form['confirmpw']
+            if conn.validarContrasena(request.form['email'], contrasenaActual) is not False:
+                conn.cambiarContraseña(conn.obtenerIDUsuario(request.form['email']), generate_password_hash(nuevaContrasena))
+                conn.cambiarEstatusUsuario(1, conn.obtenerIDUsuario(request.form['email']))
+                flash("Contraseña cambiada correctamente")
+                return redirect('/')
+            else:
+                return "Error"
+        return render_template('Login.html')
 
 @app.route('/CambiarPass', methods=['POST', 'GET'])
 def CambiarPass():
@@ -352,7 +359,7 @@ def CambiarPass():
                     return "Error"
         return redirect("/Home")
 
-# Guardar datos de los usuarios. Llega des la pagina adminUser
+# Guardar datos de los usuarios. Llega desde la pagina adminUser
 @app.route('/GuardarUser', methods=['POST', 'GET'])
 def GuardarUser():
     
@@ -460,7 +467,7 @@ def GuardarProducto():
                         image_src = conn.obtenerImagenProducto(id)
                         #Consulta para update en la base de datos sin incluir imagen, permanece la actual
                         conn.actualizarProducto(id, nombreProducto, descripcion, calificacion, image_src, cantidad_minima, disponible, proveedor)
-                        flash("Producto guardado correctamente")
+                        flash("Producto guardado correctamente","success")
                             
                 return redirect('/Productos')
             elif request.form['submit_button'] == 'Cancelar':

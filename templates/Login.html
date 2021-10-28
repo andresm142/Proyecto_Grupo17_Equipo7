@@ -26,7 +26,7 @@
                 </div>
                 <br>
                 <div class="inputBox">
-                    <input type="password" name="password" required onkeyup="this.setAttribute('value', this.value);">
+                    <input type="password" name="password" value="" required onkeyup="this.setAttribute('value', this.value);">
                     <label>Contraseña</label>
                 </div>
 
@@ -35,12 +35,15 @@
                     {# Mostrar mensajes / errores si es que existen #}
                     {% with mensajes_flash = get_flashed_messages() %}
                     {% if mensajes_flash %}
-
-                    <!-- {% for mensaje in mensajes_flash %} -->
-                    <p style="margin-top: 0%;">
-                        {{ mensaje }}
-                    </p>
-                    <!-- {% endfor %} -->
+                        {% if mensajes_flash[0] == 'Correo o contraseña incorrectos' %}
+                            <p style="margin-top: 0%;">
+                                {{ mensajes_flash[0] }}
+                            </p>
+                        {% elif mensajes_flash[0] == 'Contraseña cambiada correctamente' %}
+                            <script>
+                                alert('{{ mensajes_flash[0] }}');
+                            </script>
+                        {% endif %}
 
 
                     {% endif %}
@@ -60,7 +63,7 @@
 
                 <h2>Recuperar contraseña</h2>
                 <p>Ingrese su correo para restablecer su contraseña</p>
-                <form action="{{url_for('RecuperarPass')}}" method="POST" class="form-modal" onsubmit="enviado()">
+                <form action="{{url_for('RecuperarPass')}}" method="POST" class="form-modal">
                     <div class="inputBox">
                         <input type="email" name="recuperarEmail" value="" required
                             onkeyup="this.setAttribute('value', this.value);">
