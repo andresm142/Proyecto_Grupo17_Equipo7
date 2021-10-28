@@ -834,7 +834,7 @@ def obtnerProductosMinimosDiponible():
                         prov.nombre_proveedor,
                         alm.cantidad_disponible
                     FROM Producto pro, Almacen alm, Proveedor prov
-                    WHERE pro.id_producto=prov.id_proveedor AND alm.id_producto=pro.id_producto AND alm.cantidad_disponible<pro.cantidad_minima
+                    WHERE pro.cantidad_minima > alm.cantidad_disponible AND alm.id_producto=pro.id_producto AND alm.id_proveedor=prov.id_proveedor
         """
     )
 
