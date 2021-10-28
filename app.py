@@ -322,9 +322,10 @@ def RecuperarPass():
         nombreApellido = datosUsuario['nombre_persona'] + " " + datosUsuario['apellido_persona']
         datosEmail = enviarEmail.emailRestablecerCuenta(datosUsuario['email'], nombreApellido, datosUsuario['id_usuario'])
         response = enviarEmail.enviarCorreo(datosEmail)
-        return flash("Se ha enviado un correo a su cuenta de email con las instrucciones para restablecer su contraseña")
+        flash("Se ha enviado un correo a su cuenta de email con las instrucciones para restablecer su contraseña")
     else:
-        return flash("El email ingresado no se encuentra registrado")
+        flash("El email ingresado no se encuentra registrado")
+    return redirect('/')
 
 @app.route('/ConfirmacionNewPass', methods=['POST', 'GET'])
 def ConfirmacionNewPass():
