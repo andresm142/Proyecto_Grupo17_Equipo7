@@ -160,6 +160,12 @@ def Usuarios():
 @app.route('/Logout', methods=['POST', 'GET'])
 def Logout():
     session.pop('username', None)
+    session.pop('userType', None)
+    session.pop('usuario', None)
+    session.pop('cambiarPass', None)
+    session.pop('autocompletarProductos', None)
+    session.pop('autoCompletarProveedores', None)
+    session.pop('autoCompletarEmail', None)
     flash(" ")
     return redirect('/')
 
