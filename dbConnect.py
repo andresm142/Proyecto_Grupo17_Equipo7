@@ -1,8 +1,10 @@
 import datetime
 import json
-import random
+from os import system
+import random, traceback
 import sqlite3
 import string
+from flask.helpers import flash
 from werkzeug.security import generate_password_hash, check_password_hash
 import enviarEmail
 
@@ -739,16 +741,23 @@ def insertarPersona(nombre, apellido, telefono, email, imagen_src, rolUsuario):
     # la conexión después de cada ejecución de un método/proceso.
     conn = crearConexion()
     cursor = conn.cursor()
+    try:       
+        cursor.execute(
+            """
+                INSERT INTO Persona (nombre_persona, apellido_persona, telefono_persona, email, imagen_src)
+                VALUES ('%s', '%s', '%s', '%s', '%s')
+            """ % (nombre, apellido, telefono, email, imagen_src))
 
-    cursor.execute(
-        """
-            INSERT INTO Persona (nombre_persona, apellido_persona, telefono_persona, email, imagen_src)
-            VALUES ('%s', '%s', '%s', '%s', '%s')
-        """ % (nombre, apellido, telefono, email, imagen_src))
-
-    conn.commit()
-    conn.close()
-
+        conn.commit()
+        conn.close()
+    except sqlite3.Error as er:
+        if er.args[0] == 'UNIQUE constraint failed: Persona.email':
+            conn.close()
+            return False, flash('El correo ya está registrado.')
+        elif er.args[0] == 'UNIQUE constraint failed: Persona.telefono_persona':
+            conn.close()
+            return False, flash('El teléfono ya está registrado.')
+        
     idPersona = cursor.lastrowid
     idRol = buscarIdRol(rolUsuario)
     password = crearContrasena()
@@ -758,6 +767,7 @@ def insertarPersona(nombre, apellido, telefono, email, imagen_src, rolUsuario):
 
     idUsuario = obtenerIDUsuario(email)
     enviarEmailCreacionCuenta(email, nombre + " " + apellido, idUsuario, password)
+    return True
 
 
 def insertarUsuario(idPersona, idRol, contrasena):
@@ -1090,21 +1100,27 @@ def actualizarPersona(idPersona, nombrePersona, apellidoPersona, telefono, email
     # la conexión después de cada ejecución de un método/proceso.
     conn = crearConexion()
     cursor = conn.cursor()
+    try:
+        cursor.execute(
+            """
+                UPDATE Persona
+                SET nombre_persona = '%s',
+                    apellido_persona = '%s',
+                    telefono_persona = '%s',
+                    email = '%s',
+                    imagen_src = '%s'
+                WHERE id_persona = %s
+            """ % (nombrePersona, apellidoPersona, telefono, email, src_imagen, idPersona))
 
-    cursor.execute(
-        """
-            UPDATE Persona
-            SET nombre_persona = '%s',
-                apellido_persona = '%s',
-                telefono_persona = '%s',
-                email = '%s',
-                imagen_src = '%s'
-            WHERE id_persona = %s
-        """ % (nombrePersona, apellidoPersona, telefono, email, src_imagen, idPersona))
-
-    conn.commit()
-    conn.close()
-
+        conn.commit()
+        conn.close()
+    except sqlite3.Error as er:
+        if er.args[0] == 'UNIQUE constraint failed: Persona.email':
+            conn.close()
+            return False, flash('El correo ya está registrado.')
+        elif er.args[0] == 'UNIQUE constraint failed: Persona.telefono_persona':
+            conn.close()
+            return False, flash('El teléfono ya está registrado.')
 
 def actualizarRolUsuario(idUsuario, idRol):
     """ Actualizar un rol de usuario en la base de datos.
