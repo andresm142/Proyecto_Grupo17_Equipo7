@@ -108,6 +108,19 @@ def Listas():
         lista=conn.obtnerProductosMinimosDiponible()
         return render_template('Listas.html',lista=lista, autoCompletarEmail=session['autoCompletarEmail'],)
 
+@app.route('/EnvarCorreo', methods=['POST', 'GET'])
+def EnviarCorreo():
+    if not session.get("username"):
+        return redirect("/")
+    else:
+        if request.method == 'POST':
+            if request.form["correo"] == "":
+                flash("El campo email no puede estar vacío")
+                return redirect("/Lista")
+            else:
+                # Consulta para enviar correo
+                flash("Se ha enviado un correo a: "+request.form["correo"])
+        return redirect("/Lista")
 
 @app.route('/Configuracion', methods=['POST', 'GET'])
 def Configuracion():

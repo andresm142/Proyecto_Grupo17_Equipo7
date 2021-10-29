@@ -1,7 +1,5 @@
 {% extends 'MasterPage.html' %} {% block content %}
-<script>
-    document.body.classList.add(sessionStorage.getItem('userType'));
-</script>
+
 <link rel="stylesheet" href={{ url_for( 'static' , filename='css/listas.css' ) }}>
 <header class="header-paginas">
     <div class="encabezado-listas">
@@ -14,11 +12,11 @@
 
 <section class="envioLista">
     <h2>Correo al que desea enviar la lista</h2>
-    <form action="">
+    <form action="/EnviarCorreo" method="POST">
         <div class="envioLista-busqueda">
-            <input type="search" placeholder="Correo" class="search">
+            <input type="search" name="correo" placeholder="Correo" class="search">
         </div>
-        <button type="submit">Enviar</button>
+        <input type="submit" name="enviarcorreo" id="enviarcorreo" value="Enviar">
     </form>
 </section>
 
