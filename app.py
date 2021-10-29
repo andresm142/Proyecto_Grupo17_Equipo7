@@ -367,8 +367,9 @@ def ConfirmacionNewPass():
             contrasenaActual = request.form['actualpw']
             nuevaContrasena = request.form['confirmpw']
             if conn.validarContrasena(request.form['email'], contrasenaActual) is not False:
-                conn.cambiarContraseña(conn.obtenerIDUsuario(request.form['email']), generate_password_hash(nuevaContrasena))
-                conn.cambiarEstatusUsuario(1, conn.obtenerIDUsuario(request.form['email']))
+                datos=conn.obtenerDatosUsuario(request.form['email'])
+                conn.cambiarContrasena(datos['id_persona'], generate_password_hash(nuevaContrasena))
+                conn.cambiarEstatusUsuario(1, datos['id_persona'])
                 flash("Contraseña cambiada correctamente")
                 return redirect('/')
             else:
@@ -385,7 +386,7 @@ def CambiarPass():
                 contrasenaActual = request.form['actualpw']
                 nuevaContrasena = request.form['confirnpw']
                 if conn.validarContrasena(session['username'], contrasenaActual) is not False:
-                    conn.cambiarContraseña(request.form['id'], generate_password_hash(nuevaContrasena))
+                    conn.cambiarContrasena(request.form['id'], generate_password_hash(nuevaContrasena))
                     conn.cambiarEstatusUsuario(1, (request.form['id']))
                     flash("Contraseña cambiada correctamente")
                     return redirect('/')

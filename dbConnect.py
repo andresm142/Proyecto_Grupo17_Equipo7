@@ -136,7 +136,7 @@ def obtenerIDUsuario(cuentaCorreo):
         return False
 
 
-def cambiarContraseña(idUsuario, password):
+def cambiarContrasena(idUsuario, password):
     """ Cambiar contraseña de acceso.
 
     Este método recibe una cuenta de correo electrónico a la cual le será asignada la respectiva contraseña.
@@ -320,7 +320,7 @@ def recuperarContrasena(cuentaCorreo, idUsuario, password):
     """
 
     # Se actualiza la contraseña del usuario.
-    cambiarContraseña(idUsuario, password)
+    cambiarContrasena(idUsuario, password)
 
     # Se actualiza el estatus del usuario para forzar a cambiar la contraseña al iniciar sesión por primera vez.
     cambiarEstatusUsuario(0, idUsuario)
@@ -774,7 +774,7 @@ def insertarUsuario(idPersona, idRol, contrasena):
     cursor.execute(
         """
             INSERT INTO Usuario (contrasena, estatus_usuario, id_persona, id_rol, id_sede)
-            VALUES ('%s', 1, '%s', '%s', 1)
+            VALUES ('%s', 0, '%s', '%s', 1)
         """ % (contrasena, idPersona, idRol))
 
     conn.commit()
