@@ -116,11 +116,13 @@ def EnviarCorreo():
         if request.method == 'POST':
             if request.form["correo"] == "":
                 flash("El campo email no puede estar vacío")
-                return redirect("/Lista")
+                return redirect("/Listas")
             else:
                 # Consulta para enviar correo
                 flash("Se ha enviado un correo a: "+request.form["correo"])
-        return redirect("/Lista")
+        else:
+            return redirect("/Listas")
+        return redirect("/Listas")
 
 @app.route('/Configuracion', methods=['POST', 'GET'])
 def Configuracion():

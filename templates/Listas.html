@@ -12,9 +12,9 @@
 
 <section class="envioLista">
     <h2>Correo al que desea enviar la lista</h2>
-    <form action="/EnviarCorreo" method="POST">
+    <form action="/EnvarCorreo" method="POST">
         <div class="envioLista-busqueda">
-            <input type="search" name="correo" placeholder="Correo" class="search">
+            <input type="search" name="correo" placeholder="Correo" class="search" onkeyup="this.setAttribute('value', this.value);">
         </div>
         <input type="submit" name="enviarcorreo" id="enviarcorreo" value="Enviar">
     </form>
