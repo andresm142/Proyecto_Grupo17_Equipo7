@@ -29,33 +29,36 @@ def login():
 
 @app.route('/Index', methods=['GET', 'POST'])
 def Index():
-    if conn.validarContrasena(request.form["email"], request.form["password"]) is not False:
+    if request.method == 'POST':
+        if conn.validarContrasena(request.form["email"], request.form["password"]) is not False:
 
-        # Verificar si el usuario solicitó recuperación de contraseña o es primera vez que inicia sesión
-        if conn.comprobarEstatusUsuario(conn.obtenerIDUsuario(request.form["email"])) == 0:
-            flash("Bienvenido a la aplicación, por favor cambia tu contraseña", "success")
-            session["cambiarPass"]=True
-            return redirect('/CambiarContrasena')
+            # Verificar si el usuario solicitó recuperación de contraseña o es primera vez que inicia sesión
+            if conn.comprobarEstatusUsuario(conn.obtenerIDUsuario(request.form["email"])) == 0:
+                flash("Bienvenido a la aplicación, por favor cambia tu contraseña", "success")
+                session["cambiarPass"]=True
+                return redirect('/CambiarContrasena')
+            else:
+                session["username"] = request.form["email"]
+                session["userType"] = conn.validarTipoUsuario(request.form["email"])
+                datosusuarios=conn.obtenerDatosUsuario(request.form["email"])
+                
+                session["usuario"] = (datosusuarios['id_persona'],datosusuarios['nombre_persona'],datosusuarios['apellido_persona'],
+                                    datosusuarios['imagen_src']) 
+                consultaProductos=conn.listaProductos()
+                consultaProveedor=conn.listaProveedores()
+                session['autocompletarProductos'] = conn.autocompletarListaProductos()
+                session['autoCompletarProveedores'] = conn.autocompletarListaProveedores()
+                
+                return render_template('Index.html', userType=session["userType"],usuario=session["usuario"],consultaProductos=consultaProductos,
+                                    consultaProveedor=consultaProveedor,autocompletarProductos=session['autocompletarProductos'], 
+                                    autoCompletarProveedores=session['autoCompletarProveedores'])
         else:
-            session["username"] = request.form["email"]
-            session["userType"] = conn.validarTipoUsuario(request.form["email"])
-            datosusuarios=conn.obtenerDatosUsuario(request.form["email"])
-            
-            session["usuario"] = (datosusuarios['id_persona'],datosusuarios['nombre_persona'],datosusuarios['apellido_persona'],
-                                datosusuarios['imagen_src']) 
-            consultaProductos=conn.listaProductos()
-            consultaProveedor=conn.listaProveedores()
-            session['autocompletarProductos'] = conn.autocompletarListaProductos()
-            session['autoCompletarProveedores'] = conn.autocompletarListaProveedores()
-            
-            return render_template('Index.html', userType=session["userType"],usuario=session["usuario"],consultaProductos=consultaProductos,
-                                consultaProveedor=consultaProveedor,autocompletarProductos=session['autocompletarProductos'], 
-                                autoCompletarProveedores=session['autoCompletarProveedores'])
+            session["username"] = None
+            flash("Correo o contraseña incorrectos")
+            return redirect('/')
     else:
-        session["username"] = None
-        flash("Correo o contraseña incorrectos")
-        return redirect('/')
-
+        return redirect('/Home')
+    
 @app.route('/CambiarContrasena', methods=['GET', 'POST'])
 def CambiarContrasena():
     if session.get("cambiarPass") is True:
@@ -270,6 +273,8 @@ def AdminUser():
                             conn.eliminarUsuario(conn.obtenerIDUsuarioDesdePersona(request.form["id"]), request.form["id"])
                             flash("Usuario eliminado correctamente")
                         else:
+                            if datosusuarios['email']==session['username']:
+                                flash("No puedes borrar tu propio usuario")
                             flash("No se puede borrar un usuario de tipo Super administrador")
                         # conn.eliminarUsuario(conn.obtenerIDUsuarioDesdePersona(request.form["id"]), request.form["id"])
                         
