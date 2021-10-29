@@ -1,4 +1,6 @@
 # Importando la librería que nos permite enviar correos
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
 import secrets
 import ssl
 import string
@@ -55,18 +57,18 @@ def emailRestablecerCuenta(cuentaCorreo, nombreUsuario, idUsuario):
 
     """ % (nombreUsuario, password)
 
-    email_text = """\
-    From: %s
-    To: %s
-    Subject: %s
 
-    %s
-    """ % (sent_from, to, subject, body)
-
+    mensaje = MIMEMultipart()
+    mensaje['From'] = sent_from
+    mensaje['To'] = to
+    mensaje['Subject'] = subject
+    
+    # Agregamos el cuerpo del mensaje como objeto MIME de tipo texto
+    mensaje.attach(MIMEText(body, 'plain'))
     # Cambiar la contraseña en la base de datos.
     dbConnect.recuperarContrasena(cuentaCorreo, idUsuario, passwordHash)
 
-    argumentosEmail = (sent_from, to, email_text)
+    argumentosEmail = (sent_from, to, mensaje)
     return argumentosEmail
 
 
@@ -108,18 +110,17 @@ def emailCrearUsuario(cuentaCorreo, nombreUsuario, idUsuario, password):
 
     """ % (nombreUsuario, password)
 
-    email_text = """\
-    From: %s
-    To: %s
-    Subject: %s
-
-    %s
-    """ % (sent_from, to, subject, body)
-
+    mensaje = MIMEMultipart()
+    mensaje['From'] = sent_from
+    mensaje['To'] = to
+    mensaje['Subject'] = subject
+    
+    # Agregamos el cuerpo del mensaje como objeto MIME de tipo texto
+    mensaje.attach(MIMEText(body, 'plain'))
     # Cambiar la contraseña en la base de datos.
     dbConnect.recuperarContrasena(cuentaCorreo, idUsuario, password)
 
-    argumentosEmail = (sent_from, to, email_text)
+    argumentosEmail = (sent_from, to, mensaje)
     return argumentosEmail
 
 
@@ -137,7 +138,7 @@ def enviarCorreo(argumentosEmail):
         server = smtplib.SMTP_SSL('smtp.gmail.com', 465, context=ssl.create_default_context())
         server.ehlo()
         server.login(gmail_user, gmail_password)
-        server.sendmail(argumentosEmail[0], argumentosEmail[1], argumentosEmail[2].encode('utf-8'))
+        server.sendmail(argumentosEmail[0], argumentosEmail[1], argumentosEmail[2].as_string())
         server.close()
     except Exception as e:
         return e

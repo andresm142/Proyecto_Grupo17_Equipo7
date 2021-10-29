@@ -115,7 +115,20 @@
     <script src={{ url_for( 'static', filename='js/jquery-3.3.1.js' ) }}></script>
     
     <!-- <script src={{ url_for('static', filename='js/loginColor.js') }}></script> -->
-
+    <script type="text/javascript">
+    // DESHABLITAR CLICK DERECHO EN EL SIDEBAR
+        $(document).ready(function () {
+            //Disable full page
+            // $("body").on("contextmenu",function(e){
+            //     return false;
+            // });
+            
+            //Disable part of page
+            $("#sidebar").on("contextmenu",function(e){
+                return false;
+            });
+        });
+        </script>
 
 </body>
 
