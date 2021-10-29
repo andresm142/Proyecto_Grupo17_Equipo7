@@ -231,6 +231,7 @@ body {
     border: var(--boder-inputs);
     padding-left: 10px;    
     border-radius: 5px 0 0 5px;
+    margin-right: 5px;
 }
 
 .envioLista input[type="submit"] {

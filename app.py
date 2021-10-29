@@ -120,7 +120,10 @@ def EnviarCorreo():
                 return redirect("/Listas")
             else:
                 # Consulta para enviar correo
-                usuario = conn.obtenerDatosUsuario(request.form["correo"])["nombre_persona"] +" "+ conn.obtenerDatosUsuario(request.form["correo"])["apellido_persona"]
+                if conn.validarUsuario(request.form["correo"]) is not False:
+                    usuario = conn.obtenerDatosUsuario(request.form["correo"])["nombre_persona"] +" "+ conn.obtenerDatosUsuario(request.form["correo"])["apellido_persona"]
+                else:
+                    usuario = "Usuario"
                 correo = request.form["correo"]
                 create_pdf(usuario, correo)
                 flash("Se ha enviado un correo a: "+request.form["correo"])
