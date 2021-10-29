@@ -1,0 +1,1 @@
+A continuación puede observar un resumen de todos los productos que poseen una cantidad menor de la requerida en el inventario, considere realizar los pedidos correspondientes para cumplir con los requerimientos de cada producto.

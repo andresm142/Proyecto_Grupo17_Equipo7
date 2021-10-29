@@ -7,6 +7,7 @@ from werkzeug.utils import secure_filename
 from werkzeug.security import generate_password_hash
 
 import enviarEmail
+from email_inventario import create_pdf
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = secrets.token_hex(20)
@@ -108,7 +109,7 @@ def Listas():
         lista=conn.obtnerProductosMinimosDiponible()
         return render_template('Listas.html',lista=lista, autoCompletarEmail=session['autoCompletarEmail'],)
 
-@app.route('/EnvarCorreo', methods=['POST', 'GET'])
+@app.route('/EnviarCorreo', methods=['POST', 'GET'])
 def EnviarCorreo():
     if not session.get("username"):
         return redirect("/")
@@ -116,11 +117,14 @@ def EnviarCorreo():
         if request.method == 'POST':
             if request.form["correo"] == "":
                 flash("El campo email no puede estar vacío")
-                return redirect("/Lista")
+                return redirect("/Listas")
             else:
                 # Consulta para enviar correo
+                usuario = conn.obtenerDatosUsuario(request.form["correo"])["nombre_persona"] +" "+ conn.obtenerDatosUsuario(request.form["correo"])["apellido_persona"]
+                correo = request.form["correo"]
+                create_pdf(usuario, correo)
                 flash("Se ha enviado un correo a: "+request.form["correo"])
-        return redirect("/Lista")
+        return redirect("/Listas")
 
 @app.route('/Configuracion', methods=['POST', 'GET'])
 def Configuracion():
