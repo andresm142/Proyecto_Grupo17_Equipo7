@@ -14,7 +14,7 @@
     <h2>Correo al que desea enviar la lista</h2>
     <form action="/EnvarCorreo" method="POST">
         <div class="envioLista-busqueda">
-            <input type="search" name="correo" placeholder="Correo" class="search" onkeyup="this.setAttribute('value', this.value);">
+            <input type="email" name="correo" placeholder="Correo" class="search" onkeyup="this.setAttribute('value', this.value);">
         </div>
         <input type="submit" name="enviarcorreo" id="enviarcorreo" value="Enviar">
     </form>
@@ -66,6 +66,14 @@
             </div>
         </div>
     </div>
-   
+    {# Mostrar mensajes / errores si es que existen #}
+    {% with mensajes_flash = get_flashed_messages() %}
+        {% if mensajes_flash %}
+        <script>
+            alert('{{ mensajes_flash[0] }}');
+        </script>
+            
+        {% endif %}
+    {% endwith %}  
 </section>
 {% endblock %}

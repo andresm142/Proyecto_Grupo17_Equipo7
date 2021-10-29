@@ -233,7 +233,7 @@ body {
     border-radius: 5px 0 0 5px;
 }
 
-.envioLista button{
+.envioLista input[type="submit"] {
     height: 45px;
     color: var(--color-blanco);
     background: var(--color-usuario);
