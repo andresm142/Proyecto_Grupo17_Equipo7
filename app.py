@@ -618,11 +618,15 @@ def Search():
             
             if buscarPor=='Productos':
                 resultadobusqueda=conn.buscarPorProducto(textoBuscar)
-                
+                if resultadobusqueda==[]:
+                    flash("No se encontraron resultados")
+                    return redirect('/Productos')
                 return render_template('Search.html',textoBuscar=textoBuscar,buscarPor=buscarPor,
                                        resultadobusqueda=resultadobusqueda)
             elif buscarPor=='Proveedores':
                 resultadobusqueda=conn.buscarPorProveedor(textoBuscar)
-                
+                if resultadobusqueda==[]:
+                    flash("No se encontraron resultados")
+                    return redirect('/Proveedores')
                 return render_template('Search.html',textoBuscar=textoBuscar,buscarPor=buscarPor,
                                        resultadobusqueda=resultadobusqueda)
