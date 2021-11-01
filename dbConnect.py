@@ -1,7 +1,6 @@
 import datetime
 import json
-from os import system
-import random, traceback
+import random
 import sqlite3
 import string
 from flask.helpers import flash
@@ -623,16 +622,27 @@ def editarConfiguracionUsuario(srcImagen, idPersona, telefonoPersona):
     conn = crearConexion()
     cursor = conn.cursor()
 
-    cursor.execute(
-        """
-            UPDATE Persona
-            SET imagen_src = '%s', telefono_persona = '%s'
-            WHERE id_persona = '%s'
-        """ % (srcImagen, telefonoPersona, idPersona))
+    try:
+        cursor.execute(
+            """
+                UPDATE Persona
+                SET imagen_src = '%s', telefono_persona = '%s'
+                WHERE id_persona = '%s'
+            """ % (srcImagen, telefonoPersona, idPersona))
 
-    conn.commit()
-    conn.close()
+        conn.commit()
+        conn.close()
 
+    except sqlite3.Error as er:
+        if er.args[0] == 'UNIQUE constraint failed: Persona.email':
+            conn.close()
+            return False, flash('El correo ya está registrado.')
+        elif er.args[0] == 'UNIQUE constraint failed: Persona.telefono_persona':
+            conn.close()
+            return False, flash('El teléfono ya está registrado.')
+ 
+    return True, flash('Datos actualizados correctamente.')
+   
 def editarConfiguracionUsuarioSinImagen(id_persona,telefono_persona):
     """ Editar la configuración del usuario.
 
@@ -644,15 +654,23 @@ def editarConfiguracionUsuarioSinImagen(id_persona,telefono_persona):
     conn = crearConexion()
     cursor = conn.cursor()
 
-    cursor.execute(
-        """
-            UPDATE Persona
-            SET telefono_persona = '%s'
-            WHERE id_persona = '%s'
-        """ % (telefono_persona, id_persona))
-
-    conn.commit()
-    conn.close()
+    try:
+        cursor.execute(
+            """
+                UPDATE Persona
+                SET telefono_persona = '%s'
+                WHERE id_persona = '%s'
+            """ % (telefono_persona, id_persona))
+        conn.commit()
+        conn.close()
+    except sqlite3.Error as er:
+        if er.args[0] == 'UNIQUE constraint failed: Persona.email':
+            conn.close()
+            return False, flash('El correo ya está registrado.')
+        elif er.args[0] == 'UNIQUE constraint failed: Persona.telefono_persona':
+            conn.close()
+            return False, flash('El teléfono ya está registrado.')
+    return True, flash('Datos actualizados correctamente.')
  
 def buscarPorProducto(texto):
     """ Editar la configuración del usuario.

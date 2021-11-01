@@ -571,11 +571,11 @@ def Guardarconfiguracion():
                     image_src="/static/images/upload/"+image_src
                     #Consulta para update en la base de datos cambiando la imagen por la seleccionada en el momento. Busqueda por id
                     conn.editarConfiguracionUsuario(image_src,id,telefono)
-                    flash("Configuracion de usuario guardada correctamente")
+                    
                 else:
                     #Consulta para update en la base de datos sin cambiar la imagen. Busqueda por id
                     conn.editarConfiguracionUsuarioSinImagen(id,telefono)
-                    flash("Configuracion de usuario guardada correctamente")    
+                        
                 
                 return redirect('/Home')
             elif request.form['submit_button'] == 'Cancelar':
